@@ -1,0 +1,49 @@
+
+.routeInfoPopupItem {
+  display: flex;
+  flex-flow: column;
+  position: relative;
+  padding: 25px 0;
+  z-index: 50;
+
+  &:first-child {
+    padding: 10px 0 25px;
+  }
+
+  &:last-child {
+    padding: 25px 0 10px;
+  }
+
+  &-wrap {
+    & .title {
+      display: flex;
+      flex-wrap: wrap;
+      width: 200px;
+
+      & .nbs {
+        white-space: pre-line;
+      }
+
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 600;
+    }
+
+    & .quantity {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 20px;
+      right: -20px;
+      width: 40px;
+      height: 23px;
+      font-size: 16px;
+      line-height: 19px;
+      color: white;
+      background-color: red;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
+  }
+}

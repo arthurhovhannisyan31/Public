@@ -1,0 +1,55 @@
+
+.routeInfo {
+  width: 134px;
+  height: 34px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: absolute;
+  top: -17px;
+  left: -67px;
+  z-index: 40;
+
+  &-wrap {
+    cursor: pointer;
+    display: flex;
+    height: 34px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &-details {
+    display: flex;
+    flex-flow: column;
+  }
+
+  &-left, &-right {
+    height: 34px;
+    display: flex;
+    width: 67px;
+
+    & > span {
+      font-weight: 600;
+      width: 100%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &-left {
+    color: #FFFFFF;
+    font-size: 20px;
+    line-height: 24px;
+    background: #FF3B30;
+  }
+
+  &-right {
+    color: #000000;
+    font-size: 12px;
+    line-height: 12px;
+    background: #FFFFFF;
+  }
+}
