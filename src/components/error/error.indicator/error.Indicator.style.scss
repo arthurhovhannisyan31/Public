@@ -1,0 +1,14 @@
+.error-indicator {
+  margin: 10px auto;
+
+  & .container {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+    & .title {
+      color: tomato;
+      font-size: 2rem;
+    }
+  }
+}
