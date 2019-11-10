@@ -80,10 +80,10 @@
   },
   "lint-staged": {
     "linters": {
-      "*.{js|jsx}": [
+      "*.{js||jsx}": [
         "pretty-quick --staged",
         "eslint src/ --fix",
-        "hg add"
+        "git add"
       ]
     }
   }
