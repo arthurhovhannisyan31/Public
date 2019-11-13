@@ -8,6 +8,9 @@ import store from './redux'
 
 import App from "./App"
 import * as serviceWorker from "./serviceWorker"
+import axiosInterceptors from "./services/interceptor.service"
+
+axiosInterceptors()
 
 const root = (
   <Provider store={store}>
