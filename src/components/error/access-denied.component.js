@@ -1,6 +1,6 @@
 import React from "react"
 
-const ForbiddenPage = () => {
+const AccessDenied = () => {
 
   return (
     <div>
@@ -9,4 +9,4 @@ const ForbiddenPage = () => {
   )
 }
 
-export default ForbiddenPage
+export default AccessDenied
