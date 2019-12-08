@@ -16,6 +16,7 @@ const enhancer = composeEnhancers(
   applyMiddleware(sagaMiddleware),
   // other store enhancers if any
 );
-export const store = createStore(rootReducer, enhancer)
+const store = createStore(rootReducer, enhancer)
+export default store
 
 sagaMiddleware.run(rootSaga)

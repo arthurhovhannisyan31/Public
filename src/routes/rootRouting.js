@@ -1,20 +1,31 @@
+import React from 'react'
+import { Route } from "react-router-dom"
 import App from '../containers/app'
 import NotFound from '../containers/not-found'
-import AccessDenied from '../containers/access-denied'
+// import AccessDenied from '../containers/access-denied'
 
-export const app = {
-  path: '/',
+const app = {
+  exact: true,
+  path: ['/', '/index.html'],
   component: App,
 }
 
-export const notFound = {
+const notFound = {
   exact: true,
-  path: '/not-found',
+  path: ['*', '/not-found'],
   component: NotFound,
 }
 
-export const accessDenied = {
-  exact: true,
-  path: '/access-denied',
-  component: AccessDenied
-}
+// const accessDenied = {
+//   exact: true,
+//   path: '/access-denied',
+//   component: AccessDenied
+// }
+
+const routesOrder = [app, notFound]
+
+const rootRoutes = routesOrder.map(config => (
+  <Route key={config.path} {...config}/>
+))
+
+export default rootRoutes
