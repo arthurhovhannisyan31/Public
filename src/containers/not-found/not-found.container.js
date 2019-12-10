@@ -1,26 +1,25 @@
+// external libraries
 import React, { useEffect } from 'react'
 import { useHistory }  from 'react-router-dom'
-
+// local components
 import { NotFound as NotFoundComponent } from '../../components/error'
-
-import { redirectTimeout } from '../../constants/utilities.constants'
+// local constants
+import CONSTS from "../../constants"
 
 const NorFound = () => {
-
   const history = useHistory()
-
-  const timeout = redirectTimeout * 1000
+  const timeout = CONSTS.REDIRECT_TIMEOUT * 1000
 
   useEffect(() => {
     setTimeout(() => {
-      history.push('/')
+      history.push(CONSTS.ROUTES.HOME[0])
     }, timeout)
   }, [history])
 
   return (
     <div>
       <NotFoundComponent
-        timeout={redirectTimeout}
+        timeout={CONSTS.REDIRECT_TIMEOUT}
       />
     </div>
   )

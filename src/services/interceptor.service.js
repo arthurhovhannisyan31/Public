@@ -1,8 +1,9 @@
+// external libraries
 import * as axios from 'axios'
+// local constants
+import CONSTS from "../constants"
 
-import { BASE_URL } from '../constants/api.constants'
-
-axios.defaults.baseURL = BASE_URL
+axios.defaults.baseURL = CONSTS.BASE_URL
 
 const axiosInterceptors = () => {
   axios.interceptors.request.use(

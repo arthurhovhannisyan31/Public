@@ -1,8 +1,10 @@
+// external libraries
 import React, { Component } from "react"
 import PropTypes from "prop-types"
-import ErrorIndicator from "../error.indicator"
-
+// local services & data store
 // import { moduleName } from "../../../redux/auth.reducer"
+// local components
+import ErrorIndicator from "../error.indicator"
 
 /**
  * Возвращает ErrorIndicator при возникновении ошибки
