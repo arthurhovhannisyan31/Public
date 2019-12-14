@@ -8,6 +8,9 @@ const CONSTS = {
     HOME: ['/', '/index.html'],
     LOGIN: '/login',
     NOT_FOUND: ['*', '/not-found'],
+    WEATHER: '/weather',
+    TRAVEL: '/travel',
+    CHAT: '/chat'
   },
 }
 
