@@ -1,14 +1,14 @@
-import React from "react"
-import PropTypes from "prop-types"
-import CustomScroll from "react-custom-scroll"
-import Button from "../../../ui/button"
+import React from 'react';
+import PropTypes from 'prop-types';
+import CustomScroll from 'react-custom-scroll';
+import Button from "../../../ui/button";
 
-import "./citi-employees-list.style.scss"
-import "./rcs-custom-scroll.style.scss"
+import './citi-employees-list.style.scss';
+import './rcs-custom-scroll.style.scss';
+import ArrowTopRight from "../../../ui/icons/arrow-top-right";
 
 const CityEmployeesList = (
-  {
-    setShowDetailsModal,
+  { setShowDetailsModal,
     city,
     setShowDetailsPopup,
     elements,
@@ -18,8 +18,8 @@ const CityEmployeesList = (
 
   const EmployeesList = (
     // eslint-disable-next-line no-shadow
-    { elements }
-  ) => {
+    {elements}
+    ) => {
 
     const items = (
       elements.map((el, id) => (
@@ -30,32 +30,32 @@ const CityEmployeesList = (
           tripNumber={el.businessTripNumber}
         />
       ))
-    )
+    );
     return (
       <CustomScroll>
         <ul>
-          {items}
+         {items}
         </ul>
       </CustomScroll>
     )
-  }
+  };
 
-  const EmployeesItem = ({ name, tripNumber }) => {
+  const EmployeesItem = ({name, tripNumber}) =>{
     return (
-      <li>
-        <button
-          type="button"
-          onClick={() => {
-            setShowDetailsModal(true)
-            setShowDetailsPopup(city)
-            setCurrentTrip(tripNumber)
-          }}
-        >
-          {name}
-        </button>
-      </li>
-    )
-  }
+     <li>
+       <button
+         type="button"
+         onClick={() => {
+           setShowDetailsModal(true);
+           setShowDetailsPopup(city);
+           setCurrentTrip(tripNumber);
+         }}
+       >
+         {name}
+       </button>
+     </li>
+   )
+  };
 
   return (
     <div className="cityEmployeesList">
@@ -69,11 +69,12 @@ const CityEmployeesList = (
       >
         <a href={`/trips/journeys/journeys?personal=false&Q.CityTo=${currentCity}&status=all`}>
           Показать всех
+          <ArrowTopRight fill='#5D6C74'/>
         </a>
       </Button>
     </div>
-  )
-}
+  );
+};
 
 CityEmployeesList.propTypes = {
   elements: PropTypes.arrayOf(
@@ -83,7 +84,7 @@ CityEmployeesList.propTypes = {
         name: PropTypes.string,
         geoLocation: PropTypes.shape({
           latitude: PropTypes.number,
-          longitude: PropTypes.number
+          longitude: PropTypes.number,
         })
       }),
       businessTripNumber: PropTypes.number,
@@ -91,10 +92,10 @@ CityEmployeesList.propTypes = {
       profileId: PropTypes.number,
       travellerFirstName: PropTypes.string,
       travellerLastName: PropTypes.string,
-      travellerMiddleName: PropTypes.string
-    })
+      travellerMiddleName: PropTypes.string,
+    }),
   ).isRequired
-}
+};
 
-export default CityEmployeesList
+export default CityEmployeesList;
 

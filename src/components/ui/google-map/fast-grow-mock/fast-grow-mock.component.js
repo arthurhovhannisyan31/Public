@@ -1,12 +1,12 @@
-import React from "react"
+import React from 'react'
 
 import Button from "../../button"
 
-import "./fast-grow-mock.style.scss"
+import './fast-grow-mock.style.scss'
 
-const FastGrowMock = ({ ...props }) => {
+const FastGrowMock = ({...props}) => {
 
-  const { setCategory } = props
+  const { setCategory } = props;
 
   return (
     <div className="fastGrowMock">
@@ -14,7 +14,7 @@ const FastGrowMock = ({ ...props }) => {
       <Button
         extraClass="mock__button"
         onClick={() => {
-          setCategory("Текущие командировки")
+          setCategory('Текущие командировки')
         }}
       >
         Посмотреть текущие командировки

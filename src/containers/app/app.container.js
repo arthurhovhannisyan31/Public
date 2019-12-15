@@ -1,21 +1,25 @@
 // external libraries
+import React from "react"
+import { Switch } from 'react-router-dom'
 // local services & data store
 // local containers
+import Layout from "../layout"
+import {rootRoutes, appRoutes} from "../../routes"
 // local components
 // local constants
 // local styles
 
-
-// external libraries
-import React from "react"
-
-
-function AppContainer() {
+const App = () => {
   return (
     <div className="App">
-      <h1>hola1</h1>
+      <Layout>
+        <Switch>
+          {appRoutes}
+          {rootRoutes}
+        </Switch>
+      </Layout>
     </div>
   )
 }
 
-export default AppContainer
+export default App

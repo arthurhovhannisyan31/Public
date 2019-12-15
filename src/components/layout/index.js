@@ -1,3 +1,11 @@
-import Layout from './layout.component'
+import Header from './header'
+import Main from './main'
+import NavMenu from './nav-menu'
+import Footer from './footer'
 
-export default Layout
+export {
+  Header,
+  Main,
+  NavMenu,
+  Footer
+}

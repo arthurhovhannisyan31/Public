@@ -5,12 +5,12 @@ const CONSTS = {
   REDIRECT_TIMEOUT: 10,
   BASE_URL: 'https://',
   ROUTES: {
-    HOME: ['/', '/index.html'],
     LOGIN: '/login',
-    NOT_FOUND: ['*', '/not-found'],
+    WELCOME: ['/', '/index.html'],
     WEATHER: '/weather',
     TRAVEL: '/travel',
-    CHAT: '/chat'
+    CHAT: '/chat',
+    NOT_FOUND: ['*', '/not-found']
   },
 }
 

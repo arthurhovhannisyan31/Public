@@ -18,12 +18,12 @@
     margin-bottom: 18px;
   }
 
-  & ul {
+  &  ul {
     list-style: none;
     padding: 0;
     margin: 0;
     max-height: 200px;
-    @include mobile-639-0 {
+    @include mobile-639-0{
       max-height: 100%;
     }
 
@@ -41,7 +41,6 @@
       text-decoration: underline;
     }
   }
-
   &__button {
     margin: 10px auto 0;
     height: 44px;
@@ -49,6 +48,10 @@
     line-height: 20px;
     width: 100%;
     max-width: 280px;
-
+    & > a{
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
   }
 }

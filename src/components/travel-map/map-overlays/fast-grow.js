@@ -1,9 +1,9 @@
-import React from "react"
+import React from 'react'
 import FastGrowMock from "../../../ui/google-map/fast-grow-mock"
 
-const FastGrowOverlay = ({ ...props }) => {
+const FastGrowOverlay = ({...props}) => {
 
-  const { setCategory } = props
+  const { setCategory } = props;
 
   return (
     <>
@@ -11,7 +11,7 @@ const FastGrowOverlay = ({ ...props }) => {
         setCategory={setCategory}
       />
     </>
-  )
-}
+  );
+};
 
 export default FastGrowOverlay

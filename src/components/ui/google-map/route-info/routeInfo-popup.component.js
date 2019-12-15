@@ -1,12 +1,12 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import Popup from "../../popup"
 import RouteInfoPopupItem from "./routeInfo-popup-item.component"
 
-import "./routeInfo-popup.style.scss"
+import './routeInfo-popup.style.scss'
 
-const RouteInfoPopup = ({ routes, ...props }) => {
+const RouteInfoPopup = ({routes, ...props}) => {
   const { isOpen, setCurrentDirection } = props
 
   const routeInfoPopupItems = routes.map((el, id) => {
@@ -30,7 +30,7 @@ const RouteInfoPopup = ({ routes, ...props }) => {
           setCurrentDirection([])
         }}
       >
-        {routes && routeInfoPopupItems}
+        { routes && routeInfoPopupItems }
       </Popup>
     </div>
   )
@@ -44,7 +44,7 @@ const RouteInfoPopup = ({ routes, ...props }) => {
 
 RouteInfoPopup.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  setCurrentDirection: PropTypes.func.isRequired
+  setCurrentDirection: PropTypes.func.isRequired,
 }
 
 export default RouteInfoPopup

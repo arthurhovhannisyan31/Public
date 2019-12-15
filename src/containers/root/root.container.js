@@ -1,33 +1,25 @@
 // external libraries
-// local services & data store
-// local containers
-// local components
-// local constants
-// local styles
-
-
-// external libraries
 import React from 'react'
-import { BrowserRouter, Switch } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { rootRoutes } from '../../routes'
 // local services & data store
 import store from '../../redux'
 import axiosInterceptors from "../../services/interceptor.service"
+// local containers
+import App from '../app'
 // local components
 import ErrorBoundary from "../../components/error/error.boundary"
+// local constants
+// local styles
 
 axiosInterceptors()
 
 const Root = () => {
-
   return (
     <Provider store={store}>
       <BrowserRouter>
         <ErrorBoundary>
-          <Switch>
-            { rootRoutes }
-          </Switch>
+          <App/>
         </ErrorBoundary>
       </BrowserRouter>
     </Provider>

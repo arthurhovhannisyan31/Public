@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 
 const CircleMarker = () => {
 
@@ -11,8 +11,8 @@ const CircleMarker = () => {
         <circle cx="16" cy="16.1796" r="7.79487" fill="white"/>
       </svg>
     </div>
-  )
-}
+  );
+};
 
-export default CircleMarker
+export default CircleMarker;
 

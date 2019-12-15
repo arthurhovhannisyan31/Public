@@ -2,9 +2,11 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 // local services & data store
-// import { moduleName } from "../../../redux/auth.reducer"
+// local containers
 // local components
 import ErrorIndicator from "../error.indicator"
+// local constants
+// local styles
 
 /**
  * Возвращает ErrorIndicator при возникновении ошибки

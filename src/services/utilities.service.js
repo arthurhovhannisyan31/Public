@@ -4,7 +4,7 @@ import {Route} from "react-router-dom"
 // local services & data store
 // local containers
 // local components
-import PrivateRoute from "../routes/privateRoute"
+import PrivateRoute from "../routes/private-route"
 // local constants
 // local styles
 

@@ -1,18 +1,16 @@
 // external libraries
+import React from 'react'
 // local services & data store
 // local containers
 // local components
 // local constants
 // local styles
 
-
-import React from 'react'
-
 const Weather = () => {
 
   return (
     <>
-      <h1>Weather</h1>
+      <span>Weather container</span>
     </>
   )
 }

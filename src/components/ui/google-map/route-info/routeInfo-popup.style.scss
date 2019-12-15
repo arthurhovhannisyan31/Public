@@ -1,15 +1,15 @@
 @import "../../../../sass/mixins";
 
 
-.routeInfoPopup {
+.routeInfoPopup{
   position: absolute;
   top: 30px;
   left: -140px;
 
-  &-wrap {
+  &-wrap{
 
-    & .popup-body {
-      & > div:not(:last-child) {
+    & .popup-body{
+      & > div:not(:last-child){
         border-bottom: 1px dashed #98A2A8;
       }
     }

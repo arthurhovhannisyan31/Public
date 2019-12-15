@@ -1,5 +1,5 @@
-import rootRoutes from './rootRouting'
-import appRoutes from "./appRouting"
+import rootRoutes from './root-routing'
+import appRoutes from "./app-routing"
 
 export {
   rootRoutes,

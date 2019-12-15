@@ -20,9 +20,9 @@ const NorFound = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      history.push(CONSTS.ROUTES.HOME[0])
+      history.push(CONSTS.ROUTES.WELCOME[0])
     }, timeout)
-  }, [history])
+  }, [history, timeout])
 
   return (
     <div>

@@ -1,11 +1,11 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { moneyFormat } from "../../../../services/utils.service"
+import { moneyFormat } from '../../../../services/utils.service'
 
-import "./routeInfo.style.scss"
+import './routeInfo.style.scss'
 
-const RouteInfo = ({ ...props }) => {
+const RouteInfo = ({...props}) => {
 
   const {
     value,
@@ -17,7 +17,7 @@ const RouteInfo = ({ ...props }) => {
   const { arrivalCity, departureCity } = routes[0]
 
   const newVal = isMoneyFormat ? moneyFormat(value) : value
-  const details = isMoneyFormat ? "р./мес" : "в месяц"
+  const details = isMoneyFormat ? 'р./мес' : 'в месяц'
 
   return (
     <div className="routeInfo">

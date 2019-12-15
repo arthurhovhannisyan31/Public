@@ -1,12 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { OverlayView } from "@react-google-maps/api"
+import { OverlayView } from '@react-google-maps/api'
 
 import { MapCircle } from "../../../ui/google-map"
 
-const OfficesOverlay = ({ data }) => {
-  if (!data) return null
-  return data && data.map((el, id) => {
+const OfficesOverlay = ({data}) => {
+  if(!data) return null;
+  return  data && data.map((el, id) => {
     return (
       <OverlayView
         /* eslint-disable-next-line react/no-array-index-key */
@@ -21,7 +21,7 @@ const OfficesOverlay = ({ data }) => {
       </OverlayView>
     )
   })
-}
+};
 
 OfficesOverlay.propTypes = {
   data: PropTypes.arrayOf(
@@ -30,9 +30,9 @@ OfficesOverlay.propTypes = {
       name: PropTypes.string,
       geoLocation: PropTypes.shape({
         latitude: PropTypes.number,
-        longitude: PropTypes.number
+        longitude: PropTypes.number,
       })
-    }).isRequired
+    }).isRequired,
   )
-}
+};
 export default OfficesOverlay

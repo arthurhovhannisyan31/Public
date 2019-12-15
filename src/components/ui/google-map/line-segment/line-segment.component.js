@@ -1,44 +1,42 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react';
+import PropTypes from 'prop-types';
 import { OverlayView } from "@react-google-maps/api"
 
-import { CircleMarker } from "../markers"
-import Line from "../line"
+import { CircleMarker } from '../markers';
+import Line from '../line';
 import { RouteInfo, RouteInfoPopup } from "../route-info"
 
 const LineSegment = (
-  {
-    currentDirection,
+  { currentDirection,
     setCurrentDirection,
-    category,
     routes,
     volume,
     strokeWeight,
     ...props
   }) => {
 
-  const { arrivalCity, departureCity, count, amount } = routes[0]
+  const { arrivalCity, departureCity, count, amount } = routes[0];
 
-  const value = amount || count
+  const value = amount || count;
 
   const routeInfoGeo = () => {
-    const lat = (arrivalCity.geoLocation.latitude + departureCity.geoLocation.latitude) / 2
-    const lng = (arrivalCity.geoLocation.longitude + departureCity.geoLocation.longitude) / 2
+    const lat = (arrivalCity.geoLocation.latitude + departureCity.geoLocation.latitude) / 2;
+    const lng = (arrivalCity.geoLocation.longitude + departureCity.geoLocation.longitude) / 2;
 
     return {
       latitude: lat,
       longitude: lng
     }
-  }
+  };
 
   const routeInfoData = {
-    type: "money",
+    type: 'money',
     value: 1,
     geoLocation: routeInfoGeo()
-  }
+  };
 
   return (
-    <div>
+    <>
       <Line
         arrivalCity={arrivalCity}
         departureCity={departureCity}
@@ -90,30 +88,30 @@ const LineSegment = (
           />
         </>
       </OverlayView>
-    </div>
+    </>
   )
-}
+};
 
 LineSegment.defaultProps = {
   count: null,
   amount: null,
   arrivalCity: {
     cityId: 0,
-    name: "",
+    name: '',
     geoLocation: {
       latitude: 0,
       longitude: 0
     }
   },
   departureCity: {
-    cityId: 0,
-    name: "",
+  cityId: 0,
+    name: '',
     geoLocation: {
-      latitude: 0,
+    latitude: 0,
       longitude: 0
-    }
   }
 }
+};
 
 LineSegment.propTypes = {
   arrivalCity: PropTypes.shape({
@@ -121,7 +119,7 @@ LineSegment.propTypes = {
     name: PropTypes.string,
     geoLocation: PropTypes.shape({
       latitude: PropTypes.number,
-      longitude: PropTypes.number
+      longitude: PropTypes.number,
     })
   }),
   departureCity: PropTypes.shape({
@@ -129,12 +127,12 @@ LineSegment.propTypes = {
     name: PropTypes.string,
     geoLocation: PropTypes.shape({
       latitude: PropTypes.number,
-      longitude: PropTypes.number
+      longitude: PropTypes.number,
     })
   }),
   count: PropTypes.number,
   amount: PropTypes.number
-}
+};
 
 export default LineSegment
 

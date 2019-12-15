@@ -2,6 +2,7 @@
 // local services & data store
 import {routeMaker} from '../services/utilities.service'
 // local containers
+import Welcome from "../containers/welcome"
 import Weather from "../containers/weather"
 import Travel from "../containers/travel"
 import Chat from '../containers/chat'
@@ -9,6 +10,13 @@ import Chat from '../containers/chat'
 // local constants
 import CONSTS from "../constants"
 // local styles
+
+const welcome = {
+  exact: true,
+  isPrivate: true,
+  path: CONSTS.ROUTES.WELCOME,
+  component: Welcome,
+}
 
 const weather = {
   exact: true,
@@ -31,9 +39,9 @@ const chat = {
   component: Chat
 }
 
-const appRoutes = [weather, travel, chat]
-  .map(({isPrivate, ...params}) => {
+const appRoutes = [welcome, weather, travel, chat]
+  .map(({isPrivate, ...params}) => (
   routeMaker(isPrivate, params)
-})
+))
 
 export default appRoutes
