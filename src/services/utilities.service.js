@@ -1,3 +1,9 @@
+// external libraries
+import React from 'react'
+import {Route} from "react-router-dom"
+// local components
+import PrivateRoute from "../routes/privateRoute"
+
 /**
  * localStorage handler
  * @returns {*}
@@ -13,3 +19,8 @@ export const localeStorage = () => typeof(Storage) !== 'undefined'
   : () => {throw new Error('No web storage Support.')}
 
 
+export const routeMaker = (isPrivate, params) => (
+    isPrivate
+      ? <PrivateRoute key={params.path} {...params}/>
+      : <Route key={params.path} {...params}/>
+)

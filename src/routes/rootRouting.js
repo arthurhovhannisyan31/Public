@@ -1,21 +1,19 @@
-// external libraries
-import React from 'react'
-import { Route } from "react-router-dom"
+// local services & data store
+import {routeMaker} from '../services/utilities.service'
 // local containers
-import App from '../containers/app'
+import AppContainer from '../containers/app'
 import NotFound from '../containers/not-found'
 import Login from "../containers/login"
 // import AccessDenied from '../containers/access-denied'
 // local constants
 import CONSTS from "../constants"
-// local components
-import PrivateRoute from "./privateRoute"
+
 
 const app = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.HOME,
-  component: App,
+  component: AppContainer,
 }
 
 const login = {
@@ -36,10 +34,9 @@ const notFound = {
 //   component: AccessDenied
 // }
 
-const rootRoutes = [login, app, notFound].map(({isPrivate, ...params}) => (
-  isPrivate
-    ? <PrivateRoute key={params.path} {...params}/>
-    : <Route key={params.path} {...params}/>
+const rootRoutes = [login, app, notFound]
+  .map(({isPrivate, ...params}) => (
+  routeMaker(isPrivate, params)
 ))
 
 export default rootRoutes

@@ -6,11 +6,8 @@ import { rootRoutes } from '../../routes'
 // local services & data store
 import store from '../../redux'
 import axiosInterceptors from "../../services/interceptor.service"
-// local containers
 // local components
 import ErrorBoundary from "../../components/error/error.boundary"
-// local constants
-// local styles
 
 axiosInterceptors()
 
