@@ -1,13 +1,14 @@
+// external libraries
 // local services & data store
 import {routeMaker} from '../services/utilities.service'
 // local containers
 import AppContainer from '../containers/app'
 import NotFound from '../containers/not-found'
 import Login from "../containers/login"
-// import AccessDenied from '../containers/access-denied'
+// local components
 // local constants
 import CONSTS from "../constants"
-
+// local styles
 
 const app = {
   exact: true,
@@ -27,12 +28,6 @@ const notFound = {
   path: CONSTS.ROUTES.NOT_FOUND,
   component: NotFound,
 }
-
-// const accessDenied = {
-//   exact: true,
-//   path: '/access-denied',
-//   component: AccessDenied
-// }
 
 const rootRoutes = [login, app, notFound]
   .map(({isPrivate, ...params}) => (

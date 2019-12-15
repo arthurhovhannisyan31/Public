@@ -1,4 +1,12 @@
 // external libraries
+// local services & data store
+// local containers
+// local components
+// local constants
+// local styles
+
+
+// external libraries
 import React, { useEffect } from 'react'
 import { useHistory }  from 'react-router-dom'
 // local components

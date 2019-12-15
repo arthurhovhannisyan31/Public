@@ -5,17 +5,16 @@ import React from 'react'
 // local components
 // local constants
 // local styles
+import './layout.style.scss'
 
-
-
-const Login = () => {
+const Layout = ({children}) => {
 
   return (
-    <>
-      <h1>Login</h1>
-    </>
+    <div className='layout'>
+      <h1>Layout</h1>
+      {children}
+    </div>
   )
 }
 
-export default Login
-
+export  default Layout

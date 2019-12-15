@@ -1,7 +1,11 @@
 // external libraries
 import * as axios from 'axios'
+// local services & data store
+// local containers
+// local components
 // local constants
 import CONSTS from "../constants"
+// local styles
 
 axios.defaults.baseURL = CONSTS.BASE_URL
 

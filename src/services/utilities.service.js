@@ -1,8 +1,12 @@
 // external libraries
 import React from 'react'
 import {Route} from "react-router-dom"
+// local services & data store
+// local containers
 // local components
 import PrivateRoute from "../routes/privateRoute"
+// local constants
+// local styles
 
 /**
  * localStorage handler

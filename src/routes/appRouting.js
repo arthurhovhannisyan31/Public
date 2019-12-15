@@ -1,11 +1,14 @@
+// external libraries
 // local services & data store
 import {routeMaker} from '../services/utilities.service'
 // local containers
 import Weather from "../containers/weather"
 import Travel from "../containers/travel"
 import Chat from '../containers/chat'
+// local components
 // local constants
 import CONSTS from "../constants"
+// local styles
 
 const weather = {
   exact: true,
