@@ -1,5 +1,5 @@
 // external libraries
-import React from 'react'
+import React, { useState } from 'react'
 import {Route} from "react-router-dom"
 // local services & data store
 // local containers
@@ -24,7 +24,17 @@ export const localeStorage = () => typeof(Storage) !== 'undefined'
 
 
 export const routeMaker = (isPrivate, params) => (
-    isPrivate
-      ? <PrivateRoute key={params.path} {...params}/>
-      : <Route key={params.path} {...params}/>
+  isPrivate
+    ? <PrivateRoute key={params.path} {...params}/>
+    : <Route key={params.path} {...params}/>
 )
+
+export const useHover = () => {
+  const [hovering, setHovering] = useState(false)
+  const onMouseOver = () => setHovering(true)
+  const onMouseOut = () => setHovering(false)
+  return [hovering, {
+    onMouseOut,
+    onMouseOver
+  }]
+}
