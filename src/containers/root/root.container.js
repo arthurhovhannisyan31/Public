@@ -9,7 +9,6 @@ import axiosInterceptors from "../../services/interceptor.service"
 import App from '../app'
 // local components
 import ErrorBoundary from "../../components/error/error.boundary"
-import Spinner from "../../components/ui/spinner"
 // local constants
 // local styles
 
@@ -20,11 +19,7 @@ const Root = () => {
     <Provider store={store}>
       <BrowserRouter>
         <ErrorBoundary>
-          {/*<App/>*/}
-          <Spinner
-            width={400}
-            height={400}
-          />
+          <App/>
         </ErrorBoundary>
       </BrowserRouter>
     </Provider>

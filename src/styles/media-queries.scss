@@ -1,0 +1,41 @@
+@import "./consts";
+
+@mixin desktop-lg-media {
+  @media only screen and (max-width: $desktop-lg-width) {
+    @content
+  }
+}
+@mixin desktop-md-media {
+  @media only screen and (max-width: $desktop-md-width) {
+    @content
+  }
+}
+@mixin tablet-lg-media {
+  @media only screen and (max-width: $tablet-lg-width) {
+    @content
+  }
+}
+@mixin tablet-md-media {
+  @media only screen and (max-width: $tablet-md-width) {
+    @content
+  }
+} @mixin mobile-lg-media {
+  @media only screen and (max-width: $mobile-lg-width) {
+    @content
+  }
+} @mixin mobile-md-media {
+  @media only screen and (max-width: $mobile-md-width) {
+    @content
+  }
+}
+@mixin retina {
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+    @content;
+  }
+}
