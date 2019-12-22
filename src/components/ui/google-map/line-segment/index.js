@@ -1,3 +1,3 @@
-import LineSegment from "./line-segment.component"
+import LineSegment from './line-segment.component'
 
 export default LineSegment

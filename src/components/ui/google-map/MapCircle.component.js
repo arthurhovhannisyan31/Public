@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react';
 
 const MapCircle = () => {
 
@@ -9,8 +9,8 @@ const MapCircle = () => {
       </svg>
     </div>
 
-  )
-}
+  );
+};
 
-export default MapCircle
+export default MapCircle;
 

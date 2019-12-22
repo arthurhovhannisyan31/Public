@@ -1,5 +1,5 @@
 
-.routeInfo {
+.routeInfo{
   width: 134px;
   height: 34px;
   border-radius: 5px;
@@ -8,8 +8,7 @@
   top: -17px;
   left: -67px;
   z-index: 40;
-
-  &-wrap {
+  &-wrap{
     cursor: pointer;
     display: flex;
     height: 34px;
@@ -19,18 +18,15 @@
     padding: 0;
     margin: 0;
   }
-
-  &-details {
+  &-details{
     display: flex;
     flex-flow: column;
   }
-
-  &-left, &-right {
+  &-left, &-right{
     height: 34px;
     display: flex;
     width: 67px;
-
-    & > span {
+    & > span{
       font-weight: 600;
       width: 100%;
       display: inline-flex;
@@ -39,14 +35,13 @@
     }
   }
 
-  &-left {
+  &-left{
     color: #FFFFFF;
     font-size: 20px;
     line-height: 24px;
     background: #FF3B30;
   }
-
-  &-right {
+  &-right{
     color: #000000;
     font-size: 12px;
     line-height: 12px;

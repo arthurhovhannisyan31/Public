@@ -1,4 +1,12 @@
 // external libraries
+// local services & data store
+// local containers
+// local components
+// local constants
+// local styles
+
+
+// external libraries
 import React, { useEffect } from 'react'
 import { useHistory }  from 'react-router-dom'
 // local components
@@ -12,9 +20,9 @@ const NorFound = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      history.push(CONSTS.ROUTES.HOME[0])
+      history.push(CONSTS.ROUTES.WELCOME[0])
     }, timeout)
-  }, [history])
+  }, [history, timeout])
 
   return (
     <div>

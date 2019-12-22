@@ -1,5 +1,5 @@
-import RouteInfo from "./routeInfo.component"
-import RouteInfoPopup from "./routeInfo-popup.component"
+import RouteInfo from './routeInfo.component'
+import RouteInfoPopup from './routeInfo-popup.component'
 
 export {
   RouteInfo,
