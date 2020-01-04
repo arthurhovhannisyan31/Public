@@ -1,6 +1,6 @@
 // external libraries
-import React, { useState, useEffect } from 'react'
-import {Route} from "react-router-dom"
+import React, { useState, useEffect, useMemo, useRef, useLayoutEffect } from 'react'
+import {Route, useParams, useLocation, useHistory, useRouteMatch} from "react-router-dom"
 // local services & data store
 // local containers
 // local components
@@ -73,29 +73,6 @@ export const useHover = () => {
     onMouseOut,
     onMouseOver
   }]
-}
-
-/**
- * Returns window size width, height
- * @returns {{width: (number), height: (number)}}
- */
-export const useWindowSize = () => {
-  const isClient = typeof window === 'object';
-
-  const getSize = () => ({
-    width: isClient ? window.innerWidth : undefined,
-    height: isClient ? window.innerHeight : undefined
-  })
-
-  const [windowSize, setWindowSize] = useState(getSize)
-
-  useEffect(() => {
-    const handleResize = () => setWindowSize(getSize())
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  })
-
-  return windowSize
 }
 
 /**
@@ -181,4 +158,127 @@ export const useOnClickOutside = (ref, callback) => {
     onMouseDown,
     onTouchStart
   }]
+}
+
+/**
+ * Returns low-level react-dom hooks
+ * @returns {{query: *, replace: *, match: *, location: *, history: *, push: *, pathname: *}}
+ */
+export const useRouter = () => {
+  const params = useParams()
+  const location = useLocation()
+  const history = useHistory()
+  const match = useRouteMatch()
+
+  // Return our custom router object
+  // Memoize so that a new object is only returned if something changes
+  return useMemo(() => ({
+    // For convenience add push(), replace(), pathname at top level
+    push: history.push,
+    replace: location.replace,
+    pathname: location.pathname,
+    query: {
+      ...location.search,
+      ...params
+    },
+    // Include match, location, history objects so we have
+    // access to extra React Router functionality if needed.
+    match,
+    location,
+    history
+  })
+  )
+}
+// useRequireAuth
+// useAuth
+
+/**
+ * Returns function to add and/remove event listener on mount/unmount
+ * @param eventName
+ * @param handler
+ * @param element
+ */
+export const useEventListener = (eventName, handler, element = window) => {
+  const savedHandler = useRef(null)
+
+  // Update ref.current value if handler changes.
+  // This allows our effect below to always get latest handler ...
+  // ... without us needing to pass it in effect deps array ...
+  // ... and potentially cause effect to re-run every render.
+  useEffect(() => {
+    savedHandler.current = handler
+  }, [handler])
+
+  useEffect(() => {
+    // make sure element supports addEventListener
+    // on
+    const isSupported = element && element.addEventListener
+    if (!isSupported) return null;
+
+    // create event listener that calls handler function stored in ref
+    const eventListener = event => savedHandler.current(event)
+
+    // add event listener
+    element.addEventListener(eventName, eventListener)
+
+    // remove event listener on cleanup
+    return () => {
+      element.removeEventListener(eventName, eventListener)
+    }
+
+  }, [eventName, element])
+}
+
+/**
+ * Returns window size width, height
+ * @returns {{width: (number), height: (number)}}
+ */
+export const useWindowSize = () => {
+  const isClient = typeof window === 'object';
+
+  const getSize = () => ({
+    width: isClient ? window.innerWidth : undefined,
+    height: isClient ? window.innerHeight : undefined
+  })
+
+  const [windowSize, setWindowSize] = useState(getSize)
+
+  useEffect(() => {
+    const handleResize = () => setWindowSize(getSize())
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  })
+
+  return windowSize
+}
+
+/**
+ * Returns function to lock body scroll
+ */
+
+export const useLockBodyScroll = () => {
+  useLayoutEffect(() => {
+    // get original overflow
+    const originalStyle = window.getComputedStyle(document.body).overflow
+    // prevent scrolling on mount
+    document.body.style.overflow = 'hidden'
+    // re-enable scrolling when component unmount
+
+    // eslint-disable-next-line no-return-assign
+    return () => document.body.style.overflow = originalStyle
+  }, [])
+}
+
+/**
+ * Returns function to apply theme css object to component
+ * @param theme
+ */
+
+export const useTheme = (theme) => {
+  useLayoutEffect(() => {
+    // iterate through each value in theme object
+    Object.entries(theme).forEach((val, key) => {
+      document.documentElement.style.setProperty(`--${key}`, val)
+    })
+  }, [theme]) // only call again if theme object reference changes
 }
