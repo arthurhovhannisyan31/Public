@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { OverlayView } from '@react-google-maps/api';
-import { CityEmployeesListPopup } from "../citi-employees-list"
+import { CityEmployeesListPopup } from '../citi-employees-list';
+// eslint-disable-next-line import/no-unresolved
 import { TripDetailsPopup } from '../../../ui/trip-details';
+// eslint-disable-next-line import/no-unresolved
 import { NumberMarker } from '../../../ui/google-map/markers';
 
-const CurrentTripsOverlay = ({...props}) => {
+const CurrentTripsOverlay = ({ ...props }) => {
   const {
     currentCity,
     setCurrentCity,
@@ -25,7 +27,6 @@ const CurrentTripsOverlay = ({...props}) => {
   if (!tripCurrent) return null;
 
   return tripCurrent.map(el => {
-
     const position = {
       lat: el.lat,
       lng: el.lng
@@ -52,8 +53,7 @@ const CurrentTripsOverlay = ({...props}) => {
           >
             <TripDetailsPopup
               showDetails={
-                showDetailsPopup === el.city &&
-                currentCity === el.city
+                showDetailsPopup === el.city && currentCity === el.city
               }
               setShowDetailsPopup={setShowDetailsPopup}
               setShowDetailsModal={setShowDetailsModal}
@@ -75,39 +75,41 @@ const CurrentTripsOverlay = ({...props}) => {
           />
         </div>
       </OverlayView>
-    )}
-  )
+    );
+  });
 };
 
 CurrentTripsOverlay.defaultProps = {
-  tripCurrent: [{
-    city: '',
-    elements: [{
-      arrivalCity: {
-        cityId: 0,
-        name: '',
-        geoLocation: {
-          latitude: 0,
-          longitude: 0,
+  tripCurrent: [
+    {
+      city: '',
+      elements: [
+        {
+          arrivalCity: {
+            cityId: 0,
+            name: '',
+            geoLocation: {
+              latitude: 0,
+              longitude: 0
+            }
+          },
+          businessTripNumber: 0,
+          journeyNumber: 0,
+          profileId: 0,
+          travellerFirstName: '',
+          travellerLastName: '',
+          travellerMiddleName: ''
         }
-      },
-      businessTripNumber: 0,
-      journeyNumber: 0,
-      profileId: 0,
-      travellerFirstName: '',
-      travellerLastName: '',
-      travellerMiddleName: '',
-    }],
-    lat: 0,
-    lng: 0,
-    quantity: 0,
-  }]
+      ],
+      lat: 0,
+      lng: 0,
+      quantity: 0
+    }
+  ]
 };
 
 CurrentTripsOverlay.propTypes = {
-  currentCity: PropTypes.oneOfType([
-    PropTypes.bool, PropTypes.string
-  ]),
+  currentCity: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   setCurrentCity: PropTypes.func.isRequired,
   tripCurrent: PropTypes.arrayOf(
     PropTypes.shape({
@@ -119,7 +121,7 @@ CurrentTripsOverlay.propTypes = {
             name: PropTypes.string,
             geoLocation: PropTypes.shape({
               latitude: PropTypes.number,
-              longitude: PropTypes.number,
+              longitude: PropTypes.number
             })
           }),
           businessTripNumber: PropTypes.number,
@@ -127,24 +129,20 @@ CurrentTripsOverlay.propTypes = {
           profileId: PropTypes.number,
           travellerFirstName: PropTypes.string,
           travellerLastName: PropTypes.string,
-          travellerMiddleName: PropTypes.string,
+          travellerMiddleName: PropTypes.string
         })
       ),
       lat: PropTypes.number,
       lng: PropTypes.number,
-      quantity: PropTypes.number,
+      quantity: PropTypes.number
     })
   ),
   setShowCityModal: PropTypes.func.isRequired,
-  showDetailsPopup: PropTypes.oneOfType([
-    PropTypes.bool, PropTypes.string
-  ]),
+  showDetailsPopup: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   setShowDetailsPopup: PropTypes.func.isRequired,
   setShowDetailsModal: PropTypes.func.isRequired,
-  currentTrip: PropTypes.oneOfType([
-    PropTypes.bool, PropTypes.number
-  ]),
-  setCurrentTrip: PropTypes.func.isRequired,
+  currentTrip: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  setCurrentTrip: PropTypes.func.isRequired
 };
 
-export default CurrentTripsOverlay
+export default CurrentTripsOverlay;

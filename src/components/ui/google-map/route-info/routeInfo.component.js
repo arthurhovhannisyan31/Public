@@ -1,31 +1,26 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import { moneyFormat } from '../../../../services/utils.service'
+// eslint-disable-next-line import/no-unresolved
+import { moneyFormat } from '../../../../services/utils.service';
 
-import './routeInfo.style.scss'
+import './routeInfo.style.scss';
 
-const RouteInfo = ({...props}) => {
+const RouteInfo = ({ ...props }) => {
+  const { value, isMoneyFormat, setCurrentDirection, routes } = props;
 
-  const {
-    value,
-    isMoneyFormat,
-    setCurrentDirection,
-    routes
-  } = props
+  const { arrivalCity, departureCity } = routes[0];
 
-  const { arrivalCity, departureCity } = routes[0]
-
-  const newVal = isMoneyFormat ? moneyFormat(value) : value
-  const details = isMoneyFormat ? 'р./мес' : 'в месяц'
+  const newVal = isMoneyFormat ? moneyFormat(value) : value;
+  const details = isMoneyFormat ? 'р./мес' : 'в месяц';
 
   return (
     <div className="routeInfo">
       <button
         className="routeInfo-wrap"
-        type='button'
+        type="button"
         onClick={() => {
-          setCurrentDirection([`${arrivalCity.name}`, `${departureCity.name}`])
+          setCurrentDirection([`${arrivalCity.name}`, `${departureCity.name}`]);
         }}
       >
         <div className="routeInfo-left">
@@ -39,16 +34,16 @@ const RouteInfo = ({...props}) => {
         </div>
       </button>
     </div>
-  )
-}
+  );
+};
 
 RouteInfo.defaultProps = {
   isMoneyFormat: null
-}
+};
 
 RouteInfo.propTypes = {
   value: PropTypes.number.isRequired,
   isMoneyFormat: PropTypes.number
-}
+};
 
-export default RouteInfo
+export default RouteInfo;

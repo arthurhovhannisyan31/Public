@@ -1,11 +1,12 @@
 import React from 'react';
 
-import CityEmployeesList from './city-employees-list.component'
-import Popup from "../../../ui/popup"
+import CityEmployeesList from './city-employees-list.component';
+// eslint-disable-next-line import/no-unresolved
+import Popup from '../../../ui/popup';
 
-import './city-employees-list-popup.style.scss'
+import './city-employees-list-popup.style.scss';
 
-const CityEmployeesListPopup = ({ ...props}) => {
+const CityEmployeesListPopup = ({ ...props }) => {
   const {
     popupTitle,
     setShowCityModal,
@@ -26,20 +27,11 @@ const CityEmployeesListPopup = ({ ...props}) => {
         setShowDetailsModal(false);
       }}
     >
-      { elements &&
-        <CityEmployeesList
-          {...props}
-        />
-      }
+      {elements && <CityEmployeesList {...props} />}
       {children}
     </Popup>
   );
-  return (
-    <div className="cityEmployeesListPopup">
-      {showPopup && content}
-    </div>
-  );
+  return <div className="cityEmployeesListPopup">{showPopup && content}</div>;
 };
 
 export default CityEmployeesListPopup;
-

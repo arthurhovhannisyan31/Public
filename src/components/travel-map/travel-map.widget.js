@@ -12,15 +12,28 @@ import {
   cleanCurrent,
   moduleName as widgetTravelMapModule
 } from './travel-map.reducer';
+// eslint-disable-next-line import/no-unresolved
 import { moduleName as generalInfoModule } from '../../../redux/general-information.reducer';
-import { modifyCompanyList, useWindowWidth } from '../../../services/utils.service';
+// eslint-disable-next-line import/no-unresolved
+import {
+  modifyCompanyList,
+  useWindowWidth
+  // eslint-disable-next-line import/no-unresolved
+} from '../../../services/utils.service';
 
 import { CityEmployeesListModal } from './citi-employees-list';
+// eslint-disable-next-line import/no-unresolved
 import { TripDetailsModal } from '../../ui/trip-details';
 
-import { CurrentTripsOverlay, FastGrowOverlay, MostWantedExpensiveOverlay } from './map-overlays';
+import {
+  CurrentTripsOverlay,
+  FastGrowOverlay,
+  MostWantedExpensiveOverlay
+} from './map-overlays';
+// eslint-disable-next-line import/no-unresolved
 import { BurgerIcon } from '../../ui/icons';
 import TravelMapSkeleton from './travel-map.skeleton';
+// eslint-disable-next-line import/no-unresolved
 import SelectComponent from '../../ui/select/select.component';
 
 import styles from './googleMapStyles';
@@ -29,10 +42,10 @@ import './travel-map.style.scss';
 const googleMapsApiKey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
 
 const dropdownOptions = [
-  {label: 'Топ-5 маршрутов по числу командировок', value: 1},
-  {label: 'Топ-5 маршрутов по затратам', value: 2},
-  {label: 'Текущие командировки', value: 3},
-  {label: 'Топ-5 быстрорастущих маршрутов за 6 месяцев', value: 4},
+  { label: 'Топ-5 маршрутов по числу командировок', value: 1 },
+  { label: 'Топ-5 маршрутов по затратам', value: 2 },
+  { label: 'Текущие командировки', value: 3 },
+  { label: 'Топ-5 быстрорастущих маршрутов за 6 месяцев', value: 4 }
 ];
 
 const categoryDefaultOption = dropdownOptions[2];
@@ -47,41 +60,41 @@ const options = {
 };
 
 const travelMapReducer = (state, action) => {
-  const {type, payload} = action;
+  const { type, payload } = action;
   switch (type) {
     case 'setCategory':
       return { ...state, category: payload };
     case 'setCurrentCity':
-      return { ...state, currentCity: payload};
+      return { ...state, currentCity: payload };
     case 'setShowCityModal':
-      return { ...state, showCityModal: payload};
+      return { ...state, showCityModal: payload };
     case 'setShowDetailsModal':
-      return { ...state, showDetailsModal: payload};
+      return { ...state, showDetailsModal: payload };
     case 'setShowDetailsPopup':
-      return { ...state, showDetailsPopup: payload};
+      return { ...state, showDetailsPopup: payload };
     case 'setCurrentTrip':
-      return { ...state, currentTrip: payload};
+      return { ...state, currentTrip: payload };
     case 'setCompanyId':
-      return { ...state, selectCompanyId: payload};
+      return { ...state, selectCompanyId: payload };
     case 'setCurrentDirection':
-      return { ...state, currentDirection: payload};
+      return { ...state, currentDirection: payload };
     case 'setCenter':
-      return { ...state, center: payload};
+      return { ...state, center: payload };
     case 'setZoom':
-      return { ...state, zoom: payload};
+      return { ...state, zoom: payload };
     case 'clearPopups':
       return {
         ...state,
         currentCity: false,
         showDetailsPopup: false,
-        currentDirection: [],
+        currentDirection: []
       };
     default:
-      return state
+      return state;
   }
 };
 
-const TravelMapWidget = ({...props}) => {
+const TravelMapWidget = ({ ...props }) => {
   const {
     // eslint-disable-next-line no-shadow
     getTripsOverview,
@@ -150,21 +163,37 @@ const TravelMapWidget = ({...props}) => {
     zoom
   } = state;
 
-  const setCategory = payload => {dispatch({type: 'setCategory', payload})};
-  const setCurrentCity = payload => {dispatch({type: 'setCurrentCity', payload})};
-  const setShowCityModal = payload => {dispatch({type: 'setShowCityModal', payload})};
-  const setShowDetailsModal = payload => {dispatch({type: 'setShowDetailsModal', payload})};
-  const setShowDetailsPopup = payload => {dispatch({type: 'setShowDetailsPopup', payload})};
-  const setCurrentTrip = payload => {dispatch({type: 'setCurrentTrip', payload})};
-  const setCompanyId = payload => {dispatch({type: 'setCompanyId', payload})};
-  const setCurrentDirection = payload => {dispatch({type: 'setCurrentDirection', payload})};
-  const clearPopups = () => dispatch({type: 'clearPopups'});
-  const setCenter = payload => dispatch({type: 'setCenter', payload});
-  const setZoom = payload => dispatch({type: 'setZoom', payload});
+  const setCategory = payload => {
+    dispatch({ type: 'setCategory', payload });
+  };
+  const setCurrentCity = payload => {
+    dispatch({ type: 'setCurrentCity', payload });
+  };
+  const setShowCityModal = payload => {
+    dispatch({ type: 'setShowCityModal', payload });
+  };
+  const setShowDetailsModal = payload => {
+    dispatch({ type: 'setShowDetailsModal', payload });
+  };
+  const setShowDetailsPopup = payload => {
+    dispatch({ type: 'setShowDetailsPopup', payload });
+  };
+  const setCurrentTrip = payload => {
+    dispatch({ type: 'setCurrentTrip', payload });
+  };
+  const setCompanyId = payload => {
+    dispatch({ type: 'setCompanyId', payload });
+  };
+  const setCurrentDirection = payload => {
+    dispatch({ type: 'setCurrentDirection', payload });
+  };
+  const clearPopups = () => dispatch({ type: 'clearPopups' });
+  const setCenter = payload => dispatch({ type: 'setCenter', payload });
+  const setZoom = payload => dispatch({ type: 'setZoom', payload });
 
   useEffect(() => {
     setCompanyId(companyId);
-    setZoom(options.zoom)
+    setZoom(options.zoom);
   }, [companyId]);
 
   const elements =
@@ -192,22 +221,33 @@ const TravelMapWidget = ({...props}) => {
           break;
       }
     }
-  }, [selectCompanyId, category,
-    getTripsCurrent, getTripsOffices, getTripsMostWanted, getTripsMostExpensive, getTripsFastGrow,
-    tripCurrentCollection, tripMostWantedCollection, tripMostExpensiveCollection, tripFastGrowCollection
+  }, [
+    selectCompanyId,
+    category,
+    getTripsCurrent,
+    getTripsOffices,
+    getTripsMostWanted,
+    getTripsMostExpensive,
+    getTripsFastGrow,
+    tripCurrentCollection,
+    tripMostWantedCollection,
+    tripMostExpensiveCollection,
+    tripFastGrowCollection
   ]);
 
   useEffect(() => {
-    if (currentTrip) getTripsOverview(currentTrip, tripDetailsCollection)
+    if (currentTrip) getTripsOverview(currentTrip, tripDetailsCollection);
   }, [currentTrip, getTripsOverview, tripDetailsCollection]);
 
-  const onChangeCompany = (company) => {
+  const onChangeCompany = company => {
     setCompanyId(company.id);
     clearPopups();
     cleanCurrent();
   };
 
-  const defaultValueCompany = modifyCompanyList(companyList).find(item => item.id === selectCompanyId);
+  const defaultValueCompany = modifyCompanyList(companyList).find(
+    item => item.id === selectCompanyId
+  );
 
   const MapSelectors = () => {
     return (
@@ -227,7 +267,7 @@ const TravelMapWidget = ({...props}) => {
                 paddingLeft: '28px'
               })
             }}
-            iconBefore={<BurgerIcon/>}
+            iconBefore={<BurgerIcon />}
             options={modifyCompanyList(companyList)}
             placeholder="Выберите компанию"
             inputId="widget-map-select-company-id"
@@ -250,36 +290,37 @@ const TravelMapWidget = ({...props}) => {
           />
         </div>
       </>
-    )
+    );
   };
 
   const MapContent = () => {
     switch (category.label) {
       case 'Текущие командировки': {
         return (
-        <div>
-          {/* вернуть когда будет готов апи по офисам */}
-          {/* { tripOffices && */}
-          {/* <OfficesOverlay */}
-          {/* data={tripOffices} */}
-          {/* /> */}
-          {/* } */}
-          <CurrentTripsOverlay
-            currentCity={currentCity}
-            setCurrentCity={setCurrentCity}
-            setShowCityModal={setShowCityModal}
-            showDetailsPopup={showDetailsPopup}
-            setShowDetailsPopup={setShowDetailsPopup}
-            setShowDetailsModal={setShowDetailsModal}
-            currentTrip={currentTrip}
-            setCurrentTrip={setCurrentTrip}
-            elements={elements}
-            setCenter={setCenter}
-            zoom={zoom}
-            {...props}
-          />
-        </div>
-        )}
+          <div>
+            {/* вернуть когда будет готов апи по офисам */}
+            {/* { tripOffices && */}
+            {/* <OfficesOverlay */}
+            {/* data={tripOffices} */}
+            {/* /> */}
+            {/* } */}
+            <CurrentTripsOverlay
+              currentCity={currentCity}
+              setCurrentCity={setCurrentCity}
+              setShowCityModal={setShowCityModal}
+              showDetailsPopup={showDetailsPopup}
+              setShowDetailsPopup={setShowDetailsPopup}
+              setShowDetailsModal={setShowDetailsModal}
+              currentTrip={currentTrip}
+              setCurrentTrip={setCurrentTrip}
+              elements={elements}
+              setCenter={setCenter}
+              zoom={zoom}
+              {...props}
+            />
+          </div>
+        );
+      }
       case 'Топ-5 маршрутов по числу командировок': {
         return (
           <MostWantedExpensiveOverlay
@@ -287,7 +328,8 @@ const TravelMapWidget = ({...props}) => {
             currentDirection={currentDirection}
             setCurrentDirection={setCurrentDirection}
           />
-        )}
+        );
+      }
       case 'Топ-5 маршрутов по затратам': {
         return (
           <MostWantedExpensiveOverlay
@@ -295,7 +337,8 @@ const TravelMapWidget = ({...props}) => {
             currentDirection={currentDirection}
             setCurrentDirection={setCurrentDirection}
           />
-        )}
+        );
+      }
       case 'Топ-5 быстрорастущих маршрутов за 6 месяцев': {
         return (
           <FastGrowOverlay
@@ -304,14 +347,16 @@ const TravelMapWidget = ({...props}) => {
             currentDirection={currentDirection}
             setCurrentDirection={setCurrentDirection}
           />
-        )}
-      default: return null
+        );
+      }
+      default:
+        return null;
     }
   };
 
   const { isLoaded, loadError } = useLoadScript({
-    id: "script-loader",
-    googleMapsApiKey,
+    id: 'script-loader',
+    googleMapsApiKey
     // add locale (language) here
   });
 
@@ -319,67 +364,67 @@ const TravelMapWidget = ({...props}) => {
     // any code on load
     const onLoad = map => {
       map.addListener('zoom_changed', () => {
-        setZoom(map.zoom)
+        setZoom(map.zoom);
       });
     };
-      return (
-        <GoogleMap
-          options={options}
-          onLoad={onLoad}
-          id='example-map'
-          mapContainerStyle={{
-            height: `${mapHeight}px`,
-            width: `${mapWidth}px`
-          }}
-          center={center}
-          {...props}
-        >
-          <MapContent/>
-          <MapSelectors/>
-        </GoogleMap>
-      )
+    return (
+      <GoogleMap
+        options={options}
+        onLoad={onLoad}
+        id="example-map"
+        mapContainerStyle={{
+          height: `${mapHeight}px`,
+          width: `${mapWidth}px`
+        }}
+        center={center}
+        {...props}
+      >
+        <MapContent />
+        <MapSelectors />
+      </GoogleMap>
+    );
   };
 
   return (
     <div className="travel-map" ref={ref}>
-      {elements &&
-      <CityEmployeesListModal
-        modalTitle={currentCity}
-        isOpen={showCityModal && width640}
-        handleCloseModal={() => {
-          setShowCityModal(false);
-          setTimeout(() => {
-            setCurrentCity(false)
-          })
-        }}
-        setShowDetailsModal={setShowDetailsModal}
-        setShowDetailsPopup={setShowDetailsPopup}
-        city={currentCity}
-        elements={elements}
-        setCurrentTrip={setCurrentTrip}
-      />
-      }
-      {elements &&
-      <TripDetailsModal
-        isOpen={showDetailsModal && width640}
-        modalTitle={`Командировка ${currentTrip}`}
-        handleCloseModal={() => {
-          setShowDetailsModal(false);
-          setShowDetailsPopup(false);
-        }}
-        currentTrip={currentTrip}
-        {...props}
-      />
-      }
+      {elements && (
+        <CityEmployeesListModal
+          modalTitle={currentCity}
+          isOpen={showCityModal && width640}
+          handleCloseModal={() => {
+            setShowCityModal(false);
+            setTimeout(() => {
+              setCurrentCity(false);
+            });
+          }}
+          setShowDetailsModal={setShowDetailsModal}
+          setShowDetailsPopup={setShowDetailsPopup}
+          city={currentCity}
+          elements={elements}
+          setCurrentTrip={setCurrentTrip}
+        />
+      )}
+      {elements && (
+        <TripDetailsModal
+          isOpen={showDetailsModal && width640}
+          modalTitle={`Командировка ${currentTrip}`}
+          handleCloseModal={() => {
+            setShowDetailsModal(false);
+            setShowDetailsPopup(false);
+          }}
+          currentTrip={currentTrip}
+          {...props}
+        />
+      )}
       <div className="travel-map-container">
         {loadError && <div>Map cannot be loaded right now, sorry.</div>}
-        {isLoaded ? RenderMap() : <TravelMapSkeleton/>}
+        {isLoaded ? RenderMap() : <TravelMapSkeleton />}
       </div>
     </div>
-  )
+  );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   loading: state[widgetTravelMapModule].loading,
   error: state[widgetTravelMapModule].error,
   companyId: state[generalInfoModule].companyId,
@@ -390,9 +435,11 @@ const mapStateToProps = (state) => ({
   tripFastGrow: state[widgetTravelMapModule].tripFastGrow,
   tripFastGrowCollection: state[widgetTravelMapModule].tripFastGrowCollection,
   tripMostWanted: state[widgetTravelMapModule].tripMostWanted,
-  tripMostWantedCollection: state[widgetTravelMapModule].tripMostWantedCollection,
+  tripMostWantedCollection:
+    state[widgetTravelMapModule].tripMostWantedCollection,
   tripMostExpensive: state[widgetTravelMapModule].tripMostExpensive,
-  tripMostExpensiveCollection: state[widgetTravelMapModule].tripMostExpensiveCollection,
+  tripMostExpensiveCollection:
+    state[widgetTravelMapModule].tripMostExpensiveCollection,
   tripOffices: state[widgetTravelMapModule].tripOffices,
   tripOfficesCollection: state[widgetTravelMapModule].tripOfficesCollection,
   companyList: state[generalInfoModule].companyList
@@ -408,4 +455,4 @@ const mapDispatchToProps = {
   cleanCurrent
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TravelMapWidget)
+export default connect(mapStateToProps, mapDispatchToProps)(TravelMapWidget);

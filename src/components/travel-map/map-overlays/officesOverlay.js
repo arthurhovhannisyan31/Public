@@ -1,26 +1,30 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { OverlayView } from '@react-google-maps/api'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { OverlayView } from '@react-google-maps/api';
 
-import { MapCircle } from "../../../ui/google-map"
+// eslint-disable-next-line import/no-unresolved
+import { MapCircle } from '../../../ui/google-map';
 
-const OfficesOverlay = ({data}) => {
-  if(!data) return null;
-  return  data && data.map((el, id) => {
-    return (
-      <OverlayView
-        /* eslint-disable-next-line react/no-array-index-key */
-        key={`${el}-${id}`}
-        position={{
-          lat: el.geoLocation.latitude,
-          lng: el.geoLocation.longitude
-        }}
-        mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-      >
-        <MapCircle/>
-      </OverlayView>
-    )
-  })
+const OfficesOverlay = ({ data }) => {
+  if (!data) return null;
+  return (
+    data &&
+    data.map((el, id) => {
+      return (
+        <OverlayView
+          /* eslint-disable-next-line react/no-array-index-key */
+          key={`${el}-${id}`}
+          position={{
+            lat: el.geoLocation.latitude,
+            lng: el.geoLocation.longitude
+          }}
+          mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+        >
+          <MapCircle />
+        </OverlayView>
+      );
+    })
+  );
 };
 
 OfficesOverlay.propTypes = {
@@ -30,9 +34,9 @@ OfficesOverlay.propTypes = {
       name: PropTypes.string,
       geoLocation: PropTypes.shape({
         latitude: PropTypes.number,
-        longitude: PropTypes.number,
+        longitude: PropTypes.number
       })
-    }).isRequired,
+    }).isRequired
   )
 };
-export default OfficesOverlay
+export default OfficesOverlay;

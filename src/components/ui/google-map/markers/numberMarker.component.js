@@ -2,29 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Marker from './marker.component';
 
-import { googleMapCoordinatesConverter, useWindowWidth } from '../../../../services/utils.service'
+// eslint-disable-next-line import/no-unresolved
+import {
+  googleMapCoordinatesConverter,
+  useWindowWidth
+  // eslint-disable-next-line import/no-unresolved
+} from '../../../../services/utils.service';
 
 import './numberMarker.style.scss';
 
-const NumberMarker = (
-  {
-    value,
-    city,
-    setShowCityModal,
-    setCurrentCity,
-    setShowDetailsPopup,
-    setCenter,
-    position,
-    zoom
-  }) => {
-
+const NumberMarker = ({
+  value,
+  city,
+  setShowCityModal,
+  setCurrentCity,
+  setShowDetailsPopup,
+  setCenter,
+  position,
+  zoom
+}) => {
   const fontSize = value > 99 ? 14 : 20;
   const newValue = value >= 100 ? '99+' : value;
   const width = useWindowWidth();
   const width640 = width <= 639;
 
   const modifyLatLng = () => {
-
     let pixelAdjustLat = 0;
     const pixelAdjustLng = 0;
 
@@ -42,13 +44,13 @@ const NumberMarker = (
       pixelAdjustLat,
       pixelAdjustLng
     });
-    if (!width640) setCenter(newPosition)
+    if (!width640) setCenter(newPosition);
   };
 
   return (
     <button
       className="gm-marker"
-      type='button'
+      type="button"
       onClick={e => {
         modifyLatLng(e);
         setCurrentCity(city);
@@ -56,7 +58,7 @@ const NumberMarker = (
         setShowDetailsPopup(false);
       }}
     >
-      <Marker/>
+      <Marker />
       <span style={{ fontSize }}>{newValue}</span>
     </button>
   );

@@ -1,13 +1,19 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Dropdown from "react-dropdown"
-import { ArrowDown } from "../icons"
+import Dropdown from 'react-dropdown';
+// eslint-disable-next-line import/no-unresolved
+import { ArrowDown } from '../icons';
 
-import "./dropdown-list.style.scss"
+import './dropdown-list.style.scss';
 
-const DropDownList = ({ options, value, defaultOption, onChange, extraClass = "" }) => {
-
+const DropDownList = ({
+  options,
+  value,
+  defaultOption,
+  onChange,
+  extraClass = ''
+}) => {
   return (
     <div className="dropDown">
       <Dropdown
@@ -15,12 +21,12 @@ const DropDownList = ({ options, value, defaultOption, onChange, extraClass = ""
         options={options}
         value={value || defaultOption}
         onChange={onChange}
-        arrowClosed={<ArrowDown/>}
-        arrowOpen={<ArrowDown/>}
+        arrowClosed={<ArrowDown />}
+        arrowOpen={<ArrowDown />}
       />
     </div>
-  )
-}
+  );
+};
 
 DropDownList.propTypes = {
   value: PropTypes.oneOfType([
@@ -44,6 +50,6 @@ DropDownList.propTypes = {
     })
   ]).isRequired,
   onChange: PropTypes.func.isRequired
-}
+};
 
-export default DropDownList
+export default DropDownList;

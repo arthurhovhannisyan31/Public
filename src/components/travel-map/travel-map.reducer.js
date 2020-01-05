@@ -7,8 +7,14 @@ import {
   fetchTripsMostWanted,
   fetchTripsOffices,
   fetchTripsOverview
+  // eslint-disable-next-line import/no-unresolved
 } from '../../../services/api.service';
-import { travelMapCurrentTripDataTransform, travelMapTop5DataTransform } from '../../../services/utils.service';
+// eslint-disable-next-line import/no-unresolved
+import {
+  travelMapCurrentTripDataTransform,
+  travelMapTop5DataTransform
+  // eslint-disable-next-line import/no-unresolved
+} from '../../../services/utils.service';
 
 const ReducerRecord = Record({
   error: false,
@@ -25,7 +31,7 @@ const ReducerRecord = Record({
   tripMostExpensiveCollection: new Map(),
   tripOffices: null,
   tripOfficesCollection: new Map(),
-  test: new Map(),
+  test: new Map()
 });
 
 export const moduleName = 'widgets_travel_map';
@@ -68,69 +74,52 @@ export default function reducer(state = new ReducerRecord(), action) {
         .set('tripFastGrow', null)
         .set('tripMostExpensive', null);
     case TRIPS_ERROR:
-      return state
-        .set("loading", false)
-        .set("error", payload);
+      return state.set('loading', false).set('error', payload);
     case TRIPS_REQUEST:
-      return state
-        .set("loading", true)
-        .set("error", false);
+      return state.set('loading', true).set('error', false);
     case TRIPS_CURRENT_SUCCESS_SET:
-      return state
-        .update('tripCurrentCollection', collection => {
-        return collection.set(key, payload)
+      return state.update('tripCurrentCollection', collection => {
+        return collection.set(key, payload);
       });
     case TRIPS_CURRENT_SUCCESS:
-      return state
-        .set("loading", false)
-        .set("tripCurrent", payload);
+      return state.set('loading', false).set('tripCurrent', payload);
     case TRIPS_DETAILS_SUCCESS_SET:
       return state.update('tripDetailsCollection', collection => {
-        return collection.set(key, payload)
+        return collection.set(key, payload);
       });
     case TRIPS_DETAILS_SUCCESS:
-      return state
-        .set("loading", false)
-        .set("tripDetails", payload);
+      return state.set('loading', false).set('tripDetails', payload);
     case TRIPS_FAST_GROW_SUCCESS_SET:
       return state.update('tripFastGrowCollection', collection => {
-        return collection.set(key, payload)
+        return collection.set(key, payload);
       });
     case TRIPS_FAST_GROW_SUCCESS:
-      return state
-        .set("loading", false)
-        .set("tripFastGrow", payload);
+      return state.set('loading', false).set('tripFastGrow', payload);
     case TRIPS_MOST_WANTED_SUCCESS_SET:
       return state.update('tripMostWantedCollection', collection => {
-        return collection.set(key, payload)
+        return collection.set(key, payload);
       });
     case TRIPS_MOST_WANTED_SUCCESS:
-      return state
-        .set("loading", false)
-        .set("tripMostWanted", payload);
+      return state.set('loading', false).set('tripMostWanted', payload);
     case TRIPS_MOST_EXPENSIVE_SUCCESS_SET:
       return state.update('tripMostExpensiveCollection', collection => {
-        return collection.set(key, payload)
+        return collection.set(key, payload);
       });
     case TRIPS_MOST_EXPENSIVE_SUCCESS:
-      return state
-        .set("loading", false)
-        .set("tripMostExpensive", payload);
+      return state.set('loading', false).set('tripMostExpensive', payload);
     case TRIPS_OFFICES_SUCCESS_SET:
       return state.update('tripOfficesCollection', collection => {
-        return collection.set(key, payload)
+        return collection.set(key, payload);
       });
     case TRIPS_OFFICES_SUCCESS:
-      return state
-        .set("loading", false)
-        .set("tripOffices", payload);
+      return state.set('loading', false).set('tripOffices', payload);
     default:
       return state;
   }
 }
 
 export const cleanCurrent = () => {
-  return { type: CLEAN_CURRENT }
+  return { type: CLEAN_CURRENT };
 };
 
 export const getTripsCurrent = (companyId, collection) => {
@@ -139,12 +128,12 @@ export const getTripsCurrent = (companyId, collection) => {
     return {
       type: TRIPS_CURRENT_SUCCESS,
       payload: data
-    }
+    };
   }
   return {
     type: TRIPS_CURRENT_REQUEST,
     companyId
-  }
+  };
 };
 
 /**
@@ -152,18 +141,20 @@ export const getTripsCurrent = (companyId, collection) => {
  * @param action
  * @returns {Generator<SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string, key: *}>>|SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string}>>|SimpleEffect<"CALL", CallEffectDescriptor>|SimpleEffect<"PUT", PutEffectDescriptor<{type: string}>>|*[], void, ?>}
  */
-export function * getTripsCurrentSaga (action) {
-  try{
+export function* getTripsCurrentSaga(action) {
+  try {
     yield put({ type: TRIPS_REQUEST });
     const response = yield call(fetchTripsCurrent, action.companyId);
-    const modifiedResponse = yield travelMapCurrentTripDataTransform(response.data);
+    const modifiedResponse = yield travelMapCurrentTripDataTransform(
+      response.data
+    );
 
-    yield put ({
+    yield put({
       type: TRIPS_CURRENT_SUCCESS_SET,
       key: action.companyId,
       payload: modifiedResponse
     });
-    yield put ({
+    yield put({
       type: TRIPS_CURRENT_SUCCESS,
       payload: modifiedResponse
     });
@@ -171,23 +162,22 @@ export function * getTripsCurrentSaga (action) {
     yield put({
       type: TRIPS_ERROR,
       payload: error
-    })
+    });
   }
 }
 
 export const getTripsOffices = (companyId, collection) => {
   const data = collection.get(companyId);
   if (data) {
-
     return {
       type: TRIPS_OFFICES_SUCCESS,
       payload: data
-    }
+    };
   }
   return {
     type: TRIPS_OFFICES_REQUEST,
     companyId
-  }
+  };
 };
 
 /**
@@ -195,16 +185,16 @@ export const getTripsOffices = (companyId, collection) => {
  * @param action
  * @returns {Generator<SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string, key: *}>>|SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string}>>|SimpleEffect<"CALL", CallEffectDescriptor>|SimpleEffect<"PUT", PutEffectDescriptor<{type: string}>>, void, ?>}
  */
-export function * getTripsOfficesSaga (action) {
-  try{
+export function* getTripsOfficesSaga(action) {
+  try {
     yield put({ type: TRIPS_REQUEST });
     const response = yield call(fetchTripsOffices, action.companyId);
-    yield put ({
+    yield put({
       type: TRIPS_OFFICES_SUCCESS_SET,
       key: action.companyId,
       payload: response
     });
-    yield put ({
+    yield put({
       type: TRIPS_OFFICES_SUCCESS,
       payload: response
     });
@@ -212,7 +202,7 @@ export function * getTripsOfficesSaga (action) {
     yield put({
       type: TRIPS_ERROR,
       payload: error
-    })
+    });
   }
 }
 
@@ -222,12 +212,12 @@ export const getTripsOverview = (tripNumber, collection) => {
     return {
       type: TRIPS_DETAILS_SUCCESS,
       payload: data
-    }
+    };
   }
   return {
     type: TRIPS_DETAILS_REQUEST,
     tripNumber
-  }
+  };
 };
 
 /**
@@ -235,7 +225,7 @@ export const getTripsOverview = (tripNumber, collection) => {
  * @param action
  * @returns {Generator<SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string, key: *}>>|SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string}>>|SimpleEffect<"CALL", CallEffectDescriptor>|SimpleEffect<"PUT", PutEffectDescriptor<{type: string}>>, void, ?>}
  */
-export function * getTripsOverviewSaga(action) {
+export function* getTripsOverviewSaga(action) {
   try {
     yield put({ type: TRIPS_REQUEST });
     const response = yield call(fetchTripsOverview, action.tripNumber);
@@ -252,7 +242,7 @@ export function * getTripsOverviewSaga(action) {
     yield put({
       type: TRIPS_ERROR,
       payload: error
-    })
+    });
   }
 }
 
@@ -262,12 +252,12 @@ export const getTripsFastGrow = (companyId, collection) => {
     return {
       type: TRIPS_FAST_GROW_SUCCESS,
       payload: data
-    }
+    };
   }
   return {
     type: TRIPS_FAST_GROW_REQUEST,
     companyId
-  }
+  };
 };
 
 /**
@@ -275,11 +265,14 @@ export const getTripsFastGrow = (companyId, collection) => {
  * @param action
  * @returns {Generator<SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string, key: *}>>|SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string}>>|SimpleEffect<"CALL", CallEffectDescriptor>|SimpleEffect<"PUT", PutEffectDescriptor<{type: string}>>|*, void, ?>}
  */
-export function * getTripsFastGrowSaga(action) {
+export function* getTripsFastGrowSaga(action) {
   try {
     yield put({ type: TRIPS_REQUEST });
     const response = yield fetchTripsFastGrow(action.companyId);
-    const modifiedResponse = yield call(travelMapTop5DataTransform, response.data);
+    const modifiedResponse = yield call(
+      travelMapTop5DataTransform,
+      response.data
+    );
     yield put({
       type: TRIPS_FAST_GROW_SUCCESS_SET,
       key: action.companyId,
@@ -293,7 +286,7 @@ export function * getTripsFastGrowSaga(action) {
     yield put({
       type: TRIPS_ERROR,
       payload: error
-    })
+    });
   }
 }
 
@@ -303,12 +296,12 @@ export const getTripsMostWanted = (companyId, collection) => {
     return {
       type: TRIPS_MOST_WANTED_SUCCESS,
       payload: data
-    }
+    };
   }
   return {
     type: TRIPS_MOST_WANTED_REQUEST,
     companyId
-  }
+  };
 };
 
 /**
@@ -316,11 +309,16 @@ export const getTripsMostWanted = (companyId, collection) => {
  * @param action
  * @returns {Generator<SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string, key: *}>>|SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string}>>|SimpleEffect<"CALL", CallEffectDescriptor>|SimpleEffect<"PUT", PutEffectDescriptor<{type: string}>>, void, ?>}
  */
-export function * getTripsMostWantedSaga(action) {
+export function* getTripsMostWantedSaga(action) {
   try {
     yield put({ type: TRIPS_REQUEST });
-    const response = yield call(fetchTripsMostWanted, {companyId: action.companyId});
-    const modifiedResponse = yield call(travelMapTop5DataTransform, response.data);
+    const response = yield call(fetchTripsMostWanted, {
+      companyId: action.companyId
+    });
+    const modifiedResponse = yield call(
+      travelMapTop5DataTransform,
+      response.data
+    );
     yield put({
       type: TRIPS_MOST_WANTED_SUCCESS_SET,
       key: action.companyId,
@@ -334,7 +332,7 @@ export function * getTripsMostWantedSaga(action) {
     yield put({
       type: TRIPS_ERROR,
       payload: error
-    })
+    });
   }
 }
 
@@ -344,12 +342,12 @@ export const getTripsMostExpensive = (companyId, collection) => {
     return {
       type: TRIPS_MOST_EXPENSIVE_SUCCESS,
       payload: data
-    }
+    };
   }
   return {
     type: TRIPS_MOST_EXPENSIVE_REQUEST,
     companyId
-  }
+  };
 };
 
 /**
@@ -357,11 +355,16 @@ export const getTripsMostExpensive = (companyId, collection) => {
  * @param action
  * @returns {Generator<SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string, key: *}>>|SimpleEffect<"PUT", PutEffectDescriptor<{payload: *, type: string}>>|SimpleEffect<"CALL", CallEffectDescriptor>|SimpleEffect<"PUT", PutEffectDescriptor<{type: string}>>, void, ?>}
  */
-export function * getTripsMostExpensiveSaga(action) {
+export function* getTripsMostExpensiveSaga(action) {
   try {
     yield put({ type: TRIPS_REQUEST });
-    const response = yield call(fetchTripsMostExpensive, {companyId: action.companyId});
-    const modifiedResponse = yield call(travelMapTop5DataTransform, response.data);
+    const response = yield call(fetchTripsMostExpensive, {
+      companyId: action.companyId
+    });
+    const modifiedResponse = yield call(
+      travelMapTop5DataTransform,
+      response.data
+    );
     yield put({
       type: TRIPS_MOST_EXPENSIVE_SUCCESS_SET,
       key: action.companyId,
@@ -375,11 +378,11 @@ export function * getTripsMostExpensiveSaga(action) {
     yield put({
       type: TRIPS_ERROR,
       payload: error
-    })
+    });
   }
 }
 
-export function * saga() {
+export function* saga() {
   yield takeEvery(TRIPS_CURRENT_REQUEST, getTripsCurrentSaga);
   yield takeEvery(TRIPS_DETAILS_REQUEST, getTripsOverviewSaga);
   yield takeEvery(TRIPS_FAST_GROW_REQUEST, getTripsFastGrowSaga);

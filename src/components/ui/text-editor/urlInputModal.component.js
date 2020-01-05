@@ -1,15 +1,11 @@
-import React from "react"
+import React from 'react';
 
-import Modal from "../modal"
-import Button from "../button"
+import Modal from '../modal';
+// eslint-disable-next-line import/no-unresolved
+import Button from '../button';
 
 const UrlInputModal = ({ ...props }) => {
-  const {
-    onURLChange,
-    URLValue,
-    onLinkInputKeyDown,
-    confirmLink
-  } = props
+  const { onURLChange, URLValue, onLinkInputKeyDown, confirmLink } = props;
   return (
     <Modal {...props} modalTitle="Добавление ссылки">
       <div className="ULRInput">
@@ -20,17 +16,12 @@ const UrlInputModal = ({ ...props }) => {
           value={URLValue}
           onKeyDown={onLinkInputKeyDown}
         />
-        <Button
-          onClick={confirmLink}
-          type="button"
-          color="green"
-        >
+        <Button onClick={confirmLink} type="button" color="green">
           Добавить
         </Button>
       </div>
     </Modal>
-  )
-}
+  );
+};
 
-export default UrlInputModal
-
+export default UrlInputModal;
