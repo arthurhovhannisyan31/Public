@@ -20,10 +20,4 @@ render(<Root />, document.getElementById(CONSTS.DOM.ROOT));
 serviceWorker.unregister();
 
 // eslint test
-// eslint test2
-// eslint test3
-// eslint test4
-// eslint test5
-// eslint test6
-// eslint test7
-// eslint test8
+
