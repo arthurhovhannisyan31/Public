@@ -4,6 +4,10 @@ module.exports = {
         "es6": true,
         "jest": true
 },
+    "plugins": [
+    "react",
+    "prettier"
+],
     "extends": [
     "eslint:recommended",
     "airbnb",
@@ -29,10 +33,6 @@ module.exports = {
     "ecmaVersion": 2020,
         "sourceType": "module"
 },
-    "plugins": [
-    "react",
-    "prettier"
-],
     "rules": {
     "react/jsx-filename-extension": [
         1,
@@ -51,4 +51,5 @@ module.exports = {
     ],
         "import/newline-after-import": "error"
 }
-}
+};
+
