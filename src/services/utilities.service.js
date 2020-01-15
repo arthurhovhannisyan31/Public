@@ -282,3 +282,15 @@ export const useTheme = (theme) => {
     })
   }, [theme]) // only call again if theme object reference changes
 }
+
+/**
+ * Возвращает boolean по соответствию строки regexp выражению
+ * @param regExp
+ * @param text
+ * @returns {boolean|*}
+ */
+export const validateText = ({ regExp, text }) => {
+  const test = regExp.test(text);
+  const match = text.match(regExp);
+  return !test || (match && !match.length);
+};
