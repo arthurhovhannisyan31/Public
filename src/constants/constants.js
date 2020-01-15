@@ -12,6 +12,12 @@ const CONSTS = {
     CHAT: '/chat',
     NOT_FOUND: ['*', '/not-found']
   },
+  REGEXP: {
+    // eslint-disable-next-line no-useless-escape
+    ruRegExp: /[^а-яёА-ЯЁ\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/g,
+    // eslint-disable-next-line no-useless-escape
+    enRegExp: /[^a-zA-Z\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/g
+  }
 }
 
 export default CONSTS
