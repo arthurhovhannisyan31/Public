@@ -9,7 +9,7 @@ const CONSTS = {
     WELCOME: ['/', '/index.html'],
     WEATHER: '/weather',
     TRAVEL: '/travel',
-    CHAT: '/chat',
+    NEWS: '/news',
     NOT_FOUND: ['*', '/not-found']
   },
   REGEXP: {

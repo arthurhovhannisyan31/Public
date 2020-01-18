@@ -5,7 +5,7 @@ import {routeMaker} from '../services/utilities.service'
 import Welcome from "../containers/welcome"
 import Weather from "../containers/weather"
 import Travel from "../containers/travel"
-import Chat from '../containers/chat'
+import News from '../containers/news'
 // local components
 // local constants
 import CONSTS from "../constants"
@@ -32,14 +32,14 @@ const travel = {
   component: Travel
 }
 
-const chat = {
+const news = {
   exact: true,
   isPrivate: true,
-  path: CONSTS.ROUTES.CHAT,
-  component: Chat
+  path: CONSTS.ROUTES.NEWS,
+  component: News
 }
 
-const appRoutes = [welcome, weather, travel, chat]
+const appRoutes = [welcome, weather, travel, news]
   .map(({isPrivate, ...params}) => (
   routeMaker(isPrivate, params)
 ))

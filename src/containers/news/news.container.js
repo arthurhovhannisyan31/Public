@@ -6,12 +6,12 @@ import React from 'react'
 // local constants
 // local styles
 
-const Chat = () => {
+const News = () => {
   return (
     <>
-      <span>Chat container</span>
+      <span>News container</span>
     </>
   )
 }
 
-export default Chat
+export default News
