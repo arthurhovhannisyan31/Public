@@ -1,56 +1,56 @@
 // media
-$desktop-lg-width: 2560px; // large-desktop
-$desktop-md-width: 1599px; // medium-desktop
-$tablet-lg-width: 1199px; // large-tablet
-$tablet-md-width: 959px; // medium-tablet
-$mobile-lg-width: 639px; // large-mobile
-$mobile-md-width: 479px; // medium-mobile
+$mq-desktop-lg-width: 2560px; // large-desktop
+$mq-desktop-md-width: 1599px; // medium-desktop
+$mq-tablet-lg-width: 1199px; // large-tablet
+$mq-tablet-md-width: 959px; // medium-tablet
+$mq-mobile-lg-width: 639px; // large-mobile
+$mq-mobile-md-width: 479px; // medium-mobile
 
 // colors
 
 // main colors
-$main-purple: #6c63ff; // main interface elements (logos, icons, etc.)
-$yellow: #ffd204; // secondary scenarios and not critical warnings
-$green: #4CD964; // main scenarios (approval, add, etc.)
-$black: #000; // regular black
-$white: #fff; // text, background
-$error-red: #ff0000; // critical warnings, errors, small interface marks (new message, ets.)
+$color-main-purple: #6c63ff; // main interface elements (logos, icons, etc.)
+$color-yellow: #ffd204; // secondary scenarios and not critical warnings
+$color-green: #4CD964; // main scenarios (approval, add, etc.)
+$color-black: #000; // regular black
+$color-white: #fff; // text, background
+$color-error-red: #ff0000; // critical warnings, errors, small interface marks (new message, ets.)
 
 // main colors night mode
 // empty
 
 // special colors
-$chart1: #8176ff;
-$chart2: #786aff;
-$chart1_inactive: rgba(129, 118, 255, 0.41);
+$chart-color-chart1: lighten($color-main-purple, 10%);
+$chart-color-chart2: #786aff;
+$chart-color-chart1_inactive: rgba(129, 118, 255, 0.41);
 
 // special colors  night mode
 // empty
 
 // background colors
-$main-beige: #f8f8f8; // background of all pages
-$minor-beige: #f0f0f0; // background of all components
-$main-gray: #e8edee; // background to emphasize text block
-$dark-gray: #4b5860; // background for components with interaction (scroll, drag, etc.)
-$major-dark: #363b3d; // dark background for components with dark colors
+$bg-beige-main: #f8f8f8; // background of all pages
+$bg-beige-minor: #f0f0f0; // background of all components
+$bg-grey-minor: #e8edee; // background to emphasize text block
+$bg-grey-medium: #4b5860; // background for components with interaction (scroll, drag, etc.)
+$bg-grey-major: #363b3d; // dark background for components with dark colors
 
 // background colors  night mode
 // empty
 
 // tables, lines background, text colors
-$cell_content: #E9ECF2; // main rows and columns background
-$cell_content_light: #E9ECF2; // content rows and colors background
-$grey_line: #98A2A8; // interface border lines, inactive text
-$grey_line_light: #D9E2E7; // interface border lines, inactive text
+$cell-light-minor: #E9ECF2; // content rows and colors background
+$cell-light-medium: #E9ECF2; // main rows and columns background
+$line-grey_minor: #D9E2E7; // interface border lines, inactive text
+$line-grey-medium: #98A2A8; // interface border lines, inactive text
 
 // main text, lines colors  night mode
 // empty
 
 // shadows
-$positive_btn_shadow: 'box-shadow: 0px 4px 8px rgba(93, 108, 116, 0.2);'; // any action shadow
-$modal_shadow: 'box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.12);'; // modal window shadows, with control elements
-$play_btn_shadow: 'box-shadow: 0px 16px 24px rgba(129, 118, 255, 0.2);'; // main scenario shadow
-$cards_shadow: 'box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);'; // cards, popups, lists, dropdown shadow, without control elements
+$shadow-btn: 'box-shadow: 0px 4px 8px rgba(93, 108, 116, 0.2);'; // any action shadow
+$shadow-modal: 'box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.12);'; // modal window shadows, with control elements
+$shadow-play_btn: 'box-shadow: 0px 16px 24px rgba(129, 118, 255, 0.2);'; // main scenario shadow
+$shadow-cards: 'box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);'; // cards, popups, lists, dropdown shadow, without control elements
 
 // buttons
 
