@@ -1,35 +1,41 @@
-@import "./media-queries";
 @import './consts';
 
-.hidden {
-  &-desktop-lg {
-    @include desktop-lg-media {
-      display: none;
-    }
-  }
-  &-desktop-md {
-    @include desktop-md-media {
-      display: none;
-    }
-  }
-  &-tablet-lg {
-    @include tablet-lg-media {
-      display: none;
-    }
-  }
-  &-tablet-md {
-    @include tablet-md-media {
-      display: none;
-    }
-  }
-  &-mobile-lg {
-    @include mobile-lg-media {
-      display: none;
-    }
-  }
-  &-mobile-md {
-    @include mobile-md-media {
-      display: none;
-    }
+html {
+  height: 100%;
+}
+
+body {
+  background: $color-bg-beige-main;
+  height: 100%;
+  margin: 0;
+  font-size: $font-size;
+  font-family: $font-main, $font-fallback;
+  overflow-x: hidden;
+  transition: all 0.3s ease-in-out;
+  // macOS only
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: $font-main, $font-fallback;
+}
+
+#root,
+.App {
+  height: 100%;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+a {
+  color: $color-black;
+  text-decoration: underline;
+  &:hover {
+    text-decoration: none;
   }
 }

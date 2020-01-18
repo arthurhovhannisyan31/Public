@@ -1,30 +1,32 @@
 @import "./consts";
 
-@mixin desktop-lg-media {
-  @media only screen and (max-width: $desktop-lg-width) {
+@mixin media-desktop-lg {
+  @media only screen and (max-width: $width-desktop-lg) {
     @content
   }
 }
-@mixin desktop-md-media {
-  @media only screen and (max-width: $desktop-md-width) {
+@mixin media-desktop-md {
+  @media only screen and (max-width: $width-desktop-md) {
     @content
   }
 }
-@mixin tablet-lg-media {
-  @media only screen and (max-width: $tablet-lg-width) {
+@mixin media-tablet-lg {
+  @media only screen and (max-width: $width-tablet-lg) {
     @content
   }
 }
-@mixin tablet-md-media {
-  @media only screen and (max-width: $tablet-md-width) {
+@mixin media-tablet-md {
+  @media only screen and (max-width: $width-tablet-md) {
     @content
   }
-} @mixin mobile-lg-media {
-  @media only screen and (max-width: $mobile-lg-width) {
+}
+@mixin media-mobile-lg {
+  @media only screen and (max-width: $width-mobile-lg) {
     @content
   }
-} @mixin mobile-md-media {
-  @media only screen and (max-width: $mobile-md-width) {
+}
+@mixin media-mobile-md {
+  @media only screen and (max-width: $width-mobile-md) {
     @content
   }
 }
@@ -39,3 +41,4 @@
     @content;
   }
 }
+

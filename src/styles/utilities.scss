@@ -1,0 +1,34 @@
+@import "./media-queries";
+
+.hidden {
+  &-desktop-lg {
+    @include media-desktop-lg {
+      display: none;
+    }
+  }
+  &-desktop-md {
+    @include media-desktop-md {
+      display: none;
+    }
+  }
+  &-tablet-lg {
+    @include media-tablet-lg {
+      display: none;
+    }
+  }
+  &-tablet-md {
+    @include media-tablet-md {
+      display: none;
+    }
+  }
+  &-mobile-lg {
+    @include media-mobile-lg {
+      display: none;
+    }
+  }
+  &-mobile-md {
+    @include media-mobile-md {
+      display: none;
+    }
+  }
+}

@@ -1,10 +1,10 @@
-// media
-$mq-desktop-lg-width: 2560px; // large-desktop
-$mq-desktop-md-width: 1599px; // medium-desktop
-$mq-tablet-lg-width: 1199px; // large-tablet
-$mq-tablet-md-width: 959px; // medium-tablet
-$mq-mobile-lg-width: 639px; // large-mobile
-$mq-mobile-md-width: 479px; // medium-mobile
+// widths media
+$width-desktop-lg: 2560px; // large-desktop
+$width-desktop-md: 1599px; // medium-desktop
+$width-tablet-lg: 1199px; // large-tablet
+$width-tablet-md: 959px; // medium-tablet
+$width-mobile-lg: 639px; // large-mobile
+$width-mobile-md: 479px; // medium-mobile
 
 // colors
 
@@ -20,28 +20,28 @@ $color-error-red: #ff0000; // critical warnings, errors, small interface marks (
 // empty
 
 // special colors
-$chart-color-chart1: lighten($color-main-purple, 10%);
-$chart-color-chart2: #786aff;
-$chart-color-chart1_inactive: rgba(129, 118, 255, 0.41);
+$color-chart-chart1: lighten($color-main-purple, 10%);
+$color-chart-chart2: #786aff;
+$color-chart-chart1_inactive: rgba(129, 118, 255, 0.41);
 
 // special colors  night mode
 // empty
 
 // background colors
-$bg-beige-main: #f8f8f8; // background of all pages
-$bg-beige-minor: #f0f0f0; // background of all components
-$bg-grey-minor: #e8edee; // background to emphasize text block
-$bg-grey-medium: #4b5860; // background for components with interaction (scroll, drag, etc.)
-$bg-grey-major: #363b3d; // dark background for components with dark colors
+$color-bg-beige-main: #f0f0ef; // background main
+$color-bg-beige-minor: #f0f0f0; // background of all components
+$color-bg-grey-minor: #e8edee; // background to emphasize text block
+$color-bg-grey-medium: #4b5860; // background for components with interaction (scroll, drag, etc.)
+$color-bg-grey-major: #363b3d; // dark background for components with dark colors
 
 // background colors  night mode
 // empty
 
 // tables, lines background, text colors
-$cell-light-minor: #E9ECF2; // content rows and colors background
-$cell-light-medium: #E9ECF2; // main rows and columns background
-$line-grey_minor: #D9E2E7; // interface border lines, inactive text
-$line-grey-medium: #98A2A8; // interface border lines, inactive text
+$color-cell-light-minor: #E9ECF2; // content rows and colors background
+$color-cell-light-medium: #E9ECF2; // main rows and columns background
+$color-line-grey_minor: #D9E2E7; // interface border lines, inactive text
+$color-line-grey-medium: #98A2A8; // interface border lines, inactive text
 
 // main text, lines colors  night mode
 // empty
@@ -54,16 +54,17 @@ $shadow-cards: 'box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);'; // cards, popups, 
 
 // buttons
 
-$btn-default: #fff;
-$btn-hover: #fff;
-$btn-pressed: #fff;
-$btn-focused: #fff;
-$btn-disabled: #fff;
+$color-btn-default: #fff;
+$color-btn-hover: #fff;
+$color-btn-pressed: #fff;
+$color-btn-focused: #fff;
+$color-btn-disabled: #fff;
 
-
-
-$border: #d1cfd7;
 
 // fonts
-$semi-bold: 600;
-$normal: 400;
+$font-main: Roboto;
+$font-fallback: sans-serif;
+$font-weight-thin: 200;
+$font-weight-normal: normal;
+$font-weight-bold: 600;
+$font-size: 16px;
