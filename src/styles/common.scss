@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  background: $color-bg-beige-main;
+  background: $bg-main;
   height: 100%;
   margin: 0;
   font-size: $font-size;
@@ -23,6 +23,7 @@ button {
 
 #root,
 .App {
+  display: flex;
   height: 100%;
 }
 

@@ -14,12 +14,11 @@ import ErrorIndicator from "../error.indicator"
  */
 
 class ErrorBoundaryComponent extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired
-  }
-
-  state = {
-    hasError: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasError: false
+    }
   }
 
   componentDidCatch() {
@@ -39,6 +38,10 @@ class ErrorBoundaryComponent extends Component {
 // const mapStateToProps = (state) => ({
 // error: state[moduleName].error
 // })
+
+ErrorBoundaryComponent.propTypes = {
+  children: PropTypes.node.isRequired
+}
 
 // export default connect(mapStateToProps)(ErrorBoundaryComponent)
 export default ErrorBoundaryComponent

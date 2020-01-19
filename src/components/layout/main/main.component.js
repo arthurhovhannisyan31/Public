@@ -11,8 +11,8 @@ const Main = ({children}) => {
 
   return (
     <div>
-      <h1>Main</h1>
       {children}
+      <h1>Main</h1>
     </div>
   )
 }

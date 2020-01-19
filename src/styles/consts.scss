@@ -1,4 +1,6 @@
-// widths media
+// widths
+$max-width: 1920px;
+// media
 $width-desktop-lg: 2560px; // large-desktop
 $width-desktop-md: 1599px; // medium-desktop
 $width-tablet-lg: 1199px; // large-tablet
@@ -7,37 +9,39 @@ $width-mobile-lg: 639px; // large-mobile
 $width-mobile-md: 479px; // medium-mobile
 
 // colors
-
 // main colors
-$color-main-purple: #6c63ff; // main interface elements (logos, icons, etc.)
-$color-yellow: #ffd204; // secondary scenarios and not critical warnings
-$color-green: #4CD964; // main scenarios (approval, add, etc.)
+$color-main: #3751FF; // main interface elements (logos, icons, etc.)
+$color-urgent: #ffd204; // secondary scenarios and not critical warnings
+$color-positive: #29CC97; // main scenarios (approval, add, etc.)
 $color-black: #000; // regular black
 $color-white: #fff; // text, background
-$color-error-red: #ff0000; // critical warnings, errors, small interface marks (new message, ets.)
-
+$color-critical: #ff0000; // critical warnings, errors, small interface marks (new message, ets.)
+$color-inactive: #F0F1F7; // default inactive
 // main colors night mode
 // empty
-
 // special colors
-$color-chart-chart1: lighten($color-main-purple, 10%);
-$color-chart-chart2: #786aff;
-$color-chart-chart1_inactive: rgba(129, 118, 255, 0.41);
-
+$color-chart-minor: lighten($color-main, 20%);
+$color-chart-major: lighten($color-main, 10%);
+$color-chart-chart1_inactive: transparentize($color-chart-major, 0.4);
 // special colors  night mode
 // empty
 
 // background colors
-$color-bg-beige-main: #f0f0ef; // background main
-$color-bg-beige-minor: #f0f0f0; // background of all components
-$color-bg-grey-minor: #e8edee; // background to emphasize text block
-$color-bg-grey-medium: #4b5860; // background for components with interaction (scroll, drag, etc.)
-$color-bg-grey-major: #363b3d; // dark background for components with dark colors
-
+$bg-main: #f0f0ef; // background main
+$bg-card: #f0f0f0; // background of all components
+$bg-text-block: #e8edee; // background to emphasize text block
+$bg-card-interact: #4b5860; // background for components with interaction (scroll, drag, etc.)
+$bg-card-dark: #363b3d; // dark background for components with dark colors
 // background colors  night mode
 // empty
 
-// tables, lines background, text colors
+
+// borders
+$border-color: #E5E5E5;
+$border-main: 1px solid $border-color;
+$border-radius: 4px;
+
+// borders, lines
 $color-cell-light-minor: #E9ECF2; // content rows and colors background
 $color-cell-light-medium: #E9ECF2; // main rows and columns background
 $color-line-grey_minor: #D9E2E7; // interface border lines, inactive text
@@ -47,18 +51,14 @@ $color-line-grey-medium: #98A2A8; // interface border lines, inactive text
 // empty
 
 // shadows
-$shadow-btn: 'box-shadow: 0px 4px 8px rgba(93, 108, 116, 0.2);'; // any action shadow
-$shadow-modal: 'box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.12);'; // modal window shadows, with control elements
-$shadow-play_btn: 'box-shadow: 0px 16px 24px rgba(129, 118, 255, 0.2);'; // main scenario shadow
-$shadow-cards: 'box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);'; // cards, popups, lists, dropdown shadow, without control elements
+$shadow-btn: 0px 4px 8px rgba(93, 108, 116, 0.2); // any action shadow
+$shadow-modal: 2px 2px 20px rgba(0, 0, 0, 0.12); // modal window shadows, with control elements
+$shadow-play_btn: 0px 16px 24px rgba(129, 118, 255, 0.2); // main scenario shadow
+$shadow-cards: 0px 2px 4px rgba(0, 0, 0, 0.1); // cards, popups, lists, dropdown shadow, without control elements
 
-// buttons
-
-$color-btn-default: #fff;
-$color-btn-hover: #fff;
-$color-btn-pressed: #fff;
-$color-btn-focused: #fff;
-$color-btn-disabled: #fff;
+$shadow-card-floating: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
+$shadow-card-hover: 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2);
+$shadow-dropdown: 0px 9px 12px rgba(0, 0, 0, 0.14), 0px 3px 16px rgba(0, 0, 0, 0.12), 0px 5px 6px rgba(0, 0, 0, 0.2);
 
 
 // fonts

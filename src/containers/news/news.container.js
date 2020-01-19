@@ -8,9 +8,9 @@ import React from 'react'
 
 const News = () => {
   return (
-    <>
+    <div className='News'>
       <span>News container</span>
-    </>
+    </div>
   )
 }
 

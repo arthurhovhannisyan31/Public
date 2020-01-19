@@ -18,3 +18,18 @@ text editor -> markdown
 markdown -> list of news
 
 // contacts page
+
+
+
+
+// main ui kit
+inputs
+search selectors
+icons
+buttons
+
+cards
+
+nav menu from material design kit
+controls
+elements

@@ -9,9 +9,9 @@ import React from 'react'
 const Travel = () => {
 
   return (
-    <>
+    <div className='Travel'>
       <span>Travel container</span>
-    </>
+    </div>
   )
 }
 

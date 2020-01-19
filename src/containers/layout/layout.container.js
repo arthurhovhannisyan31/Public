@@ -13,7 +13,7 @@ import './layout.style.scss'
 
 const Layout = ({children}) => {
   return (
-    <div className='layout'>
+    <div className='Layout'>
       <Header/>
       <Main>
         <NavMenu/>
