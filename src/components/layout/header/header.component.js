@@ -1,4 +1,4 @@
-// external libraries
+// external libraries__content
 import React from 'react'
 // local services & data store
 // local containers
@@ -10,8 +10,11 @@ import './header.style.scss'
 const Header = () => {
 
   return (
-    <div>
-      <h1>Header</h1>
+    <div className='Header'>
+      <div className='Header__content'>
+        <span>Header</span>
+        <span>Header</span>
+      </div>
     </div>
   )
 }

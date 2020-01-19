@@ -14,7 +14,7 @@ import { AccessDenied as AccessDeniedComponent } from '../../components/error'
 const AccessDenied = () => {
 
   return (
-    <div>
+    <div className='AccessDenied'>
       <AccessDeniedComponent/>
     </div>
   )

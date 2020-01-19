@@ -23,7 +23,7 @@ const NorFound = () => {
   }, [history, timeout])
 
   return (
-    <div>
+    <div className='NorFound'>
       <NotFoundComponent
         timeout={CONSTS.REDIRECT_TIMEOUT}
       />

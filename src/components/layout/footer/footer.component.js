@@ -1,4 +1,4 @@
-// external libraries
+// external libraries0h1
 import React from 'react'
 // local services & data store
 // local containers
@@ -10,8 +10,11 @@ import './footer.style.scss'
 const Footer = () => {
 
   return (
-    <div>
-      <h1>Footer</h1>
+    <div className='Footer'>
+      <div className='Footer__content'>
+        <span>Footer</span>
+        <span>Footer</span>
+      </div>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import {rootRoutes, appRoutes} from "../../routes"
 // local components
 // local constants
 // local styles
+import './app.container.style.scss'
 
 const App = () => {
   return (

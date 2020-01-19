@@ -9,9 +9,9 @@ import React from 'react'
 const Weather = () => {
 
   return (
-    <>
+    <div className='Weather'>
       <span>Weather container</span>
-    </>
+    </div>
   )
 }
 

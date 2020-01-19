@@ -1,0 +1,24 @@
+@import "./src/styles/consts";
+@import './src/styles/media-queries';
+
+.Layout{
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  flex: auto;
+  max-width: $max-width;
+  margin: 0 auto;
+
+  @include media-desktop-lg {
+    padding: 0 48px;
+  }
+  @include media-tablet-lg {
+    padding: 0 40px;
+  }
+  @include media-tablet-md {
+    padding: 0 32px;
+  }
+  @include media-mobile-md {
+    padding: 0 20px;
+  }
+}

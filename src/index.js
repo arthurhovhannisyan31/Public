@@ -11,6 +11,7 @@ import Root from './containers/root'
 // local constants
 import CONSTS from "./constants"
 // local styles
+import './styles/index.scss'
 
 render(<Root/>, document.getElementById(CONSTS.DOM.ROOT))
 
