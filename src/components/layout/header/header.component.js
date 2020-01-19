@@ -1,4 +1,4 @@
-// external libraries
+// external libraries__content
 import React from 'react'
 // local services & data store
 // local containers
@@ -11,7 +11,10 @@ const Header = () => {
 
   return (
     <div className='Header'>
-      <h1>Header</h1>
+      <div className='Header__content'>
+        <span>Header</span>
+        <span>Header</span>
+      </div>
     </div>
   )
 }

@@ -10,8 +10,16 @@ import './nav-menu.style.scss'
 const NavMenu = () => {
 
   return (
-    <div>
-      <h1>NavMenu</h1>
+    <div className='NavMenu'>
+      <div className='NavMenu__content'>
+        <span>NavMenu</span>
+        <ul>
+          <li>NavLink</li>
+          <li>NavLink</li>
+          <li>NavLink</li>
+          <li>NavLink</li>
+        </ul>
+      </div>
     </div>
   )
 }

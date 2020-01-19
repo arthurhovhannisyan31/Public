@@ -33,3 +33,34 @@ cards
 nav menu from material design kit
 controls
 elements
+
+
+
+
+
+class names BEM
+block-name__element-name_modificator
+
+search-form
+search-form__content
+search-form__input
+search-form__button
+
+<div class="block">
+    <div class="block__elem1">
+        <div class="block__elem2">
+            <div class="block__elem3"></div>
+        </div>
+    </div>
+</div>
+
+.block {}
+.block__elem1 {}
+.block__elem2 {}
+.block__elem3 {}
+
+<form class="search-form search-form_theme_islands">
+    <input class="search-form__input">
+
+    <button class="search-form__button">Найти</button>
+</form>

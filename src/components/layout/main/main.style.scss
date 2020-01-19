@@ -1,0 +1,27 @@
+@import "./src/styles/media-queries";
+
+.Main{
+
+  &__content{
+    display: flex;
+
+    @include media-desktop-lg {
+      padding: 14px 0 52px 0;
+    }
+    @include media-desktop-md {
+      padding: 14px 0 40px 0;
+    }
+    @include media-tablet-lg {
+      padding: 14px 0 36px 0;
+    }
+    @include media-tablet-md {
+      padding: 20px 0 28px 0;
+    }
+    @include media-mobile-lg {
+      padding: 16px 0 20px 0;
+    }
+    @include media-mobile-md {
+      padding: 16px 0 16px 0;
+    }
+  }
+}

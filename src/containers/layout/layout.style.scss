@@ -2,6 +2,9 @@
 @import './src/styles/media-queries';
 
 .Layout{
+  position: relative;
+  display: flex;
+  flex-flow: column;
   flex: auto;
   max-width: $max-width;
   margin: 0 auto;
