@@ -19,7 +19,6 @@ const Layout = ({children}) => {
         <NavMenu/>
         {children}
       </Main>
-      <Footer/>
     </div>
   )
 }

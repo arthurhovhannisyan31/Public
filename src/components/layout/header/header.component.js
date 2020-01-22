@@ -12,8 +12,15 @@ const Header = () => {
   return (
     <div className='Header'>
       <div className='Header__content'>
-        <span>Header</span>
-        <span>Header</span>
+        <div>
+          <span>menu collapse toggle</span>
+          <span>Logo</span>
+        </div>
+        <div>
+          <span>search field</span>
+          <span>notifications</span>
+          <span>avatar + info </span>
+        </div>
       </div>
     </div>
   )
