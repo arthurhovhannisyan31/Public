@@ -16,9 +16,10 @@ const Layout = ({children}) => {
     <div className='Layout'>
       <Header/>
       <Main>
-        <NavMenu/>
+        {/*<NavMenu/>*/}
         {children}
       </Main>
+      <Footer/>
     </div>
   )
 }

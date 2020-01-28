@@ -6,6 +6,7 @@ import React from 'react'
 // local constants
 // local styles
 import './main.style.scss'
+import Button from "../../ui/button"
 
 const Main = ({children}) => {
 

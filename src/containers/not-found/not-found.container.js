@@ -1,6 +1,5 @@
 // external libraries
 import React, { useEffect } from 'react'
-import { useHistory }  from 'react-router-dom'
 // local services & data store
 import {useRouter} from "../../services/utilities.service"
 // local containers
@@ -13,14 +12,13 @@ import CONSTS from "../../constants"
 
 const NorFound = () => {
   const router =  useRouter()
-  const history = useHistory()
   const timeout = CONSTS.REDIRECT_TIMEOUT * 1000
 
   useEffect(() => {
     setTimeout(() => {
       router.push(CONSTS.ROUTES.WELCOME[0])
     }, timeout)
-  }, [history, timeout])
+  }, [timeout])
 
   return (
     <div className='NorFound'>
