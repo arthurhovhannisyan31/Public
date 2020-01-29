@@ -23,7 +23,6 @@ export const localeStorage = () => typeof(Storage) !== 'undefined'
   }
   : () => {throw new Error('No web storage Support.')}
 
-
 /**
  * Returns PrivateRoute | Route component
  * @param isPrivate

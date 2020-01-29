@@ -19,6 +19,7 @@ body {
 
 button {
   font-family: $font-main, $font-fallback;
+  cursor: pointer;
 }
 
 #root,

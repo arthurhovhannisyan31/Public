@@ -33,7 +33,9 @@ elements
 
 
 
-react-aria-modal.
+
+react-aria-modal. посмотреть оценить
+https://github.com/gaearon/react-document-title
 
 
 

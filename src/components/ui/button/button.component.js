@@ -11,9 +11,10 @@ import { Link } from 'react-router-dom'
 import './button.style.scss'
 
 /**
- * Компонент кнопки
+ *
  * @param onClick
  * @param color
+ * @param background
  * @param children
  * @param disabled
  * @param link
@@ -25,6 +26,7 @@ import './button.style.scss'
 const Button = (
   { onClick,
     color,
+    background,
     children,
     disabled,
     link,
@@ -32,40 +34,41 @@ const Button = (
     targetBlank
   }) => {
 
-  const style = {
-    color
-  }
-
-  const Tag = link ? 'Link' : 'button'
+  const Tag = link ? Link : 'button'
+  const className = `default-button ${extraClass} ${disabled && 'disabled'}`
 
   return (
     <Tag
-      rel="noopener noreferrer"
-      className={`default-button ${extraClass}`}
+      className={className}
+      style={{color, background}}
+
       onClick={onClick}
       disabled={disabled}
+
+      to={link}
+      rel="noopener noreferrer"
       target={targetBlank ? '_self' : '_blank'}
-      style={style}
     >
       {children}
     </Tag>
   )
 }
 
-
 Button.defaultProps = {
   onClick: null,
-  color: null,
+  color: '',
+  background: '',
   children: null,
   disabled: false,
-  link: null,
-  extraClass: null,
+  link: '',
+  extraClass: '',
   targetBlank: false
 }
 
 Button.propTypes = {
   onClick: PropTypes.func,
   color: PropTypes.string,
+  background: PropTypes.string,
   children: PropTypes.node,
   disabled: PropTypes.bool,
   link: PropTypes.string,

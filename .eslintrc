@@ -8,7 +8,8 @@
     "eslint:recommended",
     "airbnb",
     "prettier",
-    "prettier/react"
+    "prettier/react",
+    "plugin:jsx-a11y/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -31,7 +32,8 @@
   },
   "plugins": [
     "react",
-    "prettier"
+    "prettier",
+    "jsx-a11y"
   ],
   "rules": {
     "react/jsx-filename-extension": [
@@ -52,3 +54,4 @@
     "import/newline-after-import": "error"
   }
 }
+

@@ -18,14 +18,22 @@ $color-black: #000; // regular black
 $color-white: #fff; // text, background
 $color-critical: #ff0000; // critical warnings, errors, small interface marks (new message, ets.)
 $color-inactive: #F0F1F7; // default inactive
+
+$color-main-lighter: transparentize($color-main, 0.15);
+$color-main-lightest: transparentize($color-main, 0.2);
+
 // main colors night mode
 // empty
+
 // special colors
 $color-chart-minor: lighten($color-main, 20%);
 $color-chart-major: lighten($color-main, 10%);
-$color-chart-chart1_inactive: transparentize($color-chart-major, 0.4);
 // special colors  night mode
 // empty
+
+// text
+$text-disabled-main: #9E9E9E;
+$text-disable-secondary: rgba(255, 255, 255, 0.5);
 
 // background colors
 $bg-main: #FBFCFD; // background main
@@ -33,6 +41,9 @@ $bg-card: #f0f0f0; // background of all components
 $bg-text-block: #e8edee; // background to emphasize text block
 $bg-card-interact: #4b5860; // background for components with interaction (scroll, drag, etc.)
 $bg-card-dark: #363b3d; // dark background for components with dark colors
+
+$bg-inactive-main: #D7D5D5;
+$bg-inactive-secondary: #9E9E9E;
 // background colors  night mode
 // empty
 
@@ -40,9 +51,9 @@ $bg-card-dark: #363b3d; // dark background for components with dark colors
 // borders
 $border-color: #E5E5E5;
 $border-main: 1px solid $border-color;
-$border-radius: 4px;
+$border-radius-main: 4px;
 
-// borders, lines
+// lines
 $color-cell-light-minor: #E9ECF2; // content rows and colors background
 $color-cell-light-medium: #E9ECF2; // main rows and columns background
 $color-line-grey_minor: #D9E2E7; // interface border lines, inactive text
@@ -50,6 +61,7 @@ $color-line-grey-medium: #98A2A8; // interface border lines, inactive text
 
 // main text, lines colors  night mode
 // empty
+
 
 // shadows
 $shadow-btn: 0px 4px 8px rgba(93, 108, 116, 0.2); // any action shadow
@@ -61,6 +73,9 @@ $shadow-card-floating: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0
 $shadow-card-hover: 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2);
 $shadow-dropdown: 0px 9px 12px rgba(0, 0, 0, 0.14), 0px 3px 16px rgba(0, 0, 0, 0.12), 0px 5px 6px rgba(0, 0, 0, 0.2);
 
+$shadow-btn-default: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+$shadow-btn-hover: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
+$shadow-btn-hover: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
 
 // fonts
 $font-main: Roboto;

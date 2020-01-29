@@ -12,10 +12,22 @@ const Welcome = () => {
 
   return (
     <div className='Welcome'>
+      <div>
+        <Button>
+          Test
+        </Button>
+      </div>
       {/*<span>Welcome container</span>*/}
-      <Button>
-        Test
-      </Button>
+      <div>
+        <Button>
+          Test Test
+        </Button>
+      </div>
+      <div>
+        <Button>
+          Test Test Test
+        </Button>
+      </div>
     </div>
   )
 }
