@@ -13,19 +13,50 @@ const Welcome = () => {
   return (
     <div className='Welcome'>
       <div>
-        <Button>
-          Test
+        <Button
+          disabled
+          link='https:/ya.ru'
+          onClick={() => {console.log(1)}}
+
+        >
+          button
         </Button>
       </div>
-      {/*<span>Welcome container</span>*/}
       <div>
-        <Button>
-          Test Test
+        <Button
+          disabled
+        >
+          button button
         </Button>
       </div>
       <div>
-        <Button>
-          Test Test Test
+        <Button
+          onClick={() => {console.log(1)}}
+        >
+          button button button
+        </Button>
+      </div>
+      <div>
+        <Button
+          onClick={() => {console.log(1)}}
+          color='secondary'
+        >
+          button button button
+        </Button>
+        <Button
+          onClick={() => {console.log(1)}}
+          color='secondary'
+          disabled
+        >
+          button button button
+        </Button>
+      </div>
+      <div>
+        <Button
+          onClick={() => {console.log(1)}}
+          color='false'
+        >
+          button button button
         </Button>
       </div>
     </div>

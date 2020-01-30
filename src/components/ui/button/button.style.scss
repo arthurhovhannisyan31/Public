@@ -1,60 +1,82 @@
 @import "../../../styles/consts";
+@import "../../../styles/utilities";
 
 .default-button{
+  @include flex-center();
   position: relative;
-
-  min-width: 36px;
   height: 36px;
-
-  color: $color-white;
-  background: $color-main;
   box-shadow: $shadow-btn-default;
   border-radius: $border-radius-main;
   padding: 0 10px;
-
+  font-weight: 600;
   font-size: 14px;
   line-height: 16px;
-
+  text-decoration: none;
   text-align: center;
   letter-spacing: 1.25px;
   text-transform: uppercase;
-
   -webkit-transition-duration: 0.4s; /* Safari */
   transition-duration: 0.4s;
   overflow: hidden;
 
   &:hover{
-    background: $color-main-lighter;
     box-shadow: $shadow-btn-hover
   }
 
-  &:after{
+  &::after{
     content: "";
-    background: $color-main-lightest;
     display: block;
     position: absolute;
-
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
     padding: 100% 180%;
     opacity: 0;
     transition: all 0.4s ease-in-out;
-
     border-radius: 30%;
   }
 
-  &:active:after {
+  &:active::after {
     padding: 0;
     margin: 0;
     opacity: 1;
     transition: 0s
   }
 
-  & .disabled {
-    // доделать disabled и проверить линк
-    color: $color-white;
-    background: $color-main;
+  &:disabled {
+    box-shadow: none;
+    &:hover {
+      box-shadow: none;
+    }
+  }
+}
+
+.default-button.color-main{
+  color: $color-white;
+  background: $color-main;
+  &:hover{
+    background: $color-main-lighter;
+  }
+  &::after{
+    background: $color-main-lightest;
+  }
+  &:disabled {
+    color: $text-inactive-main;
+    background: $bg-inactive-main;
+  }
+}
+
+.default-button.color-secondary{
+  color: $color-main;
+  background: $color-secondary;
+  &:hover{
+    background: $color-secondary-lighter;
+  }
+  &::after{
+    background: $color-secondary-lightest;
+  }
+  &:disabled {
+    color: $text-inactive-secondary;
+    background: $bg-inactive-secondary;
   }
 }

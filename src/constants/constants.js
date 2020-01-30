@@ -17,6 +17,15 @@ const CONSTS = {
     ruRegExp: /[^а-яёА-ЯЁ\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/g,
     // eslint-disable-next-line no-useless-escape
     enRegExp: /[^a-zA-Z\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/g
+  },
+  COMPONENTS: {
+    BUTTONS: {
+      COLORS: {
+        VALUES: ['main', 'secondary'],
+        DEFAULT: 'main'
+      }
+
+    }
   }
 }
 
