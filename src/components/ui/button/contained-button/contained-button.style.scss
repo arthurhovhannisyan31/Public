@@ -1,7 +1,7 @@
-@import "../../../styles/consts";
-@import "../../../styles/utilities";
+@import "../../../../styles/consts";
+@import "../../../../styles/utilities";
 
-.default-button{
+.contained-button{
   @include flex-center();
   position: relative;
   height: 36px;
@@ -51,7 +51,7 @@
   }
 }
 
-.default-button.color-main{
+.contained-button.color-main{
   color: $color-white;
   background: $color-main;
   &:hover{
@@ -66,7 +66,7 @@
   }
 }
 
-.default-button.color-secondary{
+.contained-button.color-secondary{
   color: $color-main;
   background: $color-secondary;
   &:hover{

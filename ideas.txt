@@ -19,23 +19,13 @@ markdown -> list of news
 
 // contacts page
 
-// main ui kit
-inputs
-search selectors
-icons
-buttons
-
-cards
-
-nav menu from material design kit
-controls
-elements
 
 
 
 
 react-aria-modal. посмотреть оценить
 https://github.com/gaearon/react-document-title
+label + input
 
 
 

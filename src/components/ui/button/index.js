@@ -1,3 +1,6 @@
-import Button from './button.component'
+import ContainedButton from './contained-button'
 
-export default Button
+export {
+  ContainedButton,
+
+}

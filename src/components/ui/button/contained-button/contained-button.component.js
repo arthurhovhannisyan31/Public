@@ -5,13 +5,13 @@ import PropTypes from 'prop-types'
 // local containers
 // local components
 // local constants
-import CONSTS from "../../../constants"
+import CONSTS from "../../../../constants"
 // local styles
 
-import './button.style.scss'
+import './contained-button.style.scss'
 
 /**
- *
+ * Contained button component
  * @param onClick
  * @param children
  * @param disabled
@@ -22,14 +22,14 @@ import './button.style.scss'
  * @returns {*}
  * @constructor
  */
-const Button = (
+const ContainedButton = (
   { onClick,
     children,
     disabled,
     link,
     extraClass,
     targetBlank,
-    color
+    color,
   }) => {
 
   /**
@@ -43,7 +43,7 @@ const Button = (
    * @type {string}
    */
   const Tag = link ? 'a' : 'button'
-  const className = `default-button ${extraClass} color-${colorValue}`
+  const className = `contained-button ${extraClass} color-${colorValue}`
 
   return (
     <Tag
@@ -61,7 +61,7 @@ const Button = (
   )
 }
 
-Button.defaultProps = {
+ContainedButton.defaultProps = {
   onClick: null,
   children: null,
   disabled: false,
@@ -71,7 +71,7 @@ Button.defaultProps = {
   color: 'main'
 }
 
-Button.propTypes = {
+ContainedButton.propTypes = {
   onClick: PropTypes.func,
   children: PropTypes.node,
   disabled: PropTypes.bool,
@@ -81,4 +81,4 @@ Button.propTypes = {
   color: PropTypes.string
 }
 
-export default Button
+export default ContainedButton
