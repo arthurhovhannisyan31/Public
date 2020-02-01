@@ -1,6 +1,3 @@
-import {CONSTS, iconsMaterial} from './constants'
+import CONSTS from './constants'
 
-export {
-  CONSTS as default,
-  iconsMaterial
-}
+export default CONSTS

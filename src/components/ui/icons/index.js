@@ -1,7 +1,3 @@
-import MaterialIcon from './material.icons'
-import FlaticonIcon from './flaticon.icons'
+import Icon from './icon.component'
 
-export {
-  MaterialIcon,
-  FlaticonIcon
-}
+export default Icon
