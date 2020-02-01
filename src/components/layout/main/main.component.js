@@ -10,8 +10,8 @@ import './main.style.scss'
 const Main = ({children}) => {
 
   return (
-    <div className='Main'>
-      <div className='Main__content'>
+    <div className='main'>
+      <div className='main__content'>
         {children}
       </div>
     </div>

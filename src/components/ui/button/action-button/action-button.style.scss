@@ -1,0 +1,14 @@
+@import "../../../../styles/consts";
+@import "../../../../styles/utilities";
+
+.action-button{
+  height: 48px;
+  min-width: 48px;
+  border-radius: $border-radius-100;
+}
+
+.action-button.floating-true{
+  border-radius: $border-radius-round;
+  height: 56px;
+  width: 56px;
+}

@@ -2,12 +2,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // local services & data store
+import {validateColorName} from "../../../../services/utilities.service"
 // local containers
 // local components
 // local constants
-import CONSTS from "../../../../constants"
 // local styles
-
 import './contained-button.style.scss'
 
 /**
@@ -35,18 +34,18 @@ const ContainedButton = (
   /**
    * Check if provided color value supported in styles
    */
-  const colorValue = CONSTS.COMPONENTS.BUTTONS.COLORS.VALUES
-    .includes(color) ? color : CONSTS.COMPONENTS.BUTTONS.COLORS.DEFAULT
+  const colorName = validateColorName(color)
 
   /**
    * Build anchor or button component if link value were provided
    * @type {string}
    */
   const Tag = link ? 'a' : 'button'
-  const className = `contained-button ${extraClass} color-${colorValue}`
+  const className = `contained-button ${extraClass} color-${colorName}`
 
   return (
     <Tag
+      aria-label='contained button'
       className={className}
 
       onClick={onClick}

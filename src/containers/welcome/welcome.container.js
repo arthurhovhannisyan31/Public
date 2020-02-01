@@ -3,18 +3,54 @@ import React from 'react'
 // local services & data store
 // local containers
 // local components
-import {ContainedButton} from "../../components/ui/button"
+import ActionButton from "../../components/ui/button/action-button"
+import Icon from "../../components/ui/icons"
 // local constants
 // local styles
 import './welcome.style.scss'
-import Icon from "../../components/ui/icons"
 
 const Welcome = () => {
 
   return (
-    <div className='Welcome'>
+    <div className='welcome'>
       <span>span</span>
-
+      <ActionButton>
+        <Icon
+          label='add'
+          fillMain='white'
+          fillOpacity={1}
+        />
+        <span>some text</span>
+      </ActionButton>
+      <ActionButton
+        floating
+      >
+        <Icon
+          label='add'
+          fillMain='white'
+          fillOpacity={1}
+        />
+      </ActionButton>
+      <ActionButton
+        disabled
+      >
+        <Icon
+          label='add'
+          fillMain='white'
+          fillOpacity={1}
+        />
+        <span>some text</span>
+      </ActionButton>
+      <ActionButton
+        disabled
+        floating
+      >
+        <Icon
+          label='add'
+          fillMain='white'
+          fillOpacity={1}
+        />
+      </ActionButton>
     </div>
   )
 }

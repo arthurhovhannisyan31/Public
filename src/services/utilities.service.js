@@ -5,6 +5,7 @@ import {Route, useParams, useLocation, useHistory, useRouteMatch} from "react-ro
 // local containers
 // local components
 import PrivateRoute from "../routes/private-route"
+import CONSTS from "../constants"
 // local constants
 // local styles
 
@@ -31,7 +32,9 @@ export const localeStorage = () => typeof(Storage) !== 'undefined'
  */
 export const routeMaker = (isPrivate, params) => (
   isPrivate
+    // eslint-disable-next-line react/jsx-props-no-spreading
     ? <PrivateRoute key={params.path} {...params}/>
+    // eslint-disable-next-line react/jsx-props-no-spreading
     : <Route key={params.path} {...params}/>
 )
 
@@ -283,7 +286,7 @@ export const useTheme = (theme) => {
 }
 
 /**
- * Возвращает boolean по соответствию строки regexp выражению
+ * Returns text match to regexp
  * @param regExp
  * @param text
  * @returns {boolean|*}
@@ -293,3 +296,12 @@ export const validateText = ({ regExp, text }) => {
   const match = text.match(regExp);
   return !test || (match && !match.length);
 };
+
+/**
+ * Returns validated color value || default color value
+ * @param color
+ * @returns {*}
+ */
+export const validateColorName = color => CONSTS.COMPONENTS.BUTTONS.COLORS.VALUES
+    .includes(color) ? color : CONSTS.COMPONENTS.BUTTONS.COLORS.DEFAULT
+

@@ -12,7 +12,7 @@ import './app.container.style.scss'
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="app">
       <Layout>
         <Switch>
           {appRoutes}
