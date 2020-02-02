@@ -1,35 +1,40 @@
-set up navigation for desktop and mobile
+//STRUCTURE
+containers - assembling component, includes redux connect, ui components, error boundaries, layouts
+components - modular components with built in logic
+constants - project constants, routes, regexps, ui element labels and values.
+redux - store, root reducer, root saga
+services - project widely used functions, response array modifiers, custom hooks.
+styles - project styles, mixins, constants.
+routes - project routes, root routes, app routes, private routes.
 
+
+// COMPONENTS
+set up navigation for desktop and mobile
 // set up analysis page
 widgets, block with date filter, select components, lists and sort
-
 git analysis, top 10 branches and etc.
-
 // weather
 set weather components like windows weather app
-
 // travel
 travel map component with layers
 lines + popups + some functionality
-
 // news editor
 text editor with distributed panel elements (put at the top)
 text editor -> markdown
 markdown -> list of news
-
 // contacts page
 
 
 
 
-
+// IMPLEMENT
 react-aria-modal. посмотреть оценить
 https://github.com/gaearon/react-document-title
 label + input
 
 
 
-
+// BEM
 class names BEM
 block-name__element-name_modificator
 
