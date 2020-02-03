@@ -70,11 +70,11 @@ export const googleMapCoordinatesConverter = (
 export const useHover = () => {
   const [hovering, setHovering] = useState(false)
   const onMouseOver = () => setHovering(true)
+  const onFocus = () => setHovering(true)
   const onMouseOut = () => setHovering(false)
-  return [hovering, {
-    onMouseOut,
-    onMouseOver
-  }]
+  const onBlur = () => setHovering(false)
+
+  return [hovering, {onMouseOver, onFocus, onMouseOut, onBlur}]
 }
 
 /**

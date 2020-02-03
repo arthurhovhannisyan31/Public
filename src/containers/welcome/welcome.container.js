@@ -16,7 +16,7 @@ const Welcome = () => {
   return (
     <div className='welcome'>
       <span>Welcome</span>
-
+      <Input/>
     </div>
   )
 }

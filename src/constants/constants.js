@@ -18,6 +18,16 @@ const CONSTS = {
     // eslint-disable-next-line no-useless-escape
     enRegExp: /[^a-zA-Z\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/g
   },
+  LANG: {
+    RUS: {
+      title: 'Rus',
+      value: 'RUS',
+    },
+    ENG: {
+      title: 'Eng',
+      value: 'ENG'
+    }
+  },
   COMPONENTS: {
     BUTTONS: {
       COLORS: {
