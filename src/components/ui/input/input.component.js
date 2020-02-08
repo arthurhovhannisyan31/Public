@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import ReactTooltip from 'react-tooltip'
 // local services & data store
-import {useHover, validateText} from "../../../services/utilities.service"
+import { validateText} from "../../../services/utilities.service"
 // local containers
 // local components
 // local constants
@@ -12,44 +12,35 @@ import CONSTS from "../../../constants"
 import './input.style.scss'
 
 const Input = (
-  { placeholder,
-    extraClassName,
-    value,
-    defaultValue,
+  { value,
     onChange,
+    defaultValue,
+    placeholder,
+    extraClassName,
     regExp,
+    regExpStrict,
     lang,
     readOnly,
     reset,
     maxLength,
     tooltipValue,
     labelValue,
-    onFocus: whenFocus,
-    onBlur: whenBlus
   }) => {
 
-  // error condition
-  // tooltip
-
-  const [showTooltip, setShowTooltip] = useState(false)
-  const [hover, {onMouseOver, onFocus, onMouseOut, onBlur}] = useHover()
-
   /**
-   * ????????????/
+   * Decide whether to set focus/blur handlers listeners
    */
-  useEffect(() =>
-    hover ? whenFocus() : whenBlus(),
-    [hover]
-  )
+  const [showError, setShowError] = useState(false)
+  const [showTooltip, setShowTooltip] = useState(false)
 
   /**
    * Resets default value on reset event or if any default value were provided
    */
-  useEffect(() =>
-    (defaultValue || reset) &&
-    onChange(defaultValue),
-    [defaultValue, reset, onChange]
-  )
+  useEffect(() => {
+    if (defaultValue || reset) {
+      onChange(defaultValue)
+    }
+  }, [defaultValue, reset, onChange])
 
   /**
    * Value validation function
@@ -59,16 +50,31 @@ const Input = (
     /**
      * Calculates available space left to type
      */
-    const lengthLeft = maxLength - e?.target?.value?.length - 1
-    const text = e.target.value
+    const text = e?.target?.value
+    /**
+     * Add 1 to include last character in count
+     * @type {number}
+     */
+    const lengthLeft = maxLength - text?.length + 1
 
-    if (lengthLeft) {
-      if (regExp) {
+    if (onChange && lengthLeft) {
+      if (regExp && regExpStrict) {
+        /** On strict mode will return only valid input and set error state
+         * */
         if (validateText({regExp, text})){
-          onChange(text)
           setShowTooltip(false)
+          onChange(text)
         } else {
           setShowTooltip(true)
+        }
+      } else if (regExp) {
+        /** On weak mode will return value and set error state
+         */
+        onChange(text)
+        if (validateText({regExp, text})){
+          setShowError(false)
+        } else {
+          setShowError(true)
         }
       } else {
         onChange(text)
@@ -79,32 +85,33 @@ const Input = (
   return (
     <div
       className={`input-default ${extraClassName}`}
-      onMouseOver={onMouseOver}
-      onFocus={onFocus}
-      onMouseOut={onMouseOut}
-      onBlur={onBlur}
+      /* eslint-disable-next-line react/jsx-props-no-spreading */
     >
-      {showTooltip &&
+      {tooltipValue && showTooltip &&
         <ReactTooltip
-         id={`input-default__${lang}`}
-         className='input-default__tooltip'
-         effect='solid'
-         place='bottom'
-         type='light'
-         scrollHide
-         resizeHide
-         globalEventOff='click'
-         disable={!showTooltip}
-         offset={{bottom: '-5px'}}
+          id={`input-default__${lang}`}
+          className='input-default__tooltip'
+          effect='solid'
+          place='bottom'
+          type='warning'
+          scrollHide
+          resizeHide
+          globalEventOff='click'
+          disable={!showTooltip}
+          offset={{bottom: '-5px'}}
         >
           <span>{tooltipValue}</span>
         </ReactTooltip>
       }
-      <label htmlFor="input-default">
+      <label
+        className={`error-${showError}`}
+        htmlFor="input-default"
+      >
         <span>{labelValue}</span>
       </label>
       <input
         id='input-default'
+        className={`error-${showError}`}
         aria-label='input default'
         type="text"
         placeholder={placeholder}
@@ -120,37 +127,33 @@ const Input = (
 }
 
 Input.defaultProps = {
-  extraClassName: '',
+  defaultValue: '', // ?
   placeholder: '',
-  value: '',
-  defaultValue: null, // ?
+  extraClassName: '',
   regExp: null,
-  lang: CONSTS.LANG.RUS,
-  onChange: null,
+  regExpStrict: false,
+  lang: CONSTS.LANG.RUS.value,
   readOnly: false,
   reset: false,
   maxLength: Infinity,
   tooltipValue: '',
   labelValue: '',
-  whenFocus: null,
-  whenBlur: null,
 }
 
 Input.propTypes = {
-  extraClassName: PropTypes.string,
-  placeholder: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   defaultValue: PropTypes.string, // ?
+  placeholder: PropTypes.string,
+  extraClassName: PropTypes.string,
   regExp: PropTypes.instanceOf(RegExp),
+  regExpStrict: PropTypes.bool,
   lang: PropTypes.string,
-  onChange: PropTypes.func,
   readOnly: PropTypes.bool,
-  reset: PropTypes.string,
+  reset: PropTypes.bool,
   maxLength: PropTypes.number,
   tooltipValue: PropTypes.string,
   labelValue: PropTypes.string,
-  whenFocus: PropTypes.func,
-  whenBlur: PropTypes.func,
 }
 
 export default Input

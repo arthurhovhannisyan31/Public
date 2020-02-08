@@ -1,6 +1,7 @@
 import ContainedButton from './contained-button'
+import ActionButton from './action-button'
 
 export {
-  ContainedButton,
-
+  ContainedButton as default,
+  ActionButton
 }

@@ -1,4 +1,27 @@
+@import "../../../styles/consts";
 
 .input-default{
+  display: flex;
+  flex-flow: column;
+
+  & label {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    color: $border-color;
+  }
+  & label.error-true {
+    color: $color-critical;
+  }
+  & input {
+    color: $color-black;
+    padding: 0 5px;
+    height: 36px;
+    border: none;
+    border-bottom: 2px solid $border-color;
+  }
+  & input.error-true {
+    color: $color-critical;
+    border-bottom: 2px solid $color-critical;
+  }
 
 }

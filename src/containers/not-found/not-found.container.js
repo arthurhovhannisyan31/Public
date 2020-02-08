@@ -18,7 +18,7 @@ const NorFound = () => {
     setTimeout(() => {
       router.push(CONSTS.ROUTES.WELCOME[0])
     }, timeout)
-  }, [timeout])
+  }, [timeout, router])
 
   return (
     <div className='NorFound'>
