@@ -5,6 +5,7 @@ import {Route, useParams, useLocation, useHistory, useRouteMatch} from "react-ro
 // local containers
 // local components
 import PrivateRoute from "../routes/private-route"
+import CONSTS from "../constants"
 // local constants
 // local styles
 
@@ -23,7 +24,6 @@ export const localeStorage = () => typeof(Storage) !== 'undefined'
   }
   : () => {throw new Error('No web storage Support.')}
 
-
 /**
  * Returns PrivateRoute | Route component
  * @param isPrivate
@@ -32,7 +32,9 @@ export const localeStorage = () => typeof(Storage) !== 'undefined'
  */
 export const routeMaker = (isPrivate, params) => (
   isPrivate
+    // eslint-disable-next-line react/jsx-props-no-spreading
     ? <PrivateRoute key={params.path} {...params}/>
+    // eslint-disable-next-line react/jsx-props-no-spreading
     : <Route key={params.path} {...params}/>
 )
 
@@ -62,17 +64,37 @@ export const googleMapCoordinatesConverter = (
 };
 
 /**
- * Returns boolean whether the mouse is hovering an element.
+ * Returns state whether the mouse is hovering an element.
  * @returns {[boolean, {onMouseOut: (function(): void), onMouseOver: (function(): void)}]}
  */
-export const useHover = () => {
+export const useHover = ({whenMouseOver, whenMouseOut}) => {
   const [hovering, setHovering] = useState(false)
-  const onMouseOver = () => setHovering(true)
-  const onMouseOut = () => setHovering(false)
-  return [hovering, {
-    onMouseOut,
-    onMouseOver
-  }]
+  const onMouseOver = () => {
+    setHovering(true)
+    if (whenMouseOver) whenMouseOver()
+  }
+  const onMouseOut = () => {
+    setHovering(false)
+    if (whenMouseOut) whenMouseOut()
+  }
+  return [hovering, {onMouseOver, onMouseOut}]
+}
+
+/**
+ * Returns state whether element is focused
+ * @returns {[boolean, {onBlur: (function(): void), onFocus: (function(): void)}]}
+ */
+export const useFocus = ({whenFocus, whenBlur}) => {
+  const [focus, setFocus] = useState(false)
+  const onFocus = () => {
+    setFocus(true)
+    if (whenFocus) whenFocus()
+  }
+  const onBlur = () => {
+    setFocus(false)
+    if (whenBlur) whenBlur()
+  }
+  return [focus, {onFocus, onBlur}]
 }
 
 /**
@@ -99,6 +121,7 @@ export const useDebounce = (value, delay) => {
  * @returns {boolean}
  */
 export const useOnScreen = (ref, root = null, rootMargin = '0px', threshold = [1.0]) => {
+  const refCurrent = ref?.current;
   const [isIntersecting, setIntersecting] = useState(false)
 
   useEffect(() => {
@@ -112,9 +135,9 @@ export const useOnScreen = (ref, root = null, rootMargin = '0px', threshold = [1
       threshold
     }
     const observer = new IntersectionObserver( intersectionCallback, options)
-    if (ref.current) observer.observe(ref.current)
-    return () => observer.unobserve(ref.current)
-  }, [])
+    if (refCurrent) observer.observe(refCurrent)
+    return () => observer.unobserve(refCurrent)
+  }, [refCurrent, root, rootMargin, threshold])
   return isIntersecting
 }
 
@@ -186,7 +209,7 @@ export const useRouter = () => {
     match,
     location,
     history
-  })
+  }),[params, history, location, match]
   )
 }
 // useRequireAuth
@@ -284,7 +307,7 @@ export const useTheme = (theme) => {
 }
 
 /**
- * Возвращает boolean по соответствию строки regexp выражению
+ * Returns text match to regexp
  * @param regExp
  * @param text
  * @returns {boolean|*}
@@ -294,3 +317,12 @@ export const validateText = ({ regExp, text }) => {
   const match = text.match(regExp);
   return !test || (match && !match.length);
 };
+
+/**
+ * Returns validated color value || default color value
+ * @param color
+ * @returns {*}
+ */
+export const validateColorName = color => CONSTS.COMPONENTS.BUTTONS.COLORS.VALUES
+    .includes(color) ? color : CONSTS.COMPONENTS.BUTTONS.COLORS.DEFAULT
+

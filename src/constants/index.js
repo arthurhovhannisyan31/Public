@@ -1,3 +1,3 @@
-import CONSTS from "./constants"
+import CONSTS from './constants'
 
 export default CONSTS

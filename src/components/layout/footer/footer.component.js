@@ -10,8 +10,8 @@ import './footer.style.scss'
 const Footer = () => {
 
   return (
-    <div className='Footer'>
-      <div className='Footer__content'>
+    <div className='footer'>
+      <div className='footer__content'>
         <span>Footer</span>
         <span>Footer</span>
       </div>

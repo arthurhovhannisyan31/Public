@@ -10,8 +10,8 @@ import './header.style.scss'
 const Header = () => {
 
   return (
-    <div className='Header'>
-      <div className='Header__content'>
+    <div className='header'>
+      <div className='header__content'>
         <div>
           <span>menu collapse toggle</span>
           <span>Logo</span>

@@ -13,12 +13,13 @@ import './layout.style.scss'
 
 const Layout = ({children}) => {
   return (
-    <div className='Layout'>
+    <div className='layout'>
       <Header/>
       <Main>
-        <NavMenu/>
+        {/*<NavMenu/>*/}
         {children}
       </Main>
+      <Footer/>
     </div>
   )
 }
