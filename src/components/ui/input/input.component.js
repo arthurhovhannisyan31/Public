@@ -3,11 +3,10 @@ import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import ReactTooltip from 'react-tooltip'
 // local services & data store
-import { validateText} from "../../../services/utilities.service"
+import {randomString, validateText} from "../../../services/utilities.service"
 // local containers
 // local components
 // local constants
-import CONSTS from "../../../constants"
 // local styles
 import './input.style.scss'
 
@@ -19,13 +18,14 @@ const Input = (
     extraClassName,
     regExp,
     regExpStrict,
-    lang,
     readOnly,
     reset,
     maxLength,
-    tooltipValue,
-    labelValue,
+    tooltip,
+    label,
   }) => {
+
+  // add clearable prop
 
   /**
    * Decide whether to set focus/blur handlers listeners
@@ -82,14 +82,16 @@ const Input = (
     }
   }
 
+  const randId = randomString()
+
   return (
     <div
-      className={`input-default ${extraClassName}`}
+      className={`input-default ${extraClassName} label-${!!label}`}
       /* eslint-disable-next-line react/jsx-props-no-spreading */
     >
-      {tooltipValue && showTooltip &&
+      {tooltip && showTooltip &&
         <ReactTooltip
-          id={`input-default__${lang}`}
+          id={`input-default__${randId}`}
           className='input-default__tooltip'
           effect='solid'
           place='bottom'
@@ -100,14 +102,14 @@ const Input = (
           disable={!showTooltip}
           offset={{bottom: '-5px'}}
         >
-          <span>{tooltipValue}</span>
+          <span>{tooltip}</span>
         </ReactTooltip>
       }
       <label
-        className={`error-${showError}`}
+        className={`input-default__label error-${showError}`}
         htmlFor="input-default"
       >
-        <span>{labelValue}</span>
+        <span>{label}</span>
       </label>
       <input
         id='input-default'
@@ -119,7 +121,7 @@ const Input = (
         onChange={validation}
         // eslint-disable-next-line
         data-tip={true}
-        data-for={`input-default__${lang}`}
+        data-for={`input-default__${randId}`}
         readOnly={readOnly}
       />
     </div>
@@ -134,12 +136,11 @@ Input.defaultProps = {
   extraClassName: '',
   regExp: null,
   regExpStrict: false,
-  lang: CONSTS.LANG.RUS.value,
   readOnly: false,
   reset: false,
   maxLength: Infinity,
-  tooltipValue: '',
-  labelValue: '',
+  tooltip: '',
+  label: '',
 }
 
 Input.propTypes = {
@@ -150,12 +151,11 @@ Input.propTypes = {
   extraClassName: PropTypes.string,
   regExp: PropTypes.instanceOf(RegExp),
   regExpStrict: PropTypes.bool,
-  lang: PropTypes.string,
   readOnly: PropTypes.bool,
   reset: PropTypes.bool,
   maxLength: PropTypes.number,
-  tooltipValue: PropTypes.string,
-  labelValue: PropTypes.string,
+  tooltip: PropTypes.string,
+  label: PropTypes.string,
 }
 
 export default Input

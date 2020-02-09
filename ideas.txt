@@ -26,6 +26,10 @@ markdown -> list of news
 
 
 
+// MUST HAVE
+GOOGLE MAPS
+DRAFT.js editor
+
 
 // IMPLEMENT
 react-aria-modal. посмотреть оценить

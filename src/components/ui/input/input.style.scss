@@ -3,25 +3,40 @@
 .input-default{
   display: flex;
   flex-flow: column;
+  position: relative;
 
-  & label {
+  &__label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
     font-size: 0.8rem;
     margin-bottom: 5px;
     color: $border-color;
+    &:focus{
+      color: $color-main;
+    }
   }
-  & label.error-true {
+  &__label.error-true {
     color: $color-critical;
   }
   & input {
     color: $color-black;
     padding: 0 5px;
-    height: 36px;
+    height: 48px;
     border: none;
     border-bottom: 2px solid $border-color;
+    &:focus{
+      border-bottom: 2px solid $color-main;
+    }
   }
   & input.error-true {
     color: $color-critical;
     border-bottom: 2px solid $color-critical;
   }
+}
 
+.input-default.label-true{
+  & input {
+    padding: 18px 5px 0;
+  }
 }

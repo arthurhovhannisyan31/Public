@@ -343,3 +343,13 @@ export const quantityHandler = ({val, limit}) => {
   const isGreater = validValue > validLimit
   return { exceeded: isGreater, value: isGreater ? overLimit : validValue }
 }
+
+/**
+ * Returns random string 10 characters of length
+ * @returns {string}
+ */
+export const randomString = () => Math
+  .random()
+  .toString(36)
+  .replace(/[^a-z\d]+/g, '')
+  .substr(0, 10)
