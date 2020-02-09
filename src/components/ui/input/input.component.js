@@ -127,7 +127,9 @@ const Input = (
 }
 
 Input.defaultProps = {
-  defaultValue: '', // ?
+  value: '',
+  onChange: ()=>{},
+  defaultValue: '',
   placeholder: '',
   extraClassName: '',
   regExp: null,
@@ -141,9 +143,9 @@ Input.defaultProps = {
 }
 
 Input.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  defaultValue: PropTypes.string, // ?
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  defaultValue: PropTypes.string,
   placeholder: PropTypes.string,
   extraClassName: PropTypes.string,
   regExp: PropTypes.instanceOf(RegExp),

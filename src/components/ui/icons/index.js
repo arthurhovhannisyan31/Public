@@ -1,3 +1,7 @@
 import Icon from './icon.component'
+import IconStorybook from "./icon.storybook"
 
-export default Icon
+export {
+  Icon as default,
+  IconStorybook
+}

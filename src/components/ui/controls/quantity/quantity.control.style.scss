@@ -1,0 +1,16 @@
+@import "./src/styles/consts";
+@import "./src/styles/utilities";
+
+.quality-default {
+  @include flex-center;
+  width: 24px;
+  height: 24px;
+  border-radius: $border-radius-round;
+  background: $bg-card-semi-dark;
+  color: $color-white;
+  font-size: 0.8rem;
+}
+
+.quality-default.exceeded-true {
+  font-size: 0.6rem;
+}

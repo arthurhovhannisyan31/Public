@@ -326,3 +326,20 @@ export const validateText = ({ regExp, text }) => {
 export const validateColorName = color => CONSTS.COMPONENTS.BUTTONS.COLORS.VALUES
     .includes(color) ? color : CONSTS.COMPONENTS.BUTTONS.COLORS.DEFAULT
 
+
+/**
+ * Returns string||number for limited value, ex: x10 || x10+
+ * @param val
+ * @param limit
+ * @returns {{exceeded: boolean, value: (string)}}
+ */
+export const quantityHandler = ({val, limit}) => {
+  /**
+   * This is where something like typescript needed.
+   */
+  const validValue = Number.isInteger(val) ?  Math.sqrt(val**2) : null
+  const validLimit = Number.isInteger(limit) ? Math.sqrt(limit**2)  : null
+  const overLimit = `${validLimit}+`
+  const isGreater = validValue > validLimit
+  return { exceeded: isGreater, value: isGreater ? overLimit : validValue }
+}

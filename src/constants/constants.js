@@ -29,6 +29,11 @@ const CONSTS = {
     }
   },
   COMPONENTS: {
+    STYLES: {
+      COLORS: {
+        MAIN: '#42A5F5',
+      }
+    },
     BUTTONS: {
       COLORS: {
         VALUES: ['main', 'secondary'],

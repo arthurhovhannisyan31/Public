@@ -8,9 +8,9 @@ import PropTypes from 'prop-types'
 import icons from "./icons.list"
 // local styles
 
-const Icon = ({label, fillMain, fillSecondary, fillOpacity}) => {
-  const defaultIcon = icons({fillMain, fillSecondary})[0]
-  const icon = icons({fillMain, fillSecondary, fillOpacity}).filter(el => el.label === label)[0]
+const Icon = ({label, colorMain, colorSecondary, opacity}) => {
+  const defaultIcon = icons({colorMain, colorSecondary})[0]
+  const icon = icons({colorMain, colorSecondary, opacity}).filter(el => el.label === label)[0]
   return (
     <>
       {icon?.svg ?? defaultIcon.svg}
@@ -20,16 +20,16 @@ const Icon = ({label, fillMain, fillSecondary, fillOpacity}) => {
 
 Icon.defaultProps = {
   label: 'placeholder',
-  fillMain: 'black',
-  fillSecondary: 'black',
-  fillOpacity: 0.54
+  colorMain: 'black',
+  colorSecondary: 'black',
+  opacity: 0.54
 }
 
 Icon.propTypes = {
   label: PropTypes.string,
-  fillMain: PropTypes.string,
-  fillSecondary: PropTypes.string,
-  fillOpacity: PropTypes.number,
+  colorMain: PropTypes.string,
+  colorSecondary: PropTypes.string,
+  opacity: PropTypes.number,
 }
 
 export default Icon
