@@ -9,6 +9,7 @@ import {IconStorybook} from "../../components/ui/icons"
 import './welcome.style.scss'
 import CONSTS from "../../constants"
 import Input from "../../components/ui/input"
+import InputStorybook from "../../components/ui/input/input.storybook"
 
 const Welcome = () => {
 
@@ -16,18 +17,7 @@ const Welcome = () => {
 
   return (
     <div className='welcome'>
-      <Input
-        value={val1}
-        onChange={setVal1}
-        placeholder='placeholder'
-        clearable
-        label='label'
-        regExp={CONSTS.REGEXP.ruRegExp}
-        maxLength={50}
-        errorText='errorText'
-        helperText='helperText'
-        multiline
-      />
+      <InputStorybook/>
     </div>
   )
 }
