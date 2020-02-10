@@ -31,7 +31,16 @@ const CONSTS = {
   COMPONENTS: {
     STYLES: {
       COLORS: {
+        TRANSPARENT: 'transparent',
         MAIN: '#42A5F5',
+        SECONDARY: '#E3F2FD',
+        URGENT: '#ffd204',
+        POSITIVE: '#29CC97',
+        BLACK: '#000',
+        WHITE: '#fff',
+        CRITICAL: '#ff0000',
+        INACTIVE: '#F0F1F7',
+        BORDER: '#98A2A8',
       }
     },
     BUTTONS: {

@@ -8,16 +8,36 @@ import {IconStorybook} from "../../components/ui/icons"
 // local styles
 import './welcome.style.scss'
 import CONSTS from "../../constants"
-
-
+import Input from "../../components/ui/input"
 
 const Welcome = () => {
 
+  const [val1, setVal1] = useState('')
+
   return (
     <div className='welcome'>
-      {/*<IconStorybook/>*/}
+      <Input
+        value={val1}
+        onChange={setVal1}
+        placeholder='placeholder'
+        clearable
+        label='label'
+        regExp={CONSTS.REGEXP.ruRegExp}
+        // maxLength={10}
+        // maxLengthStrict
+        // errorText='errorText'
+        // helperText='helperText'
+        // showCount
+      />
     </div>
   )
 }
 
 export default Welcome
+
+// maxLength,
+// maxLengthStrict,
+// errorText,
+// helperText,
+// showCount,
+// multiline

@@ -12,31 +12,113 @@
     font-size: 0.8rem;
     margin-bottom: 5px;
     color: $border-color;
-    &:focus{
-      color: $color-main;
-    }
   }
-  &__label.error-true {
-    color: $color-critical;
-  }
-  & input {
+
+  &__field {
     color: $color-black;
     padding: 0 5px;
     height: 48px;
+    width: 280px;
     border: none;
+    border-top-right-radius: $border-radius-main;
+    border-top-left-radius: $border-radius-main;
     border-bottom: 2px solid $border-color;
-    &:focus{
-      border-bottom: 2px solid $color-main;
+  }
+
+  &__clear{
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translate(0, -50%);
+    & svg{
+      & path {
+        fill: $color-black;
+        opacity: 0.54;
+      }
+      & circle {
+        fill: $color-black;
+        opacity: 0.12;
+      }
     }
   }
-  & input.error-true {
-    color: $color-critical;
-    border-bottom: 2px solid $color-critical;
+  &__extra-info{
+    position: absolute;
+    left: 5px;
+    bottom: -16px;
+    display: flex;
+    font-size: 0.8rem;
+    color: $border-color;
+    justify-content: space-between;
+    width: calc(100% - 5px);
+  }
+}
+.input-default.label{
+  & .input-default__field {
+    padding: 18px 5px 0;
+  }
+}
+.input-default.clearable{
+  & .input-default__field {
+    padding-right: 40px;
+  }
+  & .input-default__clear{
+    display: block;
+    &:hover svg{
+      & path {
+        fill: $color-black;
+        opacity: 0.6;
+      }
+      & circle {
+        fill: $color-black;
+        opacity: 0.16;
+      }
+    }
+    &:active svg{
+      & path {
+        fill: $color-black;
+        opacity: 0.8;
+      }
+      & circle {
+        fill: $color-black;
+        opacity: 0.25;
+      }
+    }
+  }
+}
+.input-default.focus{
+  & .input-default__field {
+    border-bottom: 2px solid $color-main;
+  }
+}
+.input-default.error{
+  & .input-default {
+    &__field {
+      border-bottom: 2px solid $color-critical;
+    }
+    &__label{
+      color: $color-critical;
+    }
   }
 }
 
-.input-default.label-true{
-  & input {
-    padding: 18px 5px 0;
+.input-default.limitExceeded{
+  & .input-default {
+    &__field {
+      border-bottom: 2px solid $color-critical;
+    }
+    &__counter {
+      color: $color-critical;
+    }
+  }
+}
+
+.input-default.multiline{
+  & .input-default__field {
+    min-width: 280px;
+    max-width: 280px;
+    min-height: 114px;
+    max-height: 114px;
+    resize: none;
   }
 }

@@ -67,7 +67,7 @@ export const googleMapCoordinatesConverter = (
  * Returns state whether the mouse is hovering an element.
  * @returns {[boolean, {onMouseOut: (function(): void), onMouseOver: (function(): void)}]}
  */
-export const useHover = ({whenMouseOver, whenMouseOut}) => {
+export const useHover = ({whenMouseOver, whenMouseOut}={}) => {
   const [hovering, setHovering] = useState(false)
   const onMouseOver = () => {
     setHovering(true)
@@ -84,7 +84,7 @@ export const useHover = ({whenMouseOver, whenMouseOut}) => {
  * Returns state whether element is focused
  * @returns {[boolean, {onBlur: (function(): void), onFocus: (function(): void)}]}
  */
-export const useFocus = ({whenFocus, whenBlur}) => {
+export const useFocus = ({whenFocus, whenBlur}={}) => {
   const [focus, setFocus] = useState(false)
   const onFocus = () => {
     setFocus(true)
