@@ -23,8 +23,8 @@ const Welcome = () => {
         clearable
         label='label'
         regExp={CONSTS.REGEXP.ruRegExp}
-        // maxLength={10}
-        // maxLengthStrict
+        maxLength={10}
+        maxLengthStrict
         // errorText='errorText'
         // helperText='helperText'
         // showCount
@@ -35,7 +35,6 @@ const Welcome = () => {
 
 export default Welcome
 
-// maxLength,
 // maxLengthStrict,
 // errorText,
 // helperText,

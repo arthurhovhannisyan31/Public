@@ -22,15 +22,15 @@ const inputReducer = (state, action) => {
   switch (type) {
     case 'setError':
       return {...state, error: payload}
-    case 'setLimitExceed':
-      return {...state, limitExceed: payload}
-    case 'setTextLength':
-      return {...state, textLength: payload}
+    case 'setLimitExceeded':
+      return {...state, limitExceeded: payload}
+    case 'setContentLength':
+      return {...state, contentLength: payload}
     case 'clearAll':
       return {...state,
         error: false,
-        limitExceed: false,
-        textLength: 0
+        limitExceeded: false,
+        contentLength: 0
       }
     default:
       return state
@@ -46,7 +46,7 @@ const randId = randomString()
  * Input main component
  * @param value - sets component visible value
  * @param onChange - returns value from user input
- * @string defaultValue - used set value on component mount and reset
+ * @param defaultValue - used set value on component mount and reset
  * @param placeholder - placeholder on value absence
  * @param extraClassName
  * @param regExp - regExp for validate function, used to set error param
@@ -80,7 +80,6 @@ const Input = (
     clearable,
     errorText,
     helperText,
-    showCount,
     multiline
   }) => {
 
@@ -89,7 +88,7 @@ const Input = (
    * @type {{textLength: *, error: boolean, limitExceeded: boolean}}
    */
   const initialState = {
-    textLength: defaultValue?.length ?? 0,
+    contentLength: defaultValue?.length ?? 0,
     error: false,
     limitExceeded: false,
   }
@@ -98,14 +97,14 @@ const Input = (
    * Declare state, dispatcher
    */
   const [state, dispatch] = useReducer(inputReducer, initialState)
-  const {textLength, error, limitExceeded} = state
+  const {contentLength, error, limitExceeded} = state
 
   /**
    * Declare all reducer methods
    */
   const setError = payload => dispatch({type: 'setError', payload})
-  const setLimitExceed = payload => dispatch({type: 'setLimitExceed', payload})
-  const setTextLength = payload => dispatch({type: 'setTextLength', payload})
+  const setLimitExceeded = payload => dispatch({type: 'setLimitExceeded', payload})
+  const setContentLength = payload => dispatch({type: 'setContentLength', payload})
   const clearAll = () => dispatch({type: 'clearAll'})
 
   /**
@@ -128,19 +127,31 @@ const Input = (
    * @param e
    */
   const validation = e => {
+
     /**
      * Calculates available space left to type
      */
     const text = e?.target?.value
-    const lengthLeft = maxLength - text?.length + 1
+    if (!text) clearAll()
+
+    /**
+     * Check if limit is exceeded
+     */
+    const textLength = text?.length ?? 0
+    const lengthLeft = maxLength - textLength
+    const isLengthLeft = lengthLeft >= 0
 
     /**
      * Check if onChange func provided and length not exceeded on strict mode
      */
-    if (onChange && maxLengthStrict ? lengthLeft : true) {
-      setTextLength(text?.length ?? 0)
+    if (onChange && maxLengthStrict ? isLengthLeft : true) {
+      setContentLength(textLength)
 
-      if (!limitExceeded && (textLength > maxLength)) setLimitExceed(true)
+      if (isLengthLeft) {
+        setLimitExceeded(false)
+      } else {
+        setLimitExceeded(true)
+      }
 
       if (regExp && regExpStrict) {
         /**
@@ -174,7 +185,7 @@ const Input = (
     error,
     extraClassName,
     multiline,
-    limitExceeded
+    limitExceeded,
   });
 
   const Tag = multiline ? 'textarea' : 'input'
@@ -214,7 +225,7 @@ const Input = (
           }
         </div>
         <div className='input-default__extra-info_right'>
-          {showCount && <span className='input-default__counter'>{textLength}/{maxLength}</span>}
+          {maxLength && <span className='input-default__counter'>{contentLength}/{maxLength}</span>}
         </div>
     </div>
       <button
@@ -250,7 +261,6 @@ Input.defaultProps = {
   clearable: false,
   errorText: '',
   helperText: '',
-  showCount: false,
   multiline: false,
 }
 
@@ -270,7 +280,6 @@ Input.propTypes = {
   clearable: PropTypes.bool,
   errorText: PropTypes.string,
   helperText: PropTypes.string,
-  showCount: PropTypes.bool,
   multiline: PropTypes.bool,
 }
 
