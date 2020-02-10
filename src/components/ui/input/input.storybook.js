@@ -11,6 +11,7 @@ const InputStorybook = () => {
     <>
       <Input
         value={val1}
+        defaultValue='defaultValue'
         onChange={setVal1}
         placeholder='placeholder'
         clearable
@@ -19,6 +20,7 @@ const InputStorybook = () => {
         maxLength={20}
         errorText='errorText'
         helperText='helperText'
+        readOnly
       />
       <br/>
       <br/>

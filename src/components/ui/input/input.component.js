@@ -3,13 +3,15 @@ import React, {useEffect, useRef, useReducer} from 'react'
 import PropTypes from 'prop-types'
 import ClassNames from 'classnames'
 // local services & data store
-import {randomString, validateText, useFocus} from "../../../services/utilities.service"
+import {validateText, useFocus} from "../../../services/utilities.service"
 // local containers
 // local components
-import Icon from "../icons/icon.component"
+import {InputReadOnly, InputDefault} from './index'
 // local constants
 // local styles
 import './input.style.scss'
+
+// todo test both components, replace proptypes to where they belong
 
 /**
  * Declare component reducer
@@ -36,11 +38,6 @@ const inputReducer = (state, action) => {
       return state
   }
 }
-/**
- * Define random id for component
- * @type {string}
- */
-const randId = randomString()
 
 /**
  * Input main component
@@ -186,6 +183,7 @@ const Input = (
     extraClassName,
     multiline,
     limitExceeded,
+    readOnly
   });
 
   const Tag = multiline ? 'textarea' : 'input'
@@ -193,8 +191,8 @@ const Input = (
   return (
     <div
       className={`input-default ${classNames}`}
-      onFocus={onFocus}
-      onBlur={onBlur}
+      onFocus={!readOnly && onFocus}
+      onBlur={!readOnly && onBlur}
       /* eslint-disable-next-line react/jsx-props-no-spreading */
     >
       <label
@@ -203,44 +201,28 @@ const Input = (
       >
         <span>{label}</span>
       </label>
-      <Tag
-        id='input-default'
-        className='input-default__field'
-        aria-label='input default'
-        type="text"
-        placeholder={placeholder}
-        value={value}
-        onChange={validation}
-        // eslint-disable-next-line
-        data-tip={true}
-        data-for={`input-default__${randId}`}
-        readOnly={readOnly}
-        ref={ref}
-      />
-      <div className='input-default__extra-info'>
-        <div className='input-default__extra-info_left'>
-          {error
-            ? <span className='input-default__error-text'>{errorText}</span>
-            : <span className='input-default__helper-text'>{helperText}</span>
-          }
-        </div>
-        <div className='input-default__extra-info_right'>
-          {maxLength && <span className='input-default__counter'>{contentLength}/{maxLength}</span>}
-        </div>
-    </div>
-      <button
-        type='button'
-        className='input-default__clear'
-        onClick={() => {
-          onChange('')
-          clearAll()
-          ref.current.focus()
-        }}
-      >
-        <Icon
-          label='clear'
+      {readOnly
+       ? <InputReadOnly
+          placeholder={placeholder}
+          value={value}
+          readOnly={readOnly}
+          tag={Tag}
         />
-      </button>
+        : <InputDefault
+            tag={Tag}
+            placeholder={placeholder}
+            value={value}
+            validation={validation}
+            error={error}
+            errorText={errorText}
+            helperText={helperText}
+            contentLength={contentLength}
+            maxLength={maxLength}
+            onChange={onChange}
+            clearAll={clearAll}
+            ref={ref}
+        />
+      }
     </div>
   )
 }
