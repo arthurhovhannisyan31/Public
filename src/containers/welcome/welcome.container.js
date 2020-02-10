@@ -23,20 +23,13 @@ const Welcome = () => {
         clearable
         label='label'
         regExp={CONSTS.REGEXP.ruRegExp}
-        maxLength={10}
-        maxLengthStrict
-        // errorText='errorText'
-        // helperText='helperText'
-        // showCount
+        maxLength={50}
+        errorText='errorText'
+        helperText='helperText'
+        multiline
       />
     </div>
   )
 }
 
 export default Welcome
-
-// maxLengthStrict,
-// errorText,
-// helperText,
-// showCount,
-// multiline

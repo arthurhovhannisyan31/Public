@@ -52,73 +52,74 @@
     justify-content: space-between;
     width: calc(100% - 5px);
   }
-}
-.input-default.label{
-  & .input-default__field {
-    padding: 18px 5px 0;
+  &.label{
+    & .input-default__field {
+      padding: 18px 5px 0;
+    }
   }
-}
-.input-default.clearable{
-  & .input-default__field {
-    padding-right: 40px;
-  }
-  & .input-default__clear{
-    display: block;
-    &:hover svg{
-      & path {
-        fill: $color-black;
-        opacity: 0.6;
+  &.clearable{
+    & .input-default__field {
+      padding-right: 40px;
+    }
+    & .input-default__clear{
+      display: block;
+      &:hover svg{
+        & path {
+          fill: $color-black;
+          opacity: 0.6;
+        }
+        & circle {
+          fill: $color-black;
+          opacity: 0.16;
+        }
       }
-      & circle {
-        fill: $color-black;
-        opacity: 0.16;
-      }
-    }
-    &:active svg{
-      & path {
-        fill: $color-black;
-        opacity: 0.8;
-      }
-      & circle {
-        fill: $color-black;
-        opacity: 0.25;
+      &:active svg{
+        & path {
+          fill: $color-black;
+          opacity: 0.8;
+        }
+        & circle {
+          fill: $color-black;
+          opacity: 0.25;
+        }
       }
     }
   }
-}
-.input-default.focus{
-  & .input-default__field {
-    border-bottom: 2px solid $color-main;
-  }
-}
-.input-default.error{
-  & .input-default {
-    &__field {
-      border-bottom: 2px solid $color-critical;
-    }
-    &__label{
-      color: $color-critical;
+  &.focus{
+    & .input-default__field {
+      border-bottom: 2px solid $color-main;
     }
   }
-}
-
-.input-default.limitExceeded{
-  & .input-default {
-    &__field {
-      border-bottom: 2px solid $color-critical;
-    }
-    &__counter {
-      color: $color-critical;
+  &.error{
+    & .input-default {
+      &__field {
+        border-bottom: 2px solid $color-critical;
+      }
+      &__label{
+        color: $color-critical;
+      }
+      &__error-text{
+        color: $color-critical;
+      }
     }
   }
-}
-
-.input-default.multiline{
-  & .input-default__field {
-    min-width: 280px;
-    max-width: 280px;
-    min-height: 114px;
-    max-height: 114px;
-    resize: none;
+  &.limitExceeded{
+    & .input-default {
+      &__field {
+        border-bottom: 2px solid $color-critical;
+      }
+      &__counter {
+        color: $color-critical;
+      }
+    }
+  }
+  &.multiline{
+    & .input-default__field {
+      min-width: 280px;
+      max-width: 280px;
+      min-height: 114px;
+      max-height: 114px;
+      resize: none;
+    }
   }
 }

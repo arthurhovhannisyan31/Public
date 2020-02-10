@@ -220,7 +220,7 @@ const Input = (
       <div className='input-default__extra-info'>
         <div className='input-default__extra-info_left'>
           {error
-            ? <span className='input-default__error'>{errorText}</span>
+            ? <span className='input-default__error-text'>{errorText}</span>
             : <span className='input-default__helper-text'>{helperText}</span>
           }
         </div>
