@@ -5,39 +5,30 @@ import CONSTS from "../../../constants"
 const InputStorybook = () => {
 
   const [val1, setVal1] = useState('')
-  const [val2, setVal2] = useState('')
+  const [reset, setReset] = useState(false)
 
   return (
     <>
+      <button
+        type='button'
+        onClick={() => {setReset(true)}}
+      >reset</button>
       <Input
+        extraClassName='bla'
         value={val1}
-        defaultValue='defaultValue'
+        reset={reset}
         onChange={setVal1}
-        placeholder='placeholder'
         clearable
         label='label'
-        regExp={CONSTS.REGEXP.ruRegExp}
+        regExp={CONSTS.REGEXP.enRegExp}
         maxLength={20}
+        maxLengthStrict
         errorText='errorText'
         helperText='helperText'
-        readOnly
-      />
-      <br/>
-      <br/>
-      <Input
-        value={val2}
-        onChange={setVal2}
-        placeholder='placeholder'
-        clearable
-        label='label'
-        regExp={CONSTS.REGEXP.ruRegExp}
-        maxLength={50}
-        errorText='errorText'
-        helperText='helperText'
-        multiline
       />
     </>
   )
 }
 
 export default InputStorybook
+

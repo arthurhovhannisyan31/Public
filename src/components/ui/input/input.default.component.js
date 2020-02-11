@@ -1,5 +1,11 @@
+// external libraries
 import React, {forwardRef} from 'react'
+// local services & data store
+// local containers
+// local components
 import Icon from "../icons/icon.component"
+// local constants
+// local styles
 
 const InputDefault = (
   { tag,
@@ -56,5 +62,7 @@ const InputDefault = (
     </>
   )
 }
+
+// todo test forward red
 
 export default forwardRef(InputDefault)

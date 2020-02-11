@@ -6,12 +6,11 @@ import ClassNames from 'classnames'
 import {validateText, useFocus} from "../../../services/utilities.service"
 // local containers
 // local components
-import {InputReadOnly, InputDefault} from './index'
+import InputReadOnly from './input.read-only.component'
+import InputDefault from './input.default.component'
 // local constants
 // local styles
 import './input.style.scss'
-
-// todo test both components, replace proptypes to where they belong
 
 /**
  * Declare component reducer
@@ -142,7 +141,7 @@ const Input = (
      * Check if onChange func provided and length not exceeded on strict mode
      */
     if (onChange && maxLengthStrict ? isLengthLeft : true) {
-      setContentLength(textLength)
+
 
       if (isLengthLeft) {
         setLimitExceeded(false)
@@ -156,11 +155,15 @@ const Input = (
          * */
         if (validateText({regExp, text})){
           onChange(text)
+          setContentLength(textLength)
         }
       } else if (regExp) {
         /**
-         * On weak mode will return value and set error state
+         * On weak mode will return value
+         * set error state
+         * set content length
          */
+        setContentLength(textLength)
         onChange(text)
         if (validateText({regExp, text})){
           setError(false)
@@ -180,7 +183,7 @@ const Input = (
     clearable,
     focus,
     error,
-    extraClassName,
+    [`${extraClassName}`]: extraClassName,
     multiline,
     limitExceeded,
     readOnly
@@ -191,8 +194,8 @@ const Input = (
   return (
     <div
       className={`input-default ${classNames}`}
-      onFocus={!readOnly && onFocus}
-      onBlur={!readOnly && onBlur}
+      onFocus={!readOnly ? onFocus : undefined}
+      onBlur={!readOnly ? onBlur : undefined}
       /* eslint-disable-next-line react/jsx-props-no-spreading */
     >
       <label
