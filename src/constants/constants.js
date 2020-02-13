@@ -29,6 +29,20 @@ const CONSTS = {
     }
   },
   COMPONENTS: {
+    STYLES: {
+      COLORS: {
+        TRANSPARENT: 'transparent',
+        MAIN: '#42A5F5',
+        SECONDARY: '#E3F2FD',
+        URGENT: '#ffd204',
+        POSITIVE: '#29CC97',
+        BLACK: '#000',
+        WHITE: '#fff',
+        CRITICAL: '#ff0000',
+        INACTIVE: '#F0F1F7',
+        BORDER: '#98A2A8',
+      }
+    },
     BUTTONS: {
       COLORS: {
         VALUES: ['main', 'secondary'],
@@ -40,6 +54,21 @@ const CONSTS = {
         }
       }
 
+    },
+    OPTIONS: {
+      DEFAULT_SELECT:  [
+        { value: 'red', label: 'Red' },
+        { value: 'orange', label: 'Orange' },
+        { value: 'yellow', label: 'Yellow' },
+        { value: 'green', label: 'Green' },
+        { value: 'blue', label: 'Blue' },
+        { value: 'purple', label: 'purple' },
+        { value: 'purple', label: 'purple' },
+        { value: 'purple', label: 'purple' },
+        { value: 'purple', label: 'purple' },
+        { value: 'purple', label: 'purple' },
+        { value: 'purple', label: 'purple' },
+      ]
     }
   }
 }

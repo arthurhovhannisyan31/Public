@@ -1,0 +1,10 @@
+
+.checkbox-default{
+  display: flex;
+  align-items: center;
+
+  &__label{
+    margin-left: 10px;
+    font-weight: bold;
+  }
+}

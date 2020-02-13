@@ -1,30 +1,28 @@
 // external libraries
-import React, {useState} from 'react'
+import React from 'react'
 // local services & data store
 // local containers
 // local components
-import Input from "../../components/ui/input"
-import Button from '../../components/ui/button'
+import InputStorybook from "../../components/ui/input/input.storybook"
+import ButtonStorybook from "../../components/ui/button/button.storybook"
+import SelectStorybook from "../../components/ui/select/select.storybook"
 // local constants
 // local styles
 import './welcome.style.scss'
-import CONSTS from "../../constants"
-
 
 const Welcome = () => {
-  const [val, setVal] = useState('')
 
   return (
-    <div className='welcome'>
-      <span>Welcome</span>
+    <div
+      className='welcome'
+    >
+      <ButtonStorybook/>
       <br/>
-      <Input
-        value={val}
-        onChange={setVal}
-        regExp={CONSTS.REGEXP.ruRegExp}
-        tooltipValue='tooltipValue test'
-        labelValue='labelValue input'
-      />
+      <br/>
+      <InputStorybook/>
+      <br/>
+      <br/>
+      <SelectStorybook/>
     </div>
   )
 }

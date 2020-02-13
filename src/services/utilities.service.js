@@ -67,7 +67,7 @@ export const googleMapCoordinatesConverter = (
  * Returns state whether the mouse is hovering an element.
  * @returns {[boolean, {onMouseOut: (function(): void), onMouseOver: (function(): void)}]}
  */
-export const useHover = ({whenMouseOver, whenMouseOut}) => {
+export const useHover = ({whenMouseOver, whenMouseOut}={}) => {
   const [hovering, setHovering] = useState(false)
   const onMouseOver = () => {
     setHovering(true)
@@ -84,7 +84,7 @@ export const useHover = ({whenMouseOver, whenMouseOut}) => {
  * Returns state whether element is focused
  * @returns {[boolean, {onBlur: (function(): void), onFocus: (function(): void)}]}
  */
-export const useFocus = ({whenFocus, whenBlur}) => {
+export const useFocus = ({whenFocus, whenBlur}={}) => {
   const [focus, setFocus] = useState(false)
   const onFocus = () => {
     setFocus(true)
@@ -101,15 +101,15 @@ export const useFocus = ({whenFocus, whenBlur}) => {
  * Returns sent value after delay time
  * @param value
  * @param delay
- * @returns {unknown}
+ * @returns {any}
  */
 export const useDebounce = (value, delay) => {
-  const [debounceValue, setDebounceValue] = useState(value)
+  const [debouncedValue, setDebouncedValue] = useState(value)
   useEffect(() => {
-    const handler = setTimeout(() => setDebounceValue(debounceValue), delay)
+    const handler = setTimeout(() => {setDebouncedValue(value)}, delay)
     return () => clearTimeout(handler)
-  }, [debounceValue, delay])
-  return debounceValue
+  }, [value, delay])
+  return debouncedValue
 }
 
 /**
@@ -326,3 +326,30 @@ export const validateText = ({ regExp, text }) => {
 export const validateColorName = color => CONSTS.COMPONENTS.BUTTONS.COLORS.VALUES
     .includes(color) ? color : CONSTS.COMPONENTS.BUTTONS.COLORS.DEFAULT
 
+
+/**
+ * Returns string||number for limited value, ex: x10 || x10+
+ * @param val
+ * @param limit
+ * @returns {{exceeded: boolean, value: (string)}}
+ */
+export const quantityHandler = ({val, limit}) => {
+  /**
+   * This is where something like typescript needed.
+   */
+  const validValue = Number.isInteger(val) ?  Math.sqrt(val**2) : null
+  const validLimit = Number.isInteger(limit) ? Math.sqrt(limit**2)  : null
+  const overLimit = `${validLimit}+`
+  const isGreater = validValue > validLimit
+  return { exceeded: isGreater, value: isGreater ? overLimit : validValue }
+}
+
+/**
+ * Returns random string 10 characters of length
+ * @returns {string}
+ */
+export const randomString = () => Math
+  .random()
+  .toString(36)
+  .replace(/[^a-z\d]+/g, '')
+  .substr(0, 10)

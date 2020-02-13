@@ -26,9 +26,13 @@ markdown -> list of news
 
 
 
+// MUST HAVE
+GOOGLE MAPS
+DRAFT.js editor
+
 
 // IMPLEMENT
-react-aria-modal. посмотреть оценить
+react-aria-modal.
 https://github.com/gaearon/react-document-title
 label + input
 
