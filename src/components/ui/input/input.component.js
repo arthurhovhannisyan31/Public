@@ -4,12 +4,10 @@ import PropTypes from 'prop-types'
 import ClassNames from 'classnames'
 // local services & data store
 import {validateText, useFocus, randomString, useDebounce} from "../../../services/utilities.service"
-// local containers
-// local components
+// local containers & components
 import InputReadOnly from './input.read-only.component'
 import InputDefault from './input.default.component'
-// local constants
-// local styles
+// local constants & styles
 import './input.style.scss'
 
 /**

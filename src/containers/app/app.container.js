@@ -2,12 +2,10 @@
 import React from "react"
 import { Switch } from 'react-router-dom'
 // local services & data store
-// local containers
+// local containers & components
 import Layout from "../layout"
 import {rootRoutes, appRoutes} from "../../routes"
-// local components
-// local constants
-// local styles
+// local constants & styles
 import './app.container.style.scss'
 
 const App = () => {

@@ -2,11 +2,9 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 // local services & data store
-// local containers
-// local components
+// local containers & components
 import ErrorIndicator from "../error.indicator"
-// local constants
-// local styles
+// local constants & styles
 
 /**
  * Возвращает ErrorIndicator при возникновении ошибки

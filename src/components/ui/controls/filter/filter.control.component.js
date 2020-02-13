@@ -2,11 +2,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // local services & data store
-// local containers
-// local components
+// local containers & components
 import Icon from "../../icons/icon.component"
-// local constants
-// local styles
+// local constants & styles
 import './filter.control.style.scss'
 
 const Filter = (

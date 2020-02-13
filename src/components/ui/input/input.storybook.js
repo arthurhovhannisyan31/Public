@@ -1,12 +1,9 @@
 // external libraries
-// local services & data store
-// local containers
-// local components
-// local constants
-// local styles
-
 import React, {useState, useEffect} from 'react'
+// local services & data store
+// local containers & components
 import Input from "./index"
+// local constants & styles
 import CONSTS from "../../../constants"
 
 const InputStorybook = () => {

@@ -1,8 +1,12 @@
+// external libraries
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+// local services & data store
+// local containers & components
 import Icon from "../../icons/icon.component"
-import './checkbox.control.style.scss'
+// local constants & styles
 import CONSTS from "../../../../constants"
+import './checkbox.control.style.scss'
 
 const Checkbox = (
   { label,

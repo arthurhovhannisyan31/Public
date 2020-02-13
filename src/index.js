@@ -5,12 +5,10 @@ import React from "react"
 import { render } from "react-dom"
 import * as serviceWorker from "./serviceWorker"
 // local services & data store
-// local containers
+// local containers & components
 import Root from './containers/root'
-// local components
-// local constants
+// local constants & styles
 import CONSTS from "./constants"
-// local styles
 import './styles/index.scss'
 
 render(<Root/>, document.getElementById(CONSTS.DOM.ROOT))

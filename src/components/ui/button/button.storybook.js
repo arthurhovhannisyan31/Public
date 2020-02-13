@@ -1,12 +1,10 @@
 // external libraries
 import React from 'react'
 // local services & data store
-// local containers
-// local components
+// local containers & components
 import ContainedButton from "./contained-button"
 import ActionButton from "./action-button"
-// local constants
-// local styles
+// local constants & styles
 
 const ButtonStorybook = () => {
 

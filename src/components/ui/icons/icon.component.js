@@ -2,11 +2,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // local services & data store
-// local containers
-// local components
-// local constants
+// local containers & components
 import icons from "./icons.list"
-// local styles
+// local constants & styles
 
 const Icon = (
   { label,

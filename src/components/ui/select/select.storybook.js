@@ -1,7 +1,7 @@
 // external libraries
 import React, {useState} from 'react'
 // local services & data store
-// local components & containers
+// local containers & components
 import SelectDefault from "./index"
 // local constants & styles
 import CONSTS from "../../../constants"

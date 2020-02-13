@@ -1,4 +1,8 @@
+// external libraries
 import React from "react"
+// local services & data store
+// local containers & components
+// local constants & styles
 
 /**
  * Default size 24*24

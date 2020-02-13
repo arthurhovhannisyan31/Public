@@ -1,5 +1,9 @@
+// external libraries
 import React from 'react'
-import Icon from "./index"
+// local services & data store
+// local containers & components
+import Icon from "./icon.component"
+// local constants & styles
 
 const IconStorybook = () => {
 

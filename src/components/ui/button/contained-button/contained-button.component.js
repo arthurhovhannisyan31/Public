@@ -3,10 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 // local services & data store
 import {validateColorName} from "../../../../services/utilities.service"
-// local containers
-// local components
-// local constants
-// local styles
+// local containers & components
+// local constants & styles
 import './contained-button.style.scss'
 
 /**

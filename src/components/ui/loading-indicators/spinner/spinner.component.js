@@ -2,10 +2,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // local services & data store
-// local containers
-// local components
-// local constants
-// local styles
+// local containers & components
+// local constants & styles
 import './spinner.style.scss'
 
 const Spinner = ({width, height}) => {

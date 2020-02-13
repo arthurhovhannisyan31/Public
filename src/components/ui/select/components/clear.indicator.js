@@ -1,5 +1,9 @@
+// external libraries
 import React from 'react'
+// local services & data store
+// local containers & components
 import Icon from "../../icons/icon.component"
+// local constants & styles
 
 const ClearIndicator = props => {
   const {

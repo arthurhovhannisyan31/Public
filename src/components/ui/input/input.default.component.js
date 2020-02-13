@@ -1,11 +1,9 @@
 // external libraries
 import React, {forwardRef} from 'react'
 // local services & data store
-// local containers
-// local components
+// local containers & components
 import Icon from "../icons/icon.component"
-// local constants
-// local styles
+// local constants & styles
 
 const InputDefault = (
   { tag,

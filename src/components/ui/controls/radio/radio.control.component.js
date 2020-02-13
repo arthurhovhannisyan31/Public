@@ -2,12 +2,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // local services & data store
-// local containers
-// local components
+// local containers & components
 import Icon from "../../icons/icon.component"
-// local constants
+// local constants & styles
 import CONSTS from "../../../../constants"
-// local styles
 import './radio.control.style.scss'
 
 const Radio = (

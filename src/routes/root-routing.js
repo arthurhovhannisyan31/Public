@@ -1,13 +1,11 @@
 // external libraries
-// local services & data store
 import {routeMaker} from '../services/utilities.service'
-// local containers
+// local services & data store
+// local containers & components
 import NotFound from '../containers/not-found'
 import Login from "../containers/login"
-// local components
-// local constants
+// local constants & styles
 import CONSTS from "../constants"
-// local styles
 
 const login = {
   exact: true,

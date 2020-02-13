@@ -5,16 +5,10 @@ import Select from 'react-select'
 import ClassNames from "classnames"
 import CustomScroll from "react-custom-scroll"
 // local services & data store
+// local containers & components
 import {useFocus, randomString} from "../../../services/utilities.service"
-// local containers
-// local components
-import {
-  ClearIndicator,
-  DropdownIndicator,
-  SearchIndicator,
-} from './components'
-// local constants
-// local styles
+import {ClearIndicator, DropdownIndicator, SearchIndicator,} from './components'
+// local constants & styles
 import './select.style.scss'
 
 const randId = randomString()
@@ -33,7 +27,6 @@ const SelectDefault = (
     isSearchable,
     isLoading,
     isClearable,
-    // inputValue,
     onInputChange,
     label,
   }) => {
@@ -83,7 +76,6 @@ const SelectDefault = (
           defaultValue={defaultValue}
           isLoading={isLoading}
           isClearable={isClearable}
-          // inputValue={inputValue}
           onInputChange={onInputChange}
           components={{
             ClearIndicator,
@@ -115,7 +107,6 @@ SelectDefault.defaultProps = {
   isSearchable: false,
   isLoading: false,
   isClearable: false,
-  // inputValue: null,
   onInputChange: ()=>{},
   label: '',
 }
@@ -158,14 +149,8 @@ SelectDefault.propTypes = {
   isSearchable: PropTypes.bool,
   isLoading: PropTypes.bool,
   isClearable: PropTypes.bool,
-  // inputValue: PropTypes.string,
   onInputChange: PropTypes.func,
   label: PropTypes.string,
 }
 
 export default SelectDefault
-
-// debounce for search field
-// dropdown list width = input field width
-// dropdown menu continues select btn borders, border body stretches down
-// add react custom scroll to menu
