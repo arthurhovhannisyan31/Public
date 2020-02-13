@@ -2,22 +2,15 @@
 
 .input-default{
   display: flex;
+  flex-flow: column;
   position: relative;
-
-  &__label {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    font-size: 0.8rem;
-    margin-bottom: 5px;
-    color: $border-color;
-  }
 
   &__field {
     color: $color-black;
-    padding: 0 5px;
-    height: 48px;
-    width: 280px;
+    padding: 0 8px;
+    height: $block-default-height;
+    width: $block-default-width;
+    box-sizing: border-box;
     border: none;
     border-top-right-radius: $border-radius-main;
     border-top-left-radius: $border-radius-main;
@@ -28,8 +21,9 @@
     display: none;
     position: absolute;
     top: 50%;
-    right: 6px;
+    right: 8px;
     transform: translate(0, -50%);
+    height: 24px;
     & svg{
       & path {
         fill: $color-black;
@@ -44,19 +38,14 @@
   &__extra-info{
     position: absolute;
     left: 5px;
-    bottom: -16px;
+    bottom: -18px;
     display: flex;
     font-size: 0.8rem;
     color: $border-color;
     justify-content: space-between;
     width: calc(100% - 5px);
   }
-  &.label{
-    & .input-default__field {
-      padding: 18px 5px 0;
-    }
-  }
-  &.clearable{
+  &.isClearable{
     & .input-default__field {
       padding-right: 40px;
     }
@@ -81,6 +70,20 @@
           fill: $color-black;
           opacity: 0.25;
         }
+      }
+    }
+  }
+  &.label{
+    & .input-default{
+      &__clear{
+        transform: translate(0, -14%);
+      }
+      &__label {
+        display: flex;
+        padding-left: 5px;
+        font-size: 0.8rem;
+        margin-bottom: 4px;
+        color: $border-color;
       }
     }
   }
@@ -112,7 +115,7 @@
       }
     }
   }
-  &.multiline{
+  &.isMultiline{
     & .input-default{
       &__field {
         min-width: 280px;
@@ -123,7 +126,7 @@
       }
     }
   }
-  &.readOnly{
+  &.isDisabled{
     & .input-default {
       &__field {
         color: $text-inactive-main;

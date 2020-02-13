@@ -101,15 +101,15 @@ export const useFocus = ({whenFocus, whenBlur}={}) => {
  * Returns sent value after delay time
  * @param value
  * @param delay
- * @returns {unknown}
+ * @returns {any}
  */
 export const useDebounce = (value, delay) => {
-  const [debounceValue, setDebounceValue] = useState(value)
+  const [debouncedValue, setDebouncedValue] = useState(value)
   useEffect(() => {
-    const handler = setTimeout(() => setDebounceValue(debounceValue), delay)
+    const handler = setTimeout(() => {setDebouncedValue(value)}, delay)
     return () => clearTimeout(handler)
-  }, [debounceValue, delay])
-  return debounceValue
+  }, [value, delay])
+  return debouncedValue
 }
 
 /**

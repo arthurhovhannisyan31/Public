@@ -1,4 +1,107 @@
+// блок меню согласно Menus
+// onfocus blue bottom border
+
+
+@import "./src/styles/consts";
 
 .select-default{
+  width: $block-default-width;
+  height: 100%;
+  min-height: $block-default-height;
+  box-sizing: border-box;
+  border-bottom: 2px solid $border-color;
+  &.focus {
+    border-color: $color-main;
+  }
+  &__label{
+    display: flex;
+    padding-left: 5px;
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+    color: $border-color;
+  }
 
+  &__container {
+    height: 100%;
+  }
+
+  & .__control{
+    border: none;
+    height: calc(100% - 1px);
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    outline: none;
+    box-shadow: none;
+  }
+  & .__indicator-separator{
+    display: none;
+  }
+  & .__menu{
+    top: calc(100% + 2px);
+    margin: 0;
+    box-shadow: $shadow-dropdown;
+    background: $color-white;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  & .__menu-container{
+    max-height: 200px;
+  }
+  & .__option{
+    display: flex;
+    align-items: center;
+    background-color: $color-white;
+    height: $block-default-height;
+    &:not(:last-child){
+      vertical-align: center;
+      border-bottom: 1px solid $border-color;
+    }
+  }
+  & .__option--is-focused{
+    background-color: $color-main-lightest;
+  }
+  & .__option--is-selected{
+    background-color: $color-main-lighter;
+  }
+  &.value{
+    & .__dropdown-indicator{
+      display: none;
+    }
+  }
+  &__clearIndicator{
+    & > div{
+      height: 24px;
+    }
+    cursor: pointer;
+    & svg{
+      & path {
+        fill: $color-black;
+        opacity: 0.54;
+      }
+      & circle {
+        fill: $color-black;
+        opacity: 0.12;
+      }
+    }
+    &:hover svg{
+      & path {
+        fill: $color-black;
+        opacity: 0.6;
+      }
+      & circle {
+        fill: $color-black;
+        opacity: 0.16;
+      }
+    }
+    &:active svg{
+      & path {
+        fill: $color-black;
+        opacity: 0.8;
+      }
+      & circle {
+        fill: $color-black;
+        opacity: 0.25;
+      }
+    }
+  }
 }

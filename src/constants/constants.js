@@ -54,6 +54,21 @@ const CONSTS = {
         }
       }
 
+    },
+    OPTIONS: {
+      DEFAULT_SELECT:  [
+        { value: 'red', label: 'Red' },
+        { value: 'orange', label: 'Orange' },
+        { value: 'yellow', label: 'Yellow' },
+        { value: 'green', label: 'Green' },
+        { value: 'blue', label: 'Blue' },
+        { value: 'purple', label: 'purple' },
+        { value: 'purple', label: 'purple' },
+        { value: 'purple', label: 'purple' },
+        { value: 'purple', label: 'purple' },
+        { value: 'purple', label: 'purple' },
+        { value: 'purple', label: 'purple' },
+      ]
     }
   }
 }

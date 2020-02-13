@@ -24,15 +24,16 @@ $color-urgent: #ffd204; // secondary scenarios and not critical warnings
 $color-positive: #29CC97; // main scenarios (approval, add, etc.)
 $color-black: #000; // regular black
 $color-white: #fff; // text, background
+$color-grey: #ccc;
 $color-critical: #ff0000; // critical warnings, errors, small interface marks (new message, ets.)
 $color-inactive: #F0F1F7; // default inactive
 
-$color-main-lighter: transparentize($color-main, 0.15);
-$color-main-lightest: transparentize($color-main, 0.2);
+$color-main-lighter: transparentize($color-main, 0.25);
+$color-main-lightest: transparentize($color-main, 0.5);
 
 $color-secondary-lighter: transparentize($color-secondary, 0.15);
 $color-secondary-lightest: transparentize($color-secondary, 0.2);
-
+$bla:rgba(66, 165, 245, 0.85);
 // main colors night mode
 // empty
 
@@ -76,10 +77,6 @@ $color-line-grey-medium: #98A2A8; // interface border lines, inactive text
 // empty
 
 // shadows
-$shadow-btn: 0px 4px 8px rgba(93, 108, 116, 0.2); // any action shadow
-$shadow-modal: 2px 2px 20px rgba(0, 0, 0, 0.12); // modal window shadows, with control elements
-$shadow-play_btn: 0px 16px 24px rgba(129, 118, 255, 0.2); // main scenario shadow
-$shadow-cards: 0px 2px 4px rgba(0, 0, 0, 0.1); // cards, popups, lists, dropdown shadow, without control elements
 
 $shadow-card-floating: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
 $shadow-card-hover: 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2);
@@ -88,3 +85,10 @@ $shadow-dropdown: 0px 9px 12px rgba(0, 0, 0, 0.14), 0px 3px 16px rgba(0, 0, 0, 0
 $shadow-btn-default: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
 $shadow-btn-hover: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
 $shadow-btn-hover: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
+
+$shadow-nav-default: 0px 9px 18px rgba(0, 0, 0, 0.18), 0px 6px 5px rgba(0, 0, 0, 0.24);
+
+
+// components height and weight
+$block-default-height: 40px;
+$block-default-width: 280px

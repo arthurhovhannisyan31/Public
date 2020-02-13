@@ -10,20 +10,21 @@ const InputReadOnly = (
   { tag,
     placeholder,
     value,
-    readOnly
+    isDisabled,
+    inputId
   }) => {
 
   const Tag = tag;
 
   return (
     <Tag
-      id='input-default'
+      id={inputId}
       className='input-default__field'
       aria-label='input default'
       type="text"
       placeholder={placeholder}
       value={value}
-      readOnly={readOnly}
+      readOnly={isDisabled}
     />
   )
 }

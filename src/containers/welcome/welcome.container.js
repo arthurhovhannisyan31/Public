@@ -4,19 +4,25 @@ import React from 'react'
 // local containers
 // local components
 import InputStorybook from "../../components/ui/input/input.storybook"
+import ButtonStorybook from "../../components/ui/button/button.storybook"
+import SelectStorybook from "../../components/ui/select/select.storybook"
 // local constants
 // local styles
 import './welcome.style.scss'
 
-
 const Welcome = () => {
 
   return (
-    <div className='welcome'>
-      <span>span</span>
+    <div
+      className='welcome'
+    >
+      <ButtonStorybook/>
       <br/>
       <br/>
       <InputStorybook/>
+      <br/>
+      <br/>
+      <SelectStorybook/>
     </div>
   )
 }

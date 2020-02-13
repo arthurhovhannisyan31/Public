@@ -16,9 +16,11 @@ const InputDefault = (
     errorText,
     helperText,
     contentLength,
+    showCounter,
     maxLength,
     onChange,
     clearAll,
+    inputId,
   }, _ref) => {
 
   const Tag = tag;
@@ -26,7 +28,6 @@ const InputDefault = (
   return (
     <>
       <Tag
-        id='input-default'
         className='input-default__field'
         aria-label='input default'
         type="text"
@@ -34,6 +35,7 @@ const InputDefault = (
         value={value}
         onChange={validation}
         ref={_ref}
+        id={inputId}
       />
       <div className='input-default__extra-info'>
         <div className='input-default__extra-info_left'>
@@ -43,7 +45,7 @@ const InputDefault = (
           }
         </div>
         <div className='input-default__extra-info_right'>
-          {maxLength && <span className='input-default__counter'>{contentLength}/{maxLength}</span>}
+          {showCounter && <span className='input-default__counter'>{contentLength}/{maxLength}</span>}
         </div>
       </div>
       <button
@@ -62,7 +64,5 @@ const InputDefault = (
     </>
   )
 }
-
-// todo test forward red
 
 export default forwardRef(InputDefault)

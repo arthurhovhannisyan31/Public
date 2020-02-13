@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useReducer} from 'react'
 import PropTypes from 'prop-types'
 import ClassNames from 'classnames'
 // local services & data store
-import {validateText, useFocus} from "../../../services/utilities.service"
+import {validateText, useFocus, randomString, useDebounce} from "../../../services/utilities.service"
 // local containers
 // local components
 import InputReadOnly from './input.read-only.component'
@@ -11,6 +11,12 @@ import InputDefault from './input.default.component'
 // local constants
 // local styles
 import './input.style.scss'
+
+/**
+ * Random unic id
+ * @type {string}
+ */
+const randId = randomString()
 
 /**
  * Declare component reducer
@@ -42,41 +48,43 @@ const inputReducer = (state, action) => {
  * Input main component
  * @param value - sets component visible value
  * @param onChange - returns value from user input
+ * @param isDebounce - returns debounced value if true
  * @param defaultValue - used set value on component mount and reset
  * @param placeholder - placeholder on value absence
  * @param extraClassName
  * @param regExp - regExp for validate function, used to set error param
  * @param regExpStrict - prevents typing invalid characters into field
- * @param readOnly - set readonly mode
+ * @param isDisabled - set readonly mode
  * @param reset - used to set default value
  * @param maxLength - used to count length left param, set error when exceeded
  * @param maxLengthStrict - prevents typing when limit exceeded
  * @param label - sets label for field
- * @param clearable - displays clear button
+ * @param isClearable - displays clear button
  * @param errorText - used to display text on error
  * @param helperText - used to display helper text
- * @param showCount - used to display current/left caracters count
- * @param multiline - used to replace input tah with textarea
+ * @param isMultiline - used to replace input tah with textarea
  * @returns {*}
  * @constructor
  */
 const Input = (
   { value,
     onChange,
+    onChangeDebounced,
     defaultValue,
     placeholder,
     extraClassName,
     regExp,
     regExpStrict,
-    readOnly,
+    isDisabled,
     reset,
     maxLength,
     maxLengthStrict,
+    showCounter,
     label,
-    clearable,
+    isClearable,
     errorText,
     helperText,
-    multiline
+    isMultiline,
   }) => {
 
   /**
@@ -115,6 +123,7 @@ const Input = (
     const validDefaultValue = typeof defaultValue === 'string'
     if (validDefaultValue && defaultValue || reset) {
       onChange(defaultValue)
+      clearAll()
     }
   }, [defaultValue, reset, onChange])
 
@@ -179,37 +188,44 @@ const Input = (
   const ref = useRef(null)
 
   const classNames = ClassNames({
-    label,
-    clearable,
+    isClearable,
     focus,
+    label,
     error,
     [`${extraClassName}`]: extraClassName,
-    multiline,
+    isMultiline,
     limitExceeded,
-    readOnly
+    isDisabled
   });
 
-  const Tag = multiline ? 'textarea' : 'input'
+  const Tag = isMultiline ? 'textarea' : 'input'
+
+  /**
+   * Return debounced value of input
+   * @type {any}
+   */
+  const debouncedValue = useDebounce(value, 500)
+
+  useEffect(() => {
+    if (debouncedValue) onChangeDebounced(debouncedValue)
+  }, [debouncedValue])
 
   return (
     <div
       className={`input-default ${classNames}`}
-      onFocus={!readOnly ? onFocus : undefined}
-      onBlur={!readOnly ? onBlur : undefined}
-      /* eslint-disable-next-line react/jsx-props-no-spreading */
+      onFocus={!isDisabled ? onFocus : undefined}
+      onBlur={!isDisabled ? onBlur : undefined}
     >
-      <label
-        className='input-default__label'
-        htmlFor="input-default"
-      >
-        <span>{label}</span>
+      <label htmlFor={randId}>
+        {label && <span className='input-default__label'>{label}</span>}
       </label>
-      {readOnly
+      {isDisabled
        ? <InputReadOnly
           placeholder={placeholder}
           value={value}
-          readOnly={readOnly}
+          isDisabled={isDisabled}
           tag={Tag}
+          inputId={randId}
         />
         : <InputDefault
             tag={Tag}
@@ -221,9 +237,11 @@ const Input = (
             helperText={helperText}
             contentLength={contentLength}
             maxLength={maxLength}
+            showCounter={showCounter}
             onChange={onChange}
             clearAll={clearAll}
             ref={ref}
+            inputId={randId}
         />
       }
     </div>
@@ -233,39 +251,43 @@ const Input = (
 Input.defaultProps = {
   value: '',
   onChange: ()=>{},
+  onChangeDebounced: ()=>{},
   defaultValue: '',
   placeholder: '',
   extraClassName: '',
   regExp: null,
   regExpStrict: false,
-  readOnly: false,
+  isDisabled: false,
   reset: false,
   maxLength: 200,
   maxLengthStrict: false,
+  showCounter: false,
   label: '',
-  clearable: false,
+  isClearable: false,
   errorText: '',
   helperText: '',
-  multiline: false,
+  isMultiline: false,
 }
 
 Input.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
+  onChangeDebounced: PropTypes.func,
   defaultValue: PropTypes.string,
   placeholder: PropTypes.string,
   extraClassName: PropTypes.string,
   regExp: PropTypes.instanceOf(RegExp),
   regExpStrict: PropTypes.bool,
-  readOnly: PropTypes.bool,
+  isDisabled: PropTypes.bool,
   reset: PropTypes.bool,
   maxLength: PropTypes.number,
   maxLengthStrict: PropTypes.bool,
+  showCounter: PropTypes.bool,
   label: PropTypes.string,
-  clearable: PropTypes.bool,
+  isClearable: PropTypes.bool,
   errorText: PropTypes.string,
   helperText: PropTypes.string,
-  multiline: PropTypes.bool,
+  isMultiline: PropTypes.bool,
 }
 
 export default Input

@@ -1,0 +1,64 @@
+@import "./src/styles/consts";
+
+.Inline3Dots-default{
+  color: $color-grey;
+  display: flex;
+  align-self: center;
+  font-size: 4px;
+  line-height: 1;
+  margin-right: 4px;
+  text-align: center;
+  vertical-align: middle;
+  box-sizing: border-box;
+  padding: 8px;
+  transition: all 150ms ease 0s;
+
+
+  &__dot1{
+    background-color: currentcolor;
+    display: inline-block;
+    height: 1em;
+    vertical-align: top;
+    width: 1em;
+    animation: 1s ease-in-out 0ms infinite normal none running animation-3-dots;
+    border-radius: 1em;
+  }
+  &__dot2{
+    background-color: currentcolor;
+    display: inline-block;
+    margin-left: 1em;
+    height: 1em;
+    vertical-align: top;
+    width: 1em;
+    animation: 1s ease-in-out 160ms infinite normal none running animation-3-dots;
+    border-radius: 1em;
+  }
+  &__dot3{
+    background-color: currentcolor;
+    display: inline-block;
+    margin-left: 1em;
+    height: 1em;
+    vertical-align: top;
+    width: 1em;
+    animation: 1s ease-in-out 320ms infinite normal none running animation-3-dots;
+    border-radius: 1em;
+  }
+}
+
+@-webkit-keyframes animation-3-dots {
+  0%, 80%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+@keyframes animation-3-dots {
+  0%, 80%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}

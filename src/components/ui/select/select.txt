@@ -1,6 +1,0 @@
-default dropdown only icon dropdown
-search true - input true - icon search
-
-dropdown list width = input field width
-
-
