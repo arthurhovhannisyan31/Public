@@ -16,9 +16,7 @@ const Welcome = () => {
     >
       <ButtonStorybook/>
       <br/>
-      <br/>
       <InputStorybook/>
-      <br/>
       <br/>
       <SelectStorybook/>
     </div>

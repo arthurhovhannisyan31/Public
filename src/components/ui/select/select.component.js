@@ -11,8 +11,32 @@ import {ClearIndicator, DropdownIndicator, SearchIndicator,} from './components'
 // local constants & styles
 import './select.style.scss'
 
+/**
+ * Random string for id
+ * @type {string}
+ */
 const randId = randomString()
 
+/**
+ * Select default component
+ * @param value
+ * @param defaultValue
+ * @param placeholder
+ * @param onChange
+ * @param options
+ * @param autoFocus
+ * @param className
+ * @param classNamePrefix
+ * @param isDisabled
+ * @param isMulti
+ * @param isSearchable
+ * @param isLoading
+ * @param isClearable
+ * @param onInputChange
+ * @param label
+ * @returns {*}
+ * @constructor
+ */
 const SelectDefault = (
   { value,
     defaultValue,
@@ -32,12 +56,24 @@ const SelectDefault = (
   }) => {
 
   const [focus, {onFocus, onBlur}] = useFocus()
-
   const classNames = ClassNames({
-    value,
     focus,
   });
 
+  /**
+   * Returns indicator for select component
+   */
+  const searchDropdownIndicatorTernary = isSearchable
+    ? SearchIndicator
+    : DropdownIndicator
+
+  const indicator = isClearable
+    ? !value && searchDropdownIndicatorTernary
+    : searchDropdownIndicatorTernary
+
+  /**
+   * Returns dropdown menu wrapped with custom scroll
+   */
   const customMenu = ({children}) => (
     <CustomScroll>
       <div className='__menu-container'
@@ -57,38 +93,31 @@ const SelectDefault = (
     >
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label htmlFor={randId}>
-        <span className='select-default__label'>{label}</span>
+        {label && <span className='select-default__label'>{label}</span>}
       </label>
-      <div>
-        <Select
-          ref={ref}
-          inputId={randId}
-          autoFocus={autoFocus}
-          className={`select-default__container ${className}`}
-          classNamePrefix={`select ${classNamePrefix}`}
-          isDisabled={isDisabled}
-          isMulti={isMulti}
-          isSearchable={isSearchable}
-          onChange={onChange}
-          options={options}
-          placeholder={placeholder}
-          value={value}
-          defaultValue={defaultValue}
-          isLoading={isLoading}
-          isClearable={isClearable}
-          onInputChange={onInputChange}
-          components={{
-            ClearIndicator,
-            DropdownIndicator: (
-              isSearchable
-                ? SearchIndicator
-                : DropdownIndicator
-            ),
-            MenuList: props =>
-              customMenu(props)
-          }}
-        />
-      </div>
+      <Select
+        ref={ref}
+        inputId={randId}
+        autoFocus={autoFocus}
+        className={`select-default__container ${className}`}
+        classNamePrefix={`select ${classNamePrefix}`}
+        isDisabled={isDisabled}
+        isMulti={isMulti}
+        isSearchable={isSearchable}
+        onChange={onChange}
+        options={options}
+        placeholder={placeholder}
+        value={value}
+        defaultValue={defaultValue}
+        isLoading={isLoading}
+        isClearable={isClearable}
+        onInputChange={onInputChange}
+        components={{
+          ClearIndicator,
+          DropdownIndicator: indicator,
+          MenuList: props => customMenu(props)
+        }}
+      />
     </div>
   )
 }

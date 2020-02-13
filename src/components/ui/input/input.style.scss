@@ -4,17 +4,31 @@
   display: flex;
   flex-flow: column;
   position: relative;
+  width: $block-default-width;
+  max-width: $block-default-width;
 
   &__field {
-    color: $color-black;
-    padding: 0 8px;
+    width: 100%;
+    color: $color-black-high-emphasis;
+
     height: $block-default-height;
-    width: $block-default-width;
     box-sizing: border-box;
     border: none;
     border-top-right-radius: $border-radius-main;
     border-top-left-radius: $border-radius-main;
-    border-bottom: 2px solid $border-color;
+    border-bottom: 2px solid $color-gray-divider;
+    &::placeholder{
+      color: $color-black-disabled;
+    }
+    &_container {
+      position: relative;
+    }
+  }
+  & input{
+    padding: 0 8px;
+  }
+  & textarea {
+    padding: 8px 8px 0;
   }
 
   &__clear{
@@ -26,48 +40,47 @@
     height: 24px;
     & svg{
       & path {
-        fill: $color-black;
+        fill: $color-black-high-emphasis;
         opacity: 0.54;
       }
       & circle {
-        fill: $color-black;
+        fill: $color-black-high-emphasis;
         opacity: 0.12;
       }
     }
   }
   &__extra-info{
-    position: absolute;
-    left: 5px;
-    bottom: -18px;
     display: flex;
     font-size: 0.8rem;
-    color: $border-color;
+    color: $color-black-disabled;
     justify-content: space-between;
     width: calc(100% - 5px);
+    margin-top: 4px;
+    padding-left: 8px;
   }
   &.isClearable{
     & .input-default__field {
-      padding-right: 40px;
+      padding-right: 48px;
     }
     & .input-default__clear{
       display: block;
       &:hover svg{
         & path {
-          fill: $color-black;
+          fill: $color-black-high-emphasis;
           opacity: 0.6;
         }
         & circle {
-          fill: $color-black;
+          fill: $color-black-high-emphasis;
           opacity: 0.16;
         }
       }
       &:active svg{
         & path {
-          fill: $color-black;
+          fill: $color-black-high-emphasis;
           opacity: 0.8;
         }
         & circle {
-          fill: $color-black;
+          fill: $color-black-high-emphasis;
           opacity: 0.25;
         }
       }
@@ -75,21 +88,18 @@
   }
   &.label{
     & .input-default{
-      &__clear{
-        transform: translate(0, -14%);
-      }
       &__label {
         display: flex;
-        padding-left: 5px;
+        padding-left: 8px;
         font-size: 0.8rem;
         margin-bottom: 4px;
-        color: $border-color;
+        color: $color-black-disabled;
       }
     }
   }
   &.focus{
     & .input-default__field {
-      border-bottom: 2px solid $color-main;
+      border-bottom: 2px solid $color-primary;
     }
   }
   &.error{
@@ -124,12 +134,16 @@
         max-height: 114px;
         resize: none;
       }
+      &__clear{
+        right: 18px;
+      }
     }
   }
   &.isDisabled{
     & .input-default {
       &__field {
-        color: $text-inactive-main;
+        color: $color-black-disabled;
+        background: $color-control-inactive;
       }
     }
   }

@@ -6,7 +6,7 @@
   display: flex;
   flex-flow: column;
   flex: auto;
-  max-width: $max-width;
+  max-width: $width-desktop-FHD;
   margin: 0 auto;
 
   @include media-desktop-lg {

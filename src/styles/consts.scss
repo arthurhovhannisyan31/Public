@@ -7,9 +7,8 @@ $font-weight-bold: 600;
 $font-size: 16px;
 
 // widths
-$max-width: 1920px;
-// media
 $width-desktop-lg: 2560px; // large-desktop
+$width-desktop-FHD: 1920px; // full HD
 $width-desktop-md: 1599px; // medium-desktop
 $width-tablet-lg: 1199px; // large-tablet
 $width-tablet-md: 959px; // medium-tablet
@@ -17,76 +16,57 @@ $width-mobile-lg: 639px; // large-mobile
 $width-mobile-md: 479px; // medium-mobile
 
 // colors
-// main colors
-$color-main: #42A5F5; // main interface elements (logos, icons, etc.)
+$color-primary: #2196F3;
+$color-primary-lighter: transparentize($color-primary, 0.25);
+$color-primary-lightest: transparentize($color-primary, 0.5);
 $color-secondary: #E3F2FD;
-$color-urgent: #ffd204; // secondary scenarios and not critical warnings
-$color-positive: #29CC97; // main scenarios (approval, add, etc.)
-$color-black: #000; // regular black
-$color-white: #fff; // text, background
-$color-grey: #ccc;
-$color-critical: #ff0000; // critical warnings, errors, small interface marks (new message, ets.)
-$color-inactive: #F0F1F7; // default inactive
-
-$color-main-lighter: transparentize($color-main, 0.25);
-$color-main-lightest: transparentize($color-main, 0.5);
-
 $color-secondary-lighter: transparentize($color-secondary, 0.15);
 $color-secondary-lightest: transparentize($color-secondary, 0.2);
-$bla:rgba(66, 165, 245, 0.85);
-// main colors night mode
-// empty
+$color-urgent: #ffd204;
+$color-positive: #29CC97;
+$color-critical: #ff0000;
+$color-inactive: #F0F1F7;
+$color-black: #000000;
+$color-grey: #CCCCCC;
 
-// special colors
-$color-chart-minor: lighten($color-main, 20%);
-$color-chart-major: lighten($color-main, 10%);
-// special colors  night mode
-// empty
-
-// text
-$text-inactive-main: #9E9E9E;
-$text-inactive-secondary: rgba(255, 255, 255, 0.5);
+$color-black-inactive: rgba(0, 0, 0, 0.54);
+$color-black-disabled: #9E9E9E;
+$color-black-high-emphasis: rgba(0, 0, 0, 0.87);
+$color-black-medium-emphasis: rgba(0, 0, 0, 0.6);
+$color-gray-dark: rgba(0, 0, 0, 0.24);
+$color-gray-inactive: #D7D5D5;
+$color-white-disabled: rgba(255, 255, 255, 0.5);
+$color-white-high-emphasis: #FFFFFF;
+$color-white--medium-emphasis: rgba(255, 255, 255, 0.7);
+$color-gray-divider: #E5E5E5;
 
 // background colors
-$bg-main: #FBFCFD; // background main
-$bg-card: #f0f0f0; // background of all components
-$bg-text-block: #e8edee; // background to emphasize text block
-$bg-card-interact: #4b5860; // background for components with interaction (scroll, drag, etc.)
-$bg-card-semi-dark: #98A2A8;
-$bg-card-dark: #363b3d; // dark background for components with dark colors
+$color-bg-main: #FBFCFD;
+$color-bg-light: #FAFAFA;
 
-$bg-inactive-main: #D7D5D5;
-$bg-inactive-secondary: #9E9E9E;
-// background colors  night mode
-// empty
+// overlay color
+$color-hover-overlay-black: rgba(0, 0, 0, 0.08);
+$color-hover-overlay-black-light: rgba(0, 0, 0, 0.04);
+
+// controls color
+$color-control-inactive: rgba(0, 0, 0, 0.04);
 
 // borders
-$border-color: #98A2A8;
-$border-main: 1px solid $border-color;
+$border-main: 1px solid $color-gray-divider;
 $border-radius-main: 4px;
 $border-radius-100: 100px;
 $border-radius-round: 50%;
 
-// lines
-$color-cell-light-minor: #E9ECF2; // content rows and colors background
-$color-cell-light-medium: #E9ECF2; // main rows and columns background
-$color-line-grey_minor: #D9E2E7; // interface border lines, inactive text
-$color-line-grey-medium: #98A2A8; // interface border lines, inactive text
-
-// main text, lines colors  night mode
-// empty
-
 // shadows
-
 $shadow-card-floating: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
 $shadow-card-hover: 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2);
 $shadow-dropdown: 0px 9px 12px rgba(0, 0, 0, 0.14), 0px 3px 16px rgba(0, 0, 0, 0.12), 0px 5px 6px rgba(0, 0, 0, 0.2);
 
-$shadow-btn-default: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
+$shadow-btn-default: 0px 2px 2px $color-gray-dark, 0px 0px 2px rgba(0, 0, 0, 0.12);
 $shadow-btn-hover: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 1px 5px rgba(0, 0, 0, 0.2);
 $shadow-btn-hover: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
 
-$shadow-nav-default: 0px 9px 18px rgba(0, 0, 0, 0.18), 0px 6px 5px rgba(0, 0, 0, 0.24);
+$shadow-nav-default: 0px 9px 18px rgba(0, 0, 0, 0.18), 0px 6px 5px $color-gray-dark;
 
 
 // components height and weight

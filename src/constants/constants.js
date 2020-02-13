@@ -57,17 +57,17 @@ const CONSTS = {
     },
     OPTIONS: {
       DEFAULT_SELECT:  [
-        { value: 'red', label: 'Red' },
-        { value: 'orange', label: 'Orange' },
-        { value: 'yellow', label: 'Yellow' },
-        { value: 'green', label: 'Green' },
-        { value: 'blue', label: 'Blue' },
-        { value: 'purple', label: 'purple' },
-        { value: 'purple', label: 'purple' },
-        { value: 'purple', label: 'purple' },
-        { value: 'purple', label: 'purple' },
-        { value: 'purple', label: 'purple' },
-        { value: 'purple', label: 'purple' },
+        { value: 'one', label: 'One' },
+        { value: 'two', label: 'Two'},
+        { value: 'three', label: 'Three' },
+        { value: 'four', label: 'Four' },
+        { value: 'five', label: 'Five' },
+        { value: 'six', label: 'Six' },
+        { value: 'seven', label: 'Seven' },
+        { value: 'eight', label: 'Eight' },
+        { value: 'nine', label: 'Nine' },
+        { value: 'ten', label: 'ten' },
+        { value: 'eleven', label: 'eleven' },
       ]
     }
   }
