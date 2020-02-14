@@ -55,6 +55,14 @@ const SelectStorybook = () => {
         value={val4}
         onChange={setVal4}
       />
+      <br/>
+      <p>Select default options value onchange</p>
+      <SelectDefault
+        options={CONSTS.COMPONENTS.OPTIONS.DEFAULT_SELECT}
+        isDisabled
+        value={val4}
+        onChange={setVal4}
+      />
       <div><hr/><br/></div>
     </div>
   )

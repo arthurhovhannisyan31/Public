@@ -7,7 +7,7 @@ import Icon from "../../icons/icon.component"
 
 const ClearIndicator = props => {
   const {
-    children=<Icon label='clear'/>,
+    children=<Icon label='clear-light'/>,
     getStyles,
     innerProps: {ref, ...restInnerProps}
   } = props

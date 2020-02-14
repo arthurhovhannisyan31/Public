@@ -1,6 +1,5 @@
 // external libraries
 import React, {forwardRef} from 'react'
-import CustomScroll from "react-custom-scroll"
 // local services & data store
 // local containers & components
 import Icon from "../icons/icon.component"
@@ -49,7 +48,7 @@ const InputDefault = (
           }}
         >
           <Icon
-            label='clear'
+            label='clear-light'
           />
         </button>
       </div>

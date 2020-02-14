@@ -12,12 +12,6 @@ import {ClearIndicator, DropdownIndicator, SearchIndicator,} from './components'
 import './select.style.scss'
 
 /**
- * Random string for id
- * @type {string}
- */
-const randId = randomString()
-
-/**
  * Select default component
  * @param value
  * @param defaultValue
@@ -54,6 +48,12 @@ const SelectDefault = (
     onInputChange,
     label,
   }) => {
+
+  /**
+   * Random string for id
+   * @type {string}
+   */
+  const randId = randomString()
 
   const [focus, {onFocus, onBlur}] = useFocus()
   const classNames = ClassNames({

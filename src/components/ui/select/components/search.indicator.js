@@ -3,8 +3,8 @@ import React from 'react'
 import {components} from "react-select"
 // local services & data store
 // local containers & components
-// local constants & styles
 import Icon from "../../icons/icon.component"
+// local constants & styles
 
 const SearchIndicator = props => {
 

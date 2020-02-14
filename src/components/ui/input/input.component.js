@@ -11,12 +11,6 @@ import InputDefault from './input.default.component'
 import './input.style.scss'
 
 /**
- * Random unic id
- * @type {string}
- */
-const randId = randomString()
-
-/**
  * Declare component reducer
  * @param state
  * @param action
@@ -84,6 +78,12 @@ const Input = (
     helperText,
     isMultiline,
   }) => {
+
+  /**
+   * Random uniq id
+   * @type {string}
+   */
+  const randId = randomString()
 
   /**
    * Declare component initial state

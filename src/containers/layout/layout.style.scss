@@ -9,16 +9,16 @@
   max-width: $width-desktop-FHD;
   margin: 0 auto;
 
-  @include media-desktop-lg {
-    padding: 0 48px;
-  }
-  @include media-tablet-lg {
-    padding: 0 40px;
-  }
-  @include media-tablet-md {
-    padding: 0 32px;
-  }
-  @include media-mobile-md {
-    padding: 0 20px;
-  }
+  //@include media-desktop-lg {
+  //  padding: 0 48px;
+  //}
+  //@include media-tablet-lg {
+  //  padding: 0 40px;
+  //}
+  //@include media-tablet-md {
+  //  padding: 0 32px;
+  //}
+  //@include media-mobile-md {
+  //  padding: 0 20px;
+  //}
 }
