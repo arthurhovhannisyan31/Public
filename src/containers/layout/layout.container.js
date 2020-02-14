@@ -8,6 +8,11 @@ import Main from '../../components/layout/main'
 // local constants & styles
 import './layout.style.scss'
 
+// header > nav
+// article > section
+// aside
+// footer
+
 const Layout = ({children}) => {
   return (
     <div className='layout'>

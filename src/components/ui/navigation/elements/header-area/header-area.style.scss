@@ -1,0 +1,17 @@
+
+.header-area-default{
+  &__container{
+    display: flex;
+    flex-flow: column;
+
+    &_avatar{
+
+    }
+    &_info{
+
+    }
+    &_add-info{
+
+    }
+  }
+}

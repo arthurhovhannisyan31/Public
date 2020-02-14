@@ -4,6 +4,7 @@ import React from 'react'
 // local containers & components
 // local constants & styles
 import './welcome.style.scss'
+import {NavigationMenuMock} from "../../components/ui/navigation/components/navigation-menu"
 
 const Welcome = () => {
 
@@ -11,7 +12,9 @@ const Welcome = () => {
     <div
       className='welcome'
     >
-      <span>hola</span>
+      <NavigationMenuMock
+
+      />
     </div>
   )
 }
