@@ -2,12 +2,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // local services & data store
-// local containers
-// local components
+// local containers & components
 import Icon from "../../icons/icon.component"
-// local constants
+// local constants & styles
 import CONSTS from "../../../../constants"
-// local styles
 import './radio.control.style.scss'
 
 const Radio = (
@@ -20,7 +18,7 @@ const Radio = (
     <button
       type='button'
       onClick={() => !isActive && handleClick(label)}
-      className='radio-default'
+      className='radio'
     >
       {isActive
         ? <Icon
@@ -32,7 +30,7 @@ const Radio = (
         />
       }
       <span
-        className='radio-default__label'
+        className='radio__label'
       >
         {label}
       </span>

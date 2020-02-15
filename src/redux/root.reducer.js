@@ -1,10 +1,8 @@
 // external libraries
 import { combineReducers } from 'redux';
 // local services & data store
-// local containers
-// local components
-// local constants
-// local styles
+// local containers & components
+// local constants & styles
 
 const rootReducer = combineReducers({});
 

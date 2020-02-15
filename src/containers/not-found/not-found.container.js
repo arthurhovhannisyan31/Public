@@ -2,13 +2,10 @@
 import React, { useEffect } from 'react'
 // local services & data store
 import {useRouter} from "../../services/utilities.service"
-// local containers
-// local components
+// local containers & components
 import { NotFound as NotFoundComponent } from '../../components/error'
-// local constants
+// local constants & styles
 import CONSTS from "../../constants"
-// local styles
-
 
 const NorFound = () => {
   const router =  useRouter()

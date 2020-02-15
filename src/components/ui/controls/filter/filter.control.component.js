@@ -2,11 +2,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 // local services & data store
-// local containers
-// local components
+// local containers & components
 import Icon from "../../icons/icon.component"
-// local constants
-// local styles
+// local constants & styles
 import './filter.control.style.scss'
 
 const Filter = (
@@ -17,7 +15,7 @@ const Filter = (
   return (
     <button
       type='button'
-      className='filter-default'
+      className='filter'
     >
       { isActive
         ? <Icon
@@ -28,7 +26,7 @@ const Filter = (
       />
       }
       <span
-        className='filter-default__label'
+        className='filter__label'
       >
         {label}
       </span>

@@ -1,14 +1,10 @@
 // external libraries
 import React from 'react'
 // local services & data store
-// local containers
-// local components
-import InputStorybook from "../../components/ui/input/input.storybook"
-import ButtonStorybook from "../../components/ui/button/button.storybook"
-import SelectStorybook from "../../components/ui/select/select.storybook"
-// local constants
-// local styles
+// local containers & components
+// local constants & styles
 import './welcome.style.scss'
+import {NavigationMenuMock} from "../../components/ui/navigation/components/navigation-menu"
 
 const Welcome = () => {
 
@@ -16,13 +12,9 @@ const Welcome = () => {
     <div
       className='welcome'
     >
-      <ButtonStorybook/>
-      <br/>
-      <br/>
-      <InputStorybook/>
-      <br/>
-      <br/>
-      <SelectStorybook/>
+      <NavigationMenuMock
+
+      />
     </div>
   )
 }

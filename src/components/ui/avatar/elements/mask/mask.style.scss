@@ -1,0 +1,13 @@
+@import "./src/styles/utilities";
+
+.mask{
+  &__container{
+    height: inherit;
+    & > img {
+      height: inherit;
+    }
+    @include flex-center;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}

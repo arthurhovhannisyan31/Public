@@ -2,11 +2,9 @@
 import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 // local services & data store
-// local containers
-// local components
-// local constants
+// local containers & components
+// local constants & styles
 import CONSTS from "../constants"
-// local styles
 
 const isLoggedIn = true
 

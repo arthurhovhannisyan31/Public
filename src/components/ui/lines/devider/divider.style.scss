@@ -1,0 +1,6 @@
+@import "./src/styles/consts";
+
+.divider{
+  width: 100%;
+  border-top: 1px solid $color-gray-divider;
+}

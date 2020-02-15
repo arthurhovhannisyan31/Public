@@ -4,19 +4,11 @@ import PropTypes from 'prop-types'
 import ClassNames from 'classnames'
 // local services & data store
 import {validateText, useFocus, randomString, useDebounce} from "../../../services/utilities.service"
-// local containers
-// local components
+// local containers & components
 import InputReadOnly from './input.read-only.component'
 import InputDefault from './input.default.component'
-// local constants
-// local styles
+// local constants & styles
 import './input.style.scss'
-
-/**
- * Random unic id
- * @type {string}
- */
-const randId = randomString()
 
 /**
  * Declare component reducer
@@ -86,6 +78,12 @@ const Input = (
     helperText,
     isMultiline,
   }) => {
+
+  /**
+   * Random uniq id
+   * @type {string}
+   */
+  const randId = randomString()
 
   /**
    * Declare component initial state
@@ -212,12 +210,12 @@ const Input = (
 
   return (
     <div
-      className={`input-default ${classNames}`}
+      className={`input ${classNames}`}
       onFocus={!isDisabled ? onFocus : undefined}
       onBlur={!isDisabled ? onBlur : undefined}
     >
       <label htmlFor={randId}>
-        {label && <span className='input-default__label'>{label}</span>}
+        {label && <span className='input__label'>{label}</span>}
       </label>
       {isDisabled
        ? <InputReadOnly

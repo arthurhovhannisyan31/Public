@@ -1,10 +1,8 @@
-// external libraries0h1
+// external libraries
 import React from 'react'
 // local services & data store
-// local containers
-// local components
-// local constants
-// local styles
+// local containers & components
+// local constants & styles
 import './footer.style.scss'
 
 const Footer = () => {

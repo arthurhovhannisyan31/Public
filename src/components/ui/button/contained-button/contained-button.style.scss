@@ -4,9 +4,9 @@
 .contained-button{
   @include flex-center();
   position: relative;
-  min-height: $block-default-height;
+  min-height: $block-height;
   max-width: 320px;
-  box-shadow: $shadow-btn-default;
+  box-shadow: $shadow-btn;
   border-radius: $border-radius-main;
   padding: 0 10px;
   font-weight: 600;
@@ -53,35 +53,35 @@
 }
 
 .contained-button.color-main{
-  color: $color-white;
-  background: $color-main;
+  color: $color-white-high-emphasis;
+  background: $color-primary;
 
   & path {
-    fill: $color-white;
+    fill: $color-white-high-emphasis;
     fill-opacity: 1;
   }
   &:hover{
-    background: $color-main-lighter;
+    background: $color-primary-lighter;
   }
   &::after{
-    background: $color-main-lightest;
+    background: $color-primary-lightest;
   }
   &:disabled {
-    color: $text-inactive-main;
-    background: $bg-inactive-main;
+    color: $color-white-disabled;
+    background: $color-black-disabled;
     & path {
-      fill: $text-inactive-main;
+      fill: $color-white-disabled;
       fill-opacity: 1;
     }
   }
 }
 
 .contained-button.color-secondary{
-  color: $color-main;
+  color: $color-primary;
   background: $color-secondary;
 
   & path {
-    fill: $color-main;
+    fill: $color-primary;
     fill-opacity: 1;
   }
   &:hover{
@@ -91,10 +91,10 @@
     background: $color-secondary-lightest;
   }
   &:disabled {
-    color: $text-inactive-secondary;
-    background: $bg-inactive-secondary;
+    color: $color-black-disabled;
+    background: $color-gray-inactive;
     & path {
-      fill: $text-inactive-secondary;
+      fill: $color-black-disabled;
       fill-opacity: 1;
     }
   }

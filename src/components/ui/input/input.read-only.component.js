@@ -1,10 +1,8 @@
 // external libraries
 import React from 'react'
 // local services & data store
-// local containers
-// local components
-// local constants
-// local styles
+// local containers & components
+// local constants & styles
 
 const InputReadOnly = (
   { tag,
@@ -19,7 +17,7 @@ const InputReadOnly = (
   return (
     <Tag
       id={inputId}
-      className='input-default__field'
+      className='input__field'
       aria-label='input default'
       type="text"
       placeholder={placeholder}

@@ -1,9 +1,13 @@
+// external libraries
 import React from 'react'
+// local services & data store
+// local containers & components
 import Icon from "../../icons/icon.component"
+// local constants & styles
 
 const ClearIndicator = props => {
   const {
-    children=<Icon label='clear'/>,
+    children=<Icon label='clear-light'/>,
     getStyles,
     innerProps: {ref, ...restInnerProps}
   } = props
@@ -12,7 +16,7 @@ const ClearIndicator = props => {
     <div
       /* eslint-disable-next-line react/jsx-props-no-spreading */
       {...restInnerProps}
-      className='select-default__clearIndicator'
+      className='select__clearIndicator'
       ref={ref}
       style={getStyles('clearIndicator', props)}
     >

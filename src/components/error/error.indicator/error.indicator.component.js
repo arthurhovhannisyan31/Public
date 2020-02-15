@@ -1,10 +1,8 @@
 // external libraries
 import React from "react"
 // local services & data store
-// local containers
-// local components
-// local constants
-// local styles
+// local containers & components
+// local constants & styles
 import "./error.Indicator.style.scss"
 
 const ErrorIndicatorComponent = () => {

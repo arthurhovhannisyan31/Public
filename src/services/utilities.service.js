@@ -2,12 +2,10 @@
 import React, { useState, useEffect, useMemo, useRef, useLayoutEffect } from 'react'
 import {Route, useParams, useLocation, useHistory, useRouteMatch} from "react-router-dom"
 // local services & data store
-// local containers
-// local components
+// local containers & components
 import PrivateRoute from "../routes/private-route"
+// local constants & styles
 import CONSTS from "../constants"
-// local constants
-// local styles
 
 /**
  * Returns object for using local storage methods
