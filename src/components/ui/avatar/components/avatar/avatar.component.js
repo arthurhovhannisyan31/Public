@@ -10,7 +10,7 @@ const Avatar = ({src = womanImg}) => {
     <Mask>
       {src
         ? <img src={src} alt="womanImg"/>
-        : <Icon label='avatar-default'/>
+        : <Icon label='avatar'/>
       }
     </Mask>
   )

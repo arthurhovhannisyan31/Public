@@ -12,10 +12,10 @@ const Mask = ({children, width, height}) => {
 
   return (
     <div
-      className='mask-default'
+      className='mask'
       style={style}
     >
-      <div className='mask-default__container'>
+      <div className='mask__container'>
         {children}
       </div>
     </div>
@@ -23,8 +23,8 @@ const Mask = ({children, width, height}) => {
 }
 
 Mask.defaultProps = {
-  width: 40,
-  height: 40
+  width: 50,
+  height: 50
 }
 
 Mask.propTypes = {

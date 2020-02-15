@@ -1,20 +1,56 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-import './navigation.menu.style.scss'
-import VerticalSheets from "../../elements/vertical-sheets"
 import {HeaderAreaMock} from "../../elements/header-area"
 import Divider from "../../../lines/devider"
+import {LineItem, VerticalSheets,  } from "../../elements"
+
+import './navigation.menu.style.scss'
+import SubTitle from "../../../../text-containers/sub-title"
 
 const NavigationMenu = () => {
 
+  const [active, setActive] = useState('one')
+
   return (
-    <div  className='navigation-menu-default'>
-      <VerticalSheets>
+    <div  className='navigation-menu'>
+      <VerticalSheets
+        isPlain
+      >
         <HeaderAreaMock/>
         <Divider/>
-        <span>Item list</span>
+        <div className='navigation-menu__group'>
+          <LineItem
+            isActive={active==='one'}
+            onClick={() => setActive('one')}
+          />
+          <LineItem
+            isActive={active==='two'}
+            onClick={() => setActive('two')}
+          />
+          <LineItem
+            isActive={active==='three'}
+            onClick={() => setActive('three')}
+          />
+          <LineItem
+            isActive={active==='four'}
+            onClick={() => setActive('four')}
+          />
+        </div>
         <Divider/>
-        <span>Item list</span>
+        <div className='navigation-menu__group'>
+          <SubTitle>
+           SubTitle
+          </SubTitle>
+          <LineItem
+            isActive={active==='one-sub'}
+            onClick={() => setActive('one-sub')}
+          />
+          <LineItem
+            isActive={active==='two-sub'}
+            onClick={() => setActive('two-sub')}
+          />
+        </div>
+        <br/>
       </VerticalSheets>
     </div>
   )

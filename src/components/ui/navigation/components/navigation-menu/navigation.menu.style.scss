@@ -1,4 +1,12 @@
+@import "./src/styles/consts";
 
-.navigation-menu-default{
+.navigation-menu{
 
+  &__group{
+    padding: 12px 8px;
+  }
+
+  & .sub-title{
+    color: $color-black-high-emphasis;
+  }
 }

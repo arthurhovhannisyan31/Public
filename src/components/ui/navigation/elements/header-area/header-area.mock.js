@@ -6,9 +6,10 @@ const HeaderAreaMock = () => {
   return (
     <>
       <HeaderArea
-        title='Title'
+        title='Sierra Ferguson'
         isAvatar
-        additionalInfo='Additional info (email)'
+        additionalInfo='s.ferguson@gmail.com'
+
       />
     </>
   )

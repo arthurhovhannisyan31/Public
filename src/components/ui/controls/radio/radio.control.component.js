@@ -18,7 +18,7 @@ const Radio = (
     <button
       type='button'
       onClick={() => !isActive && handleClick(label)}
-      className='radio-default'
+      className='radio'
     >
       {isActive
         ? <Icon
@@ -30,7 +30,7 @@ const Radio = (
         />
       }
       <span
-        className='radio-default__label'
+        className='radio__label'
       >
         {label}
       </span>

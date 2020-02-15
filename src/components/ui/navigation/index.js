@@ -1,3 +1,3 @@
-import HeaderArea from './elements'
+import NavigationMenu from './components'
 
-export default HeaderArea
+export default NavigationMenu

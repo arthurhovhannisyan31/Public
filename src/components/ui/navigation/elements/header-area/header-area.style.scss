@@ -1,17 +1,19 @@
+@import "./src/styles/consts";
 
-.header-area-default{
+.header-area{
+  padding: 16px;
   &__container{
     display: flex;
-    flex-flow: column;
-
+    margin: 24px 0;
     &_avatar{
-
+      margin-right: 10px;
     }
     &_info{
-
-    }
-    &_add-info{
-
+      display: flex;
+      flex-flow: column;
+      &.sub-title{
+        color: $color-black-medium-emphasis;
+      }
     }
   }
 }

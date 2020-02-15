@@ -1,17 +1,17 @@
 @import "../../../styles/consts";
 
-.input-default{
+.input{
   display: flex;
   flex-flow: column;
   position: relative;
-  width: $block-default-width;
-  max-width: $block-default-width;
+  width: $block-width;
+  max-width: $block-width;
 
   &__field {
     width: 100%;
     color: $color-black-high-emphasis;
 
-    height: $block-default-height;
+    height: $block-height;
     box-sizing: border-box;
     border: none;
     border-top-right-radius: $border-radius-main;
@@ -59,10 +59,10 @@
     padding-left: 8px;
   }
   &.isClearable{
-    & .input-default__field {
+    & .input__field {
       padding-right: 48px;
     }
-    & .input-default__clear{
+    & .input__clear{
       display: block;
       &:hover svg{
         & path {
@@ -87,7 +87,7 @@
     }
   }
   &.label{
-    & .input-default{
+    & .input{
       &__label {
         display: flex;
         padding-left: 8px;
@@ -98,12 +98,12 @@
     }
   }
   &.focus{
-    & .input-default__field {
+    & .input__field {
       border-bottom: 2px solid $color-primary;
     }
   }
   &.error{
-    & .input-default {
+    & .input {
       &__field {
         border-bottom: 2px solid $color-critical;
       }
@@ -116,7 +116,7 @@
     }
   }
   &.limitExceeded{
-    & .input-default {
+    & .input {
       &__field {
         border-bottom: 2px solid $color-critical;
       }
@@ -126,7 +126,7 @@
     }
   }
   &.isMultiline{
-    & .input-default{
+    & .input{
       &__field {
         min-width: 280px;
         max-width: 280px;
@@ -140,7 +140,7 @@
     }
   }
   &.isDisabled{
-    & .input-default {
+    & .input {
       &__field {
         color: $color-black-disabled;
         background: $color-control-inactive;

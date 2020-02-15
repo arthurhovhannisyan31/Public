@@ -210,12 +210,12 @@ const Input = (
 
   return (
     <div
-      className={`input-default ${classNames}`}
+      className={`input ${classNames}`}
       onFocus={!isDisabled ? onFocus : undefined}
       onBlur={!isDisabled ? onBlur : undefined}
     >
       <label htmlFor={randId}>
-        {label && <span className='input-default__label'>{label}</span>}
+        {label && <span className='input__label'>{label}</span>}
       </label>
       {isDisabled
        ? <InputReadOnly

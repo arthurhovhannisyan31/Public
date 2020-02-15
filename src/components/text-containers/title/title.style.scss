@@ -1,8 +1,10 @@
-@import "./src/styles/consts";
+@import "../../../styles/consts";
 
-.title-default{
+.title{
+  display: flex;
+  align-items: center;
   color: $color-black-high-emphasis;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 20px;
   line-height: 30px;
   letter-spacing: 0.15px;

@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import './header-area.style.scss'
 import Avatar from "../../../avatar"
-import Title from "../../../title"
+import {Title} from "../../../../text-containers"
+import SubTitle from "../../../../text-containers/sub-title"
+
+import './header-area.style.scss'
 
 const HeaderArea = (
   { title,
@@ -12,18 +14,14 @@ const HeaderArea = (
   }) => {
 
   return (
-    <div className='header-area-default'>
-      <div className='header-area-default__container'>
-        <div className='header-area-default__container_avatar'>
+    <div className='header-area'>
+      <div className='header-area__container'>
+        <div className='header-area__container_avatar'>
           {isAvatar && <Avatar/>}
         </div>
-        <div className='header-area-default__container_info'>
-          <Title
-            value={title}
-          />
-          <span className='header-area-default__container_add-info'>
-            {additionalInfo}
-          </span>
+        <div className='header-area__container_info'>
+          <Title>{title}</Title>
+          <SubTitle>{additionalInfo}</SubTitle>
         </div>
       </div>
     </div>

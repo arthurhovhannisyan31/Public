@@ -1,13 +1,13 @@
 @import "./src/styles/consts";
 
-.select-default{
+.select{
   &__container {
-    width: $block-default-width;
-    height: $block-default-height;
+    width: $block-width;
+    height: $block-height;
     border-bottom: 2px solid $color-gray-divider;
   }
   &.focus {
-    & .select-default__container{
+    & .select__container{
       border-color: $color-primary;
     }
   }
@@ -45,7 +45,7 @@
     display: flex;
     align-items: center;
     background-color: $color-white-high-emphasis;
-    height: $block-default-height;
+    height: $block-height;
     &:not(:last-child){
       vertical-align: center;
       border-bottom: 1px solid $color-gray-divider;

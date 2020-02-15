@@ -1,19 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ClassNames from 'classnames'
 
-import LeftShadow from "./left-shadow"
+import './vertical-sheets.style.scss'
 
 const VerticalSheets = ({isPlain, children}) => {
 
+  const classNames = ClassNames({
+    isPlain
+  })
+
   return (
-    <>
-      { isPlain
-        ? children
-        : <LeftShadow>
-            {children}
-          </LeftShadow>
-      }
-    </>
+    <div className={` vertical-sheets ${classNames}`}>
+      {children}
+    </div>
   )
 }
 
