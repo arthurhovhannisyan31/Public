@@ -13,7 +13,7 @@ const NorFound = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      router.push(CONSTS.ROUTES.WELCOME[0])
+      router.push(CONSTS.ROUTES.WELCOME.ROUTE[0])
     }, timeout)
   }, [timeout, router])
 

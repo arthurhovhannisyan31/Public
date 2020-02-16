@@ -8,7 +8,8 @@ import PrivateRoute from "../routes/private-route"
 import CONSTS from "../constants"
 
 /**
- * Returns object for using local storage methods
+ * Returns object for using local storage methods  const mainGroup = Object.entries(CONSTS.NAVIGATION)
+  console.log(mainGroup)
  * localStorage handler
  * @returns {*}
  */

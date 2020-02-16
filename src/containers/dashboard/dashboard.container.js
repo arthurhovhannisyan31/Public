@@ -3,14 +3,15 @@ import React from 'react'
 // local services & data store
 // local containers & components
 // local constants & styles
+import './dashboard.container.scss'
 
-const Travel = () => {
+const Dashboard = () => {
 
   return (
-    <div className='Travel'>
-      <span>Travel container</span>
+    <div className='dashboard'>
+      <span>Dashboard container</span>
     </div>
   )
 }
 
-export default Travel
+export default Dashboard

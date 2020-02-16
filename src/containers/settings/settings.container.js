@@ -4,13 +4,13 @@ import React from 'react'
 // local containers & components
 // local constants & styles
 
-const Weather = () => {
+const Settings = () => {
 
   return (
     <div className='Weather'>
-      <span>Weather container</span>
+      <span>Settings container</span>
     </div>
   )
 }
 
-export default Weather
+export default Settings
