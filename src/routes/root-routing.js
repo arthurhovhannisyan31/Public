@@ -9,13 +9,13 @@ import CONSTS from "../constants"
 
 const login = {
   exact: true,
-  path: CONSTS.ROUTES.LOGIN,
+  path: CONSTS.ROUTES.LOGIN.ROUTE,
   component: Login
 }
 
 const notFound = {
   exact: true,
-  path: CONSTS.ROUTES.NOT_FOUND,
+  path: CONSTS.ROUTES.NOT_FOUND.ROUTE,
   component: NotFound,
 }
 

@@ -248,7 +248,7 @@ const icons = ({colorMain, colorSecondary, opacityMain, opacitySecondary}) => [
 
   },
   { label: 'expand-more',
-    svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    svg: <svg width="24" height="24" viewBox="0 0 24 24" fill="nosecondaryne" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" clipRule="evenodd" d="M16.6 8.59998L12 13.2L7.4 8.59998L6 9.99998L12 16L18 9.99998L16.6 8.59998Z" fill={colorMain} opacity={opacityMain}/>
     </svg>
 
