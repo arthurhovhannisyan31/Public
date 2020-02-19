@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 // local services & data store
 import store from '../../redux'
 import axiosInterceptors from "../../services/interceptor.service"
+import ContextCompose from "../../contexts"
 // local containers & components
 import App from '../app'
 import ErrorBoundary from "../../components/error/error.boundary"
@@ -15,11 +16,13 @@ axiosInterceptors()
 const Root = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <ErrorBoundary>
-          <App/>
-        </ErrorBoundary>
-      </BrowserRouter>
+      <ContextCompose>
+        <BrowserRouter>
+          <ErrorBoundary>
+            <App/>
+          </ErrorBoundary>
+        </BrowserRouter>
+      </ContextCompose>
     </Provider>
   )
 }

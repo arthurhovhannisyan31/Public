@@ -18,7 +18,7 @@ const NorFound = () => {
   }, [timeout, router])
 
   return (
-    <div className='NorFound'>
+    <div className='not-found horizontal-block'>
       <NotFoundComponent
         timeout={CONSTS.REDIRECT_TIMEOUT}
       />

@@ -1,21 +1,25 @@
+// external libraries
 import React from 'react'
 import PropTypes from 'prop-types'
 import ClassNames from 'classnames'
-
-import Icon from "../../../icons/icon.component"
-
+// local services & data store
+// local containers & components
+import Icon from "../../icons/icon.component"
+import SubTitle from "../../../text-containers/sub-title"
+// local constants & styles
 import './line-item.style.scss'
-import SubTitle from "../../../../text-containers/sub-title"
 
 const LineItem = (
   { label,
     iconLabel,
     isActive,
-    onClick
+    onClick,
+    collapse
   }) => {
 
   const classNames = ClassNames({
-    isActive
+    isActive,
+    collapse
   })
 
   return (
@@ -26,7 +30,7 @@ const LineItem = (
     >
       <div className='line-item__container'>
         <Icon label={iconLabel}/>
-        <SubTitle isBold>{label}</SubTitle>
+        {!collapse && <SubTitle isBold>{label}</SubTitle>}
       </div>
     </button>
   )
@@ -37,6 +41,7 @@ LineItem.defaultProps = {
   iconLabel: 'bookmark',
   isActive: false,
   onClick: ()=>{},
+  collapse: false,
 }
 
 LineItem.propTypes = {
@@ -44,6 +49,7 @@ LineItem.propTypes = {
   iconLabel: PropTypes.string,
   isActive: PropTypes.bool,
   onClick: PropTypes.func,
+  collapse: PropTypes.bool,
 }
 
 export default LineItem

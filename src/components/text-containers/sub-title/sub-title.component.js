@@ -1,13 +1,16 @@
+// external libraries
 import React from 'react'
 import PropTypes from 'prop-types'
-
+// local services & data store
+// local containers & components
+// local constants & styles
 import './sub-title.style.scss'
 
-const SubTitle = ({children, isBold}) => {
+const SubTitle = ({children, isBold, extraClassname}) => {
 
   return (
     <span
-      className='sub-title'
+      className={`sub-title ${extraClassname}`}
       style={{
         fontWeight: isBold ? 'bold' : 'normal'
       }}

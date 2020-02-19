@@ -7,7 +7,7 @@ const CONSTS = {
   ROUTES: {
     DASHBOARD:  {ROUTE: ['/', '/index.html'], LABEL: 'Dashboard', ICON: 'nav-dashboard', GROUP: 'main'},
     MESSAGES:  { ROUTE: '/messages', LABEL: 'Messages', ICON: 'nav-messages', GROUP: 'main'},
-    NEWS: {ROUTE: '/news', LABEL: 'News', ICON: '', GROUP: 'main'},
+    NEWS: {ROUTE: '/news', LABEL: 'News', ICON: 'nav-tasks', GROUP: 'main'},
     SETTINGS: {ROUTE: '/settings', LABEL: 'Settings', ICON: 'nav-settings', GROUP: 'secondary'},
     NOTIFICATIONS: {ROUTE: '/notifications', LABEL: 'Notifications', ICON: 'nav-notifications', GROUP: 'secondary'},
     LOGIN: {ROUTE: '/login'},
@@ -34,7 +34,7 @@ const CONSTS = {
     STYLES: {
       COLORS: {
         TRANSPARENT: 'transparent',
-        MAIN: '#42A5F5',
+        PRIMARY: '#42A5F5',
         SECONDARY: '#E3F2FD',
         URGENT: '#ffd204',
         POSITIVE: '#29CC97',
@@ -43,7 +43,7 @@ const CONSTS = {
         CRITICAL: '#ff0000',
         INACTIVE: '#F0F1F7',
         BORDER: '#98A2A8',
-      }
+      },
     },
     BUTTONS: {
       COLORS: {

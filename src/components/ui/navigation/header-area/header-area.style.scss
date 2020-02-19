@@ -1,7 +1,7 @@
-@import "./src/styles/consts";
+@import "../../../../styles/consts";
 
 .header-area{
-  padding: 16px;
+  padding: 0 16px;
   &__container{
     display: flex;
     margin: 24px 0;
@@ -15,5 +15,8 @@
         color: $color-black-medium-emphasis;
       }
     }
+  }
+  &.collapse{
+    padding: 0;
   }
 }
