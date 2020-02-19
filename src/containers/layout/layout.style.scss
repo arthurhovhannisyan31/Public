@@ -12,4 +12,9 @@
   &__content{
     margin-left: $width-nav-menu-default;
   }
+  &.collapse{
+    & .layout__content{
+      margin-left: $width-nav-menu-collapse;
+    }
+  }
 }

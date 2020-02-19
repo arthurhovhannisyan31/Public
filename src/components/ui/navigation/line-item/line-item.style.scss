@@ -1,4 +1,4 @@
-@import "./src/styles/consts";
+@import "../../../../styles/consts";
 
 .line-item{
   height: 40px;
@@ -29,5 +29,8 @@
         color: $color-primary;
       }
     }
+  }
+  &.collapse{
+    width: 36px;
   }
 }

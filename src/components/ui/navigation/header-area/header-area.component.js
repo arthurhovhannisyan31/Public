@@ -1,10 +1,13 @@
+// external libraries
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import Avatar from "../../../avatar"
-import {Title} from "../../../../text-containers"
-import SubTitle from "../../../../text-containers/sub-title"
-
+import ClassNames from 'classnames'
+// local services & data store
+// local containers & components
+import Avatar from "../../avatar"
+import {Title} from "../../../text-containers"
+import SubTitle from "../../../text-containers/sub-title"
+// local constants & styles
 import './header-area.style.scss'
 
 const HeaderArea = (
@@ -14,8 +17,12 @@ const HeaderArea = (
     collapse,
   }) => {
 
+  const className = ClassNames({
+    collapse
+  })
+
   return (
-    <div className='header-area'>
+    <div className={`header-area ${className}`}>
       <div className='header-area__container'>
         <div className='header-area__container_avatar'>
           {isAvatar && <Avatar/>}

@@ -1,3 +1,7 @@
-import Avatar from './components'
+import Mask from './mask'
+import Avatar from "./avatar"
 
-export default Avatar
+export {
+  Avatar as default,
+  Mask
+}

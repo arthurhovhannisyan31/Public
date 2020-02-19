@@ -1,11 +1,13 @@
+// external libraries
 import React from 'react'
 import PropTypes from 'prop-types'
 import ClassNames from 'classnames'
-
-import Icon from "../../../icons/icon.component"
-
+// local services & data store
+// local containers & components
+import Icon from "../../icons/icon.component"
+import SubTitle from "../../../text-containers/sub-title"
+// local constants & styles
 import './line-item.style.scss'
-import SubTitle from "../../../../text-containers/sub-title"
 
 const LineItem = (
   { label,
@@ -16,7 +18,8 @@ const LineItem = (
   }) => {
 
   const classNames = ClassNames({
-    isActive
+    isActive,
+    collapse
   })
 
   return (

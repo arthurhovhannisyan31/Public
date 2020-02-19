@@ -1,4 +1,4 @@
-@import "./src/styles/consts";
+@import "../../../../styles/consts";
 
 .vertical-sheets{
   width: $width-nav-menu-default;
@@ -8,5 +8,8 @@
   &.isPlain {
     box-shadow: none;
     border-right: 1px solid $color-gray-divider;
+  }
+  &.collapse{
+    width: $width-nav-menu-collapse;
   }
 }

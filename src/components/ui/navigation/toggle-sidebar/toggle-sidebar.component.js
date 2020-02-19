@@ -1,11 +1,14 @@
+// external libraries
 import React from 'react'
-import Icon from "../../../icons/icon.component"
-import CONSTS from "../../../../../constants"
+// local services & data store
+// local containers & components
+import Icon from "../../icons/icon.component"
+import {SubTitle} from "../../../text-containers"
+// local constants & styles
+import CONSTS from "../../../../constants"
 import './toggle-sidebar.style.scss'
-import {SubTitle} from "../../../../text-containers"
 
 const ToggleSidebar = ({collapse, setCollapse}) => {
-
   return (
     <div className='toggle-sidebar'>
       <button
