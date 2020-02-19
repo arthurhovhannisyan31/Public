@@ -11,6 +11,7 @@ const HeaderArea = (
   { title,
     isAvatar,
     additionalInfo,
+    collapse,
   }) => {
 
   return (
@@ -19,10 +20,12 @@ const HeaderArea = (
         <div className='header-area__container_avatar'>
           {isAvatar && <Avatar/>}
         </div>
-        <div className='header-area__container_info'>
-          <Title>{title}</Title>
-          <SubTitle>{additionalInfo}</SubTitle>
-        </div>
+        {!collapse &&
+          <div className='header-area__container_info'>
+            <Title>{title}</Title>
+            <SubTitle>{additionalInfo}</SubTitle>
+          </div>
+        }
       </div>
     </div>
   )
@@ -32,12 +35,14 @@ HeaderArea.defaultProps = {
   title: '',
   isAvatar: false,
   additionalInfo: '',
+  collapse: false,
 }
 
 HeaderArea.propTypes = {
   title: PropTypes.string,
   isAvatar: PropTypes.bool,
   additionalInfo: PropTypes.string,
+  collapse: PropTypes.bool,
 }
 
 export default HeaderArea

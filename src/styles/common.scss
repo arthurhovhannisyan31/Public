@@ -1,4 +1,5 @@
 @import './consts';
+@import "./utilities";
 
 html {
   height: 100%;
@@ -40,4 +41,8 @@ a {
   &:hover {
     text-decoration: none;
   }
+}
+
+.horizontal-block{
+  @include horizontal-block-padding;
 }

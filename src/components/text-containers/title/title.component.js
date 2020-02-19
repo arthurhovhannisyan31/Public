@@ -1,9 +1,11 @@
 import React from 'react'
 import './title.style.scss'
 
-const Title = ({children}) => {
+const Title = ({children, extraClassname}) => {
   return (
-    <span className='title'>{children}</span>
+    <span className={`title ${extraClassname}`}>
+      {children}
+    </span>
   )
 }
 

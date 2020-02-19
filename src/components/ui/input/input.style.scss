@@ -4,14 +4,14 @@
   display: flex;
   flex-flow: column;
   position: relative;
-  width: $block-width;
-  max-width: $block-width;
+  width: $width-block;
+  max-width: $width-block;
 
   &__field {
     width: 100%;
     color: $color-black-high-emphasis;
 
-    height: $block-height;
+    height: $height-block;
     box-sizing: border-box;
     border: none;
     border-top-right-radius: $border-radius-main;

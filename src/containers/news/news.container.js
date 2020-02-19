@@ -6,7 +6,7 @@ import React from 'react'
 
 const News = () => {
   return (
-    <div className='News'>
+    <div className='news horizontal-block'>
       <span>News container</span>
     </div>
   )

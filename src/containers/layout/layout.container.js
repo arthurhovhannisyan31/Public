@@ -5,10 +5,9 @@ import React from 'react'
 // import Footer from '../../components/layout/footer'
 // import Header from '../../components/layout/header'
 import Main from '../../components/layout/main'
-import {NavigationMenuMock} from "../../components/ui/navigation/components/navigation-menu"
+import NavigationMenu from "../../components/ui/navigation"
 // local constants & styles
 import './layout.style.scss'
-
 
 // header > nav
 // article > section
@@ -17,13 +16,13 @@ import './layout.style.scss'
 
 const Layout = ({children}) => {
   return (
-    <div className='layout'>
+    <div className='layout horizontal-block'>
       {/* <Header/> */}
       <Main>
-        <NavigationMenuMock
-
-        />
-        {children}
+        <NavigationMenu/>
+        <div className='layout__content'>
+          {children}
+        </div>
       </Main>
       {/* <Footer/> */}
     </div>

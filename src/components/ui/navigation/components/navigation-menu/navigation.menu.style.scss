@@ -1,6 +1,9 @@
 @import "./src/styles/consts";
 
 .navigation-menu{
+  position: fixed;
+  top: 0;
+  left: 0;
   height: 100%;
 
   &__group{
@@ -9,5 +12,8 @@
 
   & .sub-title{
     color: $color-black-high-emphasis;
+    &.sub-group{
+      margin-bottom: 10px;
+    }
   }
 }

@@ -7,7 +7,7 @@ import React from 'react'
 const Settings = () => {
 
   return (
-    <div className='Weather'>
+    <div className='settings horizontal-block'>
       <span>Settings container</span>
     </div>
   )

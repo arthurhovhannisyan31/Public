@@ -1,8 +1,8 @@
 @import "./src/styles/consts";
 
 .vertical-sheets{
+  width: $width-nav-menu-default;
   height: 100%;
-  width: 256px;
   box-shadow: $shadow-nav;
 
   &.isPlain {

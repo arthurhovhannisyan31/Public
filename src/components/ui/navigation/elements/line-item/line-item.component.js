@@ -11,7 +11,8 @@ const LineItem = (
   { label,
     iconLabel,
     isActive,
-    onClick
+    onClick,
+    collapse
   }) => {
 
   const classNames = ClassNames({
@@ -26,7 +27,7 @@ const LineItem = (
     >
       <div className='line-item__container'>
         <Icon label={iconLabel}/>
-        <SubTitle isBold>{label}</SubTitle>
+        {!collapse && <SubTitle isBold>{label}</SubTitle>}
       </div>
     </button>
   )
@@ -37,6 +38,7 @@ LineItem.defaultProps = {
   iconLabel: 'bookmark',
   isActive: false,
   onClick: ()=>{},
+  collapse: false,
 }
 
 LineItem.propTypes = {
@@ -44,6 +46,7 @@ LineItem.propTypes = {
   iconLabel: PropTypes.string,
   isActive: PropTypes.bool,
   onClick: PropTypes.func,
+  collapse: PropTypes.bool,
 }
 
 export default LineItem

@@ -1,3 +1,19 @@
+//STRUCTURE
+containers - assembling component, includes redux connect, ui components, error boundaries, layouts
+components - modular components with built in logic
+constants - project constants, routes, regexps, ui element labels and values.
+redux - store, root reducer, root saga
+services - project widely used functions, response array modifiers, custom hooks.
+styles - project styles, mixins, constants.
+routes - project routes, root routes, app routes, private routes.
+
+//Import categories
+// external libraries
+// local services & data store
+// local containers & components
+// local constants & styles
+
+
 Проект предостовляет сервис по предоставлению ан      <InputStorybook/>
 алитики по открытым данным
 из источников ВЦИОМ.

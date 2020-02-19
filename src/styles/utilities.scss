@@ -38,3 +38,39 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin vertical-block-padding {
+  //@include media-desktop-lg {
+  //  padding: 16px 0;
+  //}
+  //@include media-desktop-md {
+  //  padding: 20px 0;
+  //}
+  //@include media-tablet-lg {
+  //  padding: 24px 0;
+  //}
+  //@include media-tablet-md {
+  //  padding: 24px 0;
+  //}
+  //@include media-mobile-lg {
+  //  padding: 20px 0;
+  //}
+  //@include media-mobile-md {
+  //  padding: 16px 0 16px 0;
+  //}
+}
+
+@mixin horizontal-block-padding{
+  @include media-desktop-lg {
+    padding: 0 24px;
+  }
+  @include media-tablet-lg {
+    padding: 0 20px;
+  }
+  @include media-tablet-md {
+    padding: 0 16px;
+  }
+  @include media-mobile-md {
+    padding: 0 10px;
+  }
+}

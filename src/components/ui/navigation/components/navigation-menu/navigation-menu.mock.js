@@ -5,9 +5,7 @@ const NavigationMenuMock = () => {
 
   return (
     <>
-      <NavigationMenu
-
-      />
+      <NavigationMenu/>
     </>
   )
 }

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types'
 
 import './sub-title.style.scss'
 
-const SubTitle = ({children, isBold}) => {
+const SubTitle = ({children, isBold, extraClassname}) => {
 
   return (
     <span
-      className='sub-title'
+      className={`sub-title ${extraClassname}`}
       style={{
         fontWeight: isBold ? 'bold' : 'normal'
       }}
