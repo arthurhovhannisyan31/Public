@@ -1,0 +1,15 @@
+@import "../../../../styles/consts";
+
+.vertical-sheets{
+  width: $width-nav-menu-default;
+  height: 100%;
+  box-shadow: $shadow-nav;
+
+  &.isPlain {
+    box-shadow: none;
+    border-right: 1px solid $color-gray-divider;
+  }
+  &.collapse{
+    width: $width-nav-menu-collapse;
+  }
+}

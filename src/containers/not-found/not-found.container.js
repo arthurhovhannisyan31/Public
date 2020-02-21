@@ -13,12 +13,12 @@ const NorFound = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      router.push(CONSTS.ROUTES.WELCOME[0])
+      router.push(CONSTS.ROUTES.WELCOME.ROUTE[0])
     }, timeout)
   }, [timeout, router])
 
   return (
-    <div className='NorFound'>
+    <div className='not-found horizontal-block'>
       <NotFoundComponent
         timeout={CONSTS.REDIRECT_TIMEOUT}
       />

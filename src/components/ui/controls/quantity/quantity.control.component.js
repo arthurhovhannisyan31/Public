@@ -16,7 +16,7 @@ const Quantity = (
   return (
     <>
       {!!value &&
-        <span className={`quality-default exceeded-${exceeded}`}>
+        <span className={`quality exceeded-${exceeded}`}>
           x{value}
         </span>
       }

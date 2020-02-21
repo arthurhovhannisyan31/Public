@@ -17,7 +17,7 @@ const InputReadOnly = (
   return (
     <Tag
       id={inputId}
-      className='input-default__field'
+      className='input__field'
       aria-label='input default'
       type="text"
       placeholder={placeholder}

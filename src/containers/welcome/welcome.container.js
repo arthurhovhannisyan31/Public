@@ -4,17 +4,12 @@ import React from 'react'
 // local containers & components
 // local constants & styles
 import './welcome.style.scss'
-import {NavigationMenuMock} from "../../components/ui/navigation/components/navigation-menu"
 
 const Welcome = () => {
 
   return (
-    <div
-      className='welcome'
-    >
-      <NavigationMenuMock
-
-      />
+    <div className='welcome horizontal-block'>
+      <span>Welcome container</span>
     </div>
   )
 }

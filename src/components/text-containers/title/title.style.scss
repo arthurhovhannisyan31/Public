@@ -1,0 +1,11 @@
+@import "../../../styles/consts";
+
+.title{
+  display: flex;
+  align-items: center;
+  color: $color-black-high-emphasis;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.15px;
+}

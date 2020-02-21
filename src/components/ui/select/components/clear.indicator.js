@@ -16,7 +16,7 @@ const ClearIndicator = props => {
     <div
       /* eslint-disable-next-line react/jsx-props-no-spreading */
       {...restInnerProps}
-      className='select-default__clearIndicator'
+      className='select__clearIndicator'
       ref={ref}
       style={getStyles('clearIndicator', props)}
     >

@@ -22,7 +22,7 @@ const Checkbox = (
   return (
     <button
       type='button'
-      className='checkbox-default'
+      className='checkbox'
       onClick={() => setActive(state => !state)}
     >
       {active
@@ -35,7 +35,7 @@ const Checkbox = (
         />
       }
       <span
-        className='checkbox-default__label'
+        className='checkbox__label'
       >
         {label}
       </span>

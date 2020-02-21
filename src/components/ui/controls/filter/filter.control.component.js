@@ -15,7 +15,7 @@ const Filter = (
   return (
     <button
       type='button'
-      className='filter-default'
+      className='filter'
     >
       { isActive
         ? <Icon
@@ -26,7 +26,7 @@ const Filter = (
       />
       }
       <span
-        className='filter-default__label'
+        className='filter__label'
       >
         {label}
       </span>

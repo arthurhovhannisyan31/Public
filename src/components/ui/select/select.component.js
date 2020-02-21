@@ -87,19 +87,19 @@ const SelectDefault = (
 
   return (
     <div
-      className={`select-default ${classNames}`}
+      className={`select ${classNames}`}
       onBlur={onBlur}
       onFocus={onFocus}
     >
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
       <label htmlFor={randId}>
-        {label && <span className='select-default__label'>{label}</span>}
+        {label && <span className='select__label'>{label}</span>}
       </label>
       <Select
         ref={ref}
         inputId={randId}
         autoFocus={autoFocus}
-        className={`select-default__container ${className}`}
+        className={`select__container ${className}`}
         classNamePrefix={`select ${classNamePrefix}`}
         isDisabled={isDisabled}
         isMulti={isMulti}

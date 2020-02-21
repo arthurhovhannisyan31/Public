@@ -1,28 +1,10 @@
 @import "./src/styles/media-queries";
 
 .main{
-
+  height: 100%;
   &__content{
     display: flex;
-    height: 100%;
+    height: inherit;
 
-    @include media-desktop-lg {
-      padding: 16px 0;
-    }
-    @include media-desktop-md {
-      padding: 20px 0;
-    }
-    @include media-tablet-lg {
-      padding: 24px 0;
-    }
-    @include media-tablet-md {
-      padding: 24px 0;
-    }
-    @include media-mobile-lg {
-      padding: 20px 0;
-    }
-    @include media-mobile-md {
-      padding: 16px 0 16px 0;
-    }
   }
 }

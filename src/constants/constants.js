@@ -5,12 +5,14 @@ const CONSTS = {
   REDIRECT_TIMEOUT: 10,
   BASE_URL: 'https://',
   ROUTES: {
-    LOGIN: '/login',
-    WELCOME: ['/', '/index.html'],
-    WEATHER: '/weather',
-    TRAVEL: '/travel',
-    NEWS: '/news',
-    NOT_FOUND: ['*', '/not-found']
+    DASHBOARD:  {ROUTE: ['/', '/index.html'], LABEL: 'Dashboard', ICON: 'nav-dashboard', GROUP: 'main'},
+    MESSAGES:  { ROUTE: '/messages', LABEL: 'Messages', ICON: 'nav-messages', GROUP: 'main'},
+    NEWS: {ROUTE: '/news', LABEL: 'News', ICON: 'nav-tasks', GROUP: 'main'},
+    SETTINGS: {ROUTE: '/settings', LABEL: 'Settings', ICON: 'nav-settings', GROUP: 'secondary'},
+    NOTIFICATIONS: {ROUTE: '/notifications', LABEL: 'Notifications', ICON: 'nav-notifications', GROUP: 'secondary'},
+    LOGIN: {ROUTE: '/login'},
+    WELCOME: {ROUTE: '/welcome'},
+    NOT_FOUND: {ROUTE: ['*', '/not-found']}
   },
   REGEXP: {
     // eslint-disable-next-line no-useless-escape
@@ -20,19 +22,19 @@ const CONSTS = {
   },
   LANG: {
     RUS: {
-      title: 'Rus',
-      value: 'RUS',
+      TITLE: 'Rus',
+      VALUE: 'RUS',
     },
     ENG: {
-      title: 'Eng',
-      value: 'ENG'
+      TITLE: 'Eng',
+      VALUE: 'ENG'
     }
   },
   COMPONENTS: {
     STYLES: {
       COLORS: {
         TRANSPARENT: 'transparent',
-        MAIN: '#42A5F5',
+        PRIMARY: '#42A5F5',
         SECONDARY: '#E3F2FD',
         URGENT: '#ffd204',
         POSITIVE: '#29CC97',
@@ -41,7 +43,7 @@ const CONSTS = {
         CRITICAL: '#ff0000',
         INACTIVE: '#F0F1F7',
         BORDER: '#98A2A8',
-      }
+      },
     },
     BUTTONS: {
       COLORS: {
