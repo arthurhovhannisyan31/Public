@@ -9,12 +9,12 @@ import './footer.style.scss'
 const Footer = () => {
 
   return (
-    <div className='footer'>
+    <footer className='footer'>
       <div className='footer__content horizontal-block'>
         <span>Footer</span>
         <span>Footer</span>
       </div>
-    </div>
+    </footer>
   )
 }
 

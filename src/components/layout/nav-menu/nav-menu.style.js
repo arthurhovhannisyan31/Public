@@ -5,9 +5,7 @@ import {useRouter} from "../../../services/utilities.service"
 import {NavMenuContext} from '../../../contexts/nav-menu.context'
 // local containers & components
 import Divider from "../../ui/lines/devider"
-import {LineItem, VerticalSheets} from "../../ui/navigation"
-import HeaderArea from "../../ui/navigation/header-area/header-area.component"
-import ToggleSidebar from "../../ui/navigation/toggle-sidebar"
+import {LineItem, VerticalSheets, PersonalInfo, ToggleSidebar, NavHeader} from "../../ui/navigation"
 // local constants & styles
 import CONSTS from "../../../constants"
 import './nav-menu.style.scss'
@@ -44,17 +42,21 @@ const NavMenu = () => {
   return (
     <nav className='navigation-menu'>
       <VerticalSheets
-        isPlain
         collapse={collapse}
       >
-        <HeaderArea
-          title='Sierra Ferguson'
-          isAvatar
-          additionalInfo='s.ferguson@gmail.com'
-          collapse={collapse}
-        />
+        <div className='navigation-menu__group  horizontal-block vertical-block'>
+          <NavHeader
+            collapse={collapse}
+          />
+        </div>
         <Divider/>
         <div className='navigation-menu__group  horizontal-block vertical-block'>
+          <PersonalInfo
+            title='Sierra Ferguson'
+            isAvatar
+            additionalInfo='s.ferguson@gmail.com'
+            collapse={collapse}
+          />
           {mainGroup}
         </div>
         <Divider/>

@@ -8,7 +8,7 @@ import './header.style.scss'
 const Header = () => {
 
   return (
-    <div className='header'>
+    <header className='header'>
       <div className='header__content horizontal-block'>
         <div>
           <span>menu collapse toggle</span>
@@ -20,7 +20,7 @@ const Header = () => {
           <span>avatar + info </span>
         </div>
       </div>
-    </div>
+    </header>
   )
 }
 

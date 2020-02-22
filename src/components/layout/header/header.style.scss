@@ -1,28 +1,8 @@
 @import "./src/styles/media-queries";
 
 .header{
-
   &__content{
     display: flex;
     justify-content: space-between;
-
-    @include media-desktop-lg{
-      padding: 32px 0 16px 0;
-    }
-    @include media-desktop-md{
-      padding: 40px 0 20px 0;
-    }
-    @include media-tablet-lg{
-      padding: 48px 0 24px 0;
-    }
-    @include media-tablet-md{
-      padding: 48px 0 24px 0;
-    }
-    @include media-mobile-lg{
-      padding: 40px 0 20px 0;
-    }
-    @include media-tablet-md{
-      padding: 32px 0 16px 0;
-    }
   }
 }
