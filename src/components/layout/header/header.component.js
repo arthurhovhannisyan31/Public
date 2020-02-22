@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <div className='header'>
-      <div className='header__content'>
+      <div className='header__content horizontal-block'>
         <div>
           <span>menu collapse toggle</span>
           <span>Logo</span>

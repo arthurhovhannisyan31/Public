@@ -1,6 +1,9 @@
 @import "../../../../styles/consts";
 
 .vertical-sheets{
+  position: relative;
+  display: flex;
+  flex-flow: column;
   width: $width-nav-menu-default;
   height: 100%;
   box-shadow: $shadow-nav;
@@ -11,5 +14,10 @@
   }
   &.collapse{
     width: $width-nav-menu-collapse;
+  }
+  & .toggle{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
   }
 }

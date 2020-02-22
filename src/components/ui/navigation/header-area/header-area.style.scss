@@ -4,19 +4,17 @@
   padding: 0 16px;
   &__container{
     display: flex;
-    margin: 0 0 24px;
+    margin: 24px 0;
     &_avatar{
       margin-right: 10px;
     }
     &_info{
       display: flex;
       flex-flow: column;
+      justify-content: center;
       &.sub-title{
         color: $color-black-medium-emphasis;
       }
     }
-  }
-  &.collapse{
-    padding: 0;
   }
 }

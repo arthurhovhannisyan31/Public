@@ -1,7 +1,6 @@
 // external libraries
 import React from 'react'
 import PropTypes from 'prop-types'
-import ClassNames from 'classnames'
 // local services & data store
 // local containers & components
 import Avatar from "../../avatar"
@@ -17,12 +16,8 @@ const HeaderArea = (
     collapse,
   }) => {
 
-  const className = ClassNames({
-    collapse
-  })
-
   return (
-    <div className={`header-area ${className}`}>
+    <div className='header-area  horizontal-block vertical-block'>
       <div className='header-area__container'>
         <div className='header-area__container_avatar'>
           {isAvatar && <Avatar/>}

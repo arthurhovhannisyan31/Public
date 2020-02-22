@@ -42,7 +42,7 @@ const NavMenu = () => {
     .filter(el => el?.GROUP === 'secondary'))
 
   return (
-    <nav className='navigation-menu horizontal-block'>
+    <nav className='navigation-menu'>
       <VerticalSheets
         isPlain
         collapse={collapse}
@@ -54,14 +54,14 @@ const NavMenu = () => {
           collapse={collapse}
         />
         <Divider/>
-        <div className='navigation-menu__group'>
+        <div className='navigation-menu__group  horizontal-block vertical-block'>
           {mainGroup}
         </div>
         <Divider/>
-        <div className='navigation-menu__group'>
+        <div className='navigation-menu__group  horizontal-block vertical-block'>
           {secondaryGroup}
         </div>
-        <div className='navigation-menu__group'>
+        <div className='navigation-menu__group  horizontal-block vertical-block toggle'>
           <ToggleSidebar
             collapse={collapse}
             setCollapse={setCollapse}
