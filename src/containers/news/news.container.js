@@ -7,7 +7,7 @@ import SelectStorybook from "../../components/ui/select/select.storybook"
 
 const News = () => {
   return (
-    <div className='news horizontal-block'>
+    <div className='news'>
       <span>News container</span>
       <SelectStorybook/>
     </div>

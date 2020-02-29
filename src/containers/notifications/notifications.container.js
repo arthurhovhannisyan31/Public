@@ -7,7 +7,7 @@ import React from 'react'
 const Notifications = () => {
 
   return (
-    <div className='notifications horizontal-block'>
+    <div className='notifications'>
       <span>Notifications container</span>
     </div>
   )

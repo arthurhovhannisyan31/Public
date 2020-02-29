@@ -7,7 +7,7 @@ import React from 'react'
 const Login = () => {
 
   return (
-    <div className='login horizontal-block'>
+    <div className='login'>
       <span>Login container</span>
     </div>
   )

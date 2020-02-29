@@ -12,23 +12,23 @@ import './toggle-sidebar.style.scss'
 const ToggleSidebar = ({collapse, setCollapse}) => {
 
   return (
-    <div className='toggle-sidebar'>
-      <button
-        id='toggle-sidebar'
-        type='button'
-        onClick={() => {
-          setCollapse(val=>!val)
-        }}
-      >
+    <button
+      type='button'
+      className='toggle-sidebar'
+      onClick={() => {
+        setCollapse(val=>!val)
+      }}
+    >
+      <div id='toggle-sidebar'>
         { collapse
           ? <Icon label='nav-menu-toggle-on' colorMain={CONSTS.COMPONENTS.STYLES.COLORS.PRIMARY} opacityMain={1}/>
           : <Icon label='nav-menu-toggle-off'/>
         }
-      </button>
+      </div>
       <label htmlFor='toggle-sidebar'>
         {!collapse && <SubTitle>Toggle sidebar</SubTitle> }
       </label>
-    </div>
+    </button>
   )
 }
 

@@ -18,14 +18,20 @@ const PersonalInfo = (
   return (
     <div className='personal-info'>
       <div className='personal-info__container'>
-        <div className='personal-info__container_avatar'>
+        <button
+          type="button"
+          className='personal-info__container_avatar'
+        >
           {isAvatar && <Avatar/>}
-        </div>
+        </button>
         {!collapse &&
-          <div className='personal-info__container_info'>
+          <button
+            type="button"
+            className='personal-info__container_info'
+          >
             <Title>{title}</Title>
             <SubTitle>{additionalInfo}</SubTitle>
-          </div>
+          </button>
         }
       </div>
     </div>

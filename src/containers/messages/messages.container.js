@@ -8,7 +8,7 @@ import ButtonStorybook from "../../components/ui/button/button.storybook"
 const Messages = () => {
 
   return (
-    <div className='messages horizontal-block'>
+    <div className='messages'>
       <span>Messages container</span>
       <ButtonStorybook/>
     </div>

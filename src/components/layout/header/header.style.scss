@@ -4,5 +4,24 @@
   &__content{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+
+    &_title{
+
+    }
+    &_controls{
+      display: flex;
+      align-items: center;
+    }
+    &_search{
+      margin-top: 4px;
+    }
+    &_notifications{
+      margin: 0 10px;
+    }
+    & .personal-info{
+      margin-left: 10px;
+    }
   }
 }

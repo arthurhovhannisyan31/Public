@@ -8,7 +8,7 @@ import './welcome.style.scss'
 const Welcome = () => {
 
   return (
-    <div className='welcome horizontal-block'>
+    <div className='welcome'>
       <span>Welcome container</span>
     </div>
   )

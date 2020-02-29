@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     <footer className='footer'>
-      <div className='footer__content horizontal-block'>
+      <div className='footer__content horizontal-block vertical-block'>
         <span>Footer</span>
         <span>Footer</span>
       </div>

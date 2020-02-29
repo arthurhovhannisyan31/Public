@@ -119,7 +119,7 @@ const Input = (
    */
   useEffect(() => {
     const validDefaultValue = typeof defaultValue === 'string'
-    if (validDefaultValue && defaultValue || reset) {
+    if (validDefaultValue && (defaultValue || reset)) {
       onChange(defaultValue)
       clearAll()
     }
@@ -206,7 +206,7 @@ const Input = (
 
   useEffect(() => {
     if (debouncedValue) onChangeDebounced(debouncedValue)
-  }, [debouncedValue])
+  }, [debouncedValue, onChangeDebounced])
 
   return (
     <div

@@ -9,7 +9,7 @@ const Main = ({children}) => {
 
   return (
     <main className='main'>
-      <div className='main__content horizontal-block'>
+      <div className='main__content horizontal-block vertical-block'>
         {children}
       </div>
     </main>

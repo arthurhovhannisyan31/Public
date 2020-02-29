@@ -1,12 +1,23 @@
+// external libraries
 import React from 'react'
+// local services & data store
+import {useRouter} from "../../../../services/utilities.service"
+// local containers & components
 import Icon from "../../icons/icon.component"
+// local constants & styles
 import CONSTS from "../../../../constants"
 import './nav-header.style.scss'
 
 const NavHeader = ({collapse}) => {
+  const router =  useRouter()
+  const route = CONSTS.ROUTES.DASHBOARD.ROUTE[0]
 
   return (
-    <div className='nav-header'>
+    <button
+      type="button"
+      className='nav-header'
+      onClick={() => router.push(route)}
+    >
       <div className='nav-header__container'>
         <div className='nav-header__logo'>
           <Icon
@@ -17,7 +28,7 @@ const NavHeader = ({collapse}) => {
         </div>
         {!collapse && <span className='nav-header__title'>Some epic label</span>}
       </div>
-    </div>
+    </button>
   )
 }
 

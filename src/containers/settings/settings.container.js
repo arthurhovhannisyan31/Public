@@ -8,7 +8,7 @@ import IconStorybook from "../../components/ui/icons/icon.storybook"
 const Settings = () => {
 
   return (
-    <div className='settings horizontal-block'>
+    <div className='settings'>
       <span>Settings container</span>
       <IconStorybook/>
     </div>

@@ -24,8 +24,8 @@ const Mask = ({children, width, height}) => {
 }
 
 Mask.defaultProps = {
-  width: 46,
-  height: 46
+  width: 40,
+  height: 40
 }
 
 Mask.propTypes = {
