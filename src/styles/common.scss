@@ -46,3 +46,11 @@ a {
 .horizontal-block{
   @include horizontal-block-padding;
 }
+
+.vertical-block{
+  @include vertical-block-padding;
+}
+
+.vertical-container{
+  @include vertical-container-padding;
+}

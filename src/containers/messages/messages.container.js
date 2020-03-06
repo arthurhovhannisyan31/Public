@@ -1,5 +1,6 @@
 // external libraries
 import React from 'react'
+import ButtonStorybook from "../../components/ui/button/button.storybook"
 // local services & data store
 // local containers & components
 // local constants & styles
@@ -7,8 +8,9 @@ import React from 'react'
 const Messages = () => {
 
   return (
-    <div className='messages horizontal-block'>
+    <div className='messages'>
       <span>Messages container</span>
+      <ButtonStorybook/>
     </div>
   )
 }

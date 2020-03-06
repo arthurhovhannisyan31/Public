@@ -3,13 +3,11 @@
 
 .layout{
   position: relative;
-  display: flex;
-  flex-flow: column;
-  flex: auto;
   max-width: $width-desktop-FHD;
   margin: 0 auto;
 
-  &__content{
+  &__content{  display: flex;
+    flex-flow: column;
     margin-left: $width-nav-menu-default;
   }
   &.collapse{

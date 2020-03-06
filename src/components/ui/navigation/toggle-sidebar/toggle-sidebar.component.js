@@ -1,5 +1,6 @@
 // external libraries
 import React from 'react'
+import PropTypes from 'prop-types'
 // local services & data store
 // local containers & components
 import Icon from "../../icons/icon.component"
@@ -9,25 +10,36 @@ import CONSTS from "../../../../constants"
 import './toggle-sidebar.style.scss'
 
 const ToggleSidebar = ({collapse, setCollapse}) => {
+
   return (
-    <div className='toggle-sidebar'>
-      <button
-        id='toggle-sidebar'
-        type='button'
-        onClick={() => {
-          setCollapse(val=>!val)
-        }}
-      >
+    <button
+      type='button'
+      className='toggle-sidebar'
+      onClick={() => {
+        setCollapse(val=>!val)
+      }}
+    >
+      <div id='toggle-sidebar'>
         { collapse
           ? <Icon label='nav-menu-toggle-on' colorMain={CONSTS.COMPONENTS.STYLES.COLORS.PRIMARY} opacityMain={1}/>
           : <Icon label='nav-menu-toggle-off'/>
         }
-      </button>
+      </div>
       <label htmlFor='toggle-sidebar'>
         {!collapse && <SubTitle>Toggle sidebar</SubTitle> }
       </label>
-    </div>
+    </button>
   )
+}
+
+ToggleSidebar.defaultProps = {
+  collapse: false,
+  setCollapse: ()=>{},
+}
+
+ToggleSidebar.propTypes = {
+  collapse: PropTypes.bool,
+  setCollapse: PropTypes.func
 }
 
 export default ToggleSidebar
