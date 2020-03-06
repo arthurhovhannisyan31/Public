@@ -1,11 +1,13 @@
-import HeaderArea from "./header-area"
+import PersonalInfo from "./personal-info"
 import LineItem from "./line-item"
 import ToggleSidebar from "./toggle-sidebar"
 import VerticalSheets from "./vertical-sheets"
+import NavHeader from './nav-header'
 
 export {
-  HeaderArea,
+  PersonalInfo,
   LineItem,
   ToggleSidebar,
-  VerticalSheets
+  VerticalSheets,
+  NavHeader
 }

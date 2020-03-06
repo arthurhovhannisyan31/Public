@@ -1,5 +1,6 @@
 // external libraries
 import React from 'react'
+import IconStorybook from "../../components/ui/icons/icon.storybook"
 // local services & data store
 // local containers & components
 // local constants & styles
@@ -7,8 +8,9 @@ import React from 'react'
 const Settings = () => {
 
   return (
-    <div className='settings horizontal-block'>
+    <div className='settings'>
       <span>Settings container</span>
+      <IconStorybook/>
     </div>
   )
 }

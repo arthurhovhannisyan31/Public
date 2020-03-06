@@ -1,28 +1,27 @@
 @import "./src/styles/media-queries";
 
 .header{
-
   &__content{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
 
-    @include media-desktop-lg{
-      padding: 32px 0 16px 0;
+    &_title{
+
     }
-    @include media-desktop-md{
-      padding: 40px 0 20px 0;
+    &_controls{
+      display: flex;
+      align-items: center;
     }
-    @include media-tablet-lg{
-      padding: 48px 0 24px 0;
+    &_search{
+      margin-top: 4px;
     }
-    @include media-tablet-md{
-      padding: 48px 0 24px 0;
+    &_notifications{
+      margin: 0 10px;
     }
-    @include media-mobile-lg{
-      padding: 40px 0 20px 0;
-    }
-    @include media-tablet-md{
-      padding: 32px 0 16px 0;
+    & .personal-info{
+      margin-left: 10px;
     }
   }
 }

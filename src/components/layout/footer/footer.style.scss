@@ -5,24 +5,5 @@
   &__content{
     display: flex;
     justify-content: space-between;
-
-    @include media-desktop-lg {
-      padding: 16px 0 32px 0;
-    }
-    @include media-desktop-md {
-      padding: 20px 0 40px 0;
-    }
-    @include media-tablet-lg {
-      padding: 24px 0 48px 0;
-    }
-    @include media-tablet-md {
-      padding: 24px 0 48px 0;
-    }
-    @include media-mobile-lg {
-      padding: 20px 0 40px 0;
-    }
-    @include media-mobile-md {
-      padding: 16px 0 32px;
-    }
   }
 }

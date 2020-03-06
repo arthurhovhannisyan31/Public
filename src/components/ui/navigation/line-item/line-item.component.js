@@ -19,7 +19,6 @@ const LineItem = (
 
   const classNames = ClassNames({
     isActive,
-    collapse
   })
 
   return (

@@ -1,55 +1,55 @@
-// external libraries
 import React from 'react'
 import PropTypes from 'prop-types'
-import ClassNames from 'classnames'
 // local services & data store
 // local containers & components
 import Avatar from "../../avatar"
 import {Title} from "../../../text-containers"
 import SubTitle from "../../../text-containers/sub-title"
 // local constants & styles
-import './header-area.style.scss'
+import './personal-info.style.scss'
 
-const HeaderArea = (
+const PersonalInfo = (
   { title,
     isAvatar,
     additionalInfo,
     collapse,
   }) => {
 
-  const className = ClassNames({
-    collapse
-  })
-
   return (
-    <div className={`header-area ${className}`}>
-      <div className='header-area__container'>
-        <div className='header-area__container_avatar'>
+    <div className='personal-info'>
+      <div className='personal-info__container'>
+        <button
+          type="button"
+          className='personal-info__container_avatar'
+        >
           {isAvatar && <Avatar/>}
-        </div>
+        </button>
         {!collapse &&
-          <div className='header-area__container_info'>
+          <button
+            type="button"
+            className='personal-info__container_info'
+          >
             <Title>{title}</Title>
             <SubTitle>{additionalInfo}</SubTitle>
-          </div>
+          </button>
         }
       </div>
     </div>
   )
 }
 
-HeaderArea.defaultProps = {
+PersonalInfo.defaultProps = {
   title: '',
   isAvatar: false,
   additionalInfo: '',
   collapse: false,
 }
 
-HeaderArea.propTypes = {
+PersonalInfo.propTypes = {
   title: PropTypes.string,
   isAvatar: PropTypes.bool,
   additionalInfo: PropTypes.string,
   collapse: PropTypes.bool,
 }
 
-export default HeaderArea
+export default PersonalInfo

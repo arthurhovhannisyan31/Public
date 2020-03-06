@@ -2,16 +2,16 @@
 import React from 'react'
 // local services & data store
 // local containers & components
-import IconStorybook from "../../components/ui/icons/icon.storybook"
 // local constants & styles
 import './dashboard.container.scss'
+import InputStorybook from "../../components/ui/input/input.storybook"
 
 const Dashboard = () => {
 
   return (
-    <div className='dashboard horizontal-block'>
+    <div className='dashboard'>
       <span>Dashboard container</span>
-      <IconStorybook/>
+      <InputStorybook/>
     </div>
   )
 }

@@ -8,11 +8,11 @@ import './main.style.scss'
 const Main = ({children}) => {
 
   return (
-    <div className='main'>
-      <div className='main__content'>
+    <main className='main'>
+      <div className='main__content horizontal-block vertical-block'>
         {children}
       </div>
-    </div>
+    </main>
   )
 }
 

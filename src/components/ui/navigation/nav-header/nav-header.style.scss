@@ -1,0 +1,21 @@
+@import "./src/styles/common";
+.nav-header{
+  width: 100%;
+
+  &__container{
+    display: flex;
+    align-items: center;
+  }
+  &__title{
+    display: flex;
+    color: $color-primary;
+    margin-left: 10px;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: bold;
+  }
+  &__logo{
+    width: 50px;
+    height: 50px;
+  }
+}

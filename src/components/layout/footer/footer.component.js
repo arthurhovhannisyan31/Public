@@ -1,4 +1,5 @@
-// external libraries
+// external libraries    height: 100%;
+
 import React from 'react'
 // local services & data store
 // local containers & components
@@ -8,12 +9,12 @@ import './footer.style.scss'
 const Footer = () => {
 
   return (
-    <div className='footer'>
-      <div className='footer__content'>
+    <footer className='footer'>
+      <div className='footer__content horizontal-block vertical-block'>
         <span>Footer</span>
         <span>Footer</span>
       </div>
-    </div>
+    </footer>
   )
 }
 
