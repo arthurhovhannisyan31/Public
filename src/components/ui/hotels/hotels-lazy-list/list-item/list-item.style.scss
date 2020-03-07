@@ -1,0 +1,22 @@
+@import "./src/styles/consts";
+
+.hotels-lazy-list-item{
+  display: flex;
+  background-color: $color-white--medium-emphasis;
+  border: $border-main;
+  margin: 15px 0;
+  padding: 10px 15px;
+  border-radius: $border-radius-main;
+  box-shadow: $shadow-btn;
+
+  &__container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+  }
+  &__title{
+    display: flex;
+    align-items: center;
+  }
+}

@@ -24,12 +24,14 @@ const HotelsFilter = (
           value={id}
           onChange={setId}
           helperText='Numbers only'
+          returnTypeNumber
         />
         <Input
           label='Quantity for lazy load'
           value={length}
           onChange={setLength}
           helperText='Numbers only'
+          returnTypeNumber
         />
         <Select
           label='Region'

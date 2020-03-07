@@ -37,9 +37,10 @@ const CONSTS = {
   },
   REGEXP: {
     // eslint-disable-next-line no-useless-escape
-    ruRegExp: /[^а-яёА-ЯЁ\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/g,
+    ruRegExp: /[^а-яёА-ЯЁ\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/gm,
     // eslint-disable-next-line no-useless-escape
-    enRegExp: /[^a-zA-Z\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/g
+    enRegExp: /[^a-zA-Z\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/gm,
+    numbers: /^[^\d]*$/gm
   },
   LANG: {
     RUS: {

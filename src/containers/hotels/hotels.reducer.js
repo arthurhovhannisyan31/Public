@@ -11,7 +11,7 @@ const InitialStateRecord = Record({
   error: false,
   loading: false,
   hotels: [],
-  hotelsCollection: new Map()
+  hotelsCollection: new Map([])
 })
 
 /**
@@ -44,10 +44,8 @@ export const hotelsReducer = (state = new InitialStateRecord(), action) => {
       return state
         .set('loading', false)
         .set('hotels', payload)
-    // .update('hotelsCollection', collection =>
-    //   collection
-    //     .set(key, payload)
-    // )
+        .updateIn(['hotelsCollection'], collection => [...collection, ...payload]
+        )
     default:
       return state
   }

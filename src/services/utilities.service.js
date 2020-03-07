@@ -361,10 +361,8 @@ export const randomString = () => Math
  * @returns {*}
  */
 export const fetchHotelsRestApiMock = ({data, id, length}) => {
-  const arr = []
   // find index of given el id, considered to get an element id, not the index in array
-  const index = data.findIndex(el => el.id === id)
-  // return an slice of data array
-  arr.push(...data.slice(index, length))
-  return arr
+  const indexStart = data.findIndex(el => el.id === id)
+  const indexEnd = indexStart + length
+  return data.slice(indexStart, indexEnd)
 }

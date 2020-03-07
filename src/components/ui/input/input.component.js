@@ -40,7 +40,7 @@ const inputReducer = (state, action) => {
  * Input main component
  * @param value - sets component visible value
  * @param onChange - returns value from user input
- * @param isDebounce - returns debounced value if true
+ * @param onChangeDebounced - returns debounced value if true
  * @param defaultValue - used set value on component mount and reset
  * @param placeholder - placeholder on value absence
  * @param extraClassName
@@ -50,11 +50,13 @@ const inputReducer = (state, action) => {
  * @param reset - used to set default value
  * @param maxLength - used to count length left param, set error when exceeded
  * @param maxLengthStrict - prevents typing when limit exceeded
+ * @param showCounter - display counter if true
  * @param label - sets label for field
  * @param isClearable - displays clear button
  * @param errorText - used to display text on error
  * @param helperText - used to display helper text
  * @param isMultiline - used to replace input tah with textarea
+ * @param returnType - type of returned value string | number
  * @returns {*}
  * @constructor
  */
@@ -77,7 +79,15 @@ const Input = (
     errorText,
     helperText,
     isMultiline,
+    returnTypeNumber,
   }) => {
+
+  /**
+   * Changed return value type
+   * @param val
+   * @returns {*}
+   */
+  const onChangeEnhancer = val => onChange(returnTypeNumber ? +val: val)
 
   /**
    * Random uniq id
@@ -120,10 +130,10 @@ const Input = (
   useEffect(() => {
     const validDefaultValue = typeof defaultValue === 'string'
     if (validDefaultValue && (defaultValue || reset)) {
-      onChange(defaultValue)
+      onChangeEnhancer(defaultValue)
       clearAll()
     }
-  }, [defaultValue, reset, onChange])
+  }, [defaultValue, reset, onChangeEnhancer])
 
   /**
    * Value validation function
@@ -147,7 +157,7 @@ const Input = (
     /**
      * Check if onChange func provided and length not exceeded on strict mode
      */
-    if (onChange && maxLengthStrict ? isLengthLeft : true) {
+    if (onChangeEnhancer && maxLengthStrict ? isLengthLeft : true) {
       if (isLengthLeft) {
         setLimitExceeded(false)
       } else {
@@ -159,7 +169,7 @@ const Input = (
          * On strict mode will return only valid input and set error state
          * */
         if (validateText({regExp, text})){
-          onChange(text)
+          onChangeEnhancer(text)
           setContentLength(textLength)
         }
       } else {
@@ -170,14 +180,14 @@ const Input = (
            * set error state
            * set content length
            */
-          onChange(text)
+          onChangeEnhancer(text)
           if (validateText({regExp, text})){
             setError(false)
           } else {
             setError(true)
           }
         } else {
-          onChange(text)
+          onChangeEnhancer(text)
         }
       }
     }
@@ -236,7 +246,7 @@ const Input = (
             contentLength={contentLength}
             maxLength={maxLength}
             showCounter={showCounter}
-            onChange={onChange}
+            onChangeEnhancer={onChange}
             clearAll={clearAll}
             ref={ref}
             inputId={randId}
@@ -265,16 +275,20 @@ Input.defaultProps = {
   errorText: '',
   helperText: '',
   isMultiline: false,
+  returnTypeNumber: false
 }
 
 Input.propTypes = {
-  value: PropTypes.oneOfType(
+  value: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-  ),
+  ]),
   onChange: PropTypes.func,
   onChangeDebounced: PropTypes.func,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   placeholder: PropTypes.string,
   extraClassName: PropTypes.string,
   regExp: PropTypes.instanceOf(RegExp),
@@ -289,6 +303,7 @@ Input.propTypes = {
   errorText: PropTypes.string,
   helperText: PropTypes.string,
   isMultiline: PropTypes.bool,
+  returnTypeNumber: PropTypes.bool,
 }
 
 export default Input
