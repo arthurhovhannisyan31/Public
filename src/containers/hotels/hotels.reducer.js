@@ -1,6 +1,7 @@
-import { Map, Record } from 'immutable';
-import { call, put, takeEvery } from 'redux-saga/effects';
-import { fetchHotels } from '../../services/api.services';
+import {Map, Record} from 'immutable'
+import {call, put, takeEvery} from 'redux-saga/effects'
+import {fetchHotels} from '../../services/api.services'
+import {fetchHotelsRestApiMock} from "../../services/utilities.service"
 
 /**
  * Initial state
@@ -11,16 +12,16 @@ const InitialStateRecord = Record({
   loading: false,
   hotels: [],
   hotelsCollection: new Map()
-});
+})
 
 /**
  * Declare used constants
  * @type {string}
  */
-export const moduleName = 'hotels';
-export const HOTELS_REQUEST = `${moduleName}/HOTELS_REQUEST`;
-export const HOTELS_REQUEST_ERROR = `${moduleName}/HOTELS_REQUEST_ERROR`;
-export const HOTELS_REQUEST_SUCCESS = `${moduleName}/HOTELS_REQUEST_SUCCESS`;
+export const moduleName = 'hotels'
+export const HOTELS_REQUEST = `${moduleName}/HOTELS_REQUEST`
+export const HOTELS_REQUEST_ERROR = `${moduleName}/HOTELS_REQUEST_ERROR`
+export const HOTELS_REQUEST_SUCCESS = `${moduleName}/HOTELS_REQUEST_SUCCESS`
 
 /**
  * Hotels reducer
@@ -29,48 +30,44 @@ export const HOTELS_REQUEST_SUCCESS = `${moduleName}/HOTELS_REQUEST_SUCCESS`;
  * @returns {(Record<{error: boolean, loading: boolean}> & Readonly<{error: boolean, loading: boolean}>)|any}
  */
 export const hotelsReducer = (state = new InitialStateRecord(), action) => {
-  const { type, payload } = action;
+  const { type, payload } = action
   switch (type) {
     case HOTELS_REQUEST:
-      return state.set('loading', true).set('error', false);
+      return state
+        .set('loading', true)
+        .set('error', false)
     case HOTELS_REQUEST_ERROR:
-      return state.set('loading', false).set('error', payload);
+      return state
+        .set('loading', false)
+        .set('error', payload)
     case HOTELS_REQUEST_SUCCESS:
-      return state.set('loading', false).set('hotels', payload);
+      return state
+        .set('loading', false)
+        .set('hotels', payload)
     // .update('hotelsCollection', collection =>
     //   collection
     //     .set(key, payload)
     // )
     default:
-      return state;
+      return state
   }
-};
+}
 
-export const delay = ms => new Promise(res => setTimeout(res, ms));
-
-/**
- * Returns HOTELS_REQUEST action with params
- * @param quantity
- * @returns {{quantity: *, type: string}}
- */
-// const getHotels = quantity => {
-//   return {
-//     type: HOTELS_REQUEST,
-//     quantity
-//   }
-// }
+export const delay = ms => new Promise(res => setTimeout(res, ms))
 
 /**
- * Returns required hotels
+ * Returns required hotels range
  * @returns {any}
  */
-export function* getHotelsSaga() {
+export function* getHotelsSaga(action) {
+  const {id, length} = action
   try {
-    yield call(delay, 500);
-    const data = yield call(fetchHotels);
-    yield put({ type: HOTELS_REQUEST_SUCCESS, payload: data });
+    yield call(delay, 500)
+    const {data} = yield call(fetchHotels)
+    const modifiedData = fetchHotelsRestApiMock({data, id, length})
+    yield put({ type: HOTELS_REQUEST_SUCCESS, payload: modifiedData })
   } catch (e) {
-    yield put({ type: HOTELS_REQUEST_ERROR, payload: e });
+    yield put({ type: HOTELS_REQUEST_ERROR, payload: e })
   }
 }
 
@@ -79,5 +76,5 @@ export function* getHotelsSaga() {
  * @returns {any}
  */
 export default function* saga() {
-  yield takeEvery(HOTELS_REQUEST, getHotelsSaga);
+  yield takeEvery(HOTELS_REQUEST, getHotelsSaga)
 }

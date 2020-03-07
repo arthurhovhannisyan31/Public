@@ -1,5 +1,5 @@
 // external libraries
-import React from 'react';
+import React from 'react'
 // local services & data store
 // local containers & components
 // local constants & styles
@@ -1346,6 +1346,6 @@ const icons = ({
   { label: '', svg: null },
   { label: '', svg: null },
   { label: '', svg: null }
-];
+]
 
-export default icons;
+export default icons

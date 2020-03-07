@@ -1,4 +1,8 @@
-import axios from 'axios';
+// external libraries
+import axios from 'axios'
+// local services & data store
+// local containers & components
+// local constants & styles
 
 /** Hotels */
 
@@ -12,7 +16,11 @@ import axios from 'axios';
  * @returns {Promise<any<T>>}
  */
 export const fetchHotels = () => {
-  return axios.get('http://localhost:3000/hotels_mock.json');
-};
+// export const fetchHotels = ({id, length}) => {
+  return axios.get('http://localhost:3000/hotels_mock.json'
+    // in case of real rest api we could pass props to server
+    // , {id, length}
+  )
+}
 
-export const fetchTrips = () => {};
+export const fetchTrips = () => {}

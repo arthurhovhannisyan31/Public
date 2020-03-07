@@ -1,3 +1,3 @@
-import SubTitle from './sub-title.component';
+import SubTitle from './sub-title.component'
 
-export default SubTitle;
+export default SubTitle

@@ -1,4 +1,4 @@
-import ContextCompose from './context-compose';
-import { NavMenuContext } from './nav-menu.context';
+import ContextCompose from './context-compose'
+import {NavMenuContext} from './nav-menu.context'
 
-export { ContextCompose as default, NavMenuContext };
+export { ContextCompose as default, NavMenuContext }

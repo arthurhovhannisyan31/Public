@@ -1,6 +1,6 @@
 // external libraries
-import React, { useState, useEffect, useMemo, useRef, useLayoutEffect } from 'react'
-import {Route, useParams, useLocation, useHistory, useRouteMatch} from "react-router-dom"
+import React, {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react'
+import {Route, useHistory, useLocation, useParams, useRouteMatch} from "react-router-dom"
 // local services & data store
 // local containers & components
 import PrivateRoute from "../routes/private-route"
@@ -53,14 +53,14 @@ export const googleMapCoordinatesConverter = (
   }) => {
   const twoToTheZoomDegree = 2**zoom
 
-  const newPixelCoordinateLat = lat * twoToTheZoomDegree + pixelAdjustLat;
-  const newPixelCoordinateLng = lng * twoToTheZoomDegree + pixelAdjustLng;
+  const newPixelCoordinateLat = lat * twoToTheZoomDegree + pixelAdjustLat
+  const newPixelCoordinateLng = lng * twoToTheZoomDegree + pixelAdjustLng
 
   return {
     lat: newPixelCoordinateLat / twoToTheZoomDegree,
     lng: newPixelCoordinateLng / twoToTheZoomDegree
-  };
-};
+  }
+}
 
 /**
  * Returns state whether the mouse is hovering an element.
@@ -120,7 +120,7 @@ export const useDebounce = (value, delay) => {
  * @returns {boolean}
  */
 export const useOnScreen = (ref, root = null, rootMargin = '0px', threshold = [1.0]) => {
-  const refCurrent = ref?.current;
+  const refCurrent = ref?.current
   const [isIntersecting, setIntersecting] = useState(false)
 
   useEffect(() => {
@@ -149,7 +149,7 @@ export const buildThresholdList = (steps) => {
   if (!steps) return [1.0]
 
   const thresholds = []
-  let i = 0;
+  let i = 0
 
   while (i <= steps) {
     const ratio = i /steps
@@ -235,7 +235,7 @@ export const useEventListener = (eventName, handler, element = window) => {
     // make sure element supports addEventListener
     // on
     const isSupported = element && element.addEventListener
-    if (!isSupported) return null;
+    if (!isSupported) return null
 
     // create event listener that calls handler function stored in ref
     const eventListener = event => savedHandler.current(event)
@@ -256,7 +256,7 @@ export const useEventListener = (eventName, handler, element = window) => {
  * @returns {{width: (number), height: (number)}}
  */
 export const useWindowSize = () => {
-  const isClient = typeof window === 'object';
+  const isClient = typeof window === 'object'
 
   const getSize = () => ({
     width: isClient ? window.innerWidth : undefined,
@@ -312,10 +312,10 @@ export const useTheme = (theme) => {
  * @returns {boolean|*}
  */
 export const validateText = ({ regExp, text }) => {
-  const test = regExp.test(text);
-  const match = text.match(regExp);
-  return !test || (match && !match.length);
-};
+  const test = regExp.test(text)
+  const match = text.match(regExp)
+  return !test || (match && !match.length)
+}
 
 /**
  * Returns validated color value || default color value
@@ -352,3 +352,19 @@ export const randomString = () => Math
   .toString(36)
   .replace(/[^a-z\d]+/g, '')
   .substr(0, 10)
+
+/**
+ * Returns filtered array of given element and length
+ * @param data
+ * @param id
+ * @param length
+ * @returns {*}
+ */
+export const fetchHotelsRestApiMock = ({data, id, length}) => {
+  const arr = []
+  // find index of given el id, considered to get an element id, not the index in array
+  const index = data.findIndex(el => el.id === id)
+  // return an slice of data array
+  arr.push(...data.slice(index, length))
+  return arr
+}

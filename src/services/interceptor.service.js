@@ -15,7 +15,7 @@ const axiosInterceptors = () => {
     },
     error => {
       // Do something with request error
-      return Promise.reject(error);
+      return Promise.reject(error)
     }
   )
   axios.interceptors.response.use(

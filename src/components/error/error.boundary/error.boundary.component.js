@@ -1,9 +1,10 @@
 // external libraries
-import React, { Component } from "react"
+import React, {Component} from "react"
 import PropTypes from "prop-types"
 // local services & data store
 // local containers & components
 import ErrorIndicator from "../error.indicator"
+
 // local constants & styles
 
 /**
@@ -13,7 +14,7 @@ import ErrorIndicator from "../error.indicator"
 
 class ErrorBoundaryComponent extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       hasError: false
     }

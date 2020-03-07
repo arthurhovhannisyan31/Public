@@ -1,11 +1,3 @@
-import React from 'react';
+import ListItem from './list-item.component'
 
-const ListItem = () => {
-  return (
-    <>
-      <span>ListItem</span>
-    </>
-  );
-};
-
-export default ListItem;
+export default ListItem

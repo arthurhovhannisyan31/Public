@@ -12,7 +12,7 @@ const InputReadOnly = (
     inputId
   }) => {
 
-  const Tag = tag;
+  const Tag = tag
 
   return (
     <Tag

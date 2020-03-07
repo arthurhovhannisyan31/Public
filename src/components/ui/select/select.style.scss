@@ -4,7 +4,7 @@
   &__container {
     width: $width-block;
     height: $height-block;
-    border-bottom: 2px solid $color-gray-divider;
+    border-bottom: 1px solid $color-gray-divider;
   }
   &.focus {
     & .select__container{

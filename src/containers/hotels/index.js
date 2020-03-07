@@ -1,3 +1,3 @@
-import Hotels from './hotels.container';
+import Hotels from './hotels.container'
 
-export default Hotels;
+export default Hotels

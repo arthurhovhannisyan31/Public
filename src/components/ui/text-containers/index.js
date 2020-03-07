@@ -1,4 +1,4 @@
-import Title from './title';
-import SubTitle from './sub-title';
+import Title from './title'
+import SubTitle from './sub-title'
 
-export { Title, SubTitle };
+export { Title, SubTitle }

@@ -1,11 +1,3 @@
-import React from 'react';
+import HotelsFilter from './hotels-filter.component'
 
-const HotelsFilter = () => {
-  return (
-    <>
-      <span>HotelsFilter</span>
-    </>
-  );
-};
-
-export default HotelsFilter;
+export default HotelsFilter

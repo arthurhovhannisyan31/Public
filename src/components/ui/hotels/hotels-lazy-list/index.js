@@ -1,11 +1,3 @@
-import React from 'react';
+import HotelsLazyList from "./hotels-lazy-list.component"
 
-const HotelsLazyList = () => {
-  return (
-    <>
-      <span>HotelsLazyList</span>
-    </>
-  );
-};
-
-export default HotelsLazyList;
+export default HotelsLazyList

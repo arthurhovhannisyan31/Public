@@ -1,13 +1,13 @@
 // external libraries
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 // local services & data store
 // local containers & components
-import Icon from '../../icons/icon.component';
-import { SubTitle } from '../../text-containers';
+import Icon from '../../icons/icon.component'
+import {SubTitle} from '../../text-containers'
 // local constants & styles
-import CONSTS from '../../../../constants';
-import './toggle-sidebar.style.scss';
+import CONSTS from '../../../../constants'
+import './toggle-sidebar.style.scss'
 
 const ToggleSidebar = ({ collapse, setCollapse }) => {
   return (
@@ -15,7 +15,7 @@ const ToggleSidebar = ({ collapse, setCollapse }) => {
       type="button"
       className="toggle-sidebar"
       onClick={() => {
-        setCollapse(val => !val);
+        setCollapse(val => !val)
       }}
     >
       <div id="toggle-sidebar">
@@ -33,17 +33,17 @@ const ToggleSidebar = ({ collapse, setCollapse }) => {
         {!collapse && <SubTitle>Toggle sidebar</SubTitle>}
       </label>
     </button>
-  );
-};
+  )
+}
 
 ToggleSidebar.defaultProps = {
   collapse: false,
   setCollapse: () => {}
-};
+}
 
 ToggleSidebar.propTypes = {
   collapse: PropTypes.bool,
   setCollapse: PropTypes.func
-};
+}
 
-export default ToggleSidebar;
+export default ToggleSidebar

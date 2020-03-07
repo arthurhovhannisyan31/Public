@@ -1,9 +1,9 @@
 // external libraries
-import React, {useEffect, useRef, useReducer} from 'react'
+import React, {useEffect, useReducer, useRef} from 'react'
 import PropTypes from 'prop-types'
 import ClassNames from 'classnames'
 // local services & data store
-import {validateText, useFocus, randomString, useDebounce} from "../../../services/utilities.service"
+import {randomString, useDebounce, useFocus, validateText} from "../../../services/utilities.service"
 // local containers & components
 import InputReadOnly from './input.read-only.component'
 import InputDefault from './input.default.component'
@@ -148,8 +148,6 @@ const Input = (
      * Check if onChange func provided and length not exceeded on strict mode
      */
     if (onChange && maxLengthStrict ? isLengthLeft : true) {
-
-
       if (isLengthLeft) {
         setLimitExceeded(false)
       } else {
@@ -164,21 +162,23 @@ const Input = (
           onChange(text)
           setContentLength(textLength)
         }
-      } else if (regExp) {
-        /**
-         * On weak mode will return value
-         * set error state
-         * set content length
-         */
-        setContentLength(textLength)
-        onChange(text)
-        if (validateText({regExp, text})){
-          setError(false)
-        } else {
-          setError(true)
-        }
       } else {
-        onChange(text)
+        setContentLength(textLength)
+        if (regExp) {
+          /**
+           * On weak mode will return value
+           * set error state
+           * set content length
+           */
+          onChange(text)
+          if (validateText({regExp, text})){
+            setError(false)
+          } else {
+            setError(true)
+          }
+        } else {
+          onChange(text)
+        }
       }
     }
   }
@@ -268,7 +268,10 @@ Input.defaultProps = {
 }
 
 Input.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType(
+    PropTypes.string,
+    PropTypes.number,
+  ),
   onChange: PropTypes.func,
   onChangeDebounced: PropTypes.func,
   defaultValue: PropTypes.string,

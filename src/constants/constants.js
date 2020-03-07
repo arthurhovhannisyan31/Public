@@ -93,6 +93,6 @@ const CONSTS = {
       ]
     }
   }
-};
+}
 
-export default CONSTS;
+export default CONSTS
