@@ -60,7 +60,7 @@ export const delay = ms => new Promise(res => setTimeout(res, ms))
 export function* getHotelsSaga(action) {
   const {id, length} = action
   try {
-    yield call(delay, 500)
+    yield call(delay, 2500)
     const {data} = yield call(fetchHotels)
     const modifiedData = fetchHotelsRestApiMock({data, id, length})
     yield put({ type: HOTELS_REQUEST_SUCCESS, payload: modifiedData })

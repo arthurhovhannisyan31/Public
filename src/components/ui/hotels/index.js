@@ -1,4 +1,4 @@
-import HotelsFilter from './hotels-filter';
-import HotelsLazyList from './hotels-lazy-list';
+import HotelsFilter from './hotels-filter'
+import HotelsLazyList from './hotels-lazy-list'
 
-export { HotelsFilter, HotelsLazyList };
+export { HotelsFilter, HotelsLazyList }

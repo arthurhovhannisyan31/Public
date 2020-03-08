@@ -12,7 +12,9 @@ const HotelsFilter = (
     id,
     setId,
     length,
-    setLength
+    setLength,
+    filterValue,
+    setFilterValue
   }) => {
 
   return (
@@ -20,11 +22,12 @@ const HotelsFilter = (
       <span>HotelsFilter</span>
       <div className='hotels-filter-container'>
         <Input
-          label='First element id'
+          label='Next element id'
           value={id}
           onChange={setId}
           helperText='Numbers only'
           returnTypeNumber
+          isDisabled
         />
         <Input
           label='Quantity for lazy load'
@@ -37,6 +40,10 @@ const HotelsFilter = (
           label='Region'
           isSearchable
           isClearable
+          options={options}
+          value={filterValue}
+          onChange={setFilterValue}
+          isMulti
         />
       </div>
     </div>

@@ -120,23 +120,37 @@ export const useDebounce = (value, delay) => {
  * @returns {boolean}
  */
 export const useOnScreen = (ref, root = null, rootMargin = '0px', threshold = [1.0]) => {
+  // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+  // destructuring current ref property
   const refCurrent = ref?.current
+  // declaring local state
   const [isIntersecting, setIntersecting] = useState(false)
 
+  // at every change of [refCurrent, root, rootMargin, threshold] will rerun observer
   useEffect(() => {
+    // declaring callback for observer event
     const intersectionCallback = ([entry]) => {
+      // so far we got only 1 threshold
       setIntersecting(entry.isIntersecting)
-      // if anything time-consuming needs to be done, use Window.requestIdleCallback().
+      // if anything time-consuming needs to be done, use Window.requestIdleCallback(). MDN thank you for care
     }
+    // declaring options as second argument for observer
     const options = {
-      root,
-      rootMargin,
-      threshold
+      root, // Defaults to the browser viewport if not specified or if null.
+      rootMargin, // Margin around the root.
+      threshold // Either a single number or an array of numbers which indicate at what percentage
+      // of the target's visibility the observer's callback should be executed.
     }
+    // creating observer instance, passing callback and props
     const observer = new IntersectionObserver( intersectionCallback, options)
-    if (refCurrent) observer.observe(refCurrent)
-    return () => observer.unobserve(refCurrent)
+    // on component rerenders could pass an null so we check if current passed
+    if (refCurrent) {
+      observer.observe(refCurrent)
+    }
+    // falback on unmount
+    return () => {if (refCurrent) observer.unobserve(refCurrent)}
   }, [refCurrent, root, rootMargin, threshold])
+  // returning link to state so we can useEffect it in component
   return isIntersecting
 }
 
