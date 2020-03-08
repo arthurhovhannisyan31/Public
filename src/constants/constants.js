@@ -67,6 +67,15 @@ const CONSTS = {
         BORDER: '#98A2A8'
       }
     },
+    BREAKPOINTS: {
+      widthDesktopLg: 2560,
+      widthDesktopFHD: 1920,
+      widthDesktopMd: 1599,
+      widthTabletLg: 1199,
+      widthTabletMd: 959,
+      widthMobileLg: 639,
+      widthMobileMd: 479,
+    },
     BUTTONS: {
       COLORS: {
         VALUES: ['main', 'secondary'],

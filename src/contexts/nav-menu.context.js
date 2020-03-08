@@ -1,9 +1,10 @@
 // external libraries
-import React, {useState, createContext} from 'react'
+import React, {createContext, useState} from 'react'
 // local services & data store
 // local containers & components
 // local constants & styles
-const NavMenuContext = createContext({collapse: false})
+
+const NavMenuContext = createContext(null)
 
 const NavMenuContextContainer = ({children}) => {
   const [collapse, setCollapse] = useState(false)

@@ -1,5 +1,5 @@
 // external libraries
-import React, {useEffect, useReducer, useRef} from 'react'
+import React, {useCallback, useEffect, useReducer, useRef} from 'react'
 import PropTypes from 'prop-types'
 import ClassNames from 'classnames'
 // local services & data store
@@ -87,7 +87,9 @@ const Input = (
    * @param val
    * @returns {*}
    */
-  const onChangeEnhancer = val => onChange(returnTypeNumber ? +val: val)
+  const onChangeEnhancer = useCallback(val => onChange(returnTypeNumber ? +val: val),
+    [returnTypeNumber, onChange]
+  )
 
   /**
    * Random uniq id

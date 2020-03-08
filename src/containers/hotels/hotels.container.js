@@ -1,6 +1,7 @@
 // external libraries
-import React, {useCallback, useEffect, useRef, useState} from 'react'
+import React, {useCallback, useEffect, useMemo, useReducer, useRef} from 'react'
 import {shallowEqual, useDispatch, useSelector} from 'react-redux'
+import {createSelector} from "reselect"
 // local services & data store
 import {HOTELS_REQUEST, moduleName as hotelModuleName} from './hotels.reducer'
 import {useDebounce, useOnScreen} from "../../services/utilities.service"
@@ -9,18 +10,66 @@ import {HotelsFilter, HotelsLazyList} from '../../components/ui/hotels'
 // local constants & styles
 import './hotels.styles.scss'
 
+const hotelReducer = (state, action) => {
+  const {type, payload} = action
+  switch (type) {
+    case 'setId':
+      return {
+        ...state,
+        id: payload
+      }
+    case 'setLength':
+      return {
+        ...state,
+        length: payload
+      }
+    case 'setFilterValue':
+      return {
+        ...state,
+        filterValue: payload
+      }
+    case 'setFirstLoad':
+      return {
+        ...state,
+        firstLoad: payload
+      }
+    default:
+      return state
+  }
+}
+
 const Hotels = () => {
+  /**
+   * Declare initial state
+   * @type {{filterValue: null, length: number, id: number}}
+   */
+  const hotelInitialState = {
+    id: 0,
+    length: 10,
+    filterValue: null,
+    firstLoad: true,
+    loadMore: false,
+  }
+
+  /**
+   * Declare dispatch method and component methods
+   * @param payload
+   * @returns {*}
+   */
+  const dispatchGlobal = useDispatch()
+  const [stateLocal, dispatchLocal] = useReducer(hotelReducer, hotelInitialState)
+  const setId = payload => dispatchLocal({type: 'setId', payload})
+  const setLength = payload => dispatchLocal({type: 'setLength', payload})
+  const setFilterValue = payload => dispatchLocal({type: 'setFilterValue', payload})
+  const setFirstLoad = payload => dispatchLocal({type: 'setFirstLoad', payload})
+
   /**
    * Declare component state
    */
-  const [id, setId] = useState(0)
-  const debouncedId = useDebounce(id, 500)
-  const [length, setLength] = useState(10)
-  const debouncedLength = useDebounce(length, 500)
-  const [filterValue, setFilterValue] = useState(null)
+  const {id, length, filterValue, firstLoad} = stateLocal
 
-  /** Declare dispatch method and component methods */
-  const dispatch = useDispatch()
+  const debouncedId = useDebounce(id, 500)
+  const debouncedLength = useDebounce(length, 500)
 
   /**
    * Returns HOTELS_REQUEST action with params
@@ -29,30 +78,62 @@ const Hotels = () => {
    * @returns {{length: number, id: number, type: string}}
    */
     // eslint-disable-next-line no-shadow
-  const getHotels = useCallback(({id, length}) => dispatch({
+  const getHotels = useCallback(({id, length, firstLoad}) => dispatchGlobal({
     type: HOTELS_REQUEST,
-    id, length
-  }), [dispatch])
+    id, length, firstLoad
+  }), [dispatchGlobal])
 
-  /** Declare selectors */
-  const {
-    loading,
-    hotelsCollection
-  } = useSelector(
-    state => state[hotelModuleName], shallowEqual
+  /**
+   * Declare selectors
+   * */
+  const { loading, finita } = useSelector(state => state[hotelModuleName], shallowEqual)
+  const { hotelsCurrentGap } = useSelector(state => state[hotelModuleName])
+
+  const hotelUniqValuesSelector = createSelector(
+    state => state[hotelModuleName].hotelsCollection,
+    collection => [...collection].map(el => el.region)
   )
+  const hotelValues = useSelector(hotelUniqValuesSelector)
+  const hotelUniqValues = new Set([...hotelValues])
+
+  const hotelOptions = [...hotelUniqValues].map(el => ({ value: el, label: el }))
+  // eslint-disable-next-line no-nested-ternary
+  const filterValues = Array.isArray(filterValue)
+    ? filterValue.map(el => el.value)
+    : ( filterValue?.value ? [filterValue.value] : [])
+
+  const hotelLazyListSelector = createSelector(
+    state => state[hotelModuleName].hotelsCollection,
+    collection => collection.filter(el =>
+      filterValues?.length ?  filterValues.includes(el.region) : el
+    )
+  )
+  const lazyListFilteredData = useSelector(hotelLazyListSelector)
 
   /**
    * Calling getHotels any time debounced input changed
    */
   useEffect(() => {
-    getHotels({
-      id: debouncedId,
-      length: debouncedLength,
-      collection: hotelsCollection
-    })
-  }, [debouncedId, debouncedLength, getHotels])
+    if (!finita && !loading && !hotelsCurrentGap?.length){
+      getHotels({
+        id: debouncedId,
+        length: debouncedLength,
+        firstLoad
+      })
+    }
+  }, [getHotels, debouncedId, debouncedLength, finita])
 
+  useEffect(() => {
+    if (firstLoad) setFirstLoad(false)
+  }, [firstLoad])
+
+  /**
+   * hotelUniqValues - getting uniq values through the Set
+   * hotelOptions - options array for select component
+   * filterValues - array of filter value options single or plural
+   * lazyListFilteredData - array of filtered hotelOptions for lazy list component
+   * @type {any}
+   */
   /**
    * Declaring react ref object
    * intersecting - using IntersectionObserver API for detection if element in view port
@@ -61,30 +142,18 @@ const Hotels = () => {
   const ref = useRef(null)
   // call new list fetching before last 100px, lets not make people wait too long
   const intersecting = useOnScreen(ref, null,'0px')
-
-  useEffect(() => {
-    if (intersecting){
-      setId(id+length)
-    }
-    // scroll page on adding new lines
-  }, [intersecting])
+  const incrementId = useMemo(() => (id+length), [id, length])
 
   /**
-   * hotelUniqValues - getting uniq values through the Set
-   * hotelOptions - options array for select component
-   * filterValues - array of filter value options single or plural
-   * lazyListFilteredData - array of filtered hotelOptions for lazy list component
-   * @type {Set<*>}
+   * Run effect when last item still in view port
+   * and data fetching is nor over
+   * Loading restarts the check when toggles
    */
-  const hotelUniqValues = new Set([...hotelsCollection.map(el => el.region)])
-  const hotelOptions = [...hotelUniqValues].map(el => ({ value: el, label: el }))
-  // eslint-disable-next-line no-nested-ternary
-  const filterValues = Array.isArray(filterValue)
-    ? filterValue.map(el => el.value)
-    : ( filterValue?.value ? [filterValue.value] : [])
-  const lazyListFilteredData = hotelsCollection.filter(el => {
-    return filterValues?.length ?  filterValues.includes(el.region) : el
-  })
+  useEffect(() => {
+    if (intersecting && !finita){
+      setId(incrementId)
+    }
+  }, [intersecting, finita])
 
   return (
     <div

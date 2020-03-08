@@ -236,7 +236,6 @@ export const useRouter = () => {
  */
 export const useEventListener = (eventName, handler, element = window) => {
   const savedHandler = useRef(null)
-
   // Update ref.current value if handler changes.
   // This allows our effect below to always get latest handler ...
   // ... without us needing to pass it in effect deps array ...
@@ -244,24 +243,19 @@ export const useEventListener = (eventName, handler, element = window) => {
   useEffect(() => {
     savedHandler.current = handler
   }, [handler])
-
   useEffect(() => {
     // make sure element supports addEventListener
     // on
     const isSupported = element && element.addEventListener
     if (!isSupported) return null
-
     // create event listener that calls handler function stored in ref
     const eventListener = event => savedHandler.current(event)
-
     // add event listener
     element.addEventListener(eventName, eventListener)
-
     // remove event listener on cleanup
     return () => {
       element.removeEventListener(eventName, eventListener)
     }
-
   }, [eventName, element])
 }
 
@@ -284,7 +278,6 @@ export const useWindowSize = () => {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   })
-
   return windowSize
 }
 
@@ -339,7 +332,6 @@ export const validateText = ({ regExp, text }) => {
 export const validateColorName = color => CONSTS.COMPONENTS.BUTTONS.COLORS.VALUES
     .includes(color) ? color : CONSTS.COMPONENTS.BUTTONS.COLORS.DEFAULT
 
-
 /**
  * Returns string||number for limited value, ex: x10 || x10+
  * @param val
@@ -369,14 +361,73 @@ export const randomString = () => Math
 
 /**
  * Returns filtered array of given element and length
- * @param data
+ * @param promise
  * @param id
  * @param length
  * @returns {*}
  */
-export const fetchHotelsRestApiMock = ({data, id, length}) => {
-  // find index of given el id, considered to get an element id, not the index in array
-  const indexStart = data.findIndex(el => el.id === id)
-  const indexEnd = indexStart + length
-  return data.slice(indexStart, indexEnd)
+export const fetchHotelsRestApiMock = (promise, {id, length}) => {
+  return promise
+    .then(({data}) => {
+      // find index of given el id, considered to get an element id, not the index in array
+    const indexStart = data.findIndex(el => el.id === id)
+    const indexEnd = indexStart + length
+    return {data: data.slice(indexStart, indexEnd)}
+  }).catch(e => {
+      return e
+    }
+  )
 }
+
+// export function useElementBoundaries(className) {
+//   const clientHeight = Math.max(
+//     document.documentElement.clientHeight,
+//     window.innerHeight || 0
+//   );
+//   const clientWidth = Math.max(
+//     document.documentElement.clientWidth,
+//     window.innerWidth || 0
+//   )
+//   const [state, setState] = useState(false)
+//   let inClientHeight = null
+//   let inClientWidth = null
+//
+//   useEffect(() => {
+//     const element = document.querySelector(`.${className}`);
+//     const elementRect = element.getBoundingClientRect();
+//     const crossTop = elementRect?.bottom >= 0
+//     const crossBottom = elementRect?.top <= clientHeight
+//     const crossLeft = elementRect?.right >= 0
+//     const crossRight = elementRect?.left <= clientWidth
+//
+//     inClientHeight = crossBottom && crossTop && {
+//       direction: 'top-bottom',
+//       bottom: elementRect?.bottom,
+//       top: elementRect?.top,
+//       clientHeight
+//     }
+//     inClientWidth = crossLeft && crossRight && {
+//       direction: 'left-right',
+//       left: elementRect?.left,
+//       right: elementRect?.right,
+//       clientWidth
+//     }
+//   }, [])
+//   useEventListener('scroll', setState({
+//     inClientHeight,
+//     inClientWidth
+//   }))
+//
+//   return state
+// }
+
+// /**
+//  * Function compose function
+//  * @param funcs
+//  * @returns {function(...[*]=)}
+//  */
+// export const compose = (...funcs) => component => {
+//   funcs.reduceRight(
+//     (wrapped, f) => f(wrapped), component
+//   )
+// }

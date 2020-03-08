@@ -2,10 +2,10 @@
 import React, {useContext} from 'react'
 // local services & data store
 import {useRouter} from "../../../services/utilities.service"
-import {NavMenuContext} from '../../../contexts/nav-menu.context'
+import {NavMenuContext} from '../../../contexts'
 // local containers & components
 import Divider from "../../ui/lines/devider"
-import {LineItem, VerticalSheets, ToggleSidebar, NavHeader} from "../../ui/navigation"
+import {LineItem, NavHeader, ToggleSidebar, VerticalSheets} from "../../ui/navigation"
 // local constants & styles
 import CONSTS from "../../../constants"
 import './nav-menu.style.scss'

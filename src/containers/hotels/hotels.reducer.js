@@ -1,7 +1,6 @@
 import {Map, Record} from 'immutable'
 import {call, put, takeEvery} from 'redux-saga/effects'
 import {fetchHotels} from '../../services/api.services'
-import {fetchHotelsRestApiMock} from "../../services/utilities.service"
 
 /**
  * Initial state
@@ -10,8 +9,9 @@ import {fetchHotelsRestApiMock} from "../../services/utilities.service"
 const InitialStateRecord = Record({
   error: false,
   loading: false,
-  hotels: [],
-  hotelsCollection: new Map([])
+  hotelsCurrentGap: [],
+  hotelsCollection: new Map([]),
+  finita: false,
 })
 
 /**
@@ -22,6 +22,7 @@ export const moduleName = 'hotels'
 export const HOTELS_REQUEST = `${moduleName}/HOTELS_REQUEST`
 export const HOTELS_REQUEST_ERROR = `${moduleName}/HOTELS_REQUEST_ERROR`
 export const HOTELS_REQUEST_SUCCESS = `${moduleName}/HOTELS_REQUEST_SUCCESS`
+export const HOTELS_REQUEST_EMPTY = `${moduleName}/HOTELS_REQUEST_EMPTY`
 
 /**
  * Hotels reducer
@@ -43,9 +44,12 @@ export const hotelsReducer = (state = new InitialStateRecord(), action) => {
     case HOTELS_REQUEST_SUCCESS:
       return state
         .set('loading', false)
-        .set('hotels', payload)
+        .set('hotelsCurrentGap', payload)
         .updateIn(['hotelsCollection'], collection => [...collection, ...payload]
         )
+    case HOTELS_REQUEST_EMPTY:
+      return state
+        .set('finita', true)
     default:
       return state
   }
@@ -58,12 +62,13 @@ export const delay = ms => new Promise(res => setTimeout(res, ms))
  * @returns {any}
  */
 export function* getHotelsSaga(action) {
-  const {id, length} = action
+  const {id, length, firstLoad} = action
   try {
-    yield call(delay, 2500)
-    const {data} = yield call(fetchHotels)
-    const modifiedData = fetchHotelsRestApiMock({data, id, length})
-    yield put({ type: HOTELS_REQUEST_SUCCESS, payload: modifiedData })
+    if (!firstLoad) yield call(delay, 2500)
+    const {data} = yield call(fetchHotels, {id, length})
+    if (!data?.length) yield put({type: HOTELS_REQUEST_EMPTY})
+    yield put({ type: HOTELS_REQUEST_SUCCESS, payload: data })
+
   } catch (e) {
     yield put({ type: HOTELS_REQUEST_ERROR, payload: e })
   }

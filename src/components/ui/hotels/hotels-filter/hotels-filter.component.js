@@ -27,7 +27,6 @@ const HotelsFilter = (
           onChange={setId}
           helperText='Numbers only'
           returnTypeNumber
-          isDisabled
         />
         <Input
           label='Quantity for lazy load'
