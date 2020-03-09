@@ -4,23 +4,25 @@ import {shallowEqual, useDispatch, useSelector} from 'react-redux'
 import {createSelector} from "reselect"
 // local services & data store
 import {HOTELS_REQUEST, moduleName as hotelModuleName} from './hotels.reducer'
-import {useOnScreen} from "../../services/utilities.service"
+import {useDebounce, useOnScreen} from "../../services/utilities.service"
 // local containers & components
 import {HotelsFilter, HotelsLazyList} from '../../components/ui/hotels'
 // local constants & styles
 import './hotels.styles.scss'
 
+/**
+ * Declaring local reducer function
+ * @param state
+ * @param action
+ * @returns {{filters: *}|{length: *}|{loadMore: *}|*}
+ */
 const hotelReducer = (state, action) => {
   const {type, payload} = action
   switch (type) {
-    // case 'setId':
-    //   return {...state, id: payload}
-    // case 'setLength':
-    //   return {...state, length: payload}
-    case 'setFilterValue':
-      return {...state, filterValue: payload}
-    case 'setFirstLoad':
-      return {...state, firstLoad: payload}
+    case 'setLength':
+      return {...state, length: payload}
+    case 'setFilters':
+      return {...state, filters: payload}
     case 'setLoadMore':
       return {...state, loadMore: payload}
     default:
@@ -31,14 +33,12 @@ const hotelReducer = (state, action) => {
 const Hotels = () => {
   /**
    * Declare initial state
-   * @type {{filterValue: null, loadMore: boolean, length: number, id: number, firstLoad: boolean}}
+   * @type {{loadMore: boolean, length: number, filters: null}}
    */
   const hotelInitialState = {
-    // id: 0,
     length: 10,
-    filterValue: null,
-    firstLoad: true,
-    loadMore: false,
+    filters: null,
+    loadMore: true,
   }
 
   /**
@@ -46,32 +46,27 @@ const Hotels = () => {
    */
   const dispatchGlobal = useDispatch()
   const [stateLocal, dispatchLocal] = useReducer(hotelReducer, hotelInitialState)
-  // const setId = payload => dispatchLocal({type: 'setId', payload})
-  // const setLength = payload => dispatchLocal({type: 'setLength', payload})
-  const setFilterValue = payload => dispatchLocal({type: 'setFilterValue', payload})
-  const setFirstLoad = payload => dispatchLocal({type: 'setFirstLoad', payload})
+  const setLength = payload => dispatchLocal({type: 'setLength', payload})
+  const setFilters = payload => dispatchLocal({type: 'setFilters', payload})
   const setLoadMore = payload => dispatchLocal({type: 'setLoadMore', payload})
 
   /**
    * Declare state
    */
-  const {
-    // id,
-    length, filterValue, firstLoad, loadMore} = stateLocal
-
-  // const debouncedId = useDebounce(id, 500)
-  // const debouncedLength = useDebounce(length, 500)
+  const {length, filters, loadMore} = stateLocal
+  const debouncedLength = useDebounce(length, 500)
 
   /**
    * Declare selectors
+   * hotelValues - filtered array for lazy-list component
    * hotelUniqValues - getting uniq values through the Set
    * hotelOptions - options array for select component
-   * filterValues - array of filter value options single or plural
+   * filterValues - array of filter value options single or plural {}/[{}]
    * lazyListFilteredData - array of filtered hotelOptions for lazy list component
+   * hotelsCollectionLength - main data array length
    * @type {any}
    */
-    // todo move to reducer file
-  const { loading, finita, nextId } = useSelector(state => state[hotelModuleName], shallowEqual)
+  const { loading, finita, nextId, firstLoad } = useSelector(state => state[hotelModuleName], shallowEqual)
 
   const hotelsSelector = (cb, selector) => createSelector(
     state => state[hotelModuleName][selector], cb
@@ -86,10 +81,11 @@ const Hotels = () => {
     .map(el => ({ value: el, label: el }))
 
   // eslint-disable-next-line no-nested-ternary
-  const filterValues = Array.isArray(filterValue)
-    ? filterValue.map(el => el.value)
-    : ( filterValue?.value ? [filterValue.value] : [])
+  const filterValues = Array.isArray(filters)
+    ? filters.map(el => el.value)
+    : ( filters?.value ? [filters.value] : [])
 
+  // При выборе элемента в списке список отфильтровывается по заданному региону
   const lazyListFilteredData = useSelector(hotelsSelector(
     data => data.filter(el =>
       filterValues?.length ?  filterValues.includes(el.region) : el),
@@ -107,7 +103,10 @@ const Hotels = () => {
    * @type {any}
    */
   const ref = useRef(null)
-  // call new list fetching before last 100px, lets not make people wait too long
+  /**
+   * Running intersection observer
+   * @type {boolean}
+   */
   const intersecting = useOnScreen(ref, null,'0px')
 
   /**
@@ -116,7 +115,7 @@ const Hotels = () => {
    * @param length
    * @returns {{length: number, id: number, type: string}}
    */
-    // eslint-disable-next-line no-shadow
+  // eslint-disable-next-line no-shadow
   const getHotels = useCallback(({id, length, firstLoad}) => dispatchGlobal({
       type: HOTELS_REQUEST,
       id, length, firstLoad
@@ -128,10 +127,11 @@ const Hotels = () => {
    * Loading restarts the check when toggles
    */
   useEffect(() => {
-    console.log('intersecting', intersecting)
-    console.log('finita', finita)
-    console.log('hotelsCollectionLength', hotelsCollectionLength)
     if (intersecting && !finita){
+      // Если список отображен пользователю целиком или пользователь доскроливает до конца списка, то запускается дозагрузка следующей порции данных
+      // Если на отображаемой части странице еще есть место, то продолжает работать алгоритм дозагрузки данных, иначе следующая порция данных не загружаются
+      // Если пользователь снова доскроллил до конца списка, то алгоритм дозагрузки данных запускается снова
+      // При выбранном фильтре должен быть сохранен функционал дозагрузки списка
       setLoadMore(true)
     }
   }, [intersecting, finita, hotelsCollectionLength])
@@ -140,35 +140,30 @@ const Hotels = () => {
    * Calling getHotels any time input changes
    */
   useEffect(() => {
-    console.log('loadMore', loadMore)
     if (loadMore){
+      // Асинхронно подгружается первая порция данных (10 строк)
       getHotels({
         id: nextId,
-        length,
-        firstLoad
+        length: debouncedLength,
+        firstLoad,
       })
       setLoadMore(false)
     }
-  }, [getHotels, nextId, length, loadMore])
-
-  /**
-   * Set firstLoad to false after first data fetch
-   */
-  useEffect(() => {
-    if (firstLoad) setFirstLoad(false)
-  }, [firstLoad])
-
+  }, [getHotels, nextId, debouncedLength, loadMore, firstLoad])
 
   return (
+    // На странице отображается компонент
     <div className="hotels">
+      {/* Над списком размещен фильтр по региону: select, который пополняется по мере появления новых уникальных регионов в списке */}
       <HotelsFilter
         id={nextId}
         length={length}
-        // setLength={setLength}
+        setLength={setLength}
         options={hotelOptions}
-        filterValue={filterValue}
-        setFilterValue={setFilterValue}
+        filters={filters}
+        setFilters={setFilters}
       />
+      {/* Компонент выводит список отелей (это может быть список или таблица), каждый элемент которого отображает всю информацию из модели отеля id name region price */}
       <HotelsLazyList
         loading={loading}
         data={[...lazyListFilteredData]}
@@ -180,5 +175,4 @@ const Hotels = () => {
 
 export default Hotels
 
-
-// todo input for manual set id and manual set length
+// prevent load 20 on first load

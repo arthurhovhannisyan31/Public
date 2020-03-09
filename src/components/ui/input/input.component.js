@@ -121,8 +121,7 @@ const Input = (
    * Resets default value on reset event or if any default value were provided
    */
   useEffect(() => {
-    const validDefaultValue = typeof defaultValue === 'string'
-    if (validDefaultValue && (defaultValue || reset)) {
+    if (defaultValue || reset) {
       onChange(defaultValue)
       clearAll()
     }
@@ -253,10 +252,10 @@ const Input = (
 }
 
 Input.defaultProps = {
-  value: '',
+  value: null,
   onChange: ()=>{},
   onChangeDebounced: ()=>{},
-  defaultValue: '',
+  defaultValue: null,
   placeholder: '',
   extraClassName: '',
   regExp: null,
@@ -299,7 +298,10 @@ Input.propTypes = {
   errorText: PropTypes.string,
   helperText: PropTypes.string,
   isMultiline: PropTypes.bool,
-  type: PropTypes.string
+  type: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ])
 }
 
 export default Input

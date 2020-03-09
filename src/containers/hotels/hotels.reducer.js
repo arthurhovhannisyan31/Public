@@ -1,6 +1,10 @@
+// external libraries
 import {Map, Record} from 'immutable'
 import {call, put, takeLatest} from 'redux-saga/effects'
+// local services & data store
 import {fetchHotels} from '../../services/api.services'
+// local containers & components
+// local constants & styles
 
 /**
  * Initial state
@@ -13,6 +17,7 @@ const InitialStateRecord = Record({
   hotelsCollection: new Map([]),
   nextId: 0,
   finita: false,
+  firstLoad: true
 })
 
 /**
@@ -46,6 +51,7 @@ export const hotelsReducer = (state = new InitialStateRecord(), action) => {
       return state
         .set('loading', false)
         .set('nextId', nextId)
+        .set('firstLoad', false)
         .updateIn(['hotelsCollection'], collection => [...collection, ...payload])
     case HOTELS_REQUEST_EMPTY:
       return state

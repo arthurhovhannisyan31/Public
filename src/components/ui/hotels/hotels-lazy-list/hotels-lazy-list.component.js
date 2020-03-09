@@ -1,20 +1,21 @@
 // external libraries
 import React, {forwardRef} from 'react'
-import ListItem from "./list-item"
-import Inline3Dots from "../../loading-indicators/inline-3-dots"
-import CONSTS from "../../../../constants"
+import PropTypes from 'prop-types'
 // local services & data store
 // local containers & components
+import ListItem from "./list-item"
+import Inline3Dots from "../../loading-indicators/inline-3-dots"
 // local constants & styles
+import CONSTS from "../../../../constants"
 import './hotels-lazy-list.style.scss'
 
-const HotelsLazyList = (
+const HotelsLazyList = forwardRef( (
   { data,
     loading
-  }, _ref) => {
-
+  }, _ref
+) => {
   const items = data
-    // .sort((el1, el2) => el1?.id - el2?.id)
+    .sort((el1, el2) => el1?.id - el2?.id)
     .map(({id, name, price, region}) => {
     return (
       <ListItem
@@ -44,6 +45,23 @@ const HotelsLazyList = (
       </div>
     </div>
   )
+})
+
+HotelsLazyList.defaultProps = {
+  data: [],
+  loading: false
 }
 
-export default forwardRef(HotelsLazyList)
+HotelsLazyList.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      region: PropTypes.string,
+      price: PropTypes.number
+    })
+  ),
+  loading: PropTypes.bool
+}
+
+export default HotelsLazyList

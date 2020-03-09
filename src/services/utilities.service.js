@@ -125,14 +125,13 @@ export const useOnScreen = (ref, root = null, rootMargin = '0px', threshold = [1
   const refCurrent = ref?.current
   // declaring local state
   const [isIntersecting, setIntersecting] = useState(false)
-
   // at every change of [refCurrent, root, rootMargin, threshold] will rerun observer
   useEffect(() => {
     // declaring callback for observer event
     const intersectionCallback = ([entry]) => {
       // so far we got only 1 threshold
       setIntersecting(entry.isIntersecting)
-      // if anything time-consuming needs to be done, use Window.requestIdleCallback(). MDN thank you for care
+      // if anything time-consuming needs to be done, use Window.requestIdleCallback(). MDN thanks for care
     }
     // declaring options as second argument for observer
     const options = {
@@ -360,75 +359,34 @@ export const randomString = () => Math
   .substr(0, 10)
 
 /**
+ * Returns arr range by id and length
+ * @param arr
+ * @param id
+ * @param length
+ * @returns {{data: *, nextIndex: *}}
+ */
+export const findByRange = (arr, id, length) => {
+  // find index of given el id, considered to get an element id, not the index in array
+  const indexStart = arr.findIndex(el => el.id === id)
+  const indexEnd = indexStart + length
+  const nextIndex = indexStart < 0 ? id : indexEnd
+  return {data: arr.slice(indexStart, indexEnd), nextIndex}
+}
+
+/**
  * Returns filtered array of given element and length
  * @param promise
  * @param id
  * @param length
+ * @param filters
  * @returns {*}
  */
 export const fetchHotelsRestApiMock = (promise, {id, length}) => {
   return promise
     .then(({data}) => {
-      // find index of given el id, considered to get an element id, not the index in array
-      const indexStart = data.findIndex(el => el.id === id)
-      const indexEnd = indexStart + length
-      const nextIndex = indexStart < 0 ? id : indexEnd
-      return {data: data.slice(indexStart, indexEnd), nextIndex}
+      return  findByRange(data, id, length)
   }).catch(e => {
       return e
     }
   )
 }
-
-// export function useElementBoundaries(className) {
-//   const clientHeight = Math.max(
-//     document.documentElement.clientHeight,
-//     window.innerHeight || 0
-//   );
-//   const clientWidth = Math.max(
-//     document.documentElement.clientWidth,
-//     window.innerWidth || 0
-//   )
-//   const [state, setState] = useState(false)
-//   let inClientHeight = null
-//   let inClientWidth = null
-//
-//   useEffect(() => {
-//     const element = document.querySelector(`.${className}`);
-//     const elementRect = element.getBoundingClientRect();
-//     const crossTop = elementRect?.bottom >= 0
-//     const crossBottom = elementRect?.top <= clientHeight
-//     const crossLeft = elementRect?.right >= 0
-//     const crossRight = elementRect?.left <= clientWidth
-//
-//     inClientHeight = crossBottom && crossTop && {
-//       direction: 'top-bottom',
-//       bottom: elementRect?.bottom,
-//       top: elementRect?.top,
-//       clientHeight
-//     }
-//     inClientWidth = crossLeft && crossRight && {
-//       direction: 'left-right',
-//       left: elementRect?.left,
-//       right: elementRect?.right,
-//       clientWidth
-//     }
-//   }, [])
-//   useEventListener('scroll', setState({
-//     inClientHeight,
-//     inClientWidth
-//   }))
-//
-//   return state
-// }
-
-// /**
-//  * Function compose function
-//  * @param funcs
-//  * @returns {function(...[*]=)}
-//  */
-// export const compose = (...funcs) => component => {
-//   funcs.reduceRight(
-//     (wrapped, f) => f(wrapped), component
-//   )
-// }
