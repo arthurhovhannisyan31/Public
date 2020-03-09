@@ -1,11 +1,23 @@
 // external libraries
-import React, {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react'
-import {Route, useHistory, useLocation, useParams, useRouteMatch} from "react-router-dom"
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
+import {
+  Route,
+  useHistory,
+  useLocation,
+  useParams,
+  useRouteMatch,
+} from 'react-router-dom'
 // local services & data store
 // local containers & components
-import PrivateRoute from "../routes/private-route"
+import PrivateRoute from '../routes/private-route'
 // local constants & styles
-import CONSTS from "../constants"
+import CONSTS from '../constants'
 
 /**
  * Returns object for using local storage methods  const mainGroup = Object.entries(CONSTS.NAVIGATION)
@@ -13,15 +25,18 @@ import CONSTS from "../constants"
  * localStorage handler
  * @returns {*}
  */
-export const localeStorage = () => typeof(Storage) !== 'undefined'
-  ? {
-    setItem: (key, value) => localStorage.setItem(key, value),
-    getItem: (key) => localeStorage.getItem(key),
-    removeItem: (key) => localeStorage.removeItem(key),
-    clear: () => localeStorage.clear(),
-    key: (key) => localeStorage.key(key)
-  }
-  : () => {throw new Error('No web storage Support.')}
+export const localeStorage = () =>
+  typeof Storage !== 'undefined'
+    ? {
+        setItem: (key, value) => localStorage.setItem(key, value),
+        getItem: key => localeStorage.getItem(key),
+        removeItem: key => localeStorage.removeItem(key),
+        clear: () => localeStorage.clear(),
+        key: key => localeStorage.key(key),
+      }
+    : () => {
+        throw new Error('No web storage Support.')
+      }
 
 /**
  * Returns PrivateRoute | Route component
@@ -29,13 +44,14 @@ export const localeStorage = () => typeof(Storage) !== 'undefined'
  * @param params
  * @returns {*}
  */
-export const routeMaker = (isPrivate, params) => (
-  isPrivate
+export const routeMaker = (isPrivate, params) =>
+  isPrivate ? (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    ? <PrivateRoute key={params.path} {...params}/>
+    <PrivateRoute key={params.path} {...params} />
+  ) : (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    : <Route key={params.path} {...params}/>
-)
+    <Route key={params.path} {...params} />
+  )
 
 /**
  * Returns geo-coordinates corrected on onscreen latitude: px, longitude: px value.
@@ -45,20 +61,20 @@ export const routeMaker = (isPrivate, params) => (
  * @param pixelAdjust
  * @returns {{lng: *, lat: number}}
  */
-export const googleMapCoordinatesConverter = (
-  { worldCoordinate: { lat, lng },
-    zoom,
-    pixelAdjustLat,
-    pixelAdjustLng
-  }) => {
-  const twoToTheZoomDegree = 2**zoom
+export const googleMapCoordinatesConverter = ({
+  worldCoordinate: { lat, lng },
+  zoom,
+  pixelAdjustLat,
+  pixelAdjustLng,
+}) => {
+  const twoToTheZoomDegree = 2 ** zoom
 
   const newPixelCoordinateLat = lat * twoToTheZoomDegree + pixelAdjustLat
   const newPixelCoordinateLng = lng * twoToTheZoomDegree + pixelAdjustLng
 
   return {
     lat: newPixelCoordinateLat / twoToTheZoomDegree,
-    lng: newPixelCoordinateLng / twoToTheZoomDegree
+    lng: newPixelCoordinateLng / twoToTheZoomDegree,
   }
 }
 
@@ -66,7 +82,7 @@ export const googleMapCoordinatesConverter = (
  * Returns state whether the mouse is hovering an element.
  * @returns {[boolean, {onMouseOut: (function(): void), onMouseOver: (function(): void)}]}
  */
-export const useHover = ({whenMouseOver, whenMouseOut}={}) => {
+export const useHover = ({ whenMouseOver, whenMouseOut } = {}) => {
   const [hovering, setHovering] = useState(false)
   const onMouseOver = () => {
     setHovering(true)
@@ -76,14 +92,14 @@ export const useHover = ({whenMouseOver, whenMouseOut}={}) => {
     setHovering(false)
     if (whenMouseOut) whenMouseOut()
   }
-  return [hovering, {onMouseOver, onMouseOut}]
+  return [hovering, { onMouseOver, onMouseOut }]
 }
 
 /**
  * Returns state whether element is focused
  * @returns {[boolean, {onBlur: (function(): void), onFocus: (function(): void)}]}
  */
-export const useFocus = ({whenFocus, whenBlur}={}) => {
+export const useFocus = ({ whenFocus, whenBlur } = {}) => {
   const [focus, setFocus] = useState(false)
   const onFocus = () => {
     setFocus(true)
@@ -93,7 +109,7 @@ export const useFocus = ({whenFocus, whenBlur}={}) => {
     setFocus(false)
     if (whenBlur) whenBlur()
   }
-  return [focus, {onFocus, onBlur}]
+  return [focus, { onFocus, onBlur }]
 }
 
 /**
@@ -105,7 +121,9 @@ export const useFocus = ({whenFocus, whenBlur}={}) => {
 export const useDebounce = (value, delay) => {
   const [debouncedValue, setDebouncedValue] = useState(value)
   useEffect(() => {
-    const handler = setTimeout(() => {setDebouncedValue(value)}, delay)
+    const handler = setTimeout(() => {
+      setDebouncedValue(value)
+    }, delay)
     return () => clearTimeout(handler)
   }, [value, delay])
   return debouncedValue
@@ -119,7 +137,12 @@ export const useDebounce = (value, delay) => {
  * @param root
  * @returns {boolean}
  */
-export const useOnScreen = (ref, root = null, rootMargin = '0px', threshold = [1.0]) => {
+export const useOnScreen = (
+  ref,
+  root = null,
+  rootMargin = '0px',
+  threshold = [1.0]
+) => {
   // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
   // destructuring current ref property
   const refCurrent = ref?.current
@@ -137,17 +160,19 @@ export const useOnScreen = (ref, root = null, rootMargin = '0px', threshold = [1
     const options = {
       root, // Defaults to the browser viewport if not specified or if null.
       rootMargin, // Margin around the root.
-      threshold // Either a single number or an array of numbers which indicate at what percentage
+      threshold, // Either a single number or an array of numbers which indicate at what percentage
       // of the target's visibility the observer's callback should be executed.
     }
     // creating observer instance, passing callback and props
-    const observer = new IntersectionObserver( intersectionCallback, options)
+    const observer = new IntersectionObserver(intersectionCallback, options)
     // on component rerenders could pass an null so we check if current passed
     if (refCurrent) {
       observer.observe(refCurrent)
     }
     // falback on unmount
-    return () => {if (refCurrent) observer.unobserve(refCurrent)}
+    return () => {
+      if (refCurrent) observer.unobserve(refCurrent)
+    }
   }, [refCurrent, root, rootMargin, threshold])
   // returning link to state so we can useEffect it in component
   return isIntersecting
@@ -158,16 +183,16 @@ export const useOnScreen = (ref, root = null, rootMargin = '0px', threshold = [1
  * @param steps
  * @returns {[]|number[]}
  */
-export const buildThresholdList = (steps) => {
+export const buildThresholdList = steps => {
   if (!steps) return [1.0]
 
   const thresholds = []
   let i = 0
 
   while (i <= steps) {
-    const ratio = i /steps
+    const ratio = i / steps
     thresholds.push(ratio)
-    i+=i
+    i += i
   }
 
   thresholds.push(0)
@@ -182,17 +207,21 @@ export const buildThresholdList = (steps) => {
  */
 export const useOnClickOutside = (ref, callback) => {
   const [clickOutside, setClickOutside] = useState(false)
-  const listener = event => (ref.current || !ref.current.contains(event.target))
-    ? setClickOutside(true)
-    : setClickOutside(false)
+  const listener = event =>
+    ref.current || !ref.current.contains(event.target)
+      ? setClickOutside(true)
+      : setClickOutside(false)
   const handler = event => listener(event) && callback(event)
   const onMouseDown = event => handler(event)
   const onTouchStart = event => handler(event)
 
-  return [clickOutside, {
-    onMouseDown,
-    onTouchStart
-  }]
+  return [
+    clickOutside,
+    {
+      onMouseDown,
+      onTouchStart,
+    },
+  ]
 }
 
 /**
@@ -207,21 +236,23 @@ export const useRouter = () => {
 
   // Return our custom router object
   // Memoize so that a new object is only returned if something changes
-  return useMemo(() => ({
-    // For convenience add push(), replace(), pathname at top level
-    push: history.push,
-    replace: location.replace,
-    pathname: location.pathname,
-    query: {
-      ...location.search,
-      ...params
-    },
-    // Include match, location, history objects so we have
-    // access to extra React Router functionality if needed.
-    match,
-    location,
-    history
-  }),[params, history, location, match]
+  return useMemo(
+    () => ({
+      // For convenience add push(), replace(), pathname at top level
+      push: history.push,
+      replace: location.replace,
+      pathname: location.pathname,
+      query: {
+        ...location.search,
+        ...params,
+      },
+      // Include match, location, history objects so we have
+      // access to extra React Router functionality if needed.
+      match,
+      location,
+      history,
+    }),
+    [params, history, location, match]
   )
 }
 // useRequireAuth
@@ -267,7 +298,7 @@ export const useWindowSize = () => {
 
   const getSize = () => ({
     width: isClient ? window.innerWidth : undefined,
-    height: isClient ? window.innerHeight : undefined
+    height: isClient ? window.innerHeight : undefined,
   })
 
   const [windowSize, setWindowSize] = useState(getSize)
@@ -293,7 +324,7 @@ export const useLockBodyScroll = () => {
     // re-enable scrolling when component unmount
 
     // eslint-disable-next-line no-return-assign
-    return () => document.body.style.overflow = originalStyle
+    return () => (document.body.style.overflow = originalStyle)
   }, [])
 }
 
@@ -302,7 +333,7 @@ export const useLockBodyScroll = () => {
  * @param theme
  */
 
-export const useTheme = (theme) => {
+export const useTheme = theme => {
   useLayoutEffect(() => {
     // iterate through each value in theme object
     Object.entries(theme).forEach((val, key) => {
@@ -328,8 +359,10 @@ export const validateText = ({ regExp, text }) => {
  * @param color
  * @returns {*}
  */
-export const validateColorName = color => CONSTS.COMPONENTS.BUTTONS.COLORS.VALUES
-    .includes(color) ? color : CONSTS.COMPONENTS.BUTTONS.COLORS.DEFAULT
+export const validateColorName = color =>
+  CONSTS.COMPONENTS.BUTTONS.COLORS.VALUES.includes(color)
+    ? color
+    : CONSTS.COMPONENTS.BUTTONS.COLORS.DEFAULT
 
 /**
  * Returns string||number for limited value, ex: x10 || x10+
@@ -337,12 +370,12 @@ export const validateColorName = color => CONSTS.COMPONENTS.BUTTONS.COLORS.VALUE
  * @param limit
  * @returns {{exceeded: boolean, value: (string)}}
  */
-export const quantityHandler = ({val, limit}) => {
+export const quantityHandler = ({ val, limit }) => {
   /**
    * This is where something like typescript needed.
    */
-  const validValue = Number.isInteger(val) ?  Math.sqrt(val**2) : null
-  const validLimit = Number.isInteger(limit) ? Math.sqrt(limit**2)  : null
+  const validValue = Number.isInteger(val) ? Math.sqrt(val ** 2) : null
+  const validLimit = Number.isInteger(limit) ? Math.sqrt(limit ** 2) : null
   const overLimit = `${validLimit}+`
   const isGreater = validValue > validLimit
   return { exceeded: isGreater, value: isGreater ? overLimit : validValue }
@@ -352,11 +385,11 @@ export const quantityHandler = ({val, limit}) => {
  * Returns random string 10 characters of length
  * @returns {string}
  */
-export const randomString = () => Math
-  .random()
-  .toString(36)
-  .replace(/[^a-z\d]+/g, '')
-  .substr(0, 10)
+export const randomString = () =>
+  Math.random()
+    .toString(36)
+    .replace(/[^a-z\d]+/g, '')
+    .substr(0, 10)
 
 /**
  * Returns arr range by id and length
@@ -370,23 +403,30 @@ export const findByRange = (arr, id, length) => {
   const indexStart = arr.findIndex(el => el.id === id)
   const indexEnd = indexStart + length
   const nextIndex = indexStart < 0 ? id : indexEnd
-  return {data: arr.slice(indexStart, indexEnd), nextIndex}
+  return { data: arr.slice(indexStart, indexEnd), nextIndex }
 }
 
 /**
- * Returns filtered array of given element and length
+ * Returns promise with modified data
  * @param promise
  * @param id
  * @param length
  * @param filters
  * @returns {*}
  */
-export const fetchHotelsRestApiMock = (promise, {id, length}) => {
+export const fetchHotelsRestApiMock = (promise, { id, length }) => {
   return promise
-    .then(({data}) => {
-      return  findByRange(data, id, length)
-  }).catch(e => {
-      return e
-    }
-  )
+    .then(({ data }) => {
+      return new Promise(res => {
+        res(findByRange(data, id, length))
+      })
+    })
+    .catch(e => e)
 }
+
+/**
+ * Simple delay function
+ * @param ms
+ * @returns {Promise<any>}
+ */
+export const delay = ms => new Promise(res => setTimeout(res, ms))
