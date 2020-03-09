@@ -1,5 +1,5 @@
 // external libraries
-import React, {useCallback, useEffect, useReducer, useRef} from 'react'
+import React, {useEffect, useReducer, useRef} from 'react'
 import PropTypes from 'prop-types'
 import ClassNames from 'classnames'
 // local services & data store
@@ -56,7 +56,7 @@ const inputReducer = (state, action) => {
  * @param errorText - used to display text on error
  * @param helperText - used to display helper text
  * @param isMultiline - used to replace input tah with textarea
- * @param returnType - type of returned value string | number
+ * @param type - type of returned value string | number
  * @returns {*}
  * @constructor
  */
@@ -79,17 +79,8 @@ const Input = (
     errorText,
     helperText,
     isMultiline,
-    returnTypeNumber,
+    type,
   }) => {
-
-  /**
-   * Changed return value type
-   * @param val
-   * @returns {*}
-   */
-  const onChangeEnhancer = useCallback(val => onChange(returnTypeNumber ? +val: val),
-    [returnTypeNumber, onChange]
-  )
 
   /**
    * Random uniq id
@@ -132,10 +123,10 @@ const Input = (
   useEffect(() => {
     const validDefaultValue = typeof defaultValue === 'string'
     if (validDefaultValue && (defaultValue || reset)) {
-      onChangeEnhancer(defaultValue)
+      onChange(defaultValue)
       clearAll()
     }
-  }, [defaultValue, reset, onChangeEnhancer])
+  }, [defaultValue, reset, onChange])
 
   /**
    * Value validation function
@@ -159,7 +150,7 @@ const Input = (
     /**
      * Check if onChange func provided and length not exceeded on strict mode
      */
-    if (onChangeEnhancer && maxLengthStrict ? isLengthLeft : true) {
+    if (onChange && maxLengthStrict ? isLengthLeft : true) {
       if (isLengthLeft) {
         setLimitExceeded(false)
       } else {
@@ -171,7 +162,7 @@ const Input = (
          * On strict mode will return only valid input and set error state
          * */
         if (validateText({regExp, text})){
-          onChangeEnhancer(text)
+          onChange(text)
           setContentLength(textLength)
         }
       } else {
@@ -182,14 +173,14 @@ const Input = (
            * set error state
            * set content length
            */
-          onChangeEnhancer(text)
+          onChange(text)
           if (validateText({regExp, text})){
             setError(false)
           } else {
             setError(true)
           }
         } else {
-          onChangeEnhancer(text)
+          onChange(text)
         }
       }
     }
@@ -209,6 +200,7 @@ const Input = (
   });
 
   const Tag = isMultiline ? 'textarea' : 'input'
+  const Type = isMultiline ? 'string' : type
 
   /**
    * Return debounced value of input
@@ -236,6 +228,7 @@ const Input = (
           isDisabled={isDisabled}
           tag={Tag}
           inputId={randId}
+          type={Type}
         />
         : <InputDefault
             tag={Tag}
@@ -252,6 +245,7 @@ const Input = (
             clearAll={clearAll}
             ref={ref}
             inputId={randId}
+            type={Type}
         />
       }
     </div>
@@ -277,7 +271,7 @@ Input.defaultProps = {
   errorText: '',
   helperText: '',
   isMultiline: false,
-  returnTypeNumber: false
+  type: 'text'
 }
 
 Input.propTypes = {
@@ -305,7 +299,7 @@ Input.propTypes = {
   errorText: PropTypes.string,
   helperText: PropTypes.string,
   isMultiline: PropTypes.bool,
-  returnTypeNumber: PropTypes.bool,
+  type: PropTypes.string
 }
 
 export default Input

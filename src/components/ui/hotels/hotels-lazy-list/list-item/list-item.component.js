@@ -13,10 +13,7 @@ const ListItem = (
   }) => {
 
   return (
-    <div
-      className='hotels-lazy-list-item'
-    >
-      <span>Hotel lazy list</span>
+    <div className='hotels-lazy-list-item'>
       <div className='hotels-lazy-list-item__container'>
         <span className='hotels-lazy-list-item__title'>{id}</span>
         <span className='hotels-lazy-list-item__title'>{name}</span>

@@ -4,7 +4,7 @@
 .contained-button{
   @include flex-center();
   position: relative;
-  min-height: $height-block;
+  min-height: $height-block-40;
   max-width: 320px;
   box-shadow: $shadow-btn;
   border-radius: $border-radius-main;

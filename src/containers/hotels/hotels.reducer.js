@@ -1,5 +1,5 @@
 import {Map, Record} from 'immutable'
-import {call, put, takeEvery} from 'redux-saga/effects'
+import {call, put, takeLatest} from 'redux-saga/effects'
 import {fetchHotels} from '../../services/api.services'
 
 /**
@@ -9,8 +9,9 @@ import {fetchHotels} from '../../services/api.services'
 const InitialStateRecord = Record({
   error: false,
   loading: false,
-  hotelsCurrentGap: [],
+  nextPortion: [],
   hotelsCollection: new Map([]),
+  nextId: 0,
   finita: false,
 })
 
@@ -31,7 +32,7 @@ export const HOTELS_REQUEST_EMPTY = `${moduleName}/HOTELS_REQUEST_EMPTY`
  * @returns {(Record<{error: boolean, loading: boolean}> & Readonly<{error: boolean, loading: boolean}>)|any}
  */
 export const hotelsReducer = (state = new InitialStateRecord(), action) => {
-  const { type, payload } = action
+  const { type, payload, nextId } = action
   switch (type) {
     case HOTELS_REQUEST:
       return state
@@ -44,9 +45,8 @@ export const hotelsReducer = (state = new InitialStateRecord(), action) => {
     case HOTELS_REQUEST_SUCCESS:
       return state
         .set('loading', false)
-        .set('hotelsCurrentGap', payload)
-        .updateIn(['hotelsCollection'], collection => [...collection, ...payload]
-        )
+        .set('nextId', nextId)
+        .updateIn(['hotelsCollection'], collection => [...collection, ...payload])
     case HOTELS_REQUEST_EMPTY:
       return state
         .set('finita', true)
@@ -65,9 +65,9 @@ export function* getHotelsSaga(action) {
   const {id, length, firstLoad} = action
   try {
     if (!firstLoad) yield call(delay, 2500)
-    const {data} = yield call(fetchHotels, {id, length})
+    const {data, nextIndex} = yield call(fetchHotels, {id, length})
     if (!data?.length) yield put({type: HOTELS_REQUEST_EMPTY})
-    yield put({ type: HOTELS_REQUEST_SUCCESS, payload: data })
+    yield put({ type: HOTELS_REQUEST_SUCCESS, payload: data, nextId: nextIndex})
 
   } catch (e) {
     yield put({ type: HOTELS_REQUEST_ERROR, payload: e })
@@ -79,5 +79,5 @@ export function* getHotelsSaga(action) {
  * @returns {any}
  */
 export default function* saga() {
-  yield takeEvery(HOTELS_REQUEST, getHotelsSaga)
+  yield takeLatest(HOTELS_REQUEST, getHotelsSaga)
 }

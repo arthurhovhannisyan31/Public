@@ -19,21 +19,24 @@ const HotelsFilter = (
 
   return (
     <div className='hotels-filter'>
-      <span>HotelsFilter</span>
-      <div className='hotels-filter-container'>
+      <div className='hotels-filter__container'>
         <Input
           label='Next element id'
           value={id}
           onChange={setId}
           helperText='Numbers only'
-          returnTypeNumber
+          extraClassName='next-id'
+          type='number'
+          isDisabled
         />
         <Input
           label='Quantity for lazy load'
           value={length}
           onChange={setLength}
           helperText='Numbers only'
-          returnTypeNumber
+          extraClassName='length'
+          type='number'
+          isDisabled
         />
         <Select
           label='Region'
@@ -42,6 +45,7 @@ const HotelsFilter = (
           options={options}
           value={filterValue}
           onChange={setFilterValue}
+          className='regions'
           isMulti
         />
       </div>

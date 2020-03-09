@@ -13,7 +13,9 @@ const HotelsLazyList = (
     loading
   }, _ref) => {
 
-  const items = data.map(({id, name, price, region}, index, {length}) => {
+  const items = data
+    // .sort((el1, el2) => el1?.id - el2?.id)
+    .map(({id, name, price, region}) => {
     return (
       <ListItem
         key={`${id}-${name}`}
@@ -21,24 +23,24 @@ const HotelsLazyList = (
         name={name}
         price={price}
         region={region}
-        lastItem={index+1 === length}
       />
     )
   })
 
   return (
     <div className="hotels-lazy-list">
-      <span>HotelsLazyList</span>
-      {items}
-      <div
-        className="hotels-lazy-list__loading-indicator"
-        ref={_ref}
-      >
-        {loading &&
-          <Inline3Dots
-            color={CONSTS.COMPONENTS.STYLES.COLORS.PRIMARY}
-          />
-        }
+      <div className="hotels-lazy-list__container">
+        {items}
+        <div
+          className="loading-indicator"
+          ref={_ref}
+        >
+          {loading &&
+            <Inline3Dots
+              color={CONSTS.COMPONENTS.STYLES.COLORS.PRIMARY}
+            />
+          }
+        </div>
       </div>
     </div>
   )

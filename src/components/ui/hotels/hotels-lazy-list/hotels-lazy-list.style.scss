@@ -1,7 +1,12 @@
+@import "./src/styles/media-queries";
 
 .hotels-lazy-list{
+  &__container{
+    display: flex;
+    flex-flow: column;
+  }
 
-  &__loading-indicator{
+  & .loading-indicator{
     min-height: 40px;
   }
 }

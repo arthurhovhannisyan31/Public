@@ -1,11 +1,12 @@
 @import "./src/styles/consts";
+@import "./src/styles/media-queries";
 
 .hotels-lazy-list-item{
   display: flex;
   background-color: $color-white--medium-emphasis;
   border: $border-main;
-  margin: 15px 0;
-  padding: 10px 15px;
+  margin: 5px 0;
+  padding: 15px;
   border-radius: $border-radius-main;
   box-shadow: $shadow-btn;
 

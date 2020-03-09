@@ -1,2 +1,8 @@
 .hotels {
+  display: flex;
+  flex-flow: column;
+
+  &-filter{
+    margin-bottom: 20px;
+  }
 }

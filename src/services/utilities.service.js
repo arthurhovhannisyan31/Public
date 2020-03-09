@@ -370,9 +370,10 @@ export const fetchHotelsRestApiMock = (promise, {id, length}) => {
   return promise
     .then(({data}) => {
       // find index of given el id, considered to get an element id, not the index in array
-    const indexStart = data.findIndex(el => el.id === id)
-    const indexEnd = indexStart + length
-    return {data: data.slice(indexStart, indexEnd)}
+      const indexStart = data.findIndex(el => el.id === id)
+      const indexEnd = indexStart + length
+      const nextIndex = indexStart < 0 ? id : indexEnd
+      return {data: data.slice(indexStart, indexEnd), nextIndex}
   }).catch(e => {
       return e
     }

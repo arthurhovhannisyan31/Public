@@ -20,6 +20,7 @@ const InputDefault = (
     onChange,
     clearAll,
     inputId,
+    type,
   }, _ref) => {
 
   const Tag = tag;
@@ -31,7 +32,7 @@ const InputDefault = (
         <Tag
           className='input__field'
           aria-label='input default'
-          type="text"
+          type={type}
           placeholder={placeholder}
           value={value}
           onChange={validation}

@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
   useEffect(() => {
     if (width <= CONSTS.COMPONENTS.BREAKPOINTS.widthTabletMd) setCollapse(true)
     if (width > CONSTS.COMPONENTS.BREAKPOINTS.widthTabletMd) setCollapse(false)
-  }, [width])
+  }, [width, setCollapse])
 
   return (
     <div className={`layout ${className}`}>
