@@ -1,32 +1,32 @@
 @import "./consts";
 
-@mixin media-desktop-lg {
-  @media only screen and (max-width: $width-desktop-lg) {
+@mixin media-desktop-2560 {
+  @media only screen and (max-width: $width-desktop-2560) {
     @content
   }
 }
-@mixin media-desktop-md {
-  @media only screen and (max-width: $width-desktop-md) {
+@mixin media-desktop-1599 {
+  @media only screen and (max-width: $width-desktop-1599) {
     @content
   }
 }
-@mixin media-tablet-lg {
-  @media only screen and (max-width: $width-tablet-lg) {
+@mixin media-tablet-1199 {
+  @media only screen and (max-width: $width-tablet-1199) {
     @content
   }
 }
-@mixin media-tablet-md {
-  @media only screen and (max-width: $width-tablet-md) {
+@mixin media-tablet-959 {
+  @media only screen and (max-width: $width-tablet-959) {
     @content
   }
 }
-@mixin media-mobile-lg {
-  @media only screen and (max-width: $width-mobile-lg) {
+@mixin media-mobile-639 {
+  @media only screen and (max-width: $width-mobile-639) {
     @content
   }
 }
-@mixin media-mobile-md {
-  @media only screen and (max-width: $width-mobile-md) {
+@mixin media-mobile-479 {
+  @media only screen and (max-width: $width-mobile-479) {
     @content
   }
 }

@@ -2,9 +2,9 @@
 
 .select{
   &__container {
-    width: $width-block;
-    height: $height-block;
-    border-bottom: 2px solid $color-gray-divider;
+    width: $width-block-280;
+    height: $height-block-40;
+    border-bottom: 1px solid $color-gray-divider;
   }
   &.focus {
     & .select__container{
@@ -45,7 +45,7 @@
     display: flex;
     align-items: center;
     background-color: $color-white-high-emphasis;
-    height: $height-block;
+    height: $height-block-40;
     &:not(:last-child){
       vertical-align: center;
       border-bottom: 1px solid $color-gray-divider;

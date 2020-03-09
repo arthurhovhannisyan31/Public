@@ -2,15 +2,16 @@
 // local services & data store
 import {routeMaker} from '../services/utilities.service'
 // local containers & components
-import Dashboard from "../containers/dashboard"
-import Messages from "../containers/messages"
+import Dashboard from '../containers/dashboard'
+import Messages from '../containers/messages'
 import News from '../containers/news'
-import Notifications from "../containers/notifications"
-import Welcome from "../containers/welcome"
-import Settings from "../containers/settings"
-import Login from "../containers/login"
+import Notifications from '../containers/notifications'
+import Welcome from '../containers/welcome'
+import Settings from '../containers/settings'
+import Login from '../containers/login'
 // local constants & styles
-import CONSTS from "../constants"
+import CONSTS from '../constants'
+import Hotels from '../containers/hotels'
 
 const dashboard = {
   exact: true,
@@ -46,7 +47,7 @@ const welcome = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.WELCOME.ROUTE,
-  component: Welcome,
+  component: Welcome
 }
 const login = {
   exact: true,
@@ -55,10 +56,22 @@ const login = {
   component: Login
 }
 
+const hotels = {
+  exact: true,
+  isPrivate: true,
+  path: CONSTS.ROUTES.HOTELS.ROUTE,
+  component: Hotels
+}
 
-const appRoutes = [dashboard, messages, news, notifications, settings, welcome, login]
-  .map(({isPrivate, ...params}) => (
-  routeMaker(isPrivate, params)
-))
+const appRoutes = [
+  dashboard,
+  messages,
+  news,
+  hotels,
+  notifications,
+  settings,
+  welcome,
+  login
+].map(({ isPrivate, ...params }) => routeMaker(isPrivate, params))
 
 export default appRoutes

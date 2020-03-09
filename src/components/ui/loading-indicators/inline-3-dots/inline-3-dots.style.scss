@@ -1,9 +1,10 @@
 @import "./src/styles/consts";
 
 .Inline3Dots{
-  color: $color-grey;
+  color: black;
   display: flex;
-  align-self: center;
+  justify-content: center;
+  align-items: center;
   font-size: 4px;
   line-height: 1;
   margin-right: 4px;

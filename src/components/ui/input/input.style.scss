@@ -4,19 +4,19 @@
   display: flex;
   flex-flow: column;
   position: relative;
-  width: $width-block;
-  max-width: $width-block;
+  width: $width-block-280;
+  max-width: $width-block-280;
 
   &__field {
     width: 100%;
     color: $color-black-high-emphasis;
 
-    height: $height-block;
+    height: $height-block-40;
     box-sizing: border-box;
     border: none;
     border-top-right-radius: $border-radius-main;
     border-top-left-radius: $border-radius-main;
-    border-bottom: 2px solid $color-gray-divider;
+    border-bottom: 1px solid $color-gray-divider;
     &::placeholder{
       color: $color-black-disabled;
     }
@@ -99,13 +99,13 @@
   }
   &.focus{
     & .input__field {
-      border-bottom: 2px solid $color-primary;
+      border-bottom: 1px solid $color-primary;
     }
   }
   &.error{
     & .input {
       &__field {
-        border-bottom: 2px solid $color-critical;
+        border-bottom: 1px solid $color-critical;
       }
       &__label{
         color: $color-critical;
@@ -118,7 +118,7 @@
   &.limitExceeded{
     & .input {
       &__field {
-        border-bottom: 2px solid $color-critical;
+        border-bottom: 1px solid $color-critical;
       }
       &__counter {
         color: $color-critical;

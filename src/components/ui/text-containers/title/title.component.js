@@ -5,12 +5,8 @@ import React from 'react'
 // local constants & styles
 import './title.style.scss'
 
-const Title = ({children, extraClassname}) => {
-  return (
-    <span className={`title ${extraClassname}`}>
-      {children}
-    </span>
-  )
+const Title = ({ children, extraClassname }) => {
+  return <span className={`title ${extraClassname}`}>{children}</span>
 }
 
 export default Title

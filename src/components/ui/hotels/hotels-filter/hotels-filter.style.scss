@@ -1,0 +1,24 @@
+@import "./src/styles/media-queries";
+
+.hotels-filter{
+
+  &__container{
+    display: flex;
+    justify-content: space-between;
+    @include media-tablet-959{
+      flex-flow: column;
+    }
+
+    & .input{
+      &.next-id{
+        width: 150px;
+      }
+      &.length{
+        width: 150px;
+      }
+    }
+    & .select__container{
+      width: 340px;
+    }
+  }
+}

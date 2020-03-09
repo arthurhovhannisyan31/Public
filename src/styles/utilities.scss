@@ -2,32 +2,32 @@
 
 .hidden {
   &-desktop-lg {
-    @include media-desktop-lg {
+    @include media-desktop-2560 {
       display: none;
     }
   }
   &-desktop-md {
-    @include media-desktop-md {
+    @include media-desktop-1599 {
       display: none;
     }
   }
   &-tablet-lg {
-    @include media-tablet-lg {
+    @include media-tablet-1199 {
       display: none;
     }
   }
   &-tablet-md {
-    @include media-tablet-md {
+    @include media-tablet-959 {
       display: none;
     }
   }
   &-mobile-lg {
-    @include media-mobile-lg {
+    @include media-mobile-639 {
       display: none;
     }
   }
   &-mobile-md {
-    @include media-mobile-md {
+    @include media-mobile-479 {
       display: none;
     }
   }
@@ -40,21 +40,21 @@
 }
 
 @mixin vertical-container-padding {
-  @include media-desktop-lg {
+  @include media-desktop-2560 {
     padding-top: 5px;
     padding-bottom: 5px;
   }
 }
 
 @mixin vertical-block-padding {
-  @include media-desktop-lg {
+  @include media-desktop-2560 {
     padding-top: 5px;
     padding-bottom: 5px;
   }
 }
 
 @mixin horizontal-block-padding{
-  @include media-desktop-lg {
+  @include media-desktop-2560 {
     padding-left: 10px;
     padding-right: 10px;
   }

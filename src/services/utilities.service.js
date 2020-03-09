@@ -1,6 +1,6 @@
 // external libraries
-import React, { useState, useEffect, useMemo, useRef, useLayoutEffect } from 'react'
-import {Route, useParams, useLocation, useHistory, useRouteMatch} from "react-router-dom"
+import React, {useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react'
+import {Route, useHistory, useLocation, useParams, useRouteMatch} from "react-router-dom"
 // local services & data store
 // local containers & components
 import PrivateRoute from "../routes/private-route"
@@ -53,14 +53,14 @@ export const googleMapCoordinatesConverter = (
   }) => {
   const twoToTheZoomDegree = 2**zoom
 
-  const newPixelCoordinateLat = lat * twoToTheZoomDegree + pixelAdjustLat;
-  const newPixelCoordinateLng = lng * twoToTheZoomDegree + pixelAdjustLng;
+  const newPixelCoordinateLat = lat * twoToTheZoomDegree + pixelAdjustLat
+  const newPixelCoordinateLng = lng * twoToTheZoomDegree + pixelAdjustLng
 
   return {
     lat: newPixelCoordinateLat / twoToTheZoomDegree,
     lng: newPixelCoordinateLng / twoToTheZoomDegree
-  };
-};
+  }
+}
 
 /**
  * Returns state whether the mouse is hovering an element.
@@ -120,23 +120,37 @@ export const useDebounce = (value, delay) => {
  * @returns {boolean}
  */
 export const useOnScreen = (ref, root = null, rootMargin = '0px', threshold = [1.0]) => {
-  const refCurrent = ref?.current;
+  // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+  // destructuring current ref property
+  const refCurrent = ref?.current
+  // declaring local state
   const [isIntersecting, setIntersecting] = useState(false)
 
+  // at every change of [refCurrent, root, rootMargin, threshold] will rerun observer
   useEffect(() => {
+    // declaring callback for observer event
     const intersectionCallback = ([entry]) => {
+      // so far we got only 1 threshold
       setIntersecting(entry.isIntersecting)
-      // if anything time-consuming needs to be done, use Window.requestIdleCallback().
+      // if anything time-consuming needs to be done, use Window.requestIdleCallback(). MDN thank you for care
     }
+    // declaring options as second argument for observer
     const options = {
-      root,
-      rootMargin,
-      threshold
+      root, // Defaults to the browser viewport if not specified or if null.
+      rootMargin, // Margin around the root.
+      threshold // Either a single number or an array of numbers which indicate at what percentage
+      // of the target's visibility the observer's callback should be executed.
     }
+    // creating observer instance, passing callback and props
     const observer = new IntersectionObserver( intersectionCallback, options)
-    if (refCurrent) observer.observe(refCurrent)
-    return () => observer.unobserve(refCurrent)
+    // on component rerenders could pass an null so we check if current passed
+    if (refCurrent) {
+      observer.observe(refCurrent)
+    }
+    // falback on unmount
+    return () => {if (refCurrent) observer.unobserve(refCurrent)}
   }, [refCurrent, root, rootMargin, threshold])
+  // returning link to state so we can useEffect it in component
   return isIntersecting
 }
 
@@ -149,7 +163,7 @@ export const buildThresholdList = (steps) => {
   if (!steps) return [1.0]
 
   const thresholds = []
-  let i = 0;
+  let i = 0
 
   while (i <= steps) {
     const ratio = i /steps
@@ -222,7 +236,6 @@ export const useRouter = () => {
  */
 export const useEventListener = (eventName, handler, element = window) => {
   const savedHandler = useRef(null)
-
   // Update ref.current value if handler changes.
   // This allows our effect below to always get latest handler ...
   // ... without us needing to pass it in effect deps array ...
@@ -230,24 +243,19 @@ export const useEventListener = (eventName, handler, element = window) => {
   useEffect(() => {
     savedHandler.current = handler
   }, [handler])
-
   useEffect(() => {
     // make sure element supports addEventListener
     // on
     const isSupported = element && element.addEventListener
-    if (!isSupported) return null;
-
+    if (!isSupported) return null
     // create event listener that calls handler function stored in ref
     const eventListener = event => savedHandler.current(event)
-
     // add event listener
     element.addEventListener(eventName, eventListener)
-
     // remove event listener on cleanup
     return () => {
       element.removeEventListener(eventName, eventListener)
     }
-
   }, [eventName, element])
 }
 
@@ -256,7 +264,7 @@ export const useEventListener = (eventName, handler, element = window) => {
  * @returns {{width: (number), height: (number)}}
  */
 export const useWindowSize = () => {
-  const isClient = typeof window === 'object';
+  const isClient = typeof window === 'object'
 
   const getSize = () => ({
     width: isClient ? window.innerWidth : undefined,
@@ -270,7 +278,6 @@ export const useWindowSize = () => {
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   })
-
   return windowSize
 }
 
@@ -312,10 +319,10 @@ export const useTheme = (theme) => {
  * @returns {boolean|*}
  */
 export const validateText = ({ regExp, text }) => {
-  const test = regExp.test(text);
-  const match = text.match(regExp);
-  return !test || (match && !match.length);
-};
+  const test = regExp.test(text)
+  const match = text.match(regExp)
+  return !test || (match && !match.length)
+}
 
 /**
  * Returns validated color value || default color value
@@ -324,7 +331,6 @@ export const validateText = ({ regExp, text }) => {
  */
 export const validateColorName = color => CONSTS.COMPONENTS.BUTTONS.COLORS.VALUES
     .includes(color) ? color : CONSTS.COMPONENTS.BUTTONS.COLORS.DEFAULT
-
 
 /**
  * Returns string||number for limited value, ex: x10 || x10+
@@ -352,3 +358,77 @@ export const randomString = () => Math
   .toString(36)
   .replace(/[^a-z\d]+/g, '')
   .substr(0, 10)
+
+/**
+ * Returns filtered array of given element and length
+ * @param promise
+ * @param id
+ * @param length
+ * @returns {*}
+ */
+export const fetchHotelsRestApiMock = (promise, {id, length}) => {
+  return promise
+    .then(({data}) => {
+      // find index of given el id, considered to get an element id, not the index in array
+      const indexStart = data.findIndex(el => el.id === id)
+      const indexEnd = indexStart + length
+      const nextIndex = indexStart < 0 ? id : indexEnd
+      return {data: data.slice(indexStart, indexEnd), nextIndex}
+  }).catch(e => {
+      return e
+    }
+  )
+}
+
+// export function useElementBoundaries(className) {
+//   const clientHeight = Math.max(
+//     document.documentElement.clientHeight,
+//     window.innerHeight || 0
+//   );
+//   const clientWidth = Math.max(
+//     document.documentElement.clientWidth,
+//     window.innerWidth || 0
+//   )
+//   const [state, setState] = useState(false)
+//   let inClientHeight = null
+//   let inClientWidth = null
+//
+//   useEffect(() => {
+//     const element = document.querySelector(`.${className}`);
+//     const elementRect = element.getBoundingClientRect();
+//     const crossTop = elementRect?.bottom >= 0
+//     const crossBottom = elementRect?.top <= clientHeight
+//     const crossLeft = elementRect?.right >= 0
+//     const crossRight = elementRect?.left <= clientWidth
+//
+//     inClientHeight = crossBottom && crossTop && {
+//       direction: 'top-bottom',
+//       bottom: elementRect?.bottom,
+//       top: elementRect?.top,
+//       clientHeight
+//     }
+//     inClientWidth = crossLeft && crossRight && {
+//       direction: 'left-right',
+//       left: elementRect?.left,
+//       right: elementRect?.right,
+//       clientWidth
+//     }
+//   }, [])
+//   useEventListener('scroll', setState({
+//     inClientHeight,
+//     inClientWidth
+//   }))
+//
+//   return state
+// }
+
+// /**
+//  * Function compose function
+//  * @param funcs
+//  * @returns {function(...[*]=)}
+//  */
+// export const compose = (...funcs) => component => {
+//   funcs.reduceRight(
+//     (wrapped, f) => f(wrapped), component
+//   )
+// }

@@ -1,9 +1,9 @@
 // external libraries
-import React, {useEffect, useRef, useReducer} from 'react'
+import React, {useEffect, useReducer, useRef} from 'react'
 import PropTypes from 'prop-types'
 import ClassNames from 'classnames'
 // local services & data store
-import {validateText, useFocus, randomString, useDebounce} from "../../../services/utilities.service"
+import {randomString, useDebounce, useFocus, validateText} from "../../../services/utilities.service"
 // local containers & components
 import InputReadOnly from './input.read-only.component'
 import InputDefault from './input.default.component'
@@ -40,7 +40,7 @@ const inputReducer = (state, action) => {
  * Input main component
  * @param value - sets component visible value
  * @param onChange - returns value from user input
- * @param isDebounce - returns debounced value if true
+ * @param onChangeDebounced - returns debounced value if true
  * @param defaultValue - used set value on component mount and reset
  * @param placeholder - placeholder on value absence
  * @param extraClassName
@@ -50,11 +50,13 @@ const inputReducer = (state, action) => {
  * @param reset - used to set default value
  * @param maxLength - used to count length left param, set error when exceeded
  * @param maxLengthStrict - prevents typing when limit exceeded
+ * @param showCounter - display counter if true
  * @param label - sets label for field
  * @param isClearable - displays clear button
  * @param errorText - used to display text on error
  * @param helperText - used to display helper text
  * @param isMultiline - used to replace input tah with textarea
+ * @param type - type of returned value string | number
  * @returns {*}
  * @constructor
  */
@@ -77,6 +79,7 @@ const Input = (
     errorText,
     helperText,
     isMultiline,
+    type,
   }) => {
 
   /**
@@ -148,8 +151,6 @@ const Input = (
      * Check if onChange func provided and length not exceeded on strict mode
      */
     if (onChange && maxLengthStrict ? isLengthLeft : true) {
-
-
       if (isLengthLeft) {
         setLimitExceeded(false)
       } else {
@@ -164,21 +165,23 @@ const Input = (
           onChange(text)
           setContentLength(textLength)
         }
-      } else if (regExp) {
-        /**
-         * On weak mode will return value
-         * set error state
-         * set content length
-         */
-        setContentLength(textLength)
-        onChange(text)
-        if (validateText({regExp, text})){
-          setError(false)
-        } else {
-          setError(true)
-        }
       } else {
-        onChange(text)
+        setContentLength(textLength)
+        if (regExp) {
+          /**
+           * On weak mode will return value
+           * set error state
+           * set content length
+           */
+          onChange(text)
+          if (validateText({regExp, text})){
+            setError(false)
+          } else {
+            setError(true)
+          }
+        } else {
+          onChange(text)
+        }
       }
     }
   }
@@ -197,6 +200,7 @@ const Input = (
   });
 
   const Tag = isMultiline ? 'textarea' : 'input'
+  const Type = isMultiline ? 'string' : type
 
   /**
    * Return debounced value of input
@@ -224,6 +228,7 @@ const Input = (
           isDisabled={isDisabled}
           tag={Tag}
           inputId={randId}
+          type={Type}
         />
         : <InputDefault
             tag={Tag}
@@ -236,10 +241,11 @@ const Input = (
             contentLength={contentLength}
             maxLength={maxLength}
             showCounter={showCounter}
-            onChange={onChange}
+            onChangeEnhancer={onChange}
             clearAll={clearAll}
             ref={ref}
             inputId={randId}
+            type={Type}
         />
       }
     </div>
@@ -265,13 +271,20 @@ Input.defaultProps = {
   errorText: '',
   helperText: '',
   isMultiline: false,
+  type: 'text'
 }
 
 Input.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   onChange: PropTypes.func,
   onChangeDebounced: PropTypes.func,
-  defaultValue: PropTypes.string,
+  defaultValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   placeholder: PropTypes.string,
   extraClassName: PropTypes.string,
   regExp: PropTypes.instanceOf(RegExp),
@@ -286,6 +299,7 @@ Input.propTypes = {
   errorText: PropTypes.string,
   helperText: PropTypes.string,
   isMultiline: PropTypes.bool,
+  type: PropTypes.string
 }
 
 export default Input
