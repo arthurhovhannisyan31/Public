@@ -1,12 +1,27 @@
-@import "./src/styles/media-queries";
+@import './src/styles/media-queries';
 
-.hotels-lazy-list{
-  &__container{
+.hotels-lazy-list {
+  height: 100%;
+  &__container {
     display: flex;
     flex-flow: column;
+    position: relative;
+    height: 100%;
   }
 
-  & .loading-indicator{
+  & .loading-indicator {
     min-height: 40px;
+  }
+
+  & .ref {
+    position: absolute;
+    bottom: 0;
+    width: 1px;
+    height: 1px;
+  }
+  & .firstLoad {
+    & .ref {
+      display: none;
+    }
   }
 }

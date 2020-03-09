@@ -1,6 +1,11 @@
-import {Map, Record} from 'immutable'
-import {call, put, takeLatest} from 'redux-saga/effects'
-import {fetchHotels} from '../../services/api.services'
+// external libraries
+import { Map, Record } from 'immutable'
+import { call, put, takeLatest } from 'redux-saga/effects'
+// local services & data store
+import { fetchHotels } from '../../services/api.services'
+import { delay } from '../../services/utilities.service'
+// local containers & components
+// local constants & styles
 
 /**
  * Initial state
@@ -13,6 +18,7 @@ const InitialStateRecord = Record({
   hotelsCollection: new Map([]),
   nextId: 0,
   finita: false,
+  firstLoad: true,
 })
 
 /**
@@ -35,40 +41,40 @@ export const hotelsReducer = (state = new InitialStateRecord(), action) => {
   const { type, payload, nextId } = action
   switch (type) {
     case HOTELS_REQUEST:
-      return state
-        .set('loading', true)
-        .set('error', false)
+      return state.set('loading', true).set('error', false)
     case HOTELS_REQUEST_ERROR:
-      return state
-        .set('loading', false)
-        .set('error', payload)
+      return state.set('loading', false).set('error', payload)
     case HOTELS_REQUEST_SUCCESS:
       return state
         .set('loading', false)
         .set('nextId', nextId)
-        .updateIn(['hotelsCollection'], collection => [...collection, ...payload])
+        .set('firstLoad', false)
+        .updateIn(['hotelsCollection'], collection => [
+          ...collection,
+          ...payload,
+        ])
     case HOTELS_REQUEST_EMPTY:
-      return state
-        .set('finita', true)
+      return state.set('finita', true)
     default:
       return state
   }
 }
-
-export const delay = ms => new Promise(res => setTimeout(res, ms))
 
 /**
  * Returns required hotels range
  * @returns {any}
  */
 export function* getHotelsSaga(action) {
-  const {id, length, firstLoad} = action
   try {
+    const { id, length, firstLoad } = action
     if (!firstLoad) yield call(delay, 2500)
-    const {data, nextIndex} = yield call(fetchHotels, {id, length})
-    if (!data?.length) yield put({type: HOTELS_REQUEST_EMPTY})
-    yield put({ type: HOTELS_REQUEST_SUCCESS, payload: data, nextId: nextIndex})
-
+    const { data, nextIndex } = yield call(fetchHotels, { id, length })
+    if (!data?.length) yield put({ type: HOTELS_REQUEST_EMPTY })
+    yield put({
+      type: HOTELS_REQUEST_SUCCESS,
+      payload: data,
+      nextId: nextIndex,
+    })
   } catch (e) {
     yield put({ type: HOTELS_REQUEST_ERROR, payload: e })
   }

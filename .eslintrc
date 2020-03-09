@@ -51,7 +51,8 @@
       "error",
       "absolute-first"
     ],
-    "import/newline-after-import": "error"
+    "import/newline-after-import": "error",
+    "no-shadow": "off"
   }
 }
 

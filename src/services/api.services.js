@@ -20,7 +20,7 @@ export const fetchHotels = ({id, length}) => {
   return fetchHotelsRestApiMock(
     axios.get('http://localhost:3000/hotels_mock.json'
       // in case of real rest api we could pass props to server
-      // , {id, length}
+      // ,  {length, filters}
     ),
     {id, length}
   )

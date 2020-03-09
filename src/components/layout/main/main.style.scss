@@ -1,11 +1,12 @@
-@import "./src/styles/media-queries";
+@import './src/styles/media-queries';
 
-.main{
-  &__content{
+.main {
+  &__content {
     display: flex;
     height: inherit;
+    min-height: calc(100vh - 60px - 40px);
     width: 100%;
-    & > div:nth-child(2){
+    & > div:nth-child(2) {
       width: 100%;
     }
   }

@@ -1,9 +1,9 @@
-@import "./src/styles/media-queries";
+@import './src/styles/media-queries';
 
-.footer{
-
-  &__content{
+.footer {
+  &__content {
     display: flex;
     justify-content: space-between;
+    height: $height-footer-40;
   }
 }

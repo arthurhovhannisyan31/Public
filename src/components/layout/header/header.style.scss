@@ -1,26 +1,25 @@
-@import "./src/styles/media-queries";
+@import './src/styles/media-queries';
 
-.header{
-  &__content{
+.header {
+  &__content {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 5px 0;
-
-    &_title{
-
+    height: $height-header-50;
+    &_title {
     }
-    &_controls{
+    &_controls {
       display: flex;
       align-items: center;
     }
-    &_search{
+    &_search {
       margin-top: 4px;
     }
-    &_notifications{
+    &_notifications {
       margin: 0 10px;
     }
-    & .personal-info{
+    & .personal-info {
       margin-left: 10px;
     }
   }
