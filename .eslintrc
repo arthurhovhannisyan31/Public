@@ -33,7 +33,8 @@
   "plugins": [
     "react",
     "prettier",
-    "jsx-a11y"
+    "jsx-a11y",
+    "react-hooks"
   ],
   "rules": {
     "react/jsx-filename-extension": [
@@ -52,7 +53,8 @@
       "absolute-first"
     ],
     "import/newline-after-import": "error",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
-
