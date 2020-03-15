@@ -430,3 +430,16 @@ export const fetchHotelsRestApiMock = (promise, { id, length }) => {
  * @returns {Promise<any>}
  */
 export const delay = ms => new Promise(res => setTimeout(res, ms))
+
+/**
+ * Returns previous state value
+ * @param value
+ * @returns {any}
+ */
+export const usePrevious = value => {
+  const ref = useRef(null)
+  useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
+}
