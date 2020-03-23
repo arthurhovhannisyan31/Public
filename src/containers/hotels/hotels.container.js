@@ -49,6 +49,9 @@ const Hotels = () => {
     hotelReducer,
     hotelInitialState
   )
+
+  // In large component trees, an alternative we recommend is to pass down a dispatch function from useReducer via context:
+
   const setLength = payload => dispatchLocal({ type: 'setLength', payload })
   const setFilters = payload => dispatchLocal({ type: 'setFilters', payload })
   const setLoadMore = payload => dispatchLocal({ type: 'setLoadMore', payload })

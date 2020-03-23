@@ -1,5 +1,6 @@
 // external libraries
 import React, {
+  useCallback,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -169,6 +170,15 @@ export const useOnScreen = (
     if (refCurrent) {
       observer.observe(refCurrent)
     }
+    // const ref = useRef(null);
+    //
+    // // ✅ IntersectionObserver is created lazily once
+    // function getObserver() {
+    //   if (ref.current === null) {
+    //     ref.current = new IntersectionObserver(onIntersect);
+    //   }
+    //   return ref.current;
+    // }
     // falback on unmount
     return () => {
       if (refCurrent) observer.unobserve(refCurrent)
@@ -442,4 +452,26 @@ export const usePrevious = value => {
     ref.current = value
   })
   return ref.current
+}
+
+// function MeasureExample() {
+//   const [rect, ref] = useClientRect();
+//   return (
+//     <>
+//       <h1 ref={ref}>Hello, world</h1>
+//       {rect !== null &&
+//       <h2>The above header is {Math.round(rect.height)}px tall</h2>
+//       }
+//     </>
+//   );
+// }
+
+export const useClientRect = () => {
+  const [rect, setRect] = useState(null)
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setRect(node.getBoundingClientRect())
+    }
+  }, [])
+  return [rect, ref]
 }
