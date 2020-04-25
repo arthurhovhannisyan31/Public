@@ -89,5 +89,5 @@ export function* watcherGetHotelsSaga() {
 }
 
 export const hotelsSagas = [
-  fork(watcherGetHotelsSaga),
+  watcherGetHotelsSaga(),
 ]
