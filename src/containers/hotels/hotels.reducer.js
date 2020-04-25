@@ -1,6 +1,6 @@
 // external libraries
 import { Map, Record } from 'immutable'
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest, fork } from 'redux-saga/effects'
 // local services & data store
 import { fetchHotels } from '../../services/api.services'
 import { delay } from '../../services/utilities.service'
@@ -64,7 +64,7 @@ export const hotelsReducer = (state = new InitialStateRecord(), action) => {
  * Returns required hotels range
  * @returns {any}
  */
-export function* getHotelsSaga(action) {
+export function* workerGetHotelsSaga(action) {
   try {
     const { id, length, firstLoad } = action
     if (!firstLoad) yield call(delay, 2500)
@@ -84,6 +84,10 @@ export function* getHotelsSaga(action) {
  * Effect watcher
  * @returns {any}
  */
-export default function* saga() {
-  yield takeLatest(HOTELS_REQUEST, getHotelsSaga)
+export function* watcherGetHotelsSaga() {
+  yield takeLatest(HOTELS_REQUEST, workerGetHotelsSaga)
 }
+
+export const hotelsSagas = [
+  fork(watcherGetHotelsSaga),
+]
