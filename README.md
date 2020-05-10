@@ -1,3 +1,17 @@
+in case of error with husky node version 
+- nvm install node
+
+if not helped
+- npm rebuild
+
+brut force
+sudo npm cache clean -f
+sudo npm install -g n
+install node stable or latest
+sudo n stable || sudo n latest
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
