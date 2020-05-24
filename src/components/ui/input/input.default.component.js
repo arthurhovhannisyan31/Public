@@ -17,7 +17,7 @@ const InputDefault = (
     contentLength,
     showCounter,
     maxLength,
-    onChange,
+    onChange = () => {},
     clearAll,
     inputId,
     type,
