@@ -47,14 +47,16 @@ const Hotels = () => {
   const dispatchGlobal = useDispatch()
   const [stateLocal, dispatchLocal] = useReducer(
     hotelReducer,
-    hotelInitialState
+    hotelInitialState,
+    undefined
   )
 
   // In large component trees, an alternative we recommend is to pass down a dispatch function from useReducer via context:
 
-  const setLength = payload => dispatchLocal({ type: 'setLength', payload })
-  const setFilters = payload => dispatchLocal({ type: 'setFilters', payload })
-  const setLoadMore = payload => dispatchLocal({ type: 'setLoadMore', payload })
+  const setLength = (payload) => dispatchLocal({ type: 'setLength', payload })
+  const setFilters = (payload) => dispatchLocal({ type: 'setFilters', payload })
+  const setLoadMore = (payload) =>
+    dispatchLocal({ type: 'setLoadMore', payload })
 
   /**
    * Declare state
@@ -73,34 +75,34 @@ const Hotels = () => {
    * @type {any}
    */
   const { loading, finita, nextId, firstLoad } = useSelector(
-    state => state[hotelModuleName],
+    (state) => state[hotelModuleName],
     shallowEqual
   )
 
   const hotelsSelector = (cb, selector) =>
-    createSelector(state => state[hotelModuleName][selector], cb)
+    createSelector((state) => state[hotelModuleName][selector], cb)
   const hotelValues = useSelector(
-    hotelsSelector(data => data.map(el => el.region), 'hotelsCollection')
+    hotelsSelector((data) => data.map((el) => el.region), 'hotelsCollection')
   )
   const hotelUniqValues = new Set([...hotelValues])
 
-  const hotelOptions = [...hotelUniqValues].map(el => ({
+  const hotelOptions = [...hotelUniqValues].map((el) => ({
+    // todo add memo
     value: el,
     label: el,
   }))
 
   const filterValues = () => {
     if (Array.isArray(filters)) {
-      return filters.map(el => el.value)
+      return filters.map((el) => el.value)
     }
     return filters?.value ? [filters.value] : []
   }
 
-  // При выборе элемента в списке список отфильтровывается по заданному региону
   const lazyListFilteredData = useSelector(
     hotelsSelector(
-      data =>
-        data.filter(el =>
+      (data) =>
+        data.filter((el) =>
           filterValues()?.length ? filterValues().includes(el.region) : el
         ),
       'hotelsCollection'
@@ -143,10 +145,6 @@ const Hotels = () => {
    */
   useEffect(() => {
     if (intersecting && !finita) {
-      // Если список отображен пользователю целиком или пользователь доскроливает до конца списка, то запускается дозагрузка следующей порции данных
-      // Если на отображаемой части странице еще есть место, то продолжает работать алгоритм дозагрузки данных, иначе следующая порция данных не загружаются
-      // Если пользователь снова доскроллил до конца списка, то алгоритм дозагрузки данных запускается снова
-      // При выбранном фильтре должен быть сохранен функционал дозагрузки списка
       setLoadMore(true)
     }
   }, [intersecting, finita])
@@ -157,7 +155,6 @@ const Hotels = () => {
    */
   useEffect(() => {
     if (loadMore || firstLoad) {
-      // Асинхронно подгружается первая порция данных (10 строк)
       getHotels({
         id: nextId,
         length: debouncedLength,
@@ -168,9 +165,7 @@ const Hotels = () => {
   }, [getHotels, loadMore, debouncedLength, firstLoad, nextId])
 
   return (
-    // На странице отображается компонент
     <div className="hotels">
-      {/* Над списком размещен фильтр по региону: select, который пополняется по мере появления новых уникальных регионов в списке */}
       <HotelsFilter
         id={nextId}
         length={length}
@@ -179,7 +174,6 @@ const Hotels = () => {
         filters={filters}
         setFilters={setFilters}
       />
-      {/* Компонент выводит список отелей (это может быть список или таблица), каждый элемент которого отображает всю информацию из модели отеля id name region price */}
       <HotelsLazyList
         loading={loading}
         firstLoad={firstLoad}
