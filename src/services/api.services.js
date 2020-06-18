@@ -1,6 +1,6 @@
 // external libraries
 import axios from 'axios'
-import {fetchHotelsRestApiMock} from "./utilities.service"
+import { fetchHotelsRestApiMock } from './utilities.service'
 // local services & data store
 // local containers & components
 // local constants & styles
@@ -16,13 +16,10 @@ import {fetchHotelsRestApiMock} from "./utilities.service"
 	 }
  * @returns {Promise<any<T>>}
  */
-export const fetchHotels = ({id, length}) => {
+export const fetchHotels = ({ id, length }) => {
   return fetchHotelsRestApiMock(
-    axios.get('http://localhost:3000/hotels_mock.json'
-      // in case of real rest api we could pass props to server
-      // ,  {length, filters}
-    ),
-    {id, length}
+    axios.get(`my-json-server.typicode.com/arthurhovhannisyan31/demo/hotels`),
+    { id, length }
   )
 }
 

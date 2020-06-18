@@ -1,7 +1,7 @@
 // external libraries
 import {all} from 'redux-saga/effects'
 // local services & data store
-import hotelSaga from '../containers/hotels/hotels.reducer'
+import {hotelsSagas} from '../containers/hotels/hotels.reducer'
 // local containers & components
 // local constants & styles
 
@@ -10,5 +10,7 @@ import hotelSaga from '../containers/hotels/hotels.reducer'
  * @returns {any}
  */
 export default function* rootSaga() {
-  yield all([hotelSaga()])
+  yield all([
+    ...hotelsSagas
+  ])
 }
