@@ -1,6 +1,6 @@
 // external libraries
 import { Map, Record } from 'immutable'
-import { call, put, takeLatest, delay } from 'redux-saga/effects'
+import { call, put, takeLatest, delay, fork } from 'redux-saga/effects'
 // local services & data store
 import { fetchHotels } from '../../services/api.services'
 // local containers & components
@@ -92,5 +92,5 @@ export function* watcherGetHotelsSaga() {
 }
 
 export const hotelsSagas = [
-  watcherGetHotelsSaga(),
+  fork(watcherGetHotelsSaga),
 ]
