@@ -1,7 +1,7 @@
 // external libraries
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
 // local services & data store
-import {hotelsReducer, moduleName as hotelModuleName} from '../containers/hotels/hotels.reducer'
+import { hotelsReducer, moduleName as hotelModuleName } from './hotels'
 // local containers & components
 // local constants & styles
 

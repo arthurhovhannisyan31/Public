@@ -1,9 +1,10 @@
 // external libraries
-import React, { useCallback, useEffect, useReducer, useRef } from 'react'
+import React, { useEffect, useReducer, useRef, useMemo } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { createSelector } from 'reselect'
 // local services & data store
-import { HOTELS_REQUEST, moduleName as hotelModuleName } from './hotels.reducer'
+import { moduleName as hotelModuleName } from '../../store/hotels/constants'
+import { getHotelsAction } from '../../store/hotels/actions'
 import { useDebounce, useOnScreen } from '../../services/utilities.service'
 // local containers & components
 import { HotelsFilter, HotelsLazyList } from '../../components/ui/hotels'
@@ -20,11 +21,25 @@ const hotelReducer = (state, action) => {
   const { type, payload } = action
   switch (type) {
     case 'setLength':
-      return { ...state, length: payload }
+      return {
+        ...state,
+        length: payload
+      }
     case 'setFilters':
-      return { ...state, filters: payload }
+      return {
+        ...state,
+        filters: payload
+      }
     case 'setLoadMore':
-      return { ...state, loadMore: payload }
+      return {
+        ...state,
+        loadMore: payload
+      }
+    case 'setRefPersist':
+      return {
+        ...state,
+        refPersist: payload
+      }
     default:
       return state
   }
@@ -39,6 +54,7 @@ const Hotels = () => {
     length: 10,
     filters: null,
     loadMore: false,
+    refPersist: null
   }
 
   /**
@@ -53,15 +69,31 @@ const Hotels = () => {
 
   // In large component trees, an alternative we recommend is to pass down a dispatch function from useReducer via context:
 
-  const setLength = (payload) => dispatchLocal({ type: 'setLength', payload })
-  const setFilters = (payload) => dispatchLocal({ type: 'setFilters', payload })
+  const setLength = (payload) =>
+    dispatchLocal({
+      type: 'setLength',
+      payload
+    })
+  const setFilters = (payload) =>
+    dispatchLocal({
+      type: 'setFilters',
+      payload
+    })
   const setLoadMore = (payload) =>
-    dispatchLocal({ type: 'setLoadMore', payload })
+    dispatchLocal({
+      type: 'setLoadMore',
+      payload
+    })
+  const setRefPersist = (payload) =>
+    dispatchLocal({
+      type: 'setRefPersist',
+      payload
+    })
 
   /**
    * Declare state
    */
-  const { length, filters, loadMore } = stateLocal
+  const { length, filters, loadMore, refPersist } = stateLocal
   const debouncedLength = useDebounce(length, 500)
 
   /**
@@ -86,11 +118,14 @@ const Hotels = () => {
   )
   const hotelUniqValues = new Set([...hotelValues])
 
-  const hotelOptions = [...hotelUniqValues].map((el) => ({
-    // todo add memo
-    value: el,
-    label: el,
-  }))
+  const hotelOptions = useMemo(
+    () =>
+      [...hotelUniqValues].map((el) => ({
+        value: el,
+        label: el
+      })),
+    [hotelUniqValues]
+  )
 
   const filterValues = () => {
     if (Array.isArray(filters)) {
@@ -115,11 +150,15 @@ const Hotels = () => {
    * @type {any}
    */
   const ref = useRef(null)
+  useEffect(() => {
+    if (ref) setRefPersist(ref)
+  }, [ref])
   /**
    * Running intersection observer
    * @type {boolean}
    */
-  const intersecting = useOnScreen(ref, null, '0px')
+
+  const intersecting = useOnScreen(refPersist, null, '0px')
 
   /**
    * Returns HOTELS_REQUEST action with params
@@ -127,17 +166,6 @@ const Hotels = () => {
    * @param length
    * @returns {{length: number, id: number, type: string}}
    */
-
-  const getHotels = useCallback(
-    ({ id, length, firstLoad }) =>
-      dispatchGlobal({
-        type: HOTELS_REQUEST,
-        id,
-        length,
-        firstLoad,
-      }),
-    [dispatchGlobal]
-  )
 
   /**
    * Run effect when reference div in view port
@@ -155,14 +183,16 @@ const Hotels = () => {
    */
   useEffect(() => {
     if (loadMore || firstLoad) {
-      getHotels({
-        id: nextId,
-        length: debouncedLength,
-        firstLoad,
-      })
+      dispatchGlobal(
+        getHotelsAction({
+          id: nextId,
+          length: debouncedLength,
+          firstLoad
+        })
+      )
       setLoadMore(false)
     }
-  }, [getHotels, loadMore, debouncedLength, firstLoad, nextId])
+  }, [dispatchGlobal, loadMore, debouncedLength, firstLoad, nextId])
 
   return (
     <div className="hotels">

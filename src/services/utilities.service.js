@@ -29,12 +29,12 @@ import CONSTS from '../constants'
 export const localeStorage = () =>
   typeof Storage !== 'undefined'
     ? {
-        setItem: (key, value) => localStorage.setItem(key, value),
-        getItem: key => localeStorage.getItem(key),
-        removeItem: key => localeStorage.removeItem(key),
-        clear: () => localeStorage.clear(),
-        key: key => localeStorage.key(key),
-      }
+      setItem: (key, value) => localStorage.setItem(key, value),
+      getItem: (key) => localeStorage.getItem(key),
+      removeItem: (key) => localeStorage.removeItem(key),
+      clear: () => localeStorage.clear(),
+      key: (key) => localeStorage.key(key)
+    }
     : () => {
         throw new Error('No web storage Support.')
       }
@@ -193,7 +193,7 @@ export const useOnScreen = (
  * @param steps
  * @returns {[]|number[]}
  */
-export const buildThresholdList = steps => {
+export const buildThresholdList = (steps) => {
   if (!steps) return [1.0]
 
   const thresholds = []
@@ -217,20 +217,20 @@ export const buildThresholdList = steps => {
  */
 export const useOnClickOutside = (ref, callback) => {
   const [clickOutside, setClickOutside] = useState(false)
-  const listener = event =>
+  const listener = (event) =>
     ref.current || !ref.current.contains(event.target)
       ? setClickOutside(true)
       : setClickOutside(false)
-  const handler = event => listener(event) && callback(event)
-  const onMouseDown = event => handler(event)
-  const onTouchStart = event => handler(event)
+  const handler = (event) => listener(event) && callback(event)
+  const onMouseDown = (event) => handler(event)
+  const onTouchStart = (event) => handler(event)
 
   return [
     clickOutside,
     {
       onMouseDown,
-      onTouchStart,
-    },
+      onTouchStart
+    }
   ]
 }
 
@@ -289,7 +289,7 @@ export const useEventListener = (eventName, handler, element = window) => {
     const isSupported = element && element.addEventListener
     if (!isSupported) return null
     // create event listener that calls handler function stored in ref
-    const eventListener = event => savedHandler.current(event)
+    const eventListener = (event) => savedHandler.current(event)
     // add event listener
     element.addEventListener(eventName, eventListener)
     // remove event listener on cleanup
@@ -343,12 +343,13 @@ export const useLockBodyScroll = () => {
  * @param theme
  */
 
-export const useTheme = theme => {
+export const useTheme = (theme) => {
   useLayoutEffect(() => {
     // iterate through each value in theme object
-    Object.entries(theme).forEach((val, key) => {
-      document.documentElement.style.setProperty(`--${key}`, val)
-    })
+    Object.entries(theme)
+      .forEach((val, key) => {
+        document.documentElement.style.setProperty(`--${key}`, val)
+      })
   }, [theme]) // only call again if theme object reference changes
 }
 
@@ -369,7 +370,7 @@ export const validateText = ({ regExp, text }) => {
  * @param color
  * @returns {*}
  */
-export const validateColorName = color =>
+export const validateColorName = (color) =>
   CONSTS.COMPONENTS.BUTTONS.COLORS.VALUES.includes(color)
     ? color
     : CONSTS.COMPONENTS.BUTTONS.COLORS.DEFAULT
@@ -410,7 +411,7 @@ export const randomString = () =>
  */
 export const findByRange = (arr, id, length) => {
   // find index of given el id, considered to get an element id, not the index in array
-  const indexStart = arr.findIndex(el => el.id === id)
+  const indexStart = arr.findIndex((el) => el.id === id)
   const indexEnd = indexStart + length
   const nextIndex = indexStart < 0 ? id : indexEnd
   return { data: arr.slice(indexStart, indexEnd), nextIndex }
@@ -427,11 +428,11 @@ export const findByRange = (arr, id, length) => {
 export const fetchHotelsRestApiMock = (promise, { id, length }) => {
   return promise
     .then(({ data }) => {
-      return new Promise(res => {
+      return new Promise((res) => {
         res(findByRange(data, id, length))
       })
     })
-    .catch(e => e)
+    .catch((e) => e)
 }
 
 /**
@@ -439,14 +440,14 @@ export const fetchHotelsRestApiMock = (promise, { id, length }) => {
  * @param ms
  * @returns {Promise<any>}
  */
-export const delay = ms => new Promise(res => setTimeout(res, ms))
+export const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
 /**
  * Returns previous state value
  * @param value
  * @returns {any}
  */
-export const usePrevious = value => {
+export const usePrevious = (value) => {
   const ref = useRef(null)
   useEffect(() => {
     ref.current = value
@@ -468,7 +469,7 @@ export const usePrevious = value => {
 
 export const useClientRect = () => {
   const [rect, setRect] = useState(null)
-  const ref = useCallback(node => {
+  const ref = useCallback((node) => {
     if (node !== null) {
       setRect(node.getBoundingClientRect())
     }

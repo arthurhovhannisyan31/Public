@@ -39,8 +39,8 @@
     "start-prod": "cross-env REACT_APP_NODE_ENV=production react-scripts start",
     "build": "cross-env REACT_APP_NODE_ENV=production react-scripts build",
     "build-dev": "cross-env REACT_APP_NODE_ENV=development PUBLIC_URL=/ttm react-scripts build",
+    "test": "react-scripts test",
     "test-node": "react-scripts test --env=node",
-    "test-default": "react-scripts test",
     "eject": "react-scripts eject",
     "eslint": "eslint src/ --fix",
     "prettier": "prettier  — write src/**/*.js"
