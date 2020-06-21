@@ -3,8 +3,9 @@
 .hotels-filter{
 
   &__container{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 2rem;
     @include media-tablet-959{
       flex-flow: column;
     }

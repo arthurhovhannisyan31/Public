@@ -23,22 +23,22 @@ const hotelReducer = (state, action) => {
     case 'setLength':
       return {
         ...state,
-        length: payload
+        length: payload,
       }
     case 'setFilters':
       return {
         ...state,
-        filters: payload
+        filters: payload,
       }
     case 'setLoadMore':
       return {
         ...state,
-        loadMore: payload
+        loadMore: payload,
       }
     case 'setRefPersist':
       return {
         ...state,
-        refPersist: payload
+        refPersist: payload,
       }
     default:
       return state
@@ -54,7 +54,7 @@ const Hotels = () => {
     length: 10,
     filters: null,
     loadMore: false,
-    refPersist: null
+    refPersist: null,
   }
 
   /**
@@ -72,22 +72,22 @@ const Hotels = () => {
   const setLength = (payload) =>
     dispatchLocal({
       type: 'setLength',
-      payload
+      payload,
     })
   const setFilters = (payload) =>
     dispatchLocal({
       type: 'setFilters',
-      payload
+      payload,
     })
   const setLoadMore = (payload) =>
     dispatchLocal({
       type: 'setLoadMore',
-      payload
+      payload,
     })
   const setRefPersist = (payload) =>
     dispatchLocal({
       type: 'setRefPersist',
-      payload
+      payload,
     })
 
   /**
@@ -122,7 +122,7 @@ const Hotels = () => {
     () =>
       [...hotelUniqValues].map((el) => ({
         value: el,
-        label: el
+        label: el,
       })),
     [hotelUniqValues]
   )
@@ -187,7 +187,7 @@ const Hotels = () => {
         getHotelsAction({
           id: nextId,
           length: debouncedLength,
-          firstLoad
+          firstLoad,
         })
       )
       setLoadMore(false)

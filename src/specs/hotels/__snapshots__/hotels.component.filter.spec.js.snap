@@ -1,0 +1,347 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hotel components filter test Should not break if no params passed 1`] = `
+<div
+  className="hotels-filter"
+>
+  <div
+    className="hotels-filter__container"
+  >
+    <div
+      className="input label next-id isDisabled"
+    >
+      <label
+        htmlFor="0yxytklcex"
+      >
+        <span
+          className="input__label"
+        >
+          Next element id
+        </span>
+      </label>
+      <input
+        aria-label="input default"
+        className="input__field"
+        id="0yxytklcex"
+        placeholder=""
+        readOnly={true}
+        type="number"
+        value={0}
+      />
+    </div>
+    <div
+      className="input label length"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <label
+        htmlFor="033w6dvgdl"
+      >
+        <span
+          className="input__label"
+        >
+          Quantity for lazy load
+        </span>
+      </label>
+      <div
+        className="input__field_container"
+      >
+        <input
+          aria-label="input default"
+          className="input__field"
+          id="033w6dvgdl"
+          onChange={[Function]}
+          placeholder=""
+          type="number"
+          value={10}
+        />
+        <button
+          className="input__clear"
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            fill="none"
+            height="24"
+            viewBox="0 0 30 30"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23.75 8.0125L21.9875 6.25L15 13.2375L8.0125 6.25L6.25 8.0125L13.2375 15L6.25 21.9875L8.0125 23.75L15 16.7625L21.9875 23.75L23.75 21.9875L16.7625 15L23.75 8.0125Z"
+              fill="black"
+              opacity={0.5}
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="input__extra-info"
+      >
+        <div
+          className="input__extra-info_left"
+        >
+          <span
+            className="input__helper-text"
+          >
+            Numbers only
+          </span>
+        </div>
+        <div
+          className="input__extra-info_right"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Hotel components filter test Should render HotelsFilter correctly 1`] = `
+<div
+  className="hotels-filter"
+>
+  <div
+    className="hotels-filter__container"
+  >
+    <div
+      className="input label next-id isDisabled"
+    >
+      <label
+        htmlFor="0nbhuknx70"
+      >
+        <span
+          className="input__label"
+        >
+          Next element id
+        </span>
+      </label>
+      <input
+        aria-label="input default"
+        className="input__field"
+        id="0nbhuknx70"
+        placeholder=""
+        readOnly={true}
+        type="number"
+        value={0}
+      />
+    </div>
+    <div
+      className="input label length"
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <label
+        htmlFor="0a63lqh6i9"
+      >
+        <span
+          className="input__label"
+        >
+          Quantity for lazy load
+        </span>
+      </label>
+      <div
+        className="input__field_container"
+      >
+        <input
+          aria-label="input default"
+          className="input__field"
+          id="0a63lqh6i9"
+          onChange={[Function]}
+          placeholder=""
+          type="number"
+          value={10}
+        />
+        <button
+          className="input__clear"
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            fill="none"
+            height="24"
+            viewBox="0 0 30 30"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M23.75 8.0125L21.9875 6.25L15 13.2375L8.0125 6.25L6.25 8.0125L13.2375 15L6.25 21.9875L8.0125 23.75L15 16.7625L21.9875 23.75L23.75 21.9875L16.7625 15L23.75 8.0125Z"
+              fill="black"
+              opacity={0.5}
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        className="input__extra-info"
+      >
+        <div
+          className="input__extra-info_left"
+        >
+          <span
+            className="input__helper-text"
+          >
+            Numbers only
+          </span>
+        </div>
+        <div
+          className="input__extra-info_right"
+        />
+      </div>
+    </div>
+    <div
+      className="select "
+      onBlur={[Function]}
+      onFocus={[Function]}
+    >
+      <label
+        htmlFor="0iuyrqx2xi"
+      >
+        <span
+          className="select__label"
+        >
+          Region
+        </span>
+      </label>
+      <div
+        className="select__container regions css-2b097c-container"
+        onKeyDown={[Function]}
+      >
+        <div
+          className="select __control css-yk16xz-control"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
+        >
+          <div
+            className="select __value-container select __value-container--is-multi select __value-container--has-value css-g1d714-ValueContainer"
+          >
+            <div
+              className="css-1rhbuit-multiValue select __multi-value"
+            >
+              <div
+                className="css-12jo7m5 select __multi-value__label"
+              >
+                test
+              </div>
+              <div
+                className="css-xb97g8 select __multi-value__remove"
+                onClick={[Function]}
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <svg
+                  aria-hidden="true"
+                  className="css-6q0nyr-Svg"
+                  focusable="false"
+                  height={14}
+                  viewBox="0 0 20 20"
+                  width={14}
+                >
+                  <path
+                    d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <div
+              className="css-b8ldur-Input"
+            >
+              <div
+                className="select __input"
+                style={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+              >
+                <input
+                  aria-autocomplete="list"
+                  autoCapitalize="none"
+                  autoComplete="off"
+                  autoCorrect="off"
+                  disabled={false}
+                  id="0iuyrqx2xi"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  spellCheck="false"
+                  style={
+                    Object {
+                      "background": 0,
+                      "border": 0,
+                      "boxSizing": "content-box",
+                      "color": "inherit",
+                      "fontSize": "inherit",
+                      "label": "input",
+                      "opacity": 1,
+                      "outline": 0,
+                      "padding": 0,
+                      "width": "1px",
+                    }
+                  }
+                  tabIndex="0"
+                  type="text"
+                  value=""
+                />
+                <div
+                  style={
+                    Object {
+                      "height": 0,
+                      "left": 0,
+                      "overflow": "scroll",
+                      "position": "absolute",
+                      "top": 0,
+                      "visibility": "hidden",
+                      "whiteSpace": "pre",
+                    }
+                  }
+                >
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="select __indicators css-1hb7zxy-IndicatorsContainer"
+          >
+            <div
+              aria-hidden="true"
+              className="select__clearIndicator"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+              style={
+                Object {
+                  ":hover": Object {
+                    "color": "hsl(0, 0%, 60%)",
+                  },
+                  "boxSizing": "border-box",
+                  "color": "hsl(0, 0%, 80%)",
+                  "display": "flex",
+                  "label": "indicatorContainer",
+                  "padding": 8,
+                  "transition": "color 150ms",
+                }
+              }
+            >
+              <div>
+                <svg
+                  fill="none"
+                  height="24"
+                  viewBox="0 0 30 30"
+                  width="24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M23.75 8.0125L21.9875 6.25L15 13.2375L8.0125 6.25L6.25 8.0125L13.2375 15L6.25 21.9875L8.0125 23.75L15 16.7625L21.9875 23.75L23.75 21.9875L16.7625 15L23.75 8.0125Z"
+                    fill="black"
+                    opacity={0.5}
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
