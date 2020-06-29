@@ -1,0 +1,11 @@
+добавить авторизацию
+dark mode
+
+добавить jest config
+test images
+test css
+add linter
+precommit
+prettier
+в конце сравнить с проектом сторибука
+праверить каждую конфигурацию проекта
