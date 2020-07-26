@@ -1,11 +1,13 @@
 // external libraries
-import {routeMaker} from '../services/utilities.service'
+import { lazy } from 'react'
+import { routeMaker } from '../services/utilities.service'
 // local services & data store
 // local containers & components
-import NotFound from '../containers/not-found'
-import Login from "../containers/login"
 // local constants & styles
-import CONSTS from "../constants"
+import CONSTS from '../constants'
+
+const NotFound = lazy(() => import('../containers/not-found'))
+const Login = lazy(() => import('../containers/login'))
 
 const login = {
   exact: true,
@@ -19,9 +21,8 @@ const notFound = {
   component: NotFound,
 }
 
-const rootRoutes = [login, notFound]
-  .map(({isPrivate, ...params}) => (
+const rootRoutes = [login, notFound].map(({ isPrivate, ...params }) =>
   routeMaker(isPrivate, params)
-))
+)
 
 export default rootRoutes

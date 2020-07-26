@@ -2,7 +2,11 @@
   display: flex;
   flex-flow: column;
 
-  &-filter{
+  &-filter {
+    margin-bottom: 20px;
+  }
+
+  &-title {
     margin-bottom: 20px;
   }
 }

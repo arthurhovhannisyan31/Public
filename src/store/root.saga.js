@@ -2,6 +2,7 @@
 import { all } from 'redux-saga/effects'
 // local services & data store
 import { hotelsSagas } from './hotels'
+import { weatherSagas } from './weather'
 // local containers & components
 // local constants & styles
 
@@ -10,5 +11,5 @@ import { hotelsSagas } from './hotels'
  * @returns {any}
  */
 export default function* rootSaga() {
-  yield all([...hotelsSagas])
+  yield all([...hotelsSagas, ...weatherSagas])
 }

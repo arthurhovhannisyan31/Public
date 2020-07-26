@@ -3,8 +3,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 // local services & data store
 // local containers & components
-import Select from '../../select'
-import Input from '../../input/input.component'
+import Select from '../../ui/select'
+import Input from '../../ui/input/input.component'
 // local constants & styles
 import './hotels-filter.style.scss'
 

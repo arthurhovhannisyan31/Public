@@ -36,7 +36,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'filter-funnel-active',
@@ -92,7 +92,7 @@ const icons = ({
           opacity={opacitySecondary}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'radiobutton-inactive',
@@ -115,7 +115,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'checkbox-active',
@@ -144,7 +144,7 @@ const icons = ({
           opacity={opacitySecondary}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'checkbox-inactive',
@@ -166,7 +166,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'clear-light',
@@ -184,7 +184,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'avatar',
@@ -202,7 +202,7 @@ const icons = ({
           fillOpacity="0.24"
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-dashboard',
@@ -220,7 +220,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-settings',
@@ -238,7 +238,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-messages',
@@ -256,7 +256,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-tasks',
@@ -274,7 +274,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-notifications',
@@ -292,7 +292,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-menu-toggle-off',
@@ -312,7 +312,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-menu-toggle-on',
@@ -333,7 +333,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'main-logo',
@@ -409,7 +409,7 @@ const icons = ({
           />
         </g>
       </svg>
-    )
+    ),
   },
   {
     label: 'hotel',
@@ -426,9 +426,20 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
+    ),
+  },
+  {
+    label: 'weather',
+    svg: (
+      <svg width="24" height="24" viewBox="0 0 24 24">
+        <path
+          d="M12.74,5.47C15.1,6.5 16.35,9.03 15.92,11.46C17.19,12.56 18,14.19 18,16V16.17C18.31,16.06 18.65,16 19,16A3,3 0 0,1 22,19A3,3 0 0,1 19,22H6A4,4 0 0,1 2,18A4,4 0 0,1 6,14H6.27C5,12.45 4.6,10.24 5.5,8.26C6.72,5.5 9.97,4.24 12.74,5.47M11.93,7.3C10.16,6.5 8.09,7.31 7.31,9.07C6.85,10.09 6.93,11.22 7.41,12.13C8.5,10.83 10.16,10 12,10C12.7,10 13.38,10.12 14,10.34C13.94,9.06 13.18,7.86 11.93,7.3M13.55,3.64C13,3.4 12.45,3.23 11.88,3.12L14.37,1.82L15.27,4.71C14.76,4.29 14.19,3.93 13.55,3.64M6.09,4.44C5.6,4.79 5.17,5.19 4.8,5.63L4.91,2.82L7.87,3.5C7.25,3.71 6.65,4.03 6.09,4.44M18,9.71C17.91,9.12 17.78,8.55 17.59,8L19.97,9.5L17.92,11.73C18.03,11.08 18.05,10.4 18,9.71M3.04,11.3C3.11,11.9 3.24,12.47 3.43,13L1.06,11.5L3.1,9.28C3,9.93 2.97,10.61 3.04,11.3M19,18H16V16A4,4 0 0,0 12,12A4,4 0 0,0 8,16H6A2,2 0 0,0 4,18A2,2 0 0,0 6,20H19A1,1 0 0,0 20,19A1,1 0 0,0 19,18Z"
+          fill={colorMain}
+          opacity={opacityMain}
+        />
+      </svg>
     )
   },
-
   {
     label: 'directions',
     svg: (
@@ -463,7 +474,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'phone',
@@ -481,7 +492,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'person',
@@ -499,7 +510,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'email',
@@ -517,7 +528,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'location',
@@ -535,7 +546,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'visibility',
@@ -553,7 +564,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'visibility-off',
@@ -571,7 +582,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'date',
@@ -589,7 +600,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'date-today',
@@ -609,7 +620,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'clear',
@@ -626,9 +637,9 @@ const icons = ({
           fill={colorSecondary}
           opacity={opacitySecondary}
         />
-        <circle cx="12" cy="12" r="12" fill={colorMain} opacity={opacityMain} />
+        <circle cx="12" cy="12" r="12" fill={colorMain} opacity={opacityMain}/>
       </svg>
-    )
+    ),
   },
   {
     label: 'cancel',
@@ -646,7 +657,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'star',
@@ -664,7 +675,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'check',
@@ -684,7 +695,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'arrow-forward',
@@ -704,7 +715,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'arrow-drop-up',
@@ -724,7 +735,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'arrow-drop-down',
@@ -744,7 +755,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'back',
@@ -764,7 +775,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'apps',
@@ -784,7 +795,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'add',
@@ -804,7 +815,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'favorite',
@@ -824,7 +835,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'refresh',
@@ -844,7 +855,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'more',
@@ -862,7 +873,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'more-24',
@@ -882,7 +893,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'menu',
@@ -902,7 +913,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'close',
@@ -922,7 +933,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'chevron-right',
@@ -942,7 +953,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'chevron-left',
@@ -962,7 +973,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'fullscreen-exit',
@@ -982,7 +993,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'fullscreen',
@@ -1002,7 +1013,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'expand-less',
@@ -1022,7 +1033,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'expand-more',
@@ -1042,7 +1053,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'pause-outline',
@@ -1060,7 +1071,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'play',
@@ -1072,7 +1083,7 @@ const icons = ({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M8 5V19L19 12L8 5Z" fill={colorMain} opacity={opacityMain} />
+        <path d="M8 5V19L19 12L8 5Z" fill={colorMain} opacity={opacityMain}/>
       </svg>
     )
   },
@@ -1092,7 +1103,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'bookmark',
@@ -1110,7 +1121,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'mic',
@@ -1130,7 +1141,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'search',
@@ -1148,7 +1159,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-overview',
@@ -1166,7 +1177,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-tickets',
@@ -1184,7 +1195,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-ideas',
@@ -1202,7 +1213,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-contacts',
@@ -1220,7 +1231,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-agents',
@@ -1238,7 +1249,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-articles',
@@ -1256,7 +1267,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
 
   {
@@ -1275,7 +1286,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'nav-clients',
@@ -1293,7 +1304,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'notification-new',
@@ -1320,7 +1331,7 @@ const icons = ({
           strokeWidth="1.5"
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'sort',
@@ -1338,14 +1349,32 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
-  { label: '', svg: null },
-  { label: '', svg: null },
-  { label: '', svg: null },
-  { label: '', svg: null },
-  { label: '', svg: null },
-  { label: '', svg: null }
+  {
+    label: '',
+    svg: null
+  },
+  {
+    label: '',
+    svg: null
+  },
+  {
+    label: '',
+    svg: null
+  },
+  {
+    label: '',
+    svg: null
+  },
+  {
+    label: '',
+    svg: null
+  },
+  {
+    label: '',
+    svg: null
+  }
 ]
 
 export default icons

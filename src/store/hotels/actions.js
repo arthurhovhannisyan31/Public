@@ -11,4 +11,4 @@ export const getHotelsAction = ({ id, length, firstLoad }) => ({
   firstLoad
 })
 
-export const getTrips = () => ({})
+export const getTripsAction = () => ({})

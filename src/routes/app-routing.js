@@ -1,17 +1,20 @@
 // external libraries
 // local services & data store
-import {routeMaker} from '../services/utilities.service'
+import { lazy } from 'react'
+import { routeMaker } from '../services/utilities.service'
 // local containers & components
-import Dashboard from '../containers/dashboard'
-import Messages from '../containers/messages'
-import News from '../containers/news'
-import Notifications from '../containers/notifications'
-import Welcome from '../containers/welcome'
-import Settings from '../containers/settings'
-import Login from '../containers/login'
 // local constants & styles
 import CONSTS from '../constants'
-import Hotels from '../containers/hotels'
+
+const Dashboard = lazy(() => import('../containers/dashboard'))
+const Messages = lazy(() => import('../containers/messages'))
+const News = lazy(() => import('../containers/news'))
+const Notifications = lazy(() => import('../containers/notifications'))
+const Welcome = lazy(() => import('../containers/welcome'))
+const Settings = lazy(() => import('../containers/settings'))
+const Login = lazy(() => import('../containers/login'))
+const Hotels = lazy(() => import('../containers/hotels'))
+const Weather = lazy(() => import('../containers/weather'))
 
 const dashboard = {
   exact: true,
@@ -63,11 +66,19 @@ const hotels = {
   component: Hotels
 }
 
+const weather = {
+  exact: true,
+  isPrivate: true,
+  path: CONSTS.ROUTES.WEATHER.ROUTE,
+  component: Weather
+}
+
 const appRoutes = [
   dashboard,
   messages,
   news,
   hotels,
+  weather,
   notifications,
   settings,
   welcome,

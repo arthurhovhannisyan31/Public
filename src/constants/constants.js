@@ -17,8 +17,24 @@ const CONSTS = {
       ICON: 'nav-messages',
       GROUP: 'main'
     },
-    NEWS: { ROUTE: '/news', LABEL: 'News', ICON: 'nav-tasks', GROUP: 'main' },
-    HOTELS: { ROUTE: '/hotels', LABEL: 'Hotels', ICON: 'hotel', GROUP: 'main' },
+    NEWS: {
+      ROUTE: '/news',
+      LABEL: 'News',
+      ICON: 'nav-tasks',
+      GROUP: 'main'
+    },
+    HOTELS: {
+      ROUTE: '/hotels',
+      LABEL: 'Hotels',
+      ICON: 'hotel',
+      GROUP: 'main'
+    },
+    WEATHER: {
+      ROUTE: '/weather',
+      LABEL: 'Weather',
+      ICON: 'weather',
+      GROUP: 'main'
+    },
     SETTINGS: {
       ROUTE: '/settings',
       LABEL: 'Settings',
@@ -89,20 +105,53 @@ const CONSTS = {
     },
     OPTIONS: {
       DEFAULT_SELECT: [
-        { value: 'one', label: 'One' },
-        { value: 'two', label: 'Two' },
-        { value: 'three', label: 'Three' },
-        { value: 'four', label: 'Four' },
-        { value: 'five', label: 'Five' },
-        { value: 'six', label: 'Six' },
-        { value: 'seven', label: 'Seven' },
-        { value: 'eight', label: 'Eight' },
-        { value: 'nine', label: 'Nine' },
-        { value: 'ten', label: 'ten' },
-        { value: 'eleven', label: 'eleven' }
-      ]
-    }
-  }
+        {
+          value: 'one',
+          label: 'One'
+        },
+        {
+          value: 'two',
+          label: 'Two'
+        },
+        {
+          value: 'three',
+          label: 'Three'
+        },
+        {
+          value: 'four',
+          label: 'Four'
+        },
+        {
+          value: 'five',
+          label: 'Five'
+        },
+        {
+          value: 'six',
+          label: 'Six'
+        },
+        {
+          value: 'seven',
+          label: 'Seven'
+        },
+        {
+          value: 'eight',
+          label: 'Eight'
+        },
+        {
+          value: 'nine',
+          label: 'Nine'
+        },
+        {
+          value: 'ten',
+          label: 'ten'
+        },
+        {
+          value: 'eleven',
+          label: 'eleven'
+        }
+      ],
+    },
+  },
 }
 
 export default CONSTS
