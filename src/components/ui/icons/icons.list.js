@@ -456,7 +456,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'create',

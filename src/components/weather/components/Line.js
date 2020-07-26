@@ -1,15 +1,9 @@
 import React from 'react'
 
 const Line = ({ data, width, height }) => {
-  const lines = data.map(el => (
-      <path
-        fill={el.fill}
-        d={el.path}
-        stroke={1}
-        strokeWidth={1}
-      />
-    )
-  )
+  const lines = data.map((el) => (
+    <path fill={el.fill} d={el.path} stroke={1} strokeWidth={1}/>
+  ))
 
   return (
     <svg width={width} height={height}>

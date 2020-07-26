@@ -148,12 +148,11 @@ const Hotels = () => {
   }
 
   const lazyListFilteredData = useSelector(
-    hotelsSelector(
-      (data) =>
-        data.filter((el) =>
-          filterValues()?.length ? filterValues().includes(el.region) : el
-        ),
-      'hotelsCollection'
+    hotelsSelector('hotelsCollection', (data) =>
+      data.filter((el) =>
+        filterValues()?.length ? filterValues()
+          .includes(el.region) : el
+      )
     )
   )
 

@@ -4,10 +4,4 @@ import BarCanvas from './BarCanvas'
 import RadialCanvas from './RadialCanvas'
 import Radial from './Radial'
 
-export {
-  BarCanvas,
-  Chart,
-  Line,
-  RadialCanvas,
-  Radial
-}
+export { BarCanvas, Chart, Line, RadialCanvas, Radial }
