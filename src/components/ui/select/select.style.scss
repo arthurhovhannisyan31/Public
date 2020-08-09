@@ -11,6 +11,9 @@
       border-color: $color-primary;
     }
   }
+  &:hover{
+    cursor: pointer;
+  }
   &__label{
     display: flex;
     padding-left: 8px;

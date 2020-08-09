@@ -10,9 +10,7 @@ const RadialCanvas = ({ width, height, data }) => {
   let ctx
   useEffect(() => {
     // eslint-disable-next-line
-    ctx = d3.select(refRadialCanvas.current)
-      .node()
-      .getContext('2d')
+    ctx = d3.select(refRadialCanvas.current).node().getContext('2d')
     ctx.translate(width / 2, height / 2)
     arcGenerator.context(ctx)
     // eslint-disable-next-line
@@ -28,7 +26,7 @@ const RadialCanvas = ({ width, height, data }) => {
     })
   }
 
-  return <canvas ref={refRadialCanvas} width={width} height={height}/>
+  return <canvas ref={refRadialCanvas} width={width} height={height} />
 }
 
 export default RadialCanvas

@@ -12,7 +12,7 @@ import { weatherReducer, moduleName as weatherModuleName } from './weather'
  */
 const rootReducer = combineReducers({
   [hotelModuleName]: hotelsReducer,
-  [weatherModuleName]: weatherReducer
+  [weatherModuleName]: weatherReducer,
 })
 
 export default rootReducer

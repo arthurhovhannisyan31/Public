@@ -10,7 +10,7 @@ const Chart = ({ data, width, height, margin, updateBrushRange }) => {
     .brushX()
     .extent([
       [left, top],
-      [width - right, height - top]
+      [width - right, height - top],
     ])
     .on('start end', () => {
       // eslint-disable-next-line
@@ -23,17 +23,15 @@ const Chart = ({ data, width, height, margin, updateBrushRange }) => {
         const max = selectAll ? width - right : maxX
 
         const range = [xScale.invert(min), xScale.invert(max)]
-        updateBrushRange(range)
+        updateBrushRange({ range })
       }
     })
 
   useEffect(() => {
     // eslint-disable-next-line
-    d3.select(refY.current)
-      .call(yAxis)
+    d3.select(refY.current).call(yAxis)
     // eslint-disable-next-line
-    d3.select(refX.current)
-      .call(xAxis)
+    d3.select(refX.current).call(xAxis)
     // eslint-disable-next-line
     d3.select(refBrush.current)
       // eslint-disable-next-line
@@ -60,10 +58,10 @@ const Chart = ({ data, width, height, margin, updateBrushRange }) => {
 
   return (
     <svg width={width} height={height}>
-      <g ref={refX} transform={`translate(0, ${height - bottom})`}/>
-      <g ref={refY} transform={`translate(${left}, 0)`}/>
+      <g ref={refX} transform={`translate(0, ${height - bottom})`} />
+      <g ref={refY} transform={`translate(${left}, 0)`} />
       <g>{rects}</g>
-      <g ref={refBrush}/>
+      <g ref={refBrush} />
     </svg>
   )
 }

@@ -16,7 +16,7 @@ const icons = ({
   colorMain,
   colorSecondary,
   opacityMain,
-  opacitySecondary
+  opacitySecondary,
 }) => [
   {
     label: 'placeholder',
@@ -48,7 +48,7 @@ const icons = ({
           d="M14,12V19.88C14.04,20.18 13.94,20.5 13.71,20.71C13.32,21.1 12.69,21.1 12.3,20.71L10.29,18.7C10.06,18.47 9.96,18.16 10,17.87V12H9.97L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L14.03,12H14Z"
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'filter-funnel-inactive',
@@ -60,7 +60,7 @@ const icons = ({
           d="M15,19.88C15.04,20.18 14.94,20.5 14.71,20.71C14.32,21.1 13.69,21.1 13.3,20.71L9.29,16.7C9.06,16.47 8.96,16.16 9,15.87V10.75L4.21,4.62C3.87,4.19 3.95,3.56 4.38,3.22C4.57,3.08 4.78,3 5,3V3H19V3C19.22,3 19.43,3.08 19.62,3.22C20.05,3.56 20.13,4.19 19.79,4.62L15,10.75V19.88M7.04,5L11,10.06V15.58L13,17.58V10.05L16.96,5H7.04Z"
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'radiobutton-active',
@@ -438,7 +438,7 @@ const icons = ({
           opacity={opacityMain}
         />
       </svg>
-    )
+    ),
   },
   {
     label: 'directions',
@@ -637,7 +637,7 @@ const icons = ({
           fill={colorSecondary}
           opacity={opacitySecondary}
         />
-        <circle cx="12" cy="12" r="12" fill={colorMain} opacity={opacityMain}/>
+        <circle cx="12" cy="12" r="12" fill={colorMain} opacity={opacityMain} />
       </svg>
     ),
   },
@@ -1083,9 +1083,9 @@ const icons = ({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path d="M8 5V19L19 12L8 5Z" fill={colorMain} opacity={opacityMain}/>
+        <path d="M8 5V19L19 12L8 5Z" fill={colorMain} opacity={opacityMain} />
       </svg>
-    )
+    ),
   },
   {
     label: 'share',
@@ -1353,28 +1353,28 @@ const icons = ({
   },
   {
     label: '',
-    svg: null
+    svg: null,
   },
   {
     label: '',
-    svg: null
+    svg: null,
   },
   {
     label: '',
-    svg: null
+    svg: null,
   },
   {
     label: '',
-    svg: null
+    svg: null,
   },
   {
     label: '',
-    svg: null
+    svg: null,
   },
   {
     label: '',
-    svg: null
-  }
+    svg: null,
+  },
 ]
 
 export default icons

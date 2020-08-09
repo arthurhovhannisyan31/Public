@@ -11,7 +11,7 @@ const RadialCanvasChart = ({ data: tempData, fetching, error }) => {
     radialChartData({
       data: tempData,
       height,
-      width
+      width,
     })
   if (!data) return <h1>Loading</h1>
 
@@ -19,7 +19,7 @@ const RadialCanvasChart = ({ data: tempData, fetching, error }) => {
     <div>
       <h3>RadialChart</h3>
       {data && !fetching && !error && (
-        <RadialCanvas width={width} height={height} data={data}/>
+        <RadialCanvas width={width} height={height} data={data} />
       )}
     </div>
   )

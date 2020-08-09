@@ -12,7 +12,7 @@ const Login = lazy(() => import('../containers/login'))
 const login = {
   exact: true,
   path: CONSTS.ROUTES.LOGIN.ROUTE,
-  component: Login
+  component: Login,
 }
 
 const notFound = {

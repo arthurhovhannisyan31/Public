@@ -29,7 +29,7 @@ const NorFound = () => {
         <title>{title}</title>
       </Helmet>
       <div className="not-found">
-        <NotFoundComponent timeout={CONSTS.REDIRECT_TIMEOUT}/>
+        <NotFoundComponent timeout={CONSTS.REDIRECT_TIMEOUT} />
       </div>
     </>
   )

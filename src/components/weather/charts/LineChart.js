@@ -12,7 +12,7 @@ const LineChart = ({ data: tempData, fetching, error }) => {
     <div>
       <h3>LineChart</h3>
       {data && !fetching && !error && (
-        <Line data={data} width={width} height={height}/>
+        <Line data={data} width={width} height={height} />
       )}
     </div>
   )

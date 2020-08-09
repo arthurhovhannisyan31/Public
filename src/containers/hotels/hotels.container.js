@@ -4,7 +4,7 @@ import React, {
   useReducer,
   useRef,
   useMemo,
-  useContext
+  useContext,
 } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { createSelector } from 'reselect'
@@ -67,7 +67,7 @@ const Hotels = () => {
     length: 10,
     filters: null,
     loadMore: false,
-    refPersist: null
+    refPersist: null,
   }
 
   /**
@@ -150,8 +150,7 @@ const Hotels = () => {
   const lazyListFilteredData = useSelector(
     hotelsSelector('hotelsCollection', (data) =>
       data.filter((el) =>
-        filterValues()?.length ? filterValues()
-          .includes(el.region) : el
+        filterValues()?.length ? filterValues().includes(el.region) : el
       )
     )
   )

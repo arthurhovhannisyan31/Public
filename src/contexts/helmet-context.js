@@ -11,16 +11,15 @@ const HelmetContext = createContext(null)
 const HelmetContextContainer = ({ children }) => {
   const router = useRouter()
   const {
-    location: { pathname }
+    location: { pathname },
   } = router
   /**
    * Define current route label value
    * @type {string}
    */
-  const title = Object.values(CONSTS.ROUTES)
-    .filter(({ ROUTE }) =>
-      Array.isArray(ROUTE) ? ROUTE[0] === pathname : ROUTE === pathname
-    )[0]?.LABEL
+  const title = Object.values(CONSTS.ROUTES).filter(({ ROUTE }) =>
+    Array.isArray(ROUTE) ? ROUTE[0] === pathname : ROUTE === pathname
+  )[0]?.LABEL
   return (
     <HelmetContext.Provider value={{ title }}>
       {children}

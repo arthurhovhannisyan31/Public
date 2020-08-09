@@ -2,36 +2,37 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useSelector, shallowEqual, useDispatch } from 'react-redux'
 import { Helmet } from 'react-helmet'
-// import {} from 'reselect'
 // local services & data store
 import { moduleName as weatherModuleName } from '../../store/weather/constants'
 import { HelmetContext } from '../../contexts'
 import {
-  getWeatherAllDataAction,
-  getWeatherDataAction
+  // getWeatherAllDataAction,
+  getWeatherDataAction,
+  setBrushRange,
 } from '../../store/weather/actions'
 // local containers & components
 import {
   BarChart,
-  LineChart,
-  RadialChart,
   BarCanvasChart,
-  RadialCanvasChart
+  //   LineChart,
+  //   RadialChart,
+  //   RadialCanvasChart,
 } from '../../components/weather'
+import Select from '../../components/ui/select'
 import { NY_JSON, SF_JSON } from '../../store/weather/services'
 // local constants & styles
-import style from './weather.styles.scss'
-import { Map } from 'immutable'
+// import style from './weather.styles.scss'
+// import { Map } from 'immutable'
 
 const options = [
   {
     label: 'NY',
-    value: NY_JSON
+    value: NY_JSON,
   },
   {
     label: 'SF',
-    value: SF_JSON
-  }
+    value: SF_JSON,
+  },
 ]
 
 const Weather = () => {
@@ -44,17 +45,15 @@ const Weather = () => {
     (state) => state[weatherModuleName],
     shallowEqual
   )
-  console.log(loading, error, data, allData, range)
-
   const [city, setCity] = useState(options[0])
 
   useEffect(() => {
     dispatchGlobal(
       getWeatherDataAction({
-        source: city.value
+        source: city.value,
       })
     )
-  }, [city])
+  }, [city, dispatchGlobal])
 
   return (
     <>
@@ -62,36 +61,30 @@ const Weather = () => {
         <title>{title}</title>
       </Helmet>
       <div className="weather-container">
-        {/*<Select*/}
-        {/*  value={city}*/}
-        {/*  onChange={ ({label, value}) => {*/}
-        {/*    setCity( state => ({ label, value }) )*/}
-        {/*  }}*/}
-        {/*  options={options}*/}
-        {/*/>*/}
-        {/*<BarChart*/}
-        {/*  data={data}*/}
-        {/*  range={range}*/}
-        {/*  updateBrushRange={updateBrushRange}*/}
-        {/*  {...props}*/}
-        {/*/>*/}
-        {/*<BarCanvasChart*/}
-        {/*  data={data}*/}
-        {/*  range={range}*/}
-        {/*  {...props}*/}
-        {/*/>*/}
-        {/*<LineChart*/}
-        {/*  data={data}*/}
-        {/*  {...props}*/}
-        {/*/>*/}
-        {/*<RadialChart*/}
-        {/*  data={data}*/}
-        {/*  {...props}*/}
-        {/*/>*/}
-        {/*<RadialCanvasChart*/}
-        {/*  data={data}*/}
-        {/*  {...props}*/}
-        {/*/>*/}
+        <Select value={city} onChange={setCity} options={options} />
+        <BarChart
+          data={data}
+          range={range}
+          updateBrushRange={(args) => dispatchGlobal(setBrushRange(args))}
+        />
+        <BarCanvasChart
+          data={data}
+          range={range}
+          error={error}
+          loading={loading}
+        />
+        {/* <LineChart */}
+        {/*  data={data} */}
+        {/*  {...props} */}
+        {/* /> */}
+        {/* <RadialChart */}
+        {/*  data={data} */}
+        {/*  {...props} */}
+        {/* /> */}
+        {/* <RadialCanvasChart */}
+        {/*  data={data} */}
+        {/*  {...props} */}
+        {/* /> */}
       </div>
     </>
   )

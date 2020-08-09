@@ -19,7 +19,7 @@ const Header = () => {
         <Title extraClassname="header__content_title">{title}</Title>
         <div className="header__content_controls">
           <button type="button" className="header__content_search">
-            <Icon label="search"/>
+            <Icon label="search" />
           </button>
           <button type="button" className="header__content_notifications">
             <Icon
@@ -27,7 +27,7 @@ const Header = () => {
               colorSecondary={CONSTS.COMPONENTS.STYLES.COLORS.PRIMARY}
             />
           </button>
-          <Divider vertical/>
+          <Divider vertical />
           <PersonalInfo
             title="Sierra Ferguson"
             isAvatar

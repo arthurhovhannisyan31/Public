@@ -10,9 +10,7 @@ const BarCanvas = (
   let ctx
   useEffect(() => {
     // eslint-disable-next-line
-    ctx = d3.select(refBarCanvas.current)
-      .node()
-      .getContext('2d')
+    ctx = d3.select(refBarCanvas.current).node().getContext('2d')
     // eslint-disable-next-line
     drawBars()
   }, [data])
@@ -32,7 +30,7 @@ const BarCanvas = (
       height={height}
       style={{
         width: `${width}px`,
-        height: `${height}px`
+        height: `${height}px`,
       }}
     />
   )

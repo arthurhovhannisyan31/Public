@@ -21,7 +21,7 @@ export const SF_JSON = 'sf.json'
 export const getAllJSONData = () => {
   return Promise.all([
     fetch(`${process.env.PUBLIC_URL || ''}/sf.json `),
-    fetch(`${process.env.PUBLIC_URL || ''}/ny.json `)
+    fetch(`${process.env.PUBLIC_URL || ''}/ny.json `),
   ])
     .then((response) => Promise.all(response.map((res) => res.json())))
     .then(([sf, ny]) => {
@@ -31,7 +31,7 @@ export const getAllJSONData = () => {
       ny.map((el) => (el.date = new Date(el.date)))
       return {
         sf,
-        ny
+        ny,
       }
     })
 }

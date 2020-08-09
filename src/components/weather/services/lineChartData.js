@@ -12,9 +12,7 @@ const lineChartData = (data, width, height) => {
   const tempMax = d3.max(data, (d) => d.high)
   const tempMin = d3.min(data, (d) => d.low)
 
-  const yScale = d3.scaleLinear()
-    .domain([tempMin, tempMax])
-    .range([height, 0])
+  const yScale = d3.scaleLinear().domain([tempMin, tempMax]).range([height, 0])
 
   // create and use line generator for high and low temperature
   const lineMin = d3
@@ -28,12 +26,12 @@ const lineChartData = (data, width, height) => {
   return [
     {
       fill: '#eb6a5b',
-      path: lineMin(data)
+      path: lineMin(data),
     },
     {
       fill: '#52b6ca',
-      path: lineMax(data)
-    }
+      path: lineMax(data),
+    },
   ]
 }
 

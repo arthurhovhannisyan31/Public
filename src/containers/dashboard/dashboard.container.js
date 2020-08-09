@@ -21,7 +21,7 @@ const Dashboard = () => {
       </Helmet>
       <div className="dashboard">
         <span>Dashboard container</span>
-        <InputStorybook/>
+        <InputStorybook />
       </div>
     </>
   )

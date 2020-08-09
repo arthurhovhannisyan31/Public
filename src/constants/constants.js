@@ -1,6 +1,6 @@
 const CONSTS = {
   DOM: {
-    ROOT: 'root'
+    ROOT: 'root',
   },
   REDIRECT_TIMEOUT: 10,
   BASE_URL: 'https://',
@@ -9,64 +9,64 @@ const CONSTS = {
       ROUTE: ['/', '/index.html'],
       LABEL: 'Dashboard',
       ICON: 'nav-dashboard',
-      GROUP: 'main'
+      GROUP: 'main',
     },
     MESSAGES: {
       ROUTE: '/messages',
       LABEL: 'Messages',
       ICON: 'nav-messages',
-      GROUP: 'main'
+      GROUP: 'main',
     },
     NEWS: {
       ROUTE: '/news',
       LABEL: 'News',
       ICON: 'nav-tasks',
-      GROUP: 'main'
+      GROUP: 'main',
     },
     HOTELS: {
       ROUTE: '/hotels',
       LABEL: 'Hotels',
       ICON: 'hotel',
-      GROUP: 'main'
+      GROUP: 'main',
     },
     WEATHER: {
       ROUTE: '/weather',
       LABEL: 'Weather',
       ICON: 'weather',
-      GROUP: 'main'
+      GROUP: 'main',
     },
     SETTINGS: {
       ROUTE: '/settings',
       LABEL: 'Settings',
       ICON: 'nav-settings',
-      GROUP: 'secondary'
+      GROUP: 'secondary',
     },
     NOTIFICATIONS: {
       ROUTE: '/notifications',
       LABEL: 'Notifications',
       ICON: 'nav-notifications',
-      GROUP: 'secondary'
+      GROUP: 'secondary',
     },
     LOGIN: { ROUTE: '/login' },
     WELCOME: { ROUTE: '/welcome' },
-    NOT_FOUND: { ROUTE: ['*', '/not-found'] }
+    NOT_FOUND: { ROUTE: ['*', '/not-found'] },
   },
   REGEXP: {
     // eslint-disable-next-line no-useless-escape
     ruRegExp: /[^а-яёА-ЯЁ\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/gm,
     // eslint-disable-next-line no-useless-escape
     enRegExp: /[^a-zA-Z\s\d`~!@№;,.#$%^&*()_+{}|:"<>?[\]'\\\/]/gm,
-    numbers: /^[^\d]*$/gm
+    numbers: /^[^\d]*$/gm,
   },
   LANG: {
     RUS: {
       TITLE: 'Rus',
-      VALUE: 'RUS'
+      VALUE: 'RUS',
     },
     ENG: {
       TITLE: 'Eng',
-      VALUE: 'ENG'
-    }
+      VALUE: 'ENG',
+    },
   },
   COMPONENTS: {
     STYLES: {
@@ -80,8 +80,8 @@ const CONSTS = {
         WHITE: '#fff',
         CRITICAL: '#ff0000',
         INACTIVE: '#F0F1F7',
-        BORDER: '#98A2A8'
-      }
+        BORDER: '#98A2A8',
+      },
     },
     BREAKPOINTS: {
       widthDesktopLg: 2560,
@@ -95,60 +95,60 @@ const CONSTS = {
     BUTTONS: {
       COLORS: {
         VALUES: ['main', 'secondary'],
-        DEFAULT: 'main'
+        DEFAULT: 'main',
       },
       LABELS: {
         TEST: {
-          VALUE: 'test'
-        }
-      }
+          VALUE: 'test',
+        },
+      },
     },
     OPTIONS: {
       DEFAULT_SELECT: [
         {
           value: 'one',
-          label: 'One'
+          label: 'One',
         },
         {
           value: 'two',
-          label: 'Two'
+          label: 'Two',
         },
         {
           value: 'three',
-          label: 'Three'
+          label: 'Three',
         },
         {
           value: 'four',
-          label: 'Four'
+          label: 'Four',
         },
         {
           value: 'five',
-          label: 'Five'
+          label: 'Five',
         },
         {
           value: 'six',
-          label: 'Six'
+          label: 'Six',
         },
         {
           value: 'seven',
-          label: 'Seven'
+          label: 'Seven',
         },
         {
           value: 'eight',
-          label: 'Eight'
+          label: 'Eight',
         },
         {
           value: 'nine',
-          label: 'Nine'
+          label: 'Nine',
         },
         {
           value: 'ten',
-          label: 'ten'
+          label: 'ten',
         },
         {
           value: 'eleven',
-          label: 'eleven'
-        }
+          label: 'eleven',
+        },
       ],
     },
   },

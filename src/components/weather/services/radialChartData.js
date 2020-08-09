@@ -21,7 +21,7 @@ const radialChartData = ({ data, height, width }) => {
   const tempAnnotations = [5, 20, 40, 60, 80].map((temp) => {
     return {
       r: radiusScale(temp),
-      temp
+      temp,
     }
   })
 
@@ -32,20 +32,20 @@ const radialChartData = ({ data, height, width }) => {
         startAngle: i * perSliceAngle,
         endAngle: (i + 1) * perSliceAngle,
         innerRadius: radiusScale(d.low),
-        outerRadius: radiusScale(d.high)
+        outerRadius: radiusScale(d.high),
       }),
       arcData: {
         startAngle: i * perSliceAngle,
         endAngle: (i + 1) * perSliceAngle,
         innerRadius: radiusScale(d.low),
-        outerRadius: radiusScale(d.high)
-      }
+        outerRadius: radiusScale(d.high),
+      },
     }
   })
 
   return {
     slices,
-    tempAnnotations
+    tempAnnotations,
   }
 }
 

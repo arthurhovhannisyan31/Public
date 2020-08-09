@@ -20,7 +20,7 @@ const Radial = ({ width, height, data }) => {
             return (
               // eslint-disable-next-line
               <g key={i}>
-                <circle r={r} fill="none" stroke="#999"/>
+                <circle r={r} fill="none" stroke="#999" />
                 <text y={-r - 2} textAnchor="middle">
                   {temp} F
                 </text>

@@ -19,7 +19,7 @@ const Settings = () => {
       </Helmet>
       <div className="settings">
         <span>Settings container</span>
-        <IconStorybook/>
+        <IconStorybook />
       </div>
     </>
   )

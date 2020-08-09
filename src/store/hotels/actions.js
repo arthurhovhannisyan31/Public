@@ -8,7 +8,7 @@ export const getHotelsAction = ({ id, length, firstLoad }) => ({
   type: HOTELS_REQUEST,
   id,
   length,
-  firstLoad
+  firstLoad,
 })
 
 export const getTripsAction = () => ({})

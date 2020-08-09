@@ -1,13 +1,17 @@
 // external libraries
-import React, {useRef} from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
-import ClassNames from "classnames"
-import CustomScroll from "react-custom-scroll"
+import ClassNames from 'classnames'
+import CustomScroll from 'react-custom-scroll'
 // local services & data store
 // local containers & components
-import {useFocus, randomString} from "../../../services/utilities.service"
-import {ClearIndicator, DropdownIndicator, SearchIndicator,} from './components'
+import { useFocus, randomString } from '../../../services/utilities.service'
+import {
+  ClearIndicator,
+  DropdownIndicator,
+  SearchIndicator,
+} from './components'
 // local constants & styles
 import './select.style.scss'
 
@@ -31,34 +35,33 @@ import './select.style.scss'
  * @returns {*}
  * @constructor
  */
-const SelectDefault = (
-  { value,
-    defaultValue,
-    placeholder,
-    onChange,
-    options,
-    autoFocus,
-    className,
-    classNamePrefix,
-    isDisabled,
-    isMulti,
-    isSearchable,
-    isLoading,
-    isClearable,
-    onInputChange,
-    label,
-  }) => {
-
+const SelectDefault = ({
+  value,
+  defaultValue,
+  placeholder,
+  onChange,
+  options,
+  autoFocus,
+  className,
+  classNamePrefix,
+  isDisabled,
+  isMulti,
+  isSearchable,
+  isLoading,
+  isClearable,
+  onInputChange,
+  label,
+}) => {
   /**
    * Random string for id
    * @type {string}
    */
   const randId = randomString()
 
-  const [focus, {onFocus, onBlur}] = useFocus()
+  const [focus, { onFocus, onBlur }] = useFocus()
   const classNames = ClassNames({
     focus,
-  });
+  })
 
   /**
    * Returns indicator for select component
@@ -74,26 +77,18 @@ const SelectDefault = (
   /**
    * Returns dropdown menu wrapped with custom scroll
    */
-  const customMenu = ({children}) => (
+  const customMenu = ({ children }) => (
     <CustomScroll>
-      <div className='__menu-container'
-      >
-        {children}
-      </div>
+      <div className="__menu-container">{children}</div>
     </CustomScroll>
   )
 
   const ref = useRef(null)
 
   return (
-    <div
-      className={`select ${classNames}`}
-      onBlur={onBlur}
-      onFocus={onFocus}
-    >
-      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+    <div className={`select ${classNames}`} onBlur={onBlur} onFocus={onFocus}>
       <label htmlFor={randId}>
-        {label && <span className='select__label'>{label}</span>}
+        {label && <span className="select__label">{label}</span>}
       </label>
       <Select
         ref={ref}
@@ -115,7 +110,7 @@ const SelectDefault = (
         components={{
           ClearIndicator,
           DropdownIndicator: indicator,
-          MenuList: props => customMenu(props)
+          MenuList: (props) => customMenu(props),
         }}
       />
     </div>
@@ -126,7 +121,7 @@ SelectDefault.defaultProps = {
   value: null,
   defaultValue: null,
   placeholder: 'Select...',
-  onChange: ()=>{},
+  onChange: () => {},
   options: [],
   autoFocus: false,
   className: '',
@@ -136,7 +131,7 @@ SelectDefault.defaultProps = {
   isSearchable: false,
   isLoading: false,
   isClearable: false,
-  onInputChange: ()=>{},
+  onInputChange: () => {},
   label: '',
 }
 
@@ -145,29 +140,32 @@ SelectDefault.propTypes = {
     PropTypes.arrayOf(
       PropTypes.shape({
         value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        label: PropTypes.string})
+        label: PropTypes.string,
+      })
     ),
     PropTypes.shape({
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      label: PropTypes.string})
-    ]
-  ),
+      label: PropTypes.string,
+    }),
+  ]),
   defaultValue: PropTypes.oneOfType([
     PropTypes.arrayOf(
       PropTypes.shape({
         value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-        label: PropTypes.string})
+        label: PropTypes.string,
+      })
     ),
     PropTypes.shape({
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      label: PropTypes.string})
+      label: PropTypes.string,
+    }),
   ]),
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      label: PropTypes.string
+      label: PropTypes.string,
     })
   ),
   autoFocus: PropTypes.bool,

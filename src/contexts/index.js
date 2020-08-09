@@ -7,5 +7,5 @@ export {
   ContextCompose as default,
   NavMenuContext,
   WindowSizeContext,
-  HelmetContext
+  HelmetContext,
 }

@@ -19,7 +19,7 @@ const Root = () => {
       <BrowserRouter>
         <ContextCompose>
           <ErrorBoundary>
-            <App/>
+            <App />
           </ErrorBoundary>
         </ContextCompose>
       </BrowserRouter>

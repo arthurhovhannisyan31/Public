@@ -20,57 +20,57 @@ const dashboard = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.DASHBOARD.ROUTE,
-  component: Dashboard
+  component: Dashboard,
 }
 const messages = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.MESSAGES.ROUTE,
-  component: Messages
+  component: Messages,
 }
 const news = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.NEWS.ROUTE,
-  component: News
+  component: News,
 }
 const settings = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.SETTINGS.ROUTE,
-  component: Settings
+  component: Settings,
 }
 const notifications = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.NOTIFICATIONS.ROUTE,
-  component: Notifications
+  component: Notifications,
 }
 const welcome = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.WELCOME.ROUTE,
-  component: Welcome
+  component: Welcome,
 }
 const login = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.LOGIN.ROUTE,
-  component: Login
+  component: Login,
 }
 
 const hotels = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.HOTELS.ROUTE,
-  component: Hotels
+  component: Hotels,
 }
 
 const weather = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.WEATHER.ROUTE,
-  component: Weather
+  component: Weather,
 }
 
 const appRoutes = [
@@ -82,7 +82,7 @@ const appRoutes = [
   notifications,
   settings,
   welcome,
-  login
+  login,
 ].map(({ isPrivate, ...params }) => routeMaker(isPrivate, params))
 
 export default appRoutes

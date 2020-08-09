@@ -8,7 +8,7 @@ const margin = {
   top: 20,
   right: 5,
   bottom: 20,
-  left: 35
+  left: 35,
 }
 
 const BarChart = ({ data: tempData, range, fetching, error, ...props }) => {
@@ -19,7 +19,7 @@ const BarChart = ({ data: tempData, range, fetching, error, ...props }) => {
       width,
       height,
       margin,
-      range
+      range,
     })
 
   return (

@@ -3,7 +3,7 @@ import {
   LineChart,
   RadialChart,
   BarCanvasChart,
-  RadialCanvasChart
+  RadialCanvasChart,
 } from './charts'
 
 export { BarChart, LineChart, RadialChart, BarCanvasChart, RadialCanvasChart }

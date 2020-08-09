@@ -19,7 +19,7 @@ const Messages = () => {
       </Helmet>
       <div className="messages">
         <span>Messages container</span>
-        <ButtonStorybook/>
+        <ButtonStorybook />
       </div>
     </>
   )

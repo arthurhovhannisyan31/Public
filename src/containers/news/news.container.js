@@ -19,7 +19,7 @@ const News = () => {
       </Helmet>
       <div className="news">
         <span>News container</span>
-        <SelectStorybook/>
+        <SelectStorybook />
       </div>
     </>
   )

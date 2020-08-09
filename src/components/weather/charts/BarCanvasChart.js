@@ -8,16 +8,10 @@ const margin = {
   top: 20,
   right: 5,
   bottom: 20,
-  left: 35
+  left: 35,
 }
 
-const BarCanvasChart = ({
-  data: tempData,
-  range,
-  fetching,
-  error,
-  ...props
-}) => {
+const BarCanvasChart = ({ data: tempData, range, loading, error }) => {
   const data =
     tempData &&
     barChartData({
@@ -25,20 +19,14 @@ const BarCanvasChart = ({
       width,
       height,
       margin,
-      range
+      range,
     })
 
   return (
     <div>
       <h3>CanvasChart</h3>
-      {data && !fetching && !error && (
-        <BarCanvas
-          data={data}
-          width={width}
-          height={height}
-          margin={margin}
-          {...props}
-        />
+      {data && !loading && !error && (
+        <BarCanvas data={data} width={width} height={height} margin={margin} />
       )}
     </div>
   )
