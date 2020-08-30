@@ -18,24 +18,6 @@ export const getGithubusercontent = async () => {
 export const NY_JSON = 'ny.json'
 export const SF_JSON = 'sf.json'
 
-export const getAllJSONData = () => {
-  return Promise.all([
-    fetch(`${process.env.PUBLIC_URL || ''}/sf.json `),
-    fetch(`${process.env.PUBLIC_URL || ''}/ny.json `),
-  ])
-    .then((response) => Promise.all(response.map((res) => res.json())))
-    .then(([sf, ny]) => {
-      // eslint-disable-next-line
-      sf.map((el) => (el.date = new Date(el.date)))
-      // eslint-disable-next-line
-      ny.map((el) => (el.date = new Date(el.date)))
-      return {
-        sf,
-        ny,
-      }
-    })
-}
-
 export const getJSONData = ({ source }) => {
   return fetch(`${process.env.PUBLIC_URL || ''}/${source} `)
     .then((res) => res.json())
