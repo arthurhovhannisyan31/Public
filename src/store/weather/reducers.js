@@ -4,9 +4,6 @@ import { Map, Record } from 'immutable'
 // local containers & components
 // local constants & styles
 import {
-  WEATHER_ALL_DATA_REQUEST,
-  WEATHER_ALL_DATA_ERROR,
-  WEATHER_ALL_DATA_SUCCESS,
   WEATHER_DATA_REQUEST,
   WEATHER_DATA_ERROR,
   WEATHER_DATA_SUCCESS,
@@ -22,26 +19,19 @@ const InitialStateRecord = Record({
 })
 
 const weatherReducer = (state = new InitialStateRecord(), action) => {
-  const { type, payload, key } = action
+  const { type, payload } = action
   switch (type) {
-    case WEATHER_DATA_REQUEST:
-    case WEATHER_ALL_DATA_REQUEST: {
+    case WEATHER_DATA_REQUEST: {
       return state.set('loading', true)
     }
-    case WEATHER_ALL_DATA_ERROR:
     case WEATHER_DATA_ERROR: {
       return state.set('loading', false).set('error', true)
     }
     case WEATHER_DATA_SUCCESS: {
       return state.set('loading', false).set('data', payload)
     }
-    case WEATHER_ALL_DATA_SUCCESS: {
-      return state
-        .set('loading', false)
-        .update('allData', (item) => item.set(key, payload))
-    }
+
     case WEATHER_SET_BRUSH_RANGE: {
-      console.log(payload)
       return state.set('range', payload)
     }
     default:

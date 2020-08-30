@@ -2,7 +2,7 @@ import React from 'react'
 import radialChartData from '../services/radialChartData'
 import { RadialCanvas } from '../components'
 
-const RadialCanvasChart = ({ data: tempData, fetching, error }) => {
+const RadialCanvasChart = ({ data: tempData, loading, error }) => {
   const width = 500
   const height = 600
 
@@ -18,7 +18,7 @@ const RadialCanvasChart = ({ data: tempData, fetching, error }) => {
   return (
     <div>
       <h3>RadialChart</h3>
-      {data && !fetching && !error && (
+      {data && !loading && !error && (
         <RadialCanvas width={width} height={height} data={data} />
       )}
     </div>

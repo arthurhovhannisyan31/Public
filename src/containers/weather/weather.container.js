@@ -6,7 +6,6 @@ import { Helmet } from 'react-helmet'
 import { moduleName as weatherModuleName } from '../../store/weather/constants'
 import { HelmetContext } from '../../contexts'
 import {
-  // getWeatherAllDataAction,
   getWeatherDataAction,
   setBrushRange,
 } from '../../store/weather/actions'
@@ -14,15 +13,14 @@ import {
 import {
   BarChart,
   BarCanvasChart,
-  //   LineChart,
-  //   RadialChart,
-  //   RadialCanvasChart,
+  LineChart,
+  RadialChart,
+  RadialCanvasChart,
 } from '../../components/weather'
 import Select from '../../components/ui/select'
 import { NY_JSON, SF_JSON } from '../../store/weather/services'
 // local constants & styles
 // import style from './weather.styles.scss'
-// import { Map } from 'immutable'
 
 const options = [
   {
@@ -41,7 +39,7 @@ const Weather = () => {
   const dispatchGlobal = useDispatch()
 
   // todo add reselect
-  const { loading, error, data, allData, range } = useSelector(
+  const { loading, error, data, range } = useSelector(
     (state) => state[weatherModuleName],
     shallowEqual
   )
@@ -73,18 +71,9 @@ const Weather = () => {
           error={error}
           loading={loading}
         />
-        {/* <LineChart */}
-        {/*  data={data} */}
-        {/*  {...props} */}
-        {/* /> */}
-        {/* <RadialChart */}
-        {/*  data={data} */}
-        {/*  {...props} */}
-        {/* /> */}
-        {/* <RadialCanvasChart */}
-        {/*  data={data} */}
-        {/*  {...props} */}
-        {/* /> */}
+        <LineChart data={data} loading={loading} error={error} />
+        <RadialChart data={data} loading={loading} error={error} />
+        <RadialCanvasChart data={data} loading={loading} error={error} />
       </div>
     </>
   )
