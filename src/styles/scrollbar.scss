@@ -3,7 +3,7 @@
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
-  color: $color-primary
+  color: $color-primary-lighter
 }
   /* Track */
 ::-webkit-scrollbar-track {
@@ -12,13 +12,13 @@
 }
   /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: $color-primary;
+  background: $color-primary-lighter;
   border-radius: $border-radius-main;
 }
   /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: $color-primary;
+  background: $color-primary-lighter;
 }
 ::-webkit-scrollbar-corner {
-  background: $color-primary;
+  background: $color-primary-lighter;
 }
