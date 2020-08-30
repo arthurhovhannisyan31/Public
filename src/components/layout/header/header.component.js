@@ -1,29 +1,18 @@
 // external libraries
-import React from 'react';
+import React, { useContext } from 'react'
 // local services & data store
-import { useRouter } from '../../../services/utilities.service';
+import { HelmetContext } from '../../../contexts'
 // local containers & components
-import Icon from '../../ui/icons/icon.component';
-import { PersonalInfo } from '../../ui/navigation';
-import Title from '../../ui/text-containers/title';
-import Divider from '../../ui/lines/devider';
+import Icon from '../../ui/icons/icon.component'
+import { PersonalInfo } from '../../ui/navigation'
+import Title from '../../ui/text-containers/title'
+import Divider from '../../ui/lines/devider'
 // local constants & styles
-import CONSTS from '../../../constants';
-import './header.style.scss';
+import CONSTS from '../../../constants'
+import './header.style.scss'
 
 const Header = () => {
-  const router = useRouter();
-  const {
-    location: { pathname }
-  } = router;
-  /**
-   * Define current route label value
-   * @type {string}
-   */
-  const title = Object.values(CONSTS.ROUTES).filter(({ ROUTE }) =>
-    Array.isArray(ROUTE) ? ROUTE[0] === pathname : ROUTE === pathname
-  )[0]?.LABEL;
-
+  const { title } = useContext(HelmetContext)
   return (
     <header className="header">
       <div className="header__content horizontal-block vertical-block">
@@ -47,7 +36,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

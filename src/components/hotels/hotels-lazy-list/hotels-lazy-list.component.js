@@ -5,9 +5,9 @@ import ClassNames from 'classnames'
 // local services & data store
 // local containers & components
 import ListItem from './list-item'
-import Inline3Dots from '../../loading-indicators/inline-3-dots'
+import Inline3Dots from '../../ui/loading-indicators/inline-3-dots'
 // local constants & styles
-import CONSTS from '../../../../constants'
+import CONSTS from '../../../constants'
 import './hotels-lazy-list.style.scss'
 
 const HotelsLazyList = forwardRef(({ data, loading, firstLoad }, _ref) => {

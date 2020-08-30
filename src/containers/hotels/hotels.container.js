@@ -1,13 +1,21 @@
 // external libraries
-import React, { useEffect, useReducer, useRef, useMemo } from 'react'
+import React, {
+  useEffect,
+  useReducer,
+  useRef,
+  useMemo,
+  useContext,
+} from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { createSelector } from 'reselect'
+import { Helmet } from 'react-helmet'
 // local services & data store
 import { moduleName as hotelModuleName } from '../../store/hotels/constants'
 import { getHotelsAction } from '../../store/hotels/actions'
 import { useDebounce, useOnScreen } from '../../services/utilities.service'
+import { HelmetContext } from '../../contexts'
 // local containers & components
-import { HotelsFilter, HotelsLazyList } from '../../components/ui/hotels'
+import { HotelsFilter, HotelsLazyList } from '../../components/hotels'
 // local constants & styles
 import './hotels.styles.scss'
 
@@ -46,6 +54,11 @@ const hotelReducer = (state, action) => {
 }
 
 const Hotels = () => {
+  /**
+   * Use context props
+   * */
+  const { title } = useContext(HelmetContext)
+
   /**
    * Declare initial state
    * @type {{loadMore: boolean, length: number, filters: null}}
@@ -111,10 +124,10 @@ const Hotels = () => {
     shallowEqual
   )
 
-  const hotelsSelector = (cb, selector) =>
+  const hotelsSelector = (selector, cb) =>
     createSelector((state) => state[hotelModuleName][selector], cb)
   const hotelValues = useSelector(
-    hotelsSelector((data) => data.map((el) => el.region), 'hotelsCollection')
+    hotelsSelector('hotelsCollection', (data) => data.map((el) => el.region))
   )
   const hotelUniqValues = new Set([...hotelValues])
 
@@ -135,12 +148,10 @@ const Hotels = () => {
   }
 
   const lazyListFilteredData = useSelector(
-    hotelsSelector(
-      (data) =>
-        data.filter((el) =>
-          filterValues()?.length ? filterValues().includes(el.region) : el
-        ),
-      'hotelsCollection'
+    hotelsSelector('hotelsCollection', (data) =>
+      data.filter((el) =>
+        filterValues()?.length ? filterValues().includes(el.region) : el
+      )
     )
   )
 
@@ -195,22 +206,28 @@ const Hotels = () => {
   }, [dispatchGlobal, loadMore, debouncedLength, firstLoad, nextId])
 
   return (
-    <div className="hotels">
-      <HotelsFilter
-        id={nextId}
-        length={length}
-        setLength={setLength}
-        options={hotelOptions}
-        filters={filters}
-        setFilters={setFilters}
-      />
-      <HotelsLazyList
-        loading={loading}
-        firstLoad={firstLoad}
-        data={[...lazyListFilteredData]}
-        ref={ref}
-      />
-    </div>
+    <>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
+      <div className="hotels">
+        <span className="hotels-title">Lazy loading list.</span>
+        <HotelsFilter
+          id={nextId}
+          length={length}
+          setLength={setLength}
+          options={hotelOptions}
+          filters={filters}
+          setFilters={setFilters}
+        />
+        <HotelsLazyList
+          loading={loading}
+          firstLoad={firstLoad}
+          data={[...lazyListFilteredData]}
+          ref={ref}
+        />
+      </div>
+    </>
   )
 }
 

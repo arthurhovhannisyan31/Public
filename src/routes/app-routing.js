@@ -1,66 +1,76 @@
 // external libraries
 // local services & data store
-import {routeMaker} from '../services/utilities.service'
+import { lazy } from 'react'
+import { routeMaker } from '../services/utilities.service'
 // local containers & components
-import Dashboard from '../containers/dashboard'
-import Messages from '../containers/messages'
-import News from '../containers/news'
-import Notifications from '../containers/notifications'
-import Welcome from '../containers/welcome'
-import Settings from '../containers/settings'
-import Login from '../containers/login'
 // local constants & styles
 import CONSTS from '../constants'
-import Hotels from '../containers/hotels'
+
+const Dashboard = lazy(() => import('../containers/dashboard'))
+const Messages = lazy(() => import('../containers/messages'))
+const News = lazy(() => import('../containers/news'))
+const Notifications = lazy(() => import('../containers/notifications'))
+const Welcome = lazy(() => import('../containers/welcome'))
+const Settings = lazy(() => import('../containers/settings'))
+const Login = lazy(() => import('../containers/login'))
+const Hotels = lazy(() => import('../containers/hotels'))
+const Weather = lazy(() => import('../containers/weather'))
 
 const dashboard = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.DASHBOARD.ROUTE,
-  component: Dashboard
+  component: Dashboard,
 }
 const messages = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.MESSAGES.ROUTE,
-  component: Messages
+  component: Messages,
 }
 const news = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.NEWS.ROUTE,
-  component: News
+  component: News,
 }
 const settings = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.SETTINGS.ROUTE,
-  component: Settings
+  component: Settings,
 }
 const notifications = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.NOTIFICATIONS.ROUTE,
-  component: Notifications
+  component: Notifications,
 }
 const welcome = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.WELCOME.ROUTE,
-  component: Welcome
+  component: Welcome,
 }
 const login = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.LOGIN.ROUTE,
-  component: Login
+  component: Login,
 }
 
 const hotels = {
   exact: true,
   isPrivate: true,
   path: CONSTS.ROUTES.HOTELS.ROUTE,
-  component: Hotels
+  component: Hotels,
+}
+
+const weather = {
+  exact: true,
+  isPrivate: true,
+  path: CONSTS.ROUTES.WEATHER.ROUTE,
+  component: Weather,
 }
 
 const appRoutes = [
@@ -68,10 +78,11 @@ const appRoutes = [
   messages,
   news,
   hotels,
+  weather,
   notifications,
   settings,
   welcome,
-  login
+  login,
 ].map(({ isPrivate, ...params }) => routeMaker(isPrivate, params))
 
 export default appRoutes

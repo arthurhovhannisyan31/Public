@@ -2,15 +2,16 @@
 import React from 'react'
 // local services & data store
 // local containers & components
-import NavMenuContextContainer from "./nav-menu.context"
+import NavMenuContextContainer from './nav-menu.context'
 import WindowSizeContextContainer from './window-size.context'
+import HelmetContextContainer from './helmet-context'
 // local constants & styles
 
-const ContextCompose = ({children}) => {
+const ContextCompose = ({ children }) => {
   return (
     <NavMenuContextContainer>
       <WindowSizeContextContainer>
-        {children}
+        <HelmetContextContainer>{children}</HelmetContextContainer>
       </WindowSizeContextContainer>
     </NavMenuContextContainer>
   )

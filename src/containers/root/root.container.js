@@ -16,13 +16,13 @@ axiosInterceptors()
 const Root = () => {
   return (
     <Provider store={store}>
-      <ContextCompose>
-        <BrowserRouter>
+      <BrowserRouter>
+        <ContextCompose>
           <ErrorBoundary>
-            <App/>
+            <App />
           </ErrorBoundary>
-        </BrowserRouter>
-      </ContextCompose>
+        </ContextCompose>
+      </BrowserRouter>
     </Provider>
   )
 }

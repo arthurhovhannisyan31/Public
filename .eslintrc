@@ -55,6 +55,7 @@
     "import/newline-after-import": "error",
     "no-shadow": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-props-no-spreading": "warn"
   }
 }
