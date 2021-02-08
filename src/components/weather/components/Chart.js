@@ -14,17 +14,18 @@ const Chart = ({ data, width, height, margin, updateBrushRange }) => {
     ])
     .on('start end', () => {
       // eslint-disable-next-line
-      const selection = d3.event.selection
-      if (selection) {
-        const [minX, maxX] = d3.event.selection
-        const selectAll = minX === maxX
-
-        const min = selectAll ? left : minX
-        const max = selectAll ? width - right : maxX
-
-        const range = [xScale.invert(min), xScale.invert(max)]
-        updateBrushRange({ range })
-      }
+      // console.log(d3.event.selection);
+      // const {selection} = d3.event
+      // if (selection) {
+      //   const [minX, maxX] = d3.event.selection
+      //   const selectAll = minX === maxX
+      //
+      //   const min = selectAll ? left : minX
+      //   const max = selectAll ? width - right : maxX
+      //
+      //   const range = [xScale.invert(min), xScale.invert(max)]
+      //   updateBrushRange({ range })
+      // }
     })
 
   useEffect(() => {
@@ -38,8 +39,7 @@ const Chart = ({ data, width, height, margin, updateBrushRange }) => {
       .call(brush)
   }, [data])
 
-  const rects = data.data.map(({ x, y, fill, height }, idx) => {
-    return (
+  const rects = data.data.map(({ x, y, fill, height }, idx) => (
       <rect
         // eslint-disable-next-line
         key={idx}
@@ -49,8 +49,7 @@ const Chart = ({ data, width, height, margin, updateBrushRange }) => {
         height={height}
         fill={fill}
       />
-    )
-  })
+    ))
 
   const refY = useRef(null)
   const refX = useRef(null)

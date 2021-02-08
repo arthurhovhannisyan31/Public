@@ -56,6 +56,8 @@
     "no-shadow": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-props-no-spreading": "warn"
+    "react/jsx-props-no-spreading": "warn",
+    "arrow-body-style": "warn",
+    "no-unused-vars": "warn"
   }
 }
